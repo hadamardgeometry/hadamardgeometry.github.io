@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        border: 1px solid red;
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          border: 4px dotted rgb(162, 0, 255);
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          border: 5px dashed rgb(53, 208, 48);
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          border: 2px solid black;
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          border: 5px dashed rgb(53, 208, 48);
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-001.png"><p class="newpage"></p>
+<p  id="blk-001-01">LIVRE V</p>
+<p  id="blk-001-02">LE PLAN ET LA</p>
+<p  id="blk-001-03">ET LA LIGNE DROITE</p>
+<p  id="blk-001-04">CHAPITRE PREMIER</p>
+<p  id="blk-001-05">INTERSECTION DES DROITES ET DES PLANS</p>
+<p class="article" id="blk-001-06"><strong class="article-num" id="article-319 bis">319 bis.</strong> Nous savons (Pl., 8) (¹) qu'on appelle PLAN une surface telle,
+que toute droite joignant deux points de cette surface y est contenue
+tout entière.</p>
+<p  id="blk-001-07">Une telle surface est indéfinie; toutefois, afin de pouvoir la figurer
+sur le dessin, on n'en représente qu'une portion limitée, le plus
+souvent une portion rectangulaire : c'est ce qui est fait dans les
+figures 233 et suivantes.</p>
+<p  id="blk-001-08">D'après la définition précédente, une droite peut occuper, par
+rapport à un plan, trois positions différentes :</p>
+<p  id="blk-001-09">1° Elle peut avoir avec lui deux points communs, et, par consé -
+quent, y être contenue tout entière;</p>
+<p  id="blk-001-10">2º Elle peut avoir avec lui un seul point commun on dit alors
+qu'elle coupe le plan;</p>
+<p  id="blk-001-11">3° Enfin le plan et la droite peuvent n'avoir aucun point commun :
+on dit alors qu'ils sont parallèles entre eux.<!-- spr -->i</p>
+<p  id="blk-001-13">On admet que tout plan divise l'espace en deux régions, situées
+respectivement des deux côtés de ce plan. On ne peut passer de</p>
+<p  id="blk-001-14">(1) L'abréviation Pl., précédant un numéro de paragraphe, signifie qu'il s'agit d'un
+renvoi à la Géométrie plane.<!-- skp data-txt='GÉOMÉTRIE. II.' --></p><div class="scan-inline"><img src="img/scan/srcpage-001.png"/></div></data><data data-scanhref="img/scan/srcpage-002.png"><p class="newpage"><!-- skp data-txt='2' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->l'une de ces régions à l'autre sans traverser le plan. En particulier,
+toute droite qui joint deux points situés de part et d'autre d'un plan,
+coupe ce plan.</p>
+<p  id="blk-002-04">Inversement, on admet que toute droite qui coupe un plan est
+divisée par le point commun en deux demi-droites, situées de part
+et d'autre de ce plan.</p>
+<p  id="blk-002-05">De la définition du plan résulte encore :
+Toute figure égale à un plan est un plan.</p>
+<p  id="blk-002-06">Inversement, on admet que deux plans quelconques peuvent être
+amenés à coïncider, et cela de manière qu'une demi-droite quel-
+conque donnée du premier vienne (avec coïncidence des origines) sur
+une demi-droite quelconque donnée du second.</p>
+<p class="article" id="blk-002-07"><strong class="article-num" id="article-320">320.</strong> Nous avons admis (Pl., 8) l'axiome suivant :<!-- skp data-txt='-' --></p>
+<p  id="blk-002-09">Axiome. Par trois points quelconques de l'espace, il passe un
+plan.</p>
+<p  id="blk-002-10">Nous le compléterons par le théorème réciproque :<!-- skp data-txt='-' --><!-- skp data-txt="'" --><!-- skp data-txt='B' --><!-- skp data-txt='D' --><!-- skp data-txt='A' --></p>
+<p  id="blk-002-16">Théorème. - Par trois points non en ligne droite, il ne passe qu'un
+seul plan.
+Soient trois points A, B, C, non en ligne droite, par lesquels sont<!-- spr -->supposés passer les deux plans
+P, P'.
+Je dis que ces plans P,</p>
+<p  id="blk-002-18">P'
+coïncident.</p>
+<p  id="blk-002-19">Remarquons d'abord que ces
+deux plans ont en commun, en
+vertu de la définition, les droites
+AB, AC, BC.</p>
+<p  id="blk-002-20">Soit maintenant M un point
+quelconque du plan P. Par ce<!-- spr -->point (fig. 232), nous pouvons
+faire passer une droite rencontrant la droite AB en D et la
+droite AC en E. Le plan P' contient les points D et E, et par consé-
+quent toute la droite DE: donc il contient le point M.</p>
+<p  id="blk-002-22">Ainsi tout point du plan P appartient au plan P'; et comme on
+montrerait de même que tout point du plan P' appartient à P,<!-- spr -->le
+théorème est démontré.<!-- skp data-txt='M' --><img class="fig" src="img/FIG. 232.OCR.png" alt="FIG. 232." /></p><div class="scan-inline"><img src="img/scan/srcpage-002.png"/></div></data><data data-scanhref="img/scan/srcpage-003.png"><p class="newpage"></p>
+<p  id="blk-003-01">INTERSECTION DES DROITES ET DES PLANS.<!-- skp data-txt='3' --></p>
+<p  id="blk-003-03">On exprime l'ensemble de l'axiome et du théorème précédents en
+disant que trois points non en ligne droite déterminent un plan.</p>
+<p  id="blk-003-04">Une droite AB et un point extérieur C déterminent un plan car la
+condition de contenir la droite AB et le point C, ou celle de contenir
+les trois points A, B, C, reviennent exactement l'une à l'autre.</p>
+<p  id="blk-003-05">De même, deux droites AB, AC qui se coupent, déterminent un plan,
+celui qui est déterminé par les trois points A, B, C; deux droites
+parallèles déterminent un plan, car, par définition (Pl., 38), il existe
+un plan qui les renferme toutes deux, et, d'un autre côté, ce plan
+est unique, comme contenant l'une d'elles et un point de l'autre
+(alinéa précédent).</p>
+<p  id="blk-003-06">D'après cela, on peut désigner un plan, soit par une seule lettre,
+soit par les lettres correspondant à trois points non en ligne droite,<!-- spr -->ou à une droite et à un point, ou à deux droites (sécantes ou
+parallèles) de ce plan.<!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-003-11">REMARQUE. On voit que par une droite donnée D, passent une
+infinité de plans, puisque par cette droite et un point quelconque de
+l'espace on en peut mener un; par D et un point non situé dans le
+premier plan, un second, etc.<!-- skp data-txt='--' --></p>
+<p class="article" id="blk-003-13"><strong class="article-num" id="article-321">321.</strong> REMARQUE. Si une figure, n'étant pas composée d'un seul
+point, est telle, que la droite qui joint deux de ses points y est
+contenue tout entière :<!-- spr -->ou elle est une ligne droite;
+ou elle est un plan;
+ou elle contient tous les points de l'espace.</p>
+<p  id="blk-003-15">En effet, la figure en question contient, par hypothèse, au moins
+deux points A, B et, par suite, la
+droite AB. Si elle ne contient que cette
+droite, la proposition est démontrée.</p>
+<p  id="blk-003-16">Sinon, soit C un point de la figure
+extérieur à AB: il suffit de répéter la
+démonstration du théorème du numéro
+précédent pour constater que tout point
+du plan ABC fait partie de la figure. Si
+celle-ci ne contient aucun autre point,
+la proposition est démontrée. Sinon, soit D un point de la figure,
+extérieur au plan ABC (fig. 233). La figure considérée contient,<!-- skp data-txt='D' --><!-- skp data-txt='B' --><!-- skp data-txt='A' --><!-- skp data-txt='C°' --><!-- skp data-txt="'E" --><img class="fig" src="img/FIG. 233.OCR.png" alt="FIG. 233." /></p><div class="scan-inline"><img src="img/scan/srcpage-003.png"/></div></data><data data-scanhref="img/scan/srcpage-004.png"><p class="newpage"><!-- skp data-txt='4' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->tout point E situé, par rapport au plan ABC, du côté où n'est
+pas le point D. Car la droite DE coupe nécessairement le plan en
+un point I et, par conséquent, appartient tout entière à la figure,
+puisqu'elle peut être considérée comme joignant deux points D, I
+qui en font partie.</p>
+<p  id="blk-004-04">Mais, pour la même raison, la figure contient aussi tout point F
+situé du côté du plan ABC où n'est pas le point E, c'est-à-dire du
+côté où est le point D.</p>
+<p  id="blk-004-05">Elle contient donc tout point de l'espace.</p>
+<p  id="blk-004-06">C. Q. F. D.</p>
+<p class="article" id="blk-004-07"><strong class="article-num" id="article-322">322.</strong> L'axiome de géométrie plane (Pl., 40):</p>
+<p  id="blk-004-08">Par un point pris hors d'une droite, on ne peut mener qu'une
+parallèle à cette droite,
+subsiste en géométrie de l'espace. Car une parallèle menée par un<!-- spr -->point C à une droite AB est située dans le
+plan ABC et on peut appliquer, dans ce
+plan, l'axiome précité.</p>
+<p  id="blk-004-10">De même, par un point C, extérieur à une
+droite AB, on peut abaisser sur cette droite
+une perpendiculaire et une seule, cette per-
+pendiculaire devant appartenir au plan ABC,
+dans lequel le théorème est démontré (Pl., 18).</p>
+<p  id="blk-004-11">Au contraire, par un point pris sur une<!-- spr -->droite, on peut mener une infinité de perpen-
+diculaires à cette droite; à savoir une dans chacun des plans</p>
+<p  id="blk-004-13">REM.) qui passent par la droite.
+(fig. 234).</p>
+<p  id="blk-004-14">Il en résulte que deux droites peuvent
+être perpendiculaires à une même troisième
+sans être parallèles entre elles.<img class="fig" src="img/FIG. 234.OCR.png" alt="FIG. 234." /></p>
+<p  id="blk-004-16">(320,<!-- skp data-txt='B' --><!-- skp data-txt='A' --></p>
+<p class="article" id="blk-004-19"><strong class="article-num" id="article-323">323.</strong> Le plan ABC peut être considéré comme
+engendré par une droite qui se meut en pas-
+sant constamment par le point Cet s'appuyant
+sur la droite AB. Car une telle droite reste
+toujours dans le plan en question et on peut,
+d'autre part, la faire passer par un point quelconque de ce plan,
+à l'exception des points situés sur la parallèle à AB menée par C.<img class="fig" src="img/FIG. 235.OCR.png" alt="FIG. 235." /></p><div class="scan-inline"><img src="img/scan/srcpage-004.png"/></div></data><data data-scanhref="img/scan/srcpage-005.png"><p class="newpage"></p>
+<p  id="blk-005-01">INTERSECTION DES DROITES ET DES PLANS.<!-- skp data-txt='5' --></p>
+<p  id="blk-005-03">De même, une droite xy, qui se meut en restant parallèle à sa
+position primitive AC (fig. 235) et en s'appuyant sur une droite.
+fixe AB, engendre le plan ABC, ou encore, le lieu géométrique d'une
+droite qui se meut en restant parallèle à sa position primitive et
+s'appuyant constamment sur une droite fixe (la position primitive et
+la droite fixe étant supposées sécantes) est un plan. En effet, d'après
+la définition des lieux géométriques (Pl., 33), cet énoncé exprime le
+double fait suivant: 1° la droite mobile xy appartient constamment
+au plan ABC; 2° par tout point de ce plan il passe une droite xy
+parallèle à AC et rencontrant AB.<!-- skp data-txt='P' --><!-- skp data-txt='M' --><!-- skp data-txt='B' --><!-- skp data-txt='M' --><!-- skp data-txt="N'" --><img class="fig" src="img/FIG. 236.OCR.png" alt="FIG. 236." /></p>
+<p class="article" id="blk-005-10"><strong class="article-num" id="article-324">324.</strong> Théorème. Deux plans distincts, qui ont un point commun,
+en ont une infinité, tous situés en ligne droite.</p>
+<p  id="blk-005-11">Soient les deux plans P, Q (fig. 236), qui ont en commun le point
+A sans cependant coïncider. Le plan Q divise l'espace en deux
+régions que nous appellerons, pour abréger, le dessus et le dessous
+de ce plan.</p>
+<p  id="blk-005-12">Par le point A, dans le plan P,
+menons une droite quelconque MAM'.
+Il se peut que cette droite appar-
+tienne tout entière au plan Q, auquel
+cas il est démontré que les deux plans
+ont une droite commune.</p>
+<p  id="blk-005-13">S'il n'en est pas ainsi, nous savons
+que le point A divise notre droite en
+deux portions situées, l'une en dessus, l'autre en dessous du
+plan Q. Supposons, pour fixer les idées, que le point M soit
+au-dessus du plan Q, le point M' au-dessous.</p>
+<p  id="blk-005-14">Opérons de même avec une seconde droite NAN' du plan P et, si
+celle-ci n'appartient pas au plan Q, supposons que N soit en dessus,
+N' en dessous de ce plan.</p>
+<p  id="blk-005-15">Joignons MN'. Cette droite, passant par deux points situés de part
+et d'autre de Q, traverse forcément ce plan en un point B, qui n'est
+pas le point A (sans quoi les points M, A, N' seraient en ligne.
+droite). Les deux plans donnés, ayant en commun les deux points
+A, B, renferment tous deux la droite AB tout entière.</p>
+<p  id="blk-005-16">Ils ne sauraient d'ailleurs avoir de point commun en dehors de
+AB, sans quoi (320) ils ne seraient pas distincts.</p><div class="scan-inline"><img src="img/scan/srcpage-005.png"/></div></data><data data-scanhref="img/scan/srcpage-006.png"><p class="newpage"><!-- skp data-txt='6' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-006-04">D'après cela, deux plans distincts peuvent :
+Soit se couper<!-- spr -->et alors leur intersection est une ligne droite,
+Soit n'avoir aucun point commun. On dit, dans ce dernier cas,
+qu'ils sont parallèles.</p>
+<p  id="blk-006-06">Si deux plans se coupent, la droite commune divise chacun d'eux
+en deux régions (demi-plans) situées de côtés différents par rapport
+à l'autre.</p>
+<p class="article" id="blk-006-07"><strong class="article-num" id="article-325">325.</strong> Après avoir étudié (319 bis) les situations respectives d'une
+droite et d'un plan et (nº précédent) celles de deux plans, il nous
+reste à énumérer les situations respectives de deux droites. Il est
+clair qu'il n'y a à cet égard, en supposant les droites distinctes, que
+trois possibilités :</p>
+<p  id="blk-006-08">1º Les deux droites se coupent ;
+2° Elles sont parallèles;
+3º Elles ne sont pas dans un même plan.</p>
+<p  id="blk-006-09">On doit remarquer que, si les deux droites sont menées au
+hasard, c'est en général le troisième cas qui se présentera. Sans
+essayer de préciser d'une façon absolue le sens de cette affirmation,
+(ce qui se fait à l'aide de notions étrangères à la géométrie élémentaire),<!-- spr -->se rendra compte de son exactitude de la façon suivante :
+Donnons-nous arbitrairement la première droite AB et un point C
+de la seconde. Si nous menons celle-ci au hasard par le point C, en
+général elle ne sera pas contenue dans le plan ABC, de sorte que
+les deux droites ne seront pas dans un même plan.<!-- spr -->on</p>
+<p class="article" id="blk-006-12"><strong class="article-num" id="article-326">326.</strong> Nous voyons en particulier que, pour établir le parallélisme
+de deux droites, il ne suffira pas, comme en géométrie plane, de
+démontrer qu'elles n'ont aucun point commun. Il est indispensable
+de prouver, en outre, qu'elles appartiennent à un même plan.</p>
+<p  id="blk-006-13">EXERCICES</p>
+<p class="article" id="blk-006-14"><strong class="article-num" id="article-423">423.</strong> Si un certain nombre de droites sont telles que deux quelconques d'entre
+elles se rencontrent:</p>
+<p  id="blk-006-15">Ou bien toutes ces droites passent par un même point;
+Ou bien elles sont toutes dans un même plan.</p><div class="scan-inline"><img src="img/scan/srcpage-006.png"/></div></data><data data-scanhref="img/scan/srcpage-007.png"><p class="newpage"></p>
+<p  id="blk-007-01">INTERSECTION DES DROITES ET DES PLANS.</p>
+<p class="article" id="blk-007-02"><strong class="article-num" id="article-424">424.</strong> Par un point donné, mener une droite qui rencontre deux droites données,
+non situées dans un même plan (1).</p>
+<p  id="blk-007-03">Il existe une infinité de droites rencontrant trois droites données, dont deux quel-
+conques ne sont pas dans un même plan.</p>
+<p class="article" id="blk-007-04"><strong class="article-num" id="article-425">425.</strong> Si deux triangles ABC, A'B'C', non situés dans un même plan, sont tels que
+les côtés BC, B'C' se coupent, qu'il en soit de même de CA, C'A', ainsi que de AB,
+A'B':</p>
+<p  id="blk-007-05">1º Les trois droites AA', BB', CC' passent par un même point, ou sont parallèles
+deux à deux;</p>
+<p  id="blk-007-06">2° Les trois points d'intersection de BC avec B'C', de CA avec C'A', de AB avec
+A'B' sont en ligne droite.</p>
+<p class="article" id="blk-007-07"><strong class="article-num" id="article-426">426.</strong> Étant donnés un plan P et trois points A, B, C (non en ligne droite)
+extérieurs à ce plan, trouver :</p>
+<p  id="blk-007-08">1° Un point tel que les droites qui le joignent aux points A, B, C coupent le plan
+P aux sommets d'un triangle homothétique à un triangle donné;</p>
+<p  id="blk-007-09">2° Un point tel que les droites qui le joignent aux points A, B, C coupent le plan
+P aux sommets d'un triangle égal à un triangle donné (¹).</p>
+<p class="article" id="blk-007-10"><strong class="article-num" id="article-426 bis">426 bis.</strong> Étant donnés deux triangles ABC, A'B'C' et un plan P, trouver dans ce
+dernier plan un triangle aẞy, tel que les droites Aa, Bẞ, Cy concourent en un
+même point, et qu'il en soit de même de A'x, B'ß, C'y (¹).</p>
+<p class="article" id="blk-007-11"><strong class="article-num" id="article-427">427.</strong> Étendre au cas d'un polygone gauche (c'est-à-dire d'une ligne brisée fermée
+dont les côtés ne sont pas situés dans un même plan) et d'un point quelconque de
+l'espace, le théorème qui fait l'objet de l'exercice 8 bis (Pl., liv. 1).</p>
+<p  id="blk-007-12">(1) Voir la note à la fin des problèmes du Ve livre.</p><div class="scan-inline"><img src="img/scan/srcpage-007.png"/></div></data><data data-scanhref="img/scan/srcpage-008.png"><p class="newpage"><!-- skp data-txt='8' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-008-03">CHAPITRE II</p>
+<p  id="blk-008-04">DROITES ET PLANS PARALLÈLES</p>
+<p class="article" id="blk-008-05"><strong class="article-num" id="article-327">327.</strong> Droites parallèles.<!-- skp data-txt='-' --><!-- skp data-txt='B' --><!-- skp data-txt='D' --></p>
+<p  id="blk-008-09">Théorème. Si deux droites sont parallèles, tout plan qui coupe.
+l'une coupe l'autre.</p>
+<p  id="blk-008-10">Soient les deux parallèles AB, CD (fig. 237) et le plan P, qui passe
+par le point A sans contenir AB. Ce plan P, distinct forcément du<!-- spr -->plan ABCD et ayant avec lui le point
+commun A, le coupera suivant une droite
+qui ne sera pas AB, et qui, par consé-
+quent, ne sera pas parallèle à CD. Dès
+lors, étant située dans le plan ABCD, cette
+droite coupera CD. Le plan P a donc un
+point commun avec CD; il ne saurait
+d'ailleurs la contenir, sans quoi, passant
+par le point A, il coïnciderait avec le
+plan ABCD, ce qui n'est pas.<!-- skp data-txt='A' --><img class="fig" src="img/FIG. 237.OCR.png" alt="FIG. 237." /></p>
+<p  id="blk-008-14">Réciproquement, si deux droites distinctes AB, CD, sont telles que
+tout plan qui coupe l'une coupe l'autre, elles sont parallèles.</p>
+<p  id="blk-008-15">En effet 1° Ces deux droites sont dans un même plan, sans quoi
+le plan mené par la première et un point C de la seconde couperait
+celle-ci, tout en contenant l'autre; 2º elles n'ont aucun point
+commun, sans quoi un autre plan quelconque mené par AB couperait
+CD en ce point commun.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-008-17"><strong class="article-num" id="article-328">328.</strong> Théorème. Deux droites A, B, parallèles à une même
+troisième C, sont parallèles entre elles (ou coïncident).</p>
+<p  id="blk-008-18">En effet, tout plan qui coupe A coupe C et, par suite, B.</p><div class="scan-inline"><img src="img/scan/srcpage-008.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+
