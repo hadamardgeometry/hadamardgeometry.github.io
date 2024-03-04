@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-546.png"><p class="newpage"><!-- skp data-txt='526' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-546-03"><strong class="article-num" id="article-799">799.</strong> On peut se demander également quelles constructions sont possi-
+bles à l'aide du compas seul. La réponse peut se donner en un mot: on peut
+résoudre, par le compas seul, les mêmes problèmes qu'avec la règle et le
+compas (1).</p>
+<p class="article" id="blk-546-04"><strong class="article-num" id="article-800">800.</strong> Admettons enfin qu'on n'ait à sa disposition qu'une règle, mais<!-- spr -->que
+cette règle ait deux bords que l'on sache rectilignes et parallèles entre eux.
+On démontre également que l'usage de cet instrument remplace entièrement
+celui de la règle et du compas. Il en est de même si, outre la règle (à un seul
+bord), on a à sa disposition une équerre, même si l'angle de cette équerre
+n'est pas droit, pourvu que ses bords soient bien rectilignes.</p>
+<p class="article" id="blk-546-06"><strong class="article-num" id="article-801">801.</strong> Enfin, rappelons que, dans ce que nous avons dit précédemment
+sur l'usage de la règle, nous avons supposé (d'une manière analogue à ce qui a été
+dit au nº 789 pour les problèmes constructibles par la règle et le compas) que les don-
+nées comprenaient exclusivement des figures exécutables avec la règle seule,
+autrement dit, des droites et des points : les conclusions précédemment
+énoncées ne sont nécessairement vraies que moyennant cette restriction.
+C'est ainsi que nous avons appris (Pl., 211) à tracer par la règle seule les
+tangentes menées d'un point à un cercle, problème qui n'est pas du pre-
+mier degré seulement le cercle était tracé d'avance.</p>
+<p  id="blk-546-07">Ou démontre qu'il suffit d'avoir tracé, une fois pour toutes, un seul cercle
+dont le centre soit connu, pour que tout problème constructible par la
+règle et le compas puisse être ensuite construit à l'aide de la règle seule.</p>
+<p  id="blk-546-08">NOTE F</p>
+<p  id="blk-546-09">SUR LA DÉFINITION DES VOLUMES</p>
+<p class="article" id="blk-546-10"><strong class="article-num" id="article-802">802.</strong> Nous avons admis dans le texte (liv. VI) qu'à chaque polyèdre on
+peut faire correspondre une grandeur appelée volume, possédant les deux
+propriétés suivantes :</p>
+<p  id="blk-546-11">I. Deux polyèdres égaux ont le même volume, quelles que soient leurs
+situations dans l'espace.<!-- spr -->point P et sept droites A, A', B, B/ (les côtés du carré), C, D (les diagonales), L (la droite
+donnée), mener par le point P une droite M, telle que, sur la droite ▲ (ici, droite de l'infini) qui
+joint le point d'intersection de A, A' au point d'intersection de B, B', les droites A, B ; C, D; L, M
+interceptent trois segments en involution. La difficulté provenant de ce que ▲ ne peut être tracée
+se tourne comme précédemment (voir note précédente).</p>
+<p  id="blk-546-13">(1) Toutefois, bien entendu, si la figure cherchée comprend des droites, on doit considérer
+une de ces droites comme obtenue dès qu'on en connaît deux points.</p><div class="scan-inline"><img src="img/scan/srcpage-546.png"/></div></data><data data-scanhref="img/scan/srcpage-547.png"><p class="newpage"></p>
+<p  id="blk-547-01">SUR LA DÉFINITION DES VOLUMES.<!-- skp data-txt='527' --></p>
+<p  id="blk-547-03">II. Le polyèdre P", somme de deux polyèdres adjacents P et P', a pour
+volume la somme des volumes de P et de P'.</p>
+<p  id="blk-547-04">Nous allons montrer qu'on peut effectivement réaliser une pareille cor-
+respondance. La marche suivie à cet effet sera toute semblable à celle que<!-- spr -->adoptée en Géométrie
+plane (note D), ce qui nous dis-
+pensera d'insister sur certains points
+que nous avons développés en cet
+endroit.<!-- spr -->nous avons<!-- skp data-txt='A' --><!-- skp data-txt='-' --><!-- skp data-txt='B' --><!-- skp data-txt='D' --><!-- skp data-txt='1' --><!-- skp data-txt="A'" --><!-- skp data-txt="B'" --></p>
+<p  id="blk-547-14">Théorème. Dans tout tétraèdre,
+chaque face, multipliée par la hauteur
+correspondante, donne le même produit.</p>
+<p  id="blk-547-15">Considérons, dans le tétraèdre
+ABCD (fig. 644), les deux faces BCD,
+ACD, auxquelles correspondent res-
+pectivement les hauteurs Aa, Bb. Les
+deux triangles BCD, ACD, ayant la base commune CD, ont entre eux le même
+rapport que leurs hauteurs BB', AA'. Il suffit de montrer que ce rapport</p>
+<p  id="blk-547-16">Aa
+est inverse du rapport<!-- spr -->c'est-à-dire
+Bb'<img class="fig" src="img/FIG. 644.OCR.png" alt="FIG. 644." /><!-- spr -->que l'on a</p>
+<p  id="blk-547-20">AA'</p>
+<p  id="blk-547-21">BB'</p>
+<p  id="blk-547-22">Aa</p>
+<p  id="blk-547-23">Bb</p>
+<p  id="blk-547-24">Or c'est ce qui se voit dans les triangles AaA', BbB', rectangles, l'un en
+a, l'autre en b, et qui ont tous deux un angle aigu égal au dièdre A.CD.B,
+ou à son supplément (comparer 360).<!-- spr -->surf. BCD</p>
+<p  id="blk-547-26">Bb</p>
+<p  id="blk-547-27">Donc on a aussi :<!-- spr -->surf. ACD</p>
+<p  id="blk-547-29">Aa<!-- spr -->ou</p>
+<p  id="blk-547-31">Aa surf. BCD</p>
+<p  id="blk-547-32">_</p>
+<p  id="blk-547-33">Bb X surf. ACD.</p>
+<p  id="blk-547-34">C. Q. F. D.</p>
+<p  id="blk-547-35">La valeur commune des produits précédents, multipliée par une cons-
+tante numérique K dont nous choisirons la valeur un peu plus loin, sera
+dite le volume du tétraèdre. Ce volume est nul si les quatre points A, B, C,
+D sont dans un même plan, et dans ce cas seulement.</p>
+<p class="article" id="blk-547-36"><strong class="article-num" id="article-803">803.</strong> Nous allons maintenant démontrer la proposition qui correspond
+à celle que nous avons établie au nº 315 (Pl., note D). Mais, afin de ne pas
+avoir à distinguer un grand nombre de dispositions de figures, nous
+considérerons les volumes comme affectés de signes, d'après la convention
+suivante :</p>
+<p  id="blk-547-37">Nous désignerons par (ABCD) le volume du tétraèdre ABCD, précédé du
+signe ou du signe suivant que ce tétraèdre est direct ou rétrograde,
+c'est-à-dire suivant que le trièdre A.BCD est direct ou rétrograde. Le<!-- skp data-txt='-' --></p><div class="scan-inline"><img src="img/scan/srcpage-547.png"/></div></data><data data-scanhref="img/scan/srcpage-548.png"><p class="newpage"><!-- skp data-txt='528' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->signe de l'expression (ABCD) dépend évidemment de l'ordre dans lequel
+on nomme les quatre points A,B,C,D; il est aisé de voir qu'il change
+quand on permute deux d'entre eux (1).</p>
+<p class="article" id="blk-548-04"><strong class="article-num" id="article-804">804.</strong> Le signe de l'expression (ABCD) change lorsque A, B, C restant fixes,
+le point D change de côté par rapport au plan ABC, car alors le dièdre
+C.AB.D change le sens. Ce signe change dès lors aussi lorsque l'un quel-
+conque des quatre points, A, par exemple, change de côté par rapport au
+plan des trois autres qui restent fixes, puisque (ABCD) est égal et de signe
+contraire à (DBCA).</p>
+<p  id="blk-548-05">Le point A restant fixe ainsi que le plan BCD, le signe de l'expression
+(ABCD) dépend (Pl., 20) du sens de rotation du triangle BCD dans ce plan.</p>
+<p class="article" id="blk-548-06"><strong class="article-num" id="article-805">805.</strong> Théorème.<!-- skp data-txt='-' --></p>
+<p  id="blk-548-08">A, B, C, D, E étant cinq points quelconques de l'espace,<!-- spr -->on a toujours</p>
+<p  id="blk-548-10">(25)</p>
+<p  id="blk-548-11">(EBCD) + (AECD) + (ABED) + (ABCE)</p>
+<p  id="blk-548-12">=</p>
+<p  id="blk-548-13">(ABCD).</p>
+<p  id="blk-548-14">1° Nous traiterons d'abord le cas particulier où le point E est dans le<!-- skp data-txt='D' --><!-- skp data-txt='A' --><!-- skp data-txt='C' --><!-- skp data-txt='B' --><!-- skp data-txt='1' --><!-- skp data-txt='1' --><!-- skp data-txt='B' --><!-- skp data-txt='1' --><img class="fig" src="img/FIG. 645.OCR.png" alt="FIG. 645." /><img class="fig" src="img/FIG. 646.OCR.png" alt="FIG. 646." /><!-- spr -->plan ABC (fig. 645). Le volume du tétraèdre EABC est alors nul et
+l'équation précédente pourra s'écrire (2)</p>
+<p  id="blk-548-26">(EBCD) (ECAD) + (EABD)</p>
+<p  id="blk-548-27">_</p>
+<p  id="blk-548-28">(ABCD).</p>
+<p  id="blk-548-29">Or les quatre tétraèdres EBCD, ECAD, EABD, ABCD ont la hauteur
+abaissée du point D commune. Leurs volumes seront donc proportionnels
+à leurs bases et les expressions (EBCD), (ECAD), (EABD), (EBCD) seront
+proportionnelles à ces mêmes bases affectées des signes + ou<!-- spr -->suivant
+leurs sens de rotation (puisque ceux-ci correspondent (nº précédent) aux dispositions
+des tétraèdres). Or, dans ces conditions, nous savons que la base ABC est la
+somme algébrique des bases EBC, ECA, EAB (Pl., 315).</p>
+<p  id="blk-548-31">(1) Cela est évident (371) si, parmi les sommets permutés ne figure pas A; d'autre part, si
+A est permuté avec C, par exemple, le dièdre B.AC.D changera de sens (puisque, les faces
+étant les mêmes et nommées dans le même ordre, on aura changê le sens choisi sur l'arète) :
+or le sens de ce dièdre décide de la disposition du trièdre A.BCD.</p>
+<p  id="blk-548-32">(2) L'expression (ECAD), par exemple, est égale à (AECD), car toutes deux sont (803)
+égales et de signe contraire à (EACD).</p><div class="scan-inline"><img src="img/scan/srcpage-548.png"/></div></data><data data-scanhref="img/scan/srcpage-549.png"><p class="newpage"></p>
+<p  id="blk-549-01">SUR LA DÉFINITION DES VOLUMES.<!-- skp data-txt='529' --></p>
+<p  id="blk-549-03">2º Passons maintenant au cas général. Soit I le point de rencontre de
+la droite DE et du plan ABC (fig. 646); on aura (1º)</p>
+<p  id="blk-549-04">(26)</p>
+<p  id="blk-549-05">(IBCD) (AICD) + (ABID)<!-- skp data-txt='-' --></p>
+<p  id="blk-549-07">(ABCD).</p>
+<p  id="blk-549-08">Mais, E étant dans les plans ADE, BDI, CDI, ABC, on a aussi<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-549-11">(IBCD) (EBCD) (IECD) + (IBED) + (IBCE)
+(AICD) (EICD) (AECD)+(AIED) + (AICE)
+(ABID) (EBID) (AEID) + (ABED) + (ABIE)
+(ABCI)= (EBCI) + (AECI) + (ABEI) + (ABCE)<!-- skp data-txt='-' --><!-- skp data-txt='0' --></p>
+<p  id="blk-549-14">Portant ces valeurs dans l'équation (26), il vient bien</p>
+<p  id="blk-549-15">(ABCD)</p>
+<p  id="blk-549-16">(EBCD) + (AECD) + (ABED) + (ABCE)</p>
+<p  id="blk-549-17">[Tous les autres termes se détruisent deux à deux comme dérivant l'un de l'autre par
+permutation des lettres I et E (par exemple (IECD) et (EICD)].<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-549-19"><strong class="article-num" id="article-806">806.</strong> Corollaire. Si l'on convient d'appeler additif ou soustractif
+(comparer Pl., 315) chacun des tétraèdres EBCD, AECD, ABED, ABCE,
+suivant qu'il est ou non du même côté que le tétraèdre ABCD, par rapport
+à la face commune, le volume du tétraèdre ABCD est égal à la somme des
+volumes des tétraèdres additifs, diminuée de celle des tétraèdres sous-
+tractifs.</p>
+<p  id="blk-549-20">En effet, dans l'équation (25), supposons que l'ordre des points ABCD ait
+été pris tel que le tétraèdre ABCD soit direct. Les expressions (EBCD),...
+seront positives ou négatives suivant que la disposition des tétraèdres
+correspondants sera ou non la même que celle du tétraèdre ABCD, c'est-
+à-dire suivant qu'ils seront additifs ou soustractifs.</p>
+<p  id="blk-549-21">Inversement, le théorème du nº 315 donne, entre quatre points d'un plan,
+la relation</p>
+<p  id="blk-549-22">(OBC)+(OCA) + (OAB) = (ABC)</p>
+<p  id="blk-549-23">"<!-- spr -->où (ABC) est l'aire du triangle ABC précédée du signe + ou du signe
+suivant le sens de rotation de ce triangle.</p>
+<p class="article" id="blk-549-25"><strong class="article-num" id="article-807">807.</strong> On appellera volume d'une pyramide quelconque le produit de la
+base par la hauteur et par la constante K. Il est évident que ce volume
+est la somme des tétraèdres obtenus en décomposant la base en triangles
+d'une façon quelconque.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-549-27"><strong class="article-num" id="article-808">808.</strong> Théorème. Soient un polyèdre décomposé, d'une façon quelconque,.
+en un nombre quelconque de tétraèdres, et un point quelconque O de l'espace,
+que l'on joint à tous les sommets. Une quelconque des pyramides qui ont pour
+sommet commun O et pour bases respectives les faces du polyèdre étant consi-
+dérée comme additive ou comme soustractive, suivant qu'elle est ou non du
+même côté que le polyèdre, par rapport à la face commune, la différence S
+entre la somme des volumes des pyramides additives et la somme des volumes<!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='34' --></p><div class="scan-inline"><img src="img/scan/srcpage-549.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

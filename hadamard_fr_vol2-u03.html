@@ -1,0 +1,388 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-037.png"><p class="newpage"></p>
+<p  id="blk-037-01">DROITE ET PLAN PERPENDICULAIRES.<!-- skp data-txt='17' --><!-- skp data-txt='7' --></p>
+<p  id="blk-037-04">CHAPITRE III</p>
+<p  id="blk-037-05">DROITE</p>
+<p  id="blk-037-06">ET PLAN</p>
+<p  id="blk-037-07">PERPENDICULAIRES<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-037-09"><strong class="article-num" id="article-338">338.</strong> Définition. On dit qu'une droite AB (fig. 247) est perpen-
+diculaire à un plan P, lorsqu'elle est perpendiculaire à toutes les
+droites qui passent par son pied dans ce
+plan.<!-- skp data-txt='B' --><!-- skp data-txt='D' --></p>
+<p  id="blk-037-12">Une telle droite est perpendiculaire à
+toutes les droites du plan.</p>
+<p  id="blk-037-13">Plus généralement, une droite perpen-
+diculaire à un plan est perpendiculaire
+à toute droite parallèle à ce plan.</p>
+<p  id="blk-037-14">Par exemple, la droite AB (fig. 247),
+perpendiculaire en A au plan P, est perpendiculaire à toute
+droite D parallèle à ce plan. En effet, par le point A passe une<img class="fig" src="img/FIG. 247.OCR.png" alt="FIG. 247." /><!-- spr -->droite AC, parallèle à D et contenue dans le plan P : l'angle BAC,
+qui mesure (334) l'angle de AB et de D, est droit en vertu de
+l'hypothèse.</p>
+<p  id="blk-037-17">Réciproquement, si une droite est perpendiculaire à toutes les
+droites d'un plan, elle ne saurait être parallèle à ce plan (329,
+Coroll. I) elle le perce donc et, dès lors, lui est perpendiculaire.</p>
+<p class="article" id="blk-037-18"><strong class="article-num" id="article-339">339.</strong> De la définition résultent encore immédiatement les consé-
+quences suivantes :</p>
+<p  id="blk-037-19">1° Un plan P perpendiculaire à une droite est perpendiculaire à
+toutes ses parallèles; car toutes les droites du plan P, étant perpen-
+diculaires à la première droite, sont perpendiculaires à la seconde;</p>
+<p  id="blk-037-20">2° Une droite D, perpendiculaire à un plan P, est perpendiculaire à
+tout plan parallèle au premier: car toutes les droites de ce dernier
+plan sont parallèles à P et, comme telles, perpendiculaires à D.<!-- skp data-txt='GÉOMÉTRIE. II.' --></p><div class="scan-inline"><img src="img/scan/srcpage-037.png"/></div></data><data data-scanhref="img/scan/srcpage-038.png"><p class="newpage"><!-- skp data-txt='18' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='B' --><!-- skp data-txt='B' --><!-- skp data-txt="C'" --></p>
+<p  id="blk-038-06">+<!-- skp data-txt='A' --><!-- skp data-txt='A' --></p>
+<p  id="blk-038-09">_</p>
+<p class="article" id="blk-038-10"><strong class="article-num" id="article-340">340.</strong> Théorème. Le lieu des points également distants de deux
+points B, B, est un plan perpendiculaire au milieu de la droite BB₁.</p>
+<p  id="blk-038-11">Démonstration. Soit A le milieu de BB₁. Les points du lieu
+situés dans un plan passant par BB, (fig. 248) sont ceux de la perpen-
+diculaire menée dans ce plan en A à BB₁. Donc le lieu est engendré<!-- spr -->par toutes ces perpendiculaires.
+Or, si C, C' sont deux points du
+lieu (fig. 249), les triangles BCC',
+BCC sont égaux, comme ayant
+les trois côtés égaux chacun à
+chacun (BC</p>
+<p  id="blk-038-13">B₁C; BC':</p>
+<p  id="blk-038-14">B₁C';
+B₁₂<!-- spr -->le côté CC' commun). Faisons
+coïncider ces deux triangles et
+désignons par C" un point quel-<!-- spr -->conque de la droite CC'. Les som-
+mets C, C' restant en coïncidence et le sommet B₁ venant coïncider
+avec B, nous voyons que B,C" vient sur BC". Donc on a BC" = BC".</p>
+<p  id="blk-038-17">Donc, tout point C" de CC' appartient au lieu.</p>
+<p  id="blk-038-18">Ce lieu étant tel que la droite qui joint deux de ses points y est
+contenue tout entière, et renfermant trois points non en ligne droite
+sans comprendre tous les points de l'espace (puisque le point B,
+par exemple, n'en fait pas partie), est (321) un plan, lequel est
+évidemment perpendiculaire à BB₁ en A.<!-- skp data-txt='-' --></p>
+<p  id="blk-038-20">B₁<img class="fig" src="img/FIG. 248.OCR.png" alt="FIG. 248." /><img class="fig" src="img/FIG. 249.OCR.png" alt="FIG. 249." /></p>
+<p  id="blk-038-23">_<!-- skp data-txt='-' --></p>
+<p  id="blk-038-25">REMARQUE. Les points plus rapprochés de B que de B, sont ceux
+qui se trouvent, par rapport au lieu précédent, du même côté que A.
+Car, dans un plan quelconque passant par BB, le plan BB,C, par
+exemple, les points plus rapprochés de B que de B, sont, par
+rapport à la droite AC, dans le demi-plan qui contient B (Pl., 32).<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-038-28"><strong class="article-num" id="article-341">341.</strong> Théorème. Pour qu'une droite soit perpendiculaire à un
+plan, il suffit qu'elle soit perpendiculaire à deux droites passant par
+son pied dans le plan.</p>
+<p  id="blk-038-29">Car soit la droite AB perpendiculaire aux deux droites AC, AC'.
+Prenons AB₁ = AB. Le lieu des points également distants de B et de
+B₁ contiendra AC et AC'. Il coïncidera donc avec le plan CAC', lequel
+est dès lors (théor. précédent) perpendiculaire à AB.</p>
+<p  id="blk-038-30">=</p>
+<p  id="blk-038-31">C. Q. F. D.</p><div class="scan-inline"><img src="img/scan/srcpage-038.png"/></div></data><data data-scanhref="img/scan/srcpage-039.png"><p class="newpage"></p>
+<p  id="blk-039-01">DROITE ET PLAN PERPENDICULAIRES.<!-- skp data-txt='19' --><!-- skp data-txt='-' --></p>
+<p  id="blk-039-04">Corollaire. Pour qu'une droite D soit perpendiculaire à un
+plan P, il suffit qu'elle soit perpendiculaire à deux droites D₁, D2, non
+parallèles entre elles, situées dans ce plan ou parallèles à ce plan.</p>
+<p  id="blk-039-05">En effet, si l'on mène, par un point de D, des parallèles à D₁ ete
+à D₂, ces parallèles, distinctes entre elles, déterminent un plan
+parallèle à P (330 bis) et perpendiculaire à D.<!-- skp data-txt='-' --><!-- skp data-txt='D' --></p>
+<p  id="blk-039-08">D₁</p>
+<p class="article" id="blk-039-09"><strong class="article-num" id="article-341 bis">341 bis.</strong> Théorème. Par un point O de l'espace, on peut
+mener un plan perpendiculaire sur une droite D, el on n'en peut
+mener qu'un.</p>
+<p  id="blk-039-10">Ce plan est le lieu géométrique des droites perpendiculaires à la
+droite donnée, menées par le point donné.</p>
+<p  id="blk-039-11">Supposons, en premier lieu, le point O situé sur la droite D.</p>
+<p  id="blk-039-12">Alors si, sur cette droite, nous prenons, à partir de O, deux lon-
+gueurs égales OA, OB, le lieu des points également distants de A
+et de B sera un plan perpendiculaire
+en O à AB. Ce plan sera le lieu des
+perpendiculaires menées par O à AB
+et sera, par suite, le seul plan per-
+pendiculaire à cette droite, mené par
+ce point.</p>
+<p  id="blk-039-13">Supposons, en second lieu, le point
+O extérieur à D (fig. 250): par ce
+point, menons la droite D₁ parallèle à
+Det le plan P perpendiculaire à D₁..
+P est le plan cherché et le seul,
+puisque tout plan perpendiculaire à D, est perpendiculaire à D,
+et réciproquement. De plus, toute perpendiculaire à D menée
+par O est située dans ce plan P (comme perpendiculaire à D₁) et,
+réciproquement, toute droite de P est perpendiculaire à D.</p>
+<p  id="blk-039-14">L'énoncé est donc complètement démontré.<img class="fig" src="img/FIG. 250.OCR.png" alt="FIG. 250." /><!-- skp data-txt='-' --></p>
+<p  id="blk-039-17">REMARQUE. On voit que, d'après la signification adoptée au
+n° 334 pour l'expression droites perpendiculaires, il n'est plus exact
+de dire, comme nous l'avons fait au nº 322, que, d'un point
+extérieur à une droite donnée, on ne peut mener qu'une droite
+perpendiculaire à celle-ci au contraire, de telles perpendiculaires
+sont en nombre infini.</p><div class="scan-inline"><img src="img/scan/srcpage-039.png"/></div></data><data data-scanhref="img/scan/srcpage-040.png"><p class="newpage"><!-- skp data-txt='20' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-040-03">Mais, lorsque nous parlerons de la perpendiculaire menée à une
+droite D par un point extérieur O, il s'agira, sauf indication
+contraire, de la perpendiculaire considérée au nº 322, celle qui
+coupe D. En particulier, la distance du point O à la droite D sera
+toujours la portion de cette perpendiculaire comprise entre son
+pied H (point de rencontre avec D) et le point O. Le point H sera,
+comme en géométrie plane, dit la projection orthogonale (ou simple-
+ment la projection) du point O sur la droite D.</p>
+<p class="article" id="blk-040-04"><strong class="article-num" id="article-342">342.</strong> Théorème. -1° Deux plans perpendiculaires à une même
+droite sont parallèles entre eux;</p>
+<p  id="blk-040-05">2° Une droite et un plan perpendiculaires à une même droite sont
+parallèles entre eux.</p>
+<p  id="blk-040-06">1° Deux plans P, Q, perpendiculaires à une même droite xy, sont
+parallèles entre eux; car si, par un point de P, on mène un plan
+parallèle à Q, ce plan sera également perpendiculaire à xy et,
+comme tel, coïncidera avec P;</p>
+<p  id="blk-040-07">2º Un plan P et une droite D, perpendiculaires à une même
+droite xy, sont parallèles entre eux; car si, par un point de P, on
+mène une parallèle à D, cette dernière sera perpendiculaire à xy et,
+par conséquent, contenue dans P.</p>
+<p  id="blk-040-08">Q,</p>
+<p  id="blk-040-09">Q2<!-- skp data-txt='2' --></p>
+<p  id="blk-040-11">D₁</p>
+<p class="article" id="blk-040-12"><strong class="article-num" id="article-343">343.</strong> Théorème. Par un point donné O de l'espace, on peut mener
+une droite perpendiculaire à un plan donné P, et une seule.</p>
+<p  id="blk-040-13">Dans le plan P (fig. 251), traçons
+deux droites concourantes D₁, D₂. Une
+perpendiculaire au plan menée par le
+point O devra être perpendiculaire
+tant à D, qu'à D₂ et, par suite, appar-
+tiendra à la fois aux deux plans Q₁,
+Q₂, menés par O perpendiculairement
+à ces deux droites. Inversement, une
+droite commune à ces deux plans sera<!-- spr -->perpendiculaire au plan P (340, coroll.).
+Or les plans Q₁, Q₂ coupent P suivant deux droites différentes,
+car, dans le plan P, une même droite ne peut être à la fois per-
+pendiculaire aux droites concourantes D₁, D. Donc ces plans
+sont distincts: comme ils ont un point commun, ils se coupent</p>
+<p  id="blk-040-15">D2<!-- skp data-txt='P' --><img class="fig" src="img/FIG: 251.OCR.png" alt="FIG: 251." /><!-- skp data-txt='2' --></p><div class="scan-inline"><img src="img/scan/srcpage-040.png"/></div></data><data data-scanhref="img/scan/srcpage-041.png"><p class="newpage"></p>
+<p  id="blk-041-01">DROITE ET PLAN PERPENDICULAIRES.<!-- skp data-txt='21' --><!-- spr -->suivant une droite unique, qui est la perpendiculaire cherchée et la
+seule.</p>
+<p  id="blk-041-04">Théorème. Deux droites perpendiculaires à un même plan P sont
+parallèles entre elles.</p>
+<p  id="blk-041-05">Car si, par un point de l'une, on mène une parallèle à l'autre, elle
+coïncidera avec la première (théor. précéd.).<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-041-07"><strong class="article-num" id="article-344">344.</strong> Théorème. Si, d'un point extérieur à un plan, on mène à ce
+plan la perpendiculaire et diverses obliques:</p>
+<p  id="blk-041-08">1° La perpendiculaire est plus courte que toute oblique;</p>
+<p  id="blk-041-09">2º Deux obliques également écartées du pied de la perpendiculaire
+sont égales;</p>
+<p  id="blk-041-10">3º De deux obliques inégalement écartées du pied de la perpendicu
+laire, la plus écartée est plus longue que l'autre.</p>
+<p  id="blk-041-11">1° Du point O (fig. 252), menons au plan P la perpendiculaire OH et
+l'oblique OA. Celle-ci est plus longue que
+OH, comme oblique à la droite HA, à
+laquelle OH est perpendiculaire;</p>
+<p  id="blk-041-12">2° Les obliques OA, OB, telles que
+HA HB, sont égales, à cause de l'égalité
+des triangles OHA, OHB, qui ont les angles
+en H égaux (comme droits) et compris
+entre côtés égaux chacun à chacun;</p>
+<p  id="blk-041-13">3º Les obliques OA, OC étant telles que HA < HC, prenons, sur
+HC, une longueur HB HA. L'oblique OB sera égale à OA (2°) et
+plus petite que OC (Pl., 29).</p>
+<p  id="blk-041-14">_<!-- skp data-txt='H' --><img class="fig" src="img/FIG. 252.OCR.png" alt="FIG. 252." /></p>
+<p  id="blk-041-17">=<!-- skp data-txt='-' --></p>
+<p  id="blk-041-19">Corollaire. De la dernière partie du théorème précédent résulte
+que deux obliques égales sont également écartées du pied de la perpen-
+diculaire. Combiné avec 2°, cet énoncé montre que le lieu des points
+d'un plan situés à une distance constante d'un point O de l'espace
+(fig. 252) est une circonférence ayant pour centre le pied H de la
+perpendiculaire abaissée du point O sur le plan, puisque les points
+du plan équidistants du point O sont équidistants du point H, et
+réciproquement.</p>
+<p class="article" id="blk-041-20"><strong class="article-num" id="article-345">345.</strong> On nomme distance d'un point à un plan, la longueur de la
+perpendiculaire abaissée de ce point sur le plan (laquelle est,</p><div class="scan-inline"><img src="img/scan/srcpage-041.png"/></div></data><data data-scanhref="img/scan/srcpage-042.png"><p class="newpage"><!-- skp data-txt='22' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-042-03">B:</p>
+<p  id="blk-042-04">.80<!-- spr -->d'après le théorème précédent, le plus court chemin de l'un à<!-- spr -->l'autre).</p>
+<p  id="blk-042-07">Deux plans parallèles sont partout équi-
+distants. Les distances AA', BB' de deux
+points A, B d'un plan P à un plan parallèle
+P' (fig. 253), sont égales, comme parallèles
+comprises entre plans parallèles.</p>
+<p  id="blk-042-08">De même, une droite et un plan paral-
+lèles sont partout équidistants.<!-- skp data-txt="'A'" --><!-- skp data-txt="B'" --><!-- spr -->m<img class="fig" src="img/FIG. 253.OCR.png" alt="FIG. 253." /><!-- skp data-txt='-' --><!-- skp data-txt='M' --><!-- skp data-txt='B' --></p>
+<p class="article" id="blk-042-16"><strong class="article-num" id="article-346">346.</strong> Théorème. Le lieu des droites issues d'un point donné et
+qui font des angles égaux avec deux demi-droites données issues de ce
+point, est le plan qui passe par la bissectrice
+de l'angle que forment les demi-droites données
+et par la perpendiculaire à leur plan, menée
+en leur point commun.</p>
+<p  id="blk-042-17">Soient les deux demi-droites OA, OB
+(fig. 254), sur lesquelles nous prendrons les
+segments OA = OB. Si la droite OM fait
+avec OA et OB des angles égaux, les triangles
+OAM, OBM seront égaux (comme ayant un
+angle égal compris entre côtés égaux chacun à chacun) et le
+point M sera équidistant de A et de B. Il appartiendra donc au
+plan perpendiculaire au milieu de AB.</p>
+<p  id="blk-042-18">Ce plan passe d'ailleurs par la bissectrice de l'angle AOB et par
+la perpendiculaire menée en O au plan AOB, car ces deux droites
+appartiennent manifestement au lieu.<img class="fig" src="img/FIG. 254.OCR.png" alt="FIG. 254." /></p>
+<p  id="blk-042-20">EXERCICES</p>
+<p class="article" id="blk-042-21"><strong class="article-num" id="article-439">439.</strong> Mener dans un plan donné, par un point de ce plan, une droite perpendi-
+culaire à une droite donnée quelconque (1).</p>
+<p class="article" id="blk-042-22"><strong class="article-num" id="article-440">440.</strong> Lieu des points de l'espace équidistants des trois sommets d'un triangle
+donné.</p>
+<p class="article" id="blk-042-23"><strong class="article-num" id="article-441">441.</strong> Lieu des points de l'espace également distants de deux droites concourantes
+données. Même question pour deux droites parallèles.</p>
+<p  id="blk-042-24">(1) Voir la note placée à la fin des problèmes du Ve livre.</p><div class="scan-inline"><img src="img/scan/srcpage-042.png"/></div></data><data data-scanhref="img/scan/srcpage-043.png"><p class="newpage"></p>
+<p  id="blk-043-01">DROITE ET PLAN PERPENDICULAIRES.<!-- skp data-txt='23' --></p>
+<p class="article" id="blk-043-03"><strong class="article-num" id="article-442">442.</strong> Lieu des droites passant par un point donné et faisant des angles égaux avec
+deux droites données, non situées dans un même plan.</p>
+<p class="article" id="blk-043-04"><strong class="article-num" id="article-443">443.</strong> Mener, par un point donné, une droite faisant des angles égaux avec trois
+droites données (1).</p>
+<p class="article" id="blk-043-05"><strong class="article-num" id="article-444">444.</strong> Si une demi-droite fait des angles égaux avec trois demi-droites d'un plan,
+elle est perpendiculaire au plan.</p>
+<p class="article" id="blk-043-06"><strong class="article-num" id="article-445">445.</strong> Étant données deux droites concourantes OA, OB, dans quelle région de
+l'espace sont les demi-droites issues du point commun O et faisant avec OA un
+angle plus grand qu'avec OB?</p>
+<p class="article" id="blk-043-07"><strong class="article-num" id="article-446">446.</strong> Le lieu des points tels que la différence des carrés de leurs distances à deux
+points donnés soit constante est un plan.</p>
+<p class="article" id="blk-043-08"><strong class="article-num" id="article-447">447.</strong> Démontrer directement (en imitant le texte, nº 340) la proposition précédente.
+En conclure à nouveau le théorème du nº 341.</p>
+<p class="article" id="blk-043-09"><strong class="article-num" id="article-448">448.</strong> Lieu des points d'un plan donné tels que le rapport de leurs distances à deux
+points donnés soit constant.</p>
+<p class="article" id="blk-043-10"><strong class="article-num" id="article-449">449.</strong> Lieu des points d'un plan donné tels que la somme des carrés de leurs
+distances à deux points donnés soit constante.</p>
+<p class="article" id="blk-043-11"><strong class="article-num" id="article-450">450.</strong> Lieu des points d'un plan desquels on voit un segment de droite donné sous
+un angle droit.</p>
+<p  id="blk-043-12">Cas où l'une des extrémités du segment est dans le plan donné.</p>
+<p class="article" id="blk-043-13"><strong class="article-num" id="article-451">451.</strong> Quelle est la plus courte et quelle est la plus longue droite que l'on puisse
+mener entre un point et un cercle donnés d'une façon quelconque dans l'espace?</p>
+<p class="article" id="blk-043-14"><strong class="article-num" id="article-452">452.</strong> Étant donnés deux points A, B, situés du même côté d'un plan, trouver
+dans ce plan le point tel que la somme de ses distances aux deux points A, B, soit
+minima (1).</p>
+<p class="article" id="blk-043-15"><strong class="article-num" id="article-453">453.</strong> Étant donnés deux points A, B, situés de part et d'autre d'un plan, trouver
+dans ce plan le point tel que la différence de ses distances aux points A, B, soit
+maxima (1).</p>
+<p class="article" id="blk-043-16"><strong class="article-num" id="article-454">454.</strong> On donne deux droites D, D', non situées dans un même plan, et on prend,
+sur ces deux droites respectivement, deux points A, A'; soient M, M' deux points
+pris également, l'un sur D, l'autre sur D', de manière que AM = A'M'.</p>
+<p  id="blk-043-17">1º Lorsque, A et A' restant fixes, la longueur commune des segments AM, A'M',
+varie, le plan perpendiculaire au milieu de MM' passe par l'une ou l'autre (suivant
+le sens dans lequel sont portés les segments AM, A'M'), de deux droites fixes G1, G2,
+dont tous les points sont également distants des deux droites données;</p>
+<p  id="blk-043-18">2° Lorsque A, A' varient eux-mêmes de toutes les manières possibles sur ces
+droites données, chacune des droites G₁, G2 reste parallèle à un plan fixe;</p>
+<p  id="blk-043-19">3° Chaque droite G₁ rencontre toutes les droites G₁;</p>
+<p  id="blk-043-20">4° Par tout point équidistant des deux droites données, il passe une droite G₁ et
+une droite G2.</p>
+<p  id="blk-043-21">(1) Voir la note placée à la fin des problèmes du Ve livre.</p><div class="scan-inline"><img src="img/scan/srcpage-043.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

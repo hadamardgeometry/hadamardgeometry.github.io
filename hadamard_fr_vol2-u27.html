@@ -1,0 +1,521 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-380.png"><p class="newpage"><!-- skp data-txt='360' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-380-03">CHAPITRE III</p>
+<p  id="blk-380-04">POLES ET POLAIRES PAR RAPPORT A LA SPHÈRE. INVERSION</p>
+<p  id="blk-380-05">DANS L'ESPACE. COMPLÉMENTS DE GÉOMÉTRIE SPHÉRIQUE</p>
+<p class="article" id="blk-380-06"><strong class="article-num" id="article-665">665.</strong> Pôles et polaires par rapport à la sphère.</p>
+<p  id="blk-380-07">Théorème. Le lieu des conjugués harmoniques d'un point donné
+par rapport aux cordes interceptées par une sphère donnée sur les
+sécantes issues de ce point est un plan.</p>
+<p  id="blk-380-08">En effet, si P est un point du lieu, a le point donné, on prouvera,
+comme en géométrie plane (204), que le milieu de aP est dans le
+plan radical du point a et de la sphère, et, par conséquent, le
+point P dans un plan homothétique de celui-là par rapport au
+point a.</p>
+<p  id="blk-380-09">D'ailleurs, le lieu dont il s'agit peut être considéré comme
+engendré par la rotation, autour du diamètre qui passe au point a,
+de la polaire de ce point par rapport à l'un quelconque des grands
+cercles dont le plan contient ce point.</p>
+<p  id="blk-380-10">Ce lieu est dit plan polaire du point a par rapport à la sphère.</p>
+<p  id="blk-380-11">Nous avons d'ailleurs les propositions suivantes, conséquences
+immédiates de ce qui a été dit en Géométrie plane.</p>
+<p  id="blk-380-12">Le plan polaire d'un point a, par rapport à une sphère de centre O
+et de rayon R, est perpendiculaire à la droite Oa en un point a' situé
+du même côté que a par rapport à O et donné par la relation.</p>
+<p  id="blk-380-13">(11)</p>
+<p  id="blk-380-14">Oa.Oa'</p>
+<p  id="blk-380-15">======</p>
+<p  id="blk-380-16">R².</p>
+<p  id="blk-380-17">Ce plan coupe la sphère ou ne la coupe pas, suivant que le pôle est
+extérieur ou intérieur.</p>
+<p  id="blk-380-18">Dans le premier cas, le plan polaire d'un point a n'est autre que le
+plan du cercle de contact du cône circonscrit qui a pour sommet ce
+point.</p><div class="scan-inline"><img src="img/scan/srcpage-380.png"/></div></data><data data-scanhref="img/scan/srcpage-381.png"><p class="newpage"></p>
+<p  id="blk-381-01">POLES ET POLAIRES PAR RAPPORT A LA SPHÈRE.<!-- skp data-txt='361' --></p>
+<p  id="blk-381-03">Lorsque a est sur la sphère, son plan polaire coincide avec le plan
+tangent en ce point.</p>
+<p  id="blk-381-04">Inversement, tout plan a, par rapport à une sphère donnée quel-
+conque, un pôle; mais, dans le cas où le plan passe par le centre de
+la sphère, le pôle est rejeté à l'infini dans la direction perpendiculaire
+à ce plan.</p>
+<p  id="blk-381-05">>K</p>
+<p  id="blk-381-06">HY</p>
+<p class="article" id="blk-381-07"><strong class="article-num" id="article-666">666.</strong> Il est clair que si, par le point a on mène un plan sécant à la
+sphère, la polaire de a, par rapport au cercle de section, est dans le
+plan polaire du même point
+par rapport à la sphère.</p>
+<p  id="blk-381-08">Si, par le point a on mène
+à la sphère deux sécantes
+quelconques, et qu'on joigne
+deux à deux (fig. 549) les
+points d'intersection de ces
+sécantes<!-- spr -->la surface,
+les droites de jonction se
+coupent en deux points H,K
+dont le lieu géométrique,
+lorsque les sécantes varient
+d'une façon quelconque en
+passant toujours par le point a, est le plan polaire de ce point,
+puisque H et K appartiennent (Pl., 211) à la polaire de a par
+rapport au cercle situé dans le plan aHK.<!-- spr -->avec<img class="fig" src="img/FIG. 549.OCR.png" alt="FIG. 549." /><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-381-13"><strong class="article-num" id="article-667">667.</strong> Théorème. Si un point a est dans le plan polaire d'un
+point b, réciproquement celui-ci est dans le plan polaire du point a.</p>
+<p  id="blk-381-14">En effet, si l'on coupe la figure par un plan contenant a et b, la
+polaire du point a, par rapport au cercle de section, passera par b,
+et, par conséquent, la polaire du point b, par rapport au même
+cercle, passera par a.</p>
+<p  id="blk-381-15">D'ailleurs, la même proposition peut ici se démontrer directe-
+ment. Si, en effet, la droite ab coupe la sphère, le fait est évident
+(Pl., 205, Rem.) Si, au contraire, la droite ab est extérieure à la
+sphère, le plan polaire de chacun des points a et b est le plan de
+base du cône circonscrit qui a pour sommet ce point. Or nous
+savons (477 bis) que la condition nécessaire et suffisante pour que
+le plan d'un cercle de la sphère passe par le sommet du cône cir-</p><div class="scan-inline"><img src="img/scan/srcpage-381.png"/></div></data><data data-scanhref="img/scan/srcpage-382.png"><p class="newpage"><!-- skp data-txt='362' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->conscrit suivant un autre cercle est que ces deux courbes se coupent
+à angle droit, condition qui ne change pas lorsqu'on permute entre
+eux les deux cercles, et par conséquent les deux pôles a et b (¹).</p>
+<p  id="blk-382-04">Deux points a et b, tels que le plan polaire de l'un passe par
+l'autre, sont dits conjugués par rapport à la sphère. De même, deux
+plans sont dits conjugués par rapport à la sphère, si l'un d'eux
+passe par le pôle de l'autre. On voit que, si deux plans coupent
+une sphère, la condition nécessaire et suffisante pour que ces
+plans soient conjugués est que les cercles de section se coupent à
+angle droit.<!-- skp data-txt='1' --><!-- skp data-txt='1' --></p>
+<p class="article" id="blk-382-07"><strong class="article-num" id="article-668">668.</strong> Droites réciproques.</p>
+<p  id="blk-382-08">De ce qui précède résulte immédiatement que, lorsqu'un point
+décrit une droite, son plan polaire tourne autour d'une seconde droite
+fixe, et qu'inversement, si un plan tourne autour de la première
+droite, son pôle décrit la seconde.</p>
+<p  id="blk-382-09">En effet, si, sur la première droite donnée D, nous prenons deux
+points a,b et que D₁ soit la droite d'intersection de leurs plans
+polaires, tout point a' de D₁ sera conjugué de a et de b. Le plan
+polaire de a' contiendra donc la droite D, et, par conséquent, le
+point a sera conjugué de tout autre point de D. D'ailleurs, inverse-
+ment, tout plan passant par D aura pour pôle un point conjugué à<!-- spr -->la fois à a et à bet, par conséquent,
+situé sur D.</p>
+<p  id="blk-382-11">Deux droites déduites l'une de l'autre
+comme le sont D et D₁, c'est-à-dire telles
+que tout plan passant par l'une quelcon-
+que d'entre elles ait pour pôle un point
+situé sur l'autre, sont dites réciproques
+par rapport à la sphère.</p>
+<p  id="blk-382-12">Il est aisé de voir que, la droite D
+étant donnée, sa réciproque sera déter-<!-- spr -->minée par la double condition d'être
+perpendiculaire au plan diamétral qui contient D et de passer par
+le pôle de D, par rapport au grand cercle contenu dans ce plan
+(fig. 550).<!-- skp data-txt='D' --><!-- spr -->a</p>
+<p  id="blk-382-16">D₁<img class="fig" src="img/FIG. 550.OCR.png" alt="FIG. 550." /></p>
+<p  id="blk-382-18">(1) Si la droite ab est tangente à la sphère, on voit aisément que la condition nécessaire
+et suffisante pour que les points a et b soient conjugués est que l'un, au moins d'entre eux
+coïncide avec le point de contact.</p><div class="scan-inline"><img src="img/scan/srcpage-382.png"/></div></data><data data-scanhref="img/scan/srcpage-383.png"><p class="newpage"></p>
+<p  id="blk-383-01">INVERSION DANS L'ESPACE.<!-- skp data-txt='363' --></p>
+<p  id="blk-383-03">Autrement dit, deux droites réciproques sont perpendiculaires; leur
+perpendiculaire commune passe par le centre de la sphère et les pieds
+a, a' de cette perpendiculaire commune sont liés entre eux par la
+relation (11).</p>
+<p  id="blk-383-04">D'une manière générale, la droite réciproque de D est évidemment
+le lieu des pôles de D par rapport aux cercles dont le plan passe par
+cette droite.</p>
+<p  id="blk-383-05">Lorsque D est tangente à la sphère, la construction précédente
+montre que la réciproque D, est la tangente perpendiculaire à D,
+menée par le même point de la sphère.</p>
+<p  id="blk-383-06">Sauf dans ce cas particulier, de deux droites réciproques, l'une est
+extérieure, l'autre sécante à la sphère, puisque les distances du centre
+à ces droites vérifient la relation (11).</p>
+<p  id="blk-383-07">Celle des deux qui est sécante passe par les points de contact des
+plans tangents menés par l'autre.</p>
+<p class="article" id="blk-383-08"><strong class="article-num" id="article-669">669.</strong> Les considérations qui précèdent permettent de passer (com-
+parer Pl., 206) de toute figure F composée de points, de droites et
+de plans à une figure F', dite polaire réciproque de la première par
+rapport à la sphère, et que l'on formera en faisant correspondre :</p>
+<p  id="blk-383-09">à tout point de F, son plan polaire ;
+à tout plan de F, son pôle ;
+à toute droite de F, sa réciproque.</p>
+<p  id="blk-383-10">Dès lors, à des points de F situés dans un même plan, correspondront
+des plans de F' passant par un même point, et inversement (1);</p>
+<p  id="blk-383-11">à des points de F situés sur une même droite correspondent des plans
+de F' passant par une même droite, et inversement;</p>
+<p  id="blk-383-12">à des droites de F situées dans un même plan, ou passant par un
+même point, correspondent des droites de F' passant par un même
+point ou situées dans un même plan.</p>
+<p  id="blk-383-13">Deux droites situées dans un même plan étant toujours concou-
+rantes (à distance finie ou à l'infini), on voit que si deux droites sont
+dans un même plan, il en est de même de leurs réciproques.</p>
+<p  id="blk-383-14">Les propriétés relatives aux directions (comparer Pl., 209) seront<!-- spr -->les suivantes :</p>
+<p  id="blk-383-16">L'angle de deux plans sera égal à l'angle des droites qui joignent</p>
+<p  id="blk-383-17">(1) En particulier, tous les points à l'infini doivent être considérés comme situés dans un même
+plan, lequel a pour pôle le centre de la sphère.</p><div class="scan-inline"><img src="img/scan/srcpage-383.png"/></div></data><data data-scanhref="img/scan/srcpage-384.png"><p class="newpage"><!-- skp data-txt='364' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->leurs pôles au centre de la sphère directrice, ou à son supplément : car
+chacune des droites est perpendiculaire au plan correspondant;</p>
+<p  id="blk-384-04">L'angle de deux droites est égal à l'angle des deux plans diamétraux
+qui contiennent leurs réciproques, ou à son supplément : car chaque
+droite est perpendiculaire au plan diamétral qui contient sa
+réciproque.</p>
+<p  id="blk-384-05">Le rapport anharmonique de quatre points en ligne droite est égal à
+celui de leurs plans polaires, puisque ceux-ci sont respectivement
+perpendiculaires aux droites qui joignent le centre aux pôles cor-
+respondants.</p>
+<p  id="blk-384-06">Ce théorème permet (comparer Pl., 210) de transformer le
+rapport de deux segments en ligne droite ayant une extrémité
+commune (¹).</p>
+<p  id="blk-384-07">Le rapport anharmonique de quatre droites concourantes d'un plan
+est égal à celui de leurs réciproques, puisque celles-ci sont respecti-
+vement perpendiculaires aux plans diamétraux qui contiennent les
+premières.</p>
+<p class="article" id="blk-384-08"><strong class="article-num" id="article-670">670.</strong> Inversion.</p>
+<p  id="blk-384-09">L'inverse d'un point M, par rapport au pôle d'inversion O, la
+puissance d'inversion étant k, est, comme en géométrie plane, le
+point M', pris sur la droite OM de manière qu'on ait, en grandeur
+et signe,</p>
+<p  id="blk-384-10">(12)</p>
+<p  id="blk-384-11">OM. OM'</p>
+<p  id="blk-384-12">=<!-- spr -->k.</p>
+<p  id="blk-384-14">Les principales propriétés de l'inversion sont identiques à celles.
+que nous avons démontrées en géométrie plane ou s'en déduisent
+immédiatement : nous n'aurons donc besoin, en général, que de les</p>
+<p  id="blk-384-15">énoncer.</p>
+<p  id="blk-384-16">Deux figures inverses d'une même troisième, par rapport au même
+pôle, sont homothétiques l'une de l'autre par rapport à .ce point.</p>
+<p  id="blk-384-17">Lorsque la puissance d'inversion k est positive, on peut définir la
+transformation à l'aide de la sphère d'inversion, c'est-à-dire de la
+sphère décrite du pôle comme centre avec √ comme rayon.
+Toute sphère passant par deux points inverses coupe à angle droit la</p>
+<p  id="blk-384-18">(1) Il est d'ailleurs clair que le rapport de deux segments d₁, d₂, d3, d4 pris sur une même
+droite, mais sans extrémité commune, peut s'exprimer par le produit de deux rapports
+d₁ d₂ d₂ d3<!-- spr -->tels que les segments figurant dans chacun des rapports aient une extrémité
+d₂ dz' d3 d<!-- spr -->commune.</p><div class="scan-inline"><img src="img/scan/srcpage-384.png"/></div></data><data data-scanhref="img/scan/srcpage-385.png"><p class="newpage"></p>
+<p  id="blk-385-01">INVERSION DANS L'ESPACE.<!-- skp data-txt='365' --><!-- spr -->sphère d'inversion, en vertu du théorème du nº 456: par conséquent
+aussi, tout cercle passant par deux points inverses coupe à angle
+droit la sphère d'inversion; car il y a nécessairement intersection,
+puisque les deux points inverses sont l'un extérieur, l'autre intérieur
+à la sphère d'inversion et, au point commun, le point tangent à la
+sphère est perpendiculaire à la tangente au cercle, puisqu'il est
+perpendiculaire au plan tangent à toute sphère passant par ce
+cercle.</p>
+<p  id="blk-385-04">Réciproquement, si deux points M, M' sont tels que toute sphère
+(ou, ce qui revient au même, tout cercle), passant par ces deux points
+coupe à angle droit la sphère d'inversion, ils sont inverses l'un de
+l'autre car la droite MM', axe radical commun de toutes les sphères
+qui passent en M et en M', doit passer par le point O, qui a même
+puissance par rapport à ces sphères, et l'on doit avoir la relation (12).</p>
+<p  id="blk-385-05">La symétrie par rapport à un plan est un cas limite d'inversion
+(comparer Pl., 216).</p>
+<p class="article" id="blk-385-06"><strong class="article-num" id="article-671">671.</strong> Deux points quelconques et leurs inverses sont toujours sur une
+même circonférence.<!-- skp data-txt="A'" --></p>
+<p  id="blk-385-08">Réciproquement, si deux figures (dont tous les points ne sont pas
+situés sur un seul et même cercle)
+se correspondent point par point
+de manière que deux points quel-
+conques<!-- spr -->et leurs homologues
+soient toujours sur<!-- spr -->même
+cercle, elles sont inverses l'une de<!-- skp data-txt="'M'" --><!-- skp data-txt="B'" --><!-- skp data-txt='M' --></p>
+<p  id="blk-385-14">гип<!-- skp data-txt='B' --><!-- spr -->l'autre.<img class="fig" src="img/FIG. 551.OCR.png" alt="FIG. 551." /></p>
+<p  id="blk-385-18">En effet, soient pris, une fois
+pour toutes, deux points A, B
+dont les homologues sont A', B'
+(fig. 551). Par hypothèse, ces
+quatre points sont sur une même circonférence, ce qui montre
+d'abord que les droites AA', BB' sont dans un même plan. Soit O
+leur point de rencontre (1): on aura OA. OA' = OB. OB'.</p>
+<p  id="blk-385-19">Si maintenant M est un point quelconque de l'espace, son homo-
+logue est, en vertu de l'hypothèse, le second point commun aux cer-</p>
+<p  id="blk-385-20">(1) Si O est rejeté à l'infini, le même raisonnement montre que les deux figures sont
+symétriques l'une de l'autre par rapport à un plan.</p><div class="scan-inline"><img src="img/scan/srcpage-385.png"/></div></data><data data-scanhref="img/scan/srcpage-386.png"><p class="newpage"><!-- skp data-txt='366' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->cles MAA', MBB': or ces cercles passent tous deux par le point M
+pris sur OM de manière que OM. OM' OA. OA OB. OB'.</p>
+<p  id="blk-386-04">_</p>
+<p  id="blk-386-05">=</p>
+<p class="article" id="blk-386-06"><strong class="article-num" id="article-672">672.</strong> La distance des inverses A', B' de deux points A,B est liée à la
+distance AB et aux rayons vecteurs OA, OB par la relation</p>
+<p  id="blk-386-07">A'B'</p>
+<p  id="blk-386-08">=<!-- spr -->k
+ВА.</p>
+<p  id="blk-386-10">ОА. ОВ</p>
+<p class="article" id="blk-386-11"><strong class="article-num" id="article-673">673.</strong> Au théorème du n° 219 correspond le suivant :<!-- skp data-txt='--' --></p>
+<p  id="blk-386-13">Théorème. Les tangentes aux points correspondants de deux lignes
+inverses sont symétriques l'une de l'autre par rapport au plan perpendi-
+culaire au milieu de la ligne qui joint leurs points de contact.</p>
+<p  id="blk-386-14">Soient, en effet, A, A' deux points correspondants de deux courbes
+inverses C, C', M, M' deux points inverses pris sur les mêmes courbes
+et voisins respectivement des premiers. Par hypothèse, lorsque le
+point M se rapproche indéfiniment de A suivant la courbe C, la
+droite AM tend vers une direction limite AT (fig. 189, Pl., page 213).
+Donc la tangente Ax à la circonférence AMA'M', faisant avec AM un
+angle qui tend vers zéro (comparer Pl., 219), tend elle-mêmė vers la
+même position limite AT. Dès lors la tangente A'x' menée en A'à la
+même circonférence, et qui est symétrique de A x par rapport au
+plan perpendiculaire au milieu de AA', tend vers une position limite
+A'T', symétrique de AT par rapport à ce plan. A'T' sera donc aussi
+la position limite de A'M', puisque l'angle M'A'x' tend vers zéro.<!-- skp data-txt='-' --></p>
+<p  id="blk-386-16">Corollaires. Deux lignes qui se coupent font entre elles le même
+angle que leurs inverses.</p>
+<p  id="blk-386-17">Si une surface admet un plan tangent en un point, son inverse admet,
+au point correspondant, un plan tangent, symétrique du premier par
+rapport au plan perpendiculaire au milieu de la ligne qui joint les
+points de contact. C'est ce qui ressort du théorème précédent et de la
+définition du plan tangent.</p>
+<p  id="blk-386-18">Par conséquent, deux surfaces font, en chaque point de leur ligne
+d'intersection, le même angle que leurs inverses au point correspon-
+dant.</p>
+<p  id="blk-386-19">Le trièdre qui a pour arêtes les tangentes à trois lignes (ou pour
+faces les plans tangents à trois surfaces) qui se croisent en un point, est
+symétrique du trièdre analogue formé par les lignes ou surfaces
+inverses.</p><div class="scan-inline"><img src="img/scan/srcpage-386.png"/></div></data><data data-scanhref="img/scan/srcpage-387.png"><p class="newpage"></p>
+<p  id="blk-387-01">INVERSION DANS L'ESPACE.<!-- skp data-txt='367' --></p>
+<p class="article" id="blk-387-03"><strong class="article-num" id="article-674">674.</strong> L'inverse d'un plan est une sphère passant par le pôle d'inver-
+sion (sauf dans le cas où le plan donné passe lui-même par ce pôle,
+et est, par conséquent, son propre inverse). Cette figure inverse peut,
+en effet, s'obtenir en faisant tourner, autour de la perpendiculaire
+abaissée du pôle sur le plan donné, le cercle inverse (Pl., 220) de la
+droite suivant laquelle ce plan est coupé par un plan quelconque
+passant par la perpendiculaire en question. Le plan donné est paral-
+lèle au plan tangent mené, à la sphère obtenue, par le pôle d'inver-
+sion; le diamètre de cette sphère est égal à la puissance d'inversion,
+divisée par la distance du pôle au plan donné.</p>
+<p  id="blk-387-04">L'inverse d'une sphère passant par le pôle est un plan.<!-- skp data-txt='-' --><!-- skp data-txt='D' --><!-- spr -->comme</p>
+<p class="article" id="blk-387-08"><strong class="article-num" id="article-675">675.</strong> Application. Calculer le rayon de la sphère circonscrite à un
+tétraèdre dont on donne les six arêtes.
+Dans le tétraèdre ABCD (fig. 552) soient<!-- spr -->au nº 614, a, b, c, α, ß, y les six
+arêtes. Prenons les inverses A', B', C' des
+points A, B, C par rapport au pôle D et à
+une puissance quelconque k. La sphère
+conscrite au tétraèdre est, dans ces condi-
+tions, l'inverse du plan A'B'C': son dia-<!-- spr -->k
+mètre 2R est égal à en désignant par<!-- skp data-txt='B' --></p>
+<p  id="blk-387-12">DH'<img class="fig" src="img/FIG. 552.OCR.png" alt="FIG. 552." /></p>
+<p  id="blk-387-14">DH la perpendiculaire abaissée du pôle sur
+ce plan (fig. 552).</p>
+<p  id="blk-387-15">Mais DH est la hauteur du tétraèdre
+A'B'C'D : le volume de ce tétraèdre est
+donc le tiers du produit DH × surf. A'B'C'. D'autre part, le tétraèdre
+donné et le tétraèdre DA'B'C' peuvent être considérés comme ayant pour
+bases respectives les triangles DAB, DA'B', leurs hauteurs étant alors Cc,
+C'c' (fig. 552): le rapport de ces tétraèdres est donc égal au rapport de</p>
+<p  id="blk-387-16">DA'. DB'
+leurs bases (c'est-à-dire</p>
+<p  id="blk-387-17">(Pl, 256), multiplié par le rapport de leurs
+DA. DB</p>
+<p  id="blk-387-18">DC'
+hauteurs (évidemment égal à ). Par conséquent, si V est le volume du</p>
+<p  id="blk-387-19">DC
+tétraèdre donné, il vient</p>
+<p  id="blk-387-20">DHX surf. A'B'C'</p>
+<p  id="blk-387-21">(e)<!-- skp data-txt='-' --></p>
+<p  id="blk-387-23">DA'. DB'. DC'
+DA. DB. DC</p>
+<p  id="blk-387-24">3 V</p>
+<p  id="blk-387-25">Or les segments qui figurent au second membre ont les valeurs respec-<!-- spr -->k<!-- spr -->k
+tives DA, DB = 3, DC=Y, DA'</p>
+<p  id="blk-387-28">11 DB'</p>
+<p  id="blk-387-29">DC' 4-</p>
+<p  id="blk-387-30">D'autre part,</p>
+<p  id="blk-387-31">====</p>
+<p  id="blk-387-32">==</p>
+<p  id="blk-387-33">,</p>
+<p  id="blk-387-34">,</p>
+<p  id="blk-387-35">α</p><div class="scan-inline"><img src="img/scan/srcpage-387.png"/></div></data><data data-scanhref="img/scan/srcpage-388.png"><p class="newpage"><!-- skp data-txt='368' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->k. CY<!-- skp data-txt='-' --><!-- spr -->on a</p>
+<p  id="blk-388-06">_</p>
+<p  id="blk-388-07">; C'A' =</p>
+<p  id="blk-388-08">; A'B'</p>
+<p  id="blk-388-09">"<!-- spr -->k. BC
+k. a
+k. aa<!-- spr -->k. bẞ
+B'C'</p>
+<p  id="blk-388-12">: ce qui
+DB.DC BY авг<!-- spr -->aßY<!-- spr -->aßr
+montre que le triangle A'B'C' est semblable, le rapport de similitude étant
+k<!-- spr -->au triangle dont les côtés sont mesurés par les produits aa, bẞ, cy. Soit
+αβγ</p>
+<p  id="blk-388-16">Α2 Σ
+la surface de ce dernier triangle: on aura surf. A'B'C'<!-- spr -->a² ß²у².
+Si l'on remplace les diverses quantités qui figurent dans l'équation (e)<!-- spr -->k
+par les valeurs que nous venons d'obtenir, et DH par i vient, toutes</p>
+<p  id="blk-388-19">2R
+réductions faites,</p>
+<p  id="blk-388-20">=</p>
+<p  id="blk-388-21">6VR<!-- skp data-txt='-' --></p>
+<p  id="blk-388-23">Σ.</p>
+<p  id="blk-388-24">Ainsi, le produit du rayon de la sphère circonscrite par le volume est égal
+au sixième de l'aire du triangle dont les côtés sont mesurés par les produits
+des arêtes opposées du tétraèdre.</p>
+<p  id="blk-388-25">Cette relation fait bien connaître le rayon cherché, la valeur de V ayant
+été calculée au nº 614 et celle de Σ en géométrie plane (251).</p>
+<p class="article" id="blk-388-26"><strong class="article-num" id="article-676">676.</strong> L'inverse d'une sphère ne passant pas parle pôle est une sphère,
+et les deux surfaces ont le pôle pour centre de similitude (Pl., 221).</p>
+<p  id="blk-388-27">Réciproquement, deux sphères peuvent être regardées, de deux
+manières différentes (et de deux seulement), comme figures inverses.</p>
+<p  id="blk-388-28">Les points inverses sont encore dits, comme en Géométrie plane,
+antihomologues.</p>
+<p  id="blk-388-29">Deux couples de points antihomologues sont sur une même circon-
+férence.</p>
+<p  id="blk-388-30">Deux cordes antihomologues se coupent dans le plan radical.</p>
+<p  id="blk-388-31">De plus, deux cordes antihomologues coupent les plans polaires
+du centre de similitude par rapport à leurs sphères respectives en deux
+points qui se correspondent, lorsque les deux sphères sont considérées
+comme figures homothétiques (Pl., 224).</p>
+<p  id="blk-388-32">Un plan et une sphère peuvent être également regardés de deux
+manières différentes comme figures inverses, les pôles d'inversion étant
+les extrémités du diamètre perpendiculaire au plan. Dans le cas de
+deux plans, les inversions dégénèrent en symétries (Pl., 226).</p>
+<p class="article" id="blk-388-33"><strong class="article-num" id="article-677">677.</strong> Inverse d'un cercle.</p>
+<p  id="blk-388-34">Un cercle ou une droite ont pour inverses :
+Une droite, si le cercle ou la droite donnés passent par le pôle ;
+Un cercle, dans le cas contraire.</p><div class="scan-inline"><img src="img/scan/srcpage-388.png"/></div></data><data data-scanhref="img/scan/srcpage-389.png"><p class="newpage"></p>
+<p  id="blk-389-01">INVERSION DANS L'ESPACE.<!-- skp data-txt='369' --><!-- skp data-txt='B' --></p>
+<p  id="blk-389-04">En effet, une droite ou un cercle peuvent être considérés comme
+intersection de deux surfaces planes ou sphé-
+riques.</p>
+<p  id="blk-389-05">En vertu de la même considération, lorsqu'un
+cercle a pour inverse une droite, celle-ci est
+parallèle à la tangente menée au cercle par le
+pôle d'inversion.</p>
+<p  id="blk-389-06">Deux cercles inverses l'un de l'autre sont
+situés sur une même sphère.</p>
+<p  id="blk-389-07">Soient, en effet A,B (fig. 553) deux points du
+premier cercle; A',B' les points correspondants
+du second. Les quatre points A, B, A', B' sont
+sur un même cercle, lequel, avec le premier
+cercle considéré, détermine une sphère (451).
+Celle-ci coïncide avec son inverse, puisque
+la puissance OA. OA' du pôle, par rapport à elle, est égale à la
+puissance d'inversion (voir Pl., 221); donc, passant par le premier
+cercle, elle passe également par son inverse.<img class="fig" src="img/FIG. 553.OCR.png" alt="FIG. 553." /></p>
+<p class="article" id="blk-389-09"><strong class="article-num" id="article-678">678.</strong> Section antiparallèle du còne oblique.</p>
+<p  id="blk-389-10">Si l'on remarque que deux cercles inverses l'un de l'autre font
+partie d'un même cône ayant pour sommet le pôle d'inversion
+(puisque chaque rayon vecteur rencontrant l'un des deux rencontre
+l'autre), on est conduit par ce qui précède au théorème suivant:</p>
+<p  id="blk-389-11">Théorème.. Un cône oblique à base circulaire admet, outre les sec-
+tions parallèles à la base, une série de sections circulaires non paral-
+lèles à cette base.</p>
+<p  id="blk-389-12">L'inverse du cercle de base, par rapport au sommet du cône, la
+puissance d'inversion étant quelconque, donnera, en effet, une telle
+section.</p>
+<p  id="blk-389-13">Les nouvelles sections circulaires ainsi obtenues sont dites sections<!-- spr -->antiparallèles des premières. Le plan de l'une quelconque d'entre
+elles est l'inverse de la sphère Σ qui passe par le sommet S du cône
+et le cercle de base : il sera donc parallèle au plan tangent mené
+à Σ par le point S.</p>
+<p  id="blk-389-15">On peut encore construire un plan de section antiparallèle en remar-
+quant qu'il doit être perpendiculaire au plan P mené par le sommet du<!-- skp data-txt='24' --><!-- skp data-txt='GÉOMÉTRIE. II.' --></p><div class="scan-inline"><img src="img/scan/srcpage-389.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

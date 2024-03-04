@@ -1,0 +1,418 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-126.png"><p class="newpage"><!-- skp data-txt='106' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-126-03">CHAPITRE III</p>
+<p  id="blk-126-04">HOMOTHÉTIE ET SIMILITUDE<!-- skp data-txt='--' --></p>
+<p class="article" id="blk-126-06"><strong class="article-num" id="article-425">425.</strong> Définition. De même qu'en géométrie plane, nous
+nommerons homothétique d'un point quelconque M, par rapport à
+un point O, appelé centre d'homothétie, et à un nombre k, appelé
+rapport d'homothétie ou de similitude, le point M' obtenu en joignant
+OM et portant sur cette droite, à partir du point O', un segment
+donné par la relation</p>
+<p  id="blk-126-07">OM'<!-- spr -->k.</p>
+<p  id="blk-126-09">OM</p>
+<p  id="blk-126-10">Pour achever de définir l'homothétie, on doit indiquer s'il faut
+prendre le segment OM' dans le sens OM (homothétie directe) ou
+dans le sens opposé (homothétie inverse).</p>
+<p  id="blk-126-11">La symétrie par rapport à un point est, ainsi que nous l'avons
+noté (Pl., 140, Rem.), un cas particulier d'homothétie inverse, le cas
+où le rapport de similitude est égal à 1.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-126-13"><strong class="article-num" id="article-426">426.</strong> Le théorème déjà énoncé en géométrie plane (nº 141) :</p>
+<p  id="blk-126-14">Théorème. Dans deux figures homothétiques, la droite qui
+joint deux points quelconques de l'une des figures et celle qui
+joint les points homologues de l'autre sont toujours parallèles et
+dans le rapport de similitude; elle sont de même sens ou de sens
+contraires, suivant que l'homothétie est directe ou inverse,<!-- spr -->subsiste, avec sa démonstration, en géométrie de l'espace. Il en
+est de même des<!-- skp data-txt='-' --></p>
+<p  id="blk-126-17">Corollaires. 1. La figure homothétique d'une droite est une droite
+parallèle à la première;<!-- spr -->d'où résulte, moyennant le n° 330 :</p><div class="scan-inline"><img src="img/scan/srcpage-126.png"/></div></data><data data-scanhref="img/scan/srcpage-127.png"><p class="newpage"></p>
+<p  id="blk-127-01">HOMOTHÉTIE ET SIMILITUDE.<!-- skp data-txt='107' --></p>
+<p  id="blk-127-03">II. La figure homothétique d'un plan est un plan parallèle au
+premier;</p>
+<p  id="blk-127-04">Il en est de même également des corollaires.</p>
+<p  id="blk-127-05">III. Deux angles homothétiques l'un de l'autre sont égaux.</p>
+<p  id="blk-127-06">La figure homothétique d'un triangle est un triangle semblable au
+premier<!-- spr -->et (moyennant le corollaire II et le théorème du nº 393)</p>
+<p  id="blk-127-08">IV. La figure homothétique d'un polygone plan est un polygone
+semblable au premier;</p>
+<p  id="blk-127-09">Plus généralement, la figure homothétique d'une figure plane est
+une figure plane semblable à la première (1).</p>
+<p  id="blk-127-10">V. La figure homothétique d'une circonférence est une circonférence,
+les centres étant homothétiques l'un de l'autre et le rapport des rayons
+étant égal au rapport de similitude.</p>
+<p  id="blk-127-11">Enfin les corollaires I et II donnent :</p>
+<p  id="blk-127-12">VI. Une droite et un plan perpendiculaires ont pour homothétiques
+une droite et un plan perpendiculaires<!-- spr -->et, moyennant les n° 358 bis, 384 bis :</p>
+<p  id="blk-127-14">VII. Dans deux figures homothétiques,
+Les dièdres homologues sont égaux;</p>
+<p  id="blk-127-15">Les angles polyèdres homologues sont égaux si l'homothétie est
+directe; symétriques, si l'homothétie est inverse.</p>
+<p class="article" id="blk-127-16"><strong class="article-num" id="article-427">427.</strong> La réciproque du théorème précédent :<!-- skp data-txt='-' --></p>
+<p  id="blk-127-18">Réciproque. Deux figures étant données, s'il existe deux points
+O, O' tels que la droite qui joint le point O à un point M quelconque
+de la première figure et celle qui joint le point O' au point M' homologue
+de la seconde soient constamment parallèles et dans un rapport donné</p>
+<p  id="blk-127-19">(toujours de même sens ou toujours de sens contraires), les deux
+figures sont homothétiques,<!-- spr -->subsiste également et se démontre comme en géométrie plane,
+moyennant la convention qui consiste à considérer, comme cas</p>
+<p  id="blk-127-21">(1) Il peut sembler que cette proposition ne soit autre que la définition des figures semblables
+(Pl., 146). Il n'en est rien: deux figures semblables sont en effet telles que l'une soit égale à
+une homothétique de l'autre par rapport à un point de son plan (seule espèce d'homothétic
+considérée en géométrie plane); au lieu que cette dernière restriction n'est point supposée
+dans l'énoncé actuel.</p><div class="scan-inline"><img src="img/scan/srcpage-127.png"/></div></data><data data-scanhref="img/scan/srcpage-128.png"><p class="newpage"><!-- skp data-txt='108' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->limite de deux figures homothétiques, deux figures égales qui se
+déduisent l'une de l'autre par une translation.</p>
+<p  id="blk-128-04">Il en résulte, comme en géométrie plane (144) :<!-- skp data-txt='-' --></p>
+<p  id="blk-128-06">Théorème. Deux figures homothétiques d'une même troisième
+sont homothétiques entre elles; le rapport d'hom othétie est le quotient
+des rapports primitifs, et cette homothétie est directe ou inverse,
+suivant que les homothéties primitives sont de même nom ou de noms
+contraires.</p>
+<p  id="blk-128-07">Les trois centres d'homothétie sont sur une même ligne droite (dite
+axe d'homothétie).<!-- skp data-txt="M'" --><!-- skp data-txt='M' --></p>
+<p  id="blk-128-10">0'</p>
+<p  id="blk-128-11">0"</p>
+<p  id="blk-128-12">La démonstration de cette dernière partie de l'énoncé les trois
+centres sont en ligne droite, peut toutefois être simplifiée lorsqu'on<!-- spr -->fait intervenir l'homo-
+thétie dans l'espace.</p>
+<p  id="blk-128-14">Soient, en effet, O un
+point de la première
+figure (fig. 329), O' et
+O" ses homologues dans
+la seconde et dans la
+troisième; M, un point
+de la première figure,<!-- spr -->situé en dehors du plan
+00'0"; M', M" ses homologues. Le centre d'homothétie des deux
+premières figures est à l'intersection de 00', MM'; celui de la
+première et de la troisième, à l'intersection de 00", MM"; celui
+des deux dernières, à l'intersection de O'Q", M'M". Ces trois
+centres sont donc évidemment sur<!-- spr -->même droite, à savoir
+l'intersection des plans 00'0", MM'M".<img class="fig" src="img/FIG. 329.OCR.png" alt="FIG. 329." /><!-- spr -->une<!-- skp data-txt='-' --></p>
+<p  id="blk-128-20">REMARQUE. Si les deux homothéties primitives sont de même
+nom, avec le même rapport de similitude, les deux figures homothé-
+tiques d'une même troisième se déduisent l'une de l'autre par transla-
+tion. C'est le cas limite auquel il a été fait allusion tout à l'heure.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-128-22"><strong class="article-num" id="article-428">428.</strong> Théorème. Lorsque quatre figures sont homothétiques
+entre elles, les six centres d'homothétie sont dans un même plan (dit
+plan d'homothétie) et forment un quadrilatère complet dont les côtés
+sont les quatre axes d'homothétie des figures prises trois à trois.</p><div class="scan-inline"><img src="img/scan/srcpage-128.png"/></div></data><data data-scanhref="img/scan/srcpage-129.png"><p class="newpage"></p>
+<p  id="blk-129-01">HOMOTHÉTIE ET SIMILITUDE.<!-- skp data-txt='109' --><!-- skp data-txt='14' --></p>
+<p  id="blk-129-04">Désignons par F₁, F₂, F, F les quatre figures; par S₁2, S13, etc.,
+les centres d'homothétie des figures F₁, F; F₁, F; etc. Les points
+S12, S1, S23 sont sur une même droite, l'axe d'homothétie des figures
+F₁, F, F. Le point S₁₂ est d'ailleurs, avec les points S₁4 et S24, sur
+une seconde droite, l'axe d'homothétie des figures F₁, F, F. Un plan
+passant par ces deux droites (et ce plan existe toujours ('), puisque
+les deux droites ont un point commun) contiendra les deux autres
+axes d'homothétie celui de F₁, F, F (dont il contiendra les points
+S1, S₁4) et celui de F2, F, F, (dont il contiendra les points S23, S24):
+il contiendra donc les six centres, lesquels auront bien la disposition
+indiquée par l'énoncé.<!-- skp data-txt="'13'" --><!-- skp data-txt='4' --></p>
+<p class="article" id="blk-129-07"><strong class="article-num" id="article-429">429.</strong> Définition. Deux figures sont dites semblables si l'une
+d'elles est égale à l'une des homothétiques directes de l'autre.</p>
+<p  id="blk-129-08">Cette définition concorde d'ailleurs (426, Coroll. IV), dans le cas
+des figures planes, avec celle qui a été donnée en géométrie
+plane.</p>
+<p  id="blk-129-09">Des différents corollaires du nº 426 résulte d'ailleurs :</p>
+<p  id="blk-129-10">Théorème. - Deux polyèdres semblables ont leurs faces homologues
+semblables, avec le même rapport de similitude, et leurs angles
+polyèdres homologues égaux chacun à chacun.</p>
+<p  id="blk-129-11">Nous allons démontrer la réciproque :<!-- skp data-txt='-' --></p>
+<p  id="blk-129-13">Réciproque. Si deux polyèdres ont leurs faces semblables
+chacune à chacune, avec le même rapport de similitude, leurs angles
+polyèdres égaux chacun à chacun, ces éléments étant pareillement
+assemblés (²) : ils sont semblables.</p>
+<p  id="blk-129-14">Nous allons d'abord démontrer que si deux polyèdres ont leurs
+faces égales et leurs angles polyèdres égaux chacun à chacun et pareil-
+lement assemblés, ils sont égaux.</p>
+<p  id="blk-129-15">Pour cela, nous transporterons l'un des polyèdres sur l'autre, de
+manière qu'une de ses faces soit, par exemple, la face F, dont<!-- skp data-txt='-' --></p>
+<p  id="blk-129-17">(1) Il peut ne pas être unique, si les deux axes d'homothétie qui le déterminent coïncident:
+les centres S12, S13, ... sont alors tous en ligne droite.</p>
+<p  id="blk-129-18">(2) C'est-à-dire que ces éléments se correspondent dans les deux polyèdres de manière qu'à
+deux faces du premier, contiguës suivant une arête, correspondent, dans le second, deux
+faces respectivement semblables aux premières et aussi contiguës entre elles; qu'à des faces
+formant un angle polyèdre, correspondent.des faces (semblables aux premières) formant
+l'angle polyèdre égal au premier, etc.</p><div class="scan-inline"><img src="img/scan/srcpage-129.png"/></div></data><data data-scanhref="img/scan/srcpage-130.png"><p class="newpage"><!-- skp data-txt='110' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-130-04">F2<!-- skp data-txt='F' --></p>
+<p  id="blk-130-06">F₁<!-- skp data-txt='-7' --></p>
+<p  id="blk-130-08">Fi<!-- spr -->les sommets sont A, B, C, D, E (fig. 330)<!-- spr -->vienne coïncider avec
+la face homologue (et par conséquent égale) F (aux som.<!-- spr -->mets A', B', C', D', E') de
+l'autre.</p>
+<p  id="blk-130-12">Alors l'angle polyèdre
+en A et l'angle polyèdre</p>
+<p  id="blk-130-13">A', figures égales
+entre elles qui ont trois
+points communs non
+ligne droite (puisque les
+faces F et F' sont entière-<!-- skp data-txt='A' --><!-- skp data-txt='B' --><!-- skp data-txt='B' --><!-- spr -->en<!-- skp data-txt='E' --><!-- skp data-txt='F' --><!-- skp data-txt='L' --></p>
+<p  id="blk-130-21">Ex<!-- skp data-txt="F'" --></p>
+<p  id="blk-130-23">с<!-- skp data-txt="C'" --><!-- skp data-txt='0' --><!-- skp data-txt="D'" --><!-- spr -->en<img class="fig" src="img/FIG. 330.OCR.png" alt="FIG. 330." /><!-- spr -->comme<!-- spr -->voit que<!-- spr -->son<!-- skp data-txt='1' --><!-- spr -->ment superposées), coïncident; et<!-- spr -->on peut raisonner
+de même pour chaque sommet de F, on<!-- spr -->toute
+face F₁ du premier polyèdre, contiguë à F, coïncide avec
+homologue.</p>
+<p  id="blk-130-36">Mais on peut recommencer le raisonnement précédent, en partant
+de F₁, et démontrer la même conclusion pour toute face F₂ contiguë
+à F₁,; continuant ainsi de proche en proche, on peut manifestement
+montrer que la coïncidence est établie pour toutes les faces. Les
+deux polyèdres sont donc bien égaux.</p>
+<p  id="blk-130-37">Prenant alors, conformément à l'énoncé, deux polyèdres P, P'
+qui ont toutes leurs faces semblables, avec le même rapport de
+similitude k, et leurs angles polyèdres égaux, ces éléments étant
+pareillement assemblés, nous considérerons le polyèdre P₁, homo-
+thétique direct de P avec k pour rapport d'homothétie. Ce polyèdre
+aura toutes ses faces égales et tous ses angles polyèdres égaux aux
+faces et aux angles polyèdres homologues de P'; il sera donc égal
+à P', et les polyèdres P, P' sont semblables.</p>
+<p  id="blk-130-38">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-130-40"><strong class="article-num" id="article-430">430.</strong> Théorème. Deux polyèdres semblables peuvent être décom-
+posés en pyramides semblables et pareillement assemblées.</p>
+<p  id="blk-130-41">Il suffira, à cet effet, après avoir amené les deux solides dans la
+position où ils sont homothétiques, de décomposer l'un d'eux.
+en pyramides (395) et l'autre, en pyramides homothétiques des.
+premières.</p>
+<p  id="blk-130-42">On démontrerait d'ailleurs, par une marche analogue à celle qui
+a été suivie dans le plan (Pl., 149) et à celle du nº précédent, que,</p><div class="scan-inline"><img src="img/scan/srcpage-130.png"/></div></data><data data-scanhref="img/scan/srcpage-131.png"><p class="newpage"></p>
+<p  id="blk-131-01">HOMOTHÉTIE ET SIMILITUDE.<!-- skp data-txt='111' --><!-- spr -->réciproquement, deux polyèdres, composés de pyramides semblables et
+pareillement assemblées sont semblables.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-131-05"><strong class="article-num" id="article-431">431.</strong> Théorème. Le rapport des volumes de deux polyèdres
+semblables est égal au cube du rapport de similitude.</p>
+<p  id="blk-131-06">Comme précédemment (423), nous distinguerons deux cas :</p>
+<p  id="blk-131-07">1º Les polyèdres sont des pyramides.</p>
+<p  id="blk-131-08">Soient B et H la base et la hauteur de la première pyramide;
+B' et H', la base et la hauteur de la seconde ; / le rapport de simi-
+litude: on a (Pl., 257)<!-- skp data-txt="B'" --><!-- skp data-txt='-' --><!-- spr -->k²B,<!-- skp data-txt="H'" --><!-- skp data-txt='-' --></p>
+<p  id="blk-131-14">KH<!-- spr -->et le rapport des volumes sera</p>
+<p  id="blk-131-16">1
+B'.H'<!-- skp data-txt="B'" --><!-- skp data-txt="H'" --></p>
+<p  id="blk-131-19">13.</p>
+<p  id="blk-131-20">.<!-- skp data-txt='B' --><!-- skp data-txt='H' --></p>
+<p  id="blk-131-23">1
+.B.H<!-- skp data-txt='-' --></p>
+<p  id="blk-131-25">2º Cas général. On décomposera les polyèdres donnés en pyra-
+mides semblables et pareillement assemblées. Deux pyramides
+correspondantes quelconques étant dans le rapport ³, leurs sommes
+sont, en vertu d'un théorème connu sur les proportions (¹), dans le
+même rapport.</p>
+<p  id="blk-131-26">C. Q. F. D.</p>
+<p  id="blk-131-27">EXERCICES</p>
+<p class="article" id="blk-131-28"><strong class="article-num" id="article-609">609.</strong> Si deux figures se correspondent point par point, de manière que la ligne
+joignant deux points quelconques de l'une soit parallèle à celle qui joint les points
+homologues de l'autre, elles sont homothétiques.</p>
+<p class="article" id="blk-131-29"><strong class="article-num" id="article-610">610.</strong> Si deux figures se correspondent point par point, de manière que A, B, C,
+étant trois points quelconques de l'une, A', B', C' leurs homologues dans l'autre,<!-- spr -->l'angle B'A'C' soit toujours égal à BA C, elles sont semblables, ou l'une est sem-
+blable à la symétrique de l'autre.</p>
+<p  id="blk-131-31">(1) TANNERY, Leçons d'Arithmétique, nº 218. Comparer Pl., 257.</p><div class="scan-inline"><img src="img/scan/srcpage-131.png"/></div></data><data data-scanhref="img/scan/srcpage-132.png"><p class="newpage"><!-- skp data-txt='112' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-132-03"><strong class="article-num" id="article-611">611.</strong> Deux figures semblables (mais non égales) peuvent être amenées à coïncider
+à l'aide d'une rotation, suivie d'une homothétie directe par rapport à un point situé
+sur l'axe de rotation.</p>
+<p  id="blk-132-04">Énoncé analogue pour deux figures dont l'une est semblable à la symétrique de
+l'autre.</p>
+<p class="article" id="blk-132-05"><strong class="article-num" id="article-612">612.</strong> Deux figures limitées en tout sens ne peuvent pas être homothétiques entre
+elles de plus de deux façons différentes.</p>
+<p class="article" id="blk-132-06"><strong class="article-num" id="article-613">613.</strong> Lieu du centre d'une homothétie dans laquelle les homologues de trois points
+donnés sont respectivement dans trois plans donnés.</p>
+<p class="article" id="blk-132-07"><strong class="article-num" id="article-614">614.</strong> Lieu du centre d'une homothétie dans laquelle le rapport de similitude
+est donné, sachant que l'homologue d'une droite donnée D rencontre une droite
+donnée D'.</p>
+<p class="article" id="blk-132-08"><strong class="article-num" id="article-615">615.</strong> Lieu des droites menées par un point donné et divisées dans un rapport
+donné par ce point et deux plans donnés; par trois plans concourants donnés.</p>
+<p class="article" id="blk-132-09"><strong class="article-num" id="article-616">616.</strong> Prouver que l'on peut trouver, d'une infinité de façons, deux polyèdres, P, Q,
+tels que leurs volumes soient dans le même rapport que leurs surfaces. Déterminer
+Q, connaissant P et un polyèdre semblable à Q.</p>
+<p  id="blk-132-10">PROBLÈMES</p>
+<p  id="blk-132-11">PROPOSÉS SUR LE SEPTIÈME LIVRE</p>
+<p class="article" id="blk-132-12"><strong class="article-num" id="article-617">617.</strong> Deux tétraèdres sont égaux ou symétriques :
+1° S'ils ont un dièdre égal compris entre faces égales chacune à chacune;
+2° S'ils ont un angle trièdre égal ou symétrique, compris entre arêtes égales
+chacune à chacune;</p>
+<p  id="blk-132-13">3. S'ils ont une face égale adjacente à trois dièdres égaux chacun à chacun;
+4. S'ils ont une arête égale adjacente à deux trièdres égaux ou symétriques chacun
+à chacun;</p>
+<p  id="blk-132-14">5° S'ils ont leurs six arêtes égales chacune à chacune.</p>
+<p  id="blk-132-15">Il est toutefois sous-entendu, dans tous ces énoncés, que les éléments égaux ou
+symétriques sont assemblés de la même façon.</p>
+<p class="article" id="blk-132-16"><strong class="article-num" id="article-618">618.</strong> Déduire des cas d'égalité énoncés à l'exercice précédent, des cas de similitude
+des tétraèdres.</p>
+<p class="article" id="blk-132-17"><strong class="article-num" id="article-619">619.</strong> Étant donnés une droite D et deux points A, B, trouver sur D le
+point M tel que MA + MB soit minimum, et le point N tel que NA-NB soit
+maximum.</p>
+<p class="article" id="blk-132-18"><strong class="article-num" id="article-620">620.</strong> Trouver, sur une droite donnée, le point tel que la somme de ses distances
+à deux droites parallèles données soit minima.</p>
+<p class="article" id="blk-132-19"><strong class="article-num" id="article-621">621.</strong> Que deviennent les énoncés des exercices 604 et 605 lorsque la droite MM'
+est divisée par le plan P (ex. 604) ou la droite D (ex. 605) dans un rapport donné
+quelconque, et non en deux parties égales?</p><div class="scan-inline"><img src="img/scan/srcpage-132.png"/></div></data><data data-scanhref="img/scan/srcpage-133.png"><p class="newpage"></p>
+<p  id="blk-133-01">HOMOTHÉTIE ET SIMILITUDE<!-- skp data-txt='113' --></p>
+<p class="article" id="blk-133-03"><strong class="article-num" id="article-622">622.</strong> Une rotation et une translation obliques entre elles se composent suivant un
+déplacement hélicoïdal dont l'axe est parallèle à celui de la rotation. Si l'on change
+l'ordre des deux opérations, on a deux mouvements dont les axes sont symétriques
+l'un de l'autre par rapport au plan qui passe par l'axe de la rotation et par la per-
+pendiculaire commune menée à ce dernier et à la translation.</p>
+<p class="article" id="blk-133-04"><strong class="article-num" id="article-623">623.</strong> Plus généralement, en composant deux déplacements donnés dans un ordre
+déterminé, puis dans l'ordre inverse, on obtient deux déplacements dont les axes
+sont symétriques l'un de l'autre par rapport à la perpendiculaire commune aux
+deux axes primitifs (la grandeur de la rotation et celle de la translation résultantes
+étant d'ailleurs les mêmes dans les deux cas).</p>
+<p class="article" id="blk-133-05"><strong class="article-num" id="article-624">624.</strong> L'ordre dans lequel on compose deux déplacements n'est indifférent que si
+ces déplacements sont :</p>
+<p  id="blk-133-06">1° Ou deux déplacements de même axe;
+2° Ou deux translations;
+3º Ou deux rotations de 180° autour d'axes qui se coupent à angle droit.</p>
+<p class="article" id="blk-133-07"><strong class="article-num" id="article-625">625.</strong> Étant donnés trois plans P, Q, R passant par une même droite D et, dans
+l'un d'eux, une droite SA sécante à D en S, il existe, en général :</p>
+<p  id="blk-133-08">1° Un trièdre ayant une arête suivant SA et tels que P, Q, R soient les plans bis-
+secteurs de ses dièdres ou de leurs suppléments (ex. 488). Discuter, suivant les cas, si
+c'est l'une ou l'autre de ces deux circonstances qui se présente. Lorsque, P, Q, R et S
+restant fixes, SA varie, le plan de la face opposée à SA passe par une droite fixe;</p>
+<p  id="blk-133-09">2. Un trièdre tel que P, Q, R soient chacun perpendiculaire à une des deux faces,
+en passant par la bissectrice de cette face ou celle de son supplément, l'une de ces
+bissectrices étant SA. Discussion analogue à celle de 1º. Lieu des arêtes du trièdre
+lorsque SA varie, P, Q, R et S restant fixes;</p>
+<p  id="blk-133-10">3. Un trièdre tel que P, Q, R passent chacun par une de ses arêtes et la bissectrice
+de la face opposée ou de son supplément, l'une de ces bissectrices étant SA.</p>
+<p class="article" id="blk-133-11"><strong class="article-num" id="article-626">626.</strong> Étant données trois droites concourantes Sa, Sb, Sc d'un même plan, il
+existe, en général :</p>
+<p  id="blk-133-12">1° Un trièdre tel que Sa, Sb, Sc soient les droites dont il est question dans l'exer-
+cice 489, l'une des faces étant dans un plan donné P passant par Sa. Lieux des arêtes
+de ce trièdre lorsque P tourne autour de Sa;</p>
+<p  id="blk-133-13">2° Un trièdre tel que Sa, Sb, Sc soient les droites dont il est question dans l'exer-
+cice 491, l'un des plans bissecteurs mentionnés en cet endroit étant un plan donné P
+mené par Sa;</p>
+<p  id="blk-133-14">3° Un trièdre tel que Sa, Sb, Sc soient les droites dont il est question dans l'exer-
+cice 493, l'un des plans bissecteurs mentionnés en cet endroit étant un plan donné P
+passant par Sa.</p>
+<p class="article" id="blk-133-15"><strong class="article-num" id="article-627">627.</strong> (Généralisation de la 1re partie de l'ex. précédent). Construire un angle
+polyèdre, connaissant les bissectrices des suppléments de ses faces. Le problème
+est, en général, possible lorsque le nombre des faces est pair. Lorsque ce nombre
+est impair, le problème est, au contraire, impossible ou indéterminé. Quel est, dans
+ce dernier cas, le lieu d'une arête de l'angle polyèdre cherché?</p>
+<p  id="blk-133-16">Lorsqu'on donne toutes les bissectrices moins une, quel est le lieu sur lequel doit
+se trouver cette dernière pour que le problème soit possible?</p>
+<p class="article" id="blk-133-17"><strong class="article-num" id="article-628">628.</strong> Étant donnés trois plans P, Q, R passant par une même droite D et, dans l'un
+d'eux, une droite SA sécante à D en S, trouver un trièdre tel que P, Q et R passent
+chacun par une de ses arêtes et la bissectrice de la face opposée, l'une des arêtes
+étant SA. (Utiliser ex. 597.)
+GÉOMÉTRIE. II.<!-- skp data-txt='8' --></p><div class="scan-inline"><img src="img/scan/srcpage-133.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

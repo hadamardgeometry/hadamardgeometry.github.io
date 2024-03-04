@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-121.png"><p class="newpage"></p>
+<p  id="blk-121-01">SYMÉTRIES.<!-- skp data-txt='101' --></p>
+<p  id="blk-121-03">CHAPITRE II</p>
+<p  id="blk-121-04">SYMÉTRIES</p>
+<p  id="blk-121-05">_</p>
+<p class="article" id="blk-121-06"><strong class="article-num" id="article-419">419.</strong> Définitions. Deux points M, M' sont dits (comme en
+géométrie plane) symétriques par rapport à un point 0 (ou encore.
+par rapport au centre O) (fig. 324) lorsque le point O est le milieu
+de la droite MM'.</p>
+<p  id="blk-121-07">Deux points M, M' sont dits symétriques par rapport à<!-- spr -->un</p>
+<p  id="blk-121-09">#M<!-- skp data-txt='M' --></p>
+<p  id="blk-121-11">°<!-- skp data-txt="M'" --></p>
+<p  id="blk-121-13">IM'<img class="fig" src="img/FIG. 324.OCR.png" alt="FIG. 324." /><img class="fig" src="img/FIG. 325.OCR.png" alt="FIG. 325." /><!-- spr -->plan P (fig. 325), lorsque la droite qui les joint est perpendiculaire à
+ce plan et divisée par lui en deux parties égales.</p>
+<p  id="blk-121-17">La symétrique d'une figure F, par rapport à un point ou à un plan,
+est la figure formée par les symétriques des différents points de F.</p>
+<p class="article" id="blk-121-18"><strong class="article-num" id="article-419 bis">419 bis.</strong> Coïncident avec leurs symétriques par rapport à un
+point:<!-- spr -->le centre de symétrie;<!-- spr -->les droites qui passent par ce point, et non d'autres droites :
+car toute droite qui coïncide avec sa symétrique doit contenir deux
+points symétriques l'une de l'autre, ce qui exige qu'elle passe par le
+centre ;<!-- spr -->les plans qui passent par le centre (et non d'autres plans,
+pour une raison tout analogue).</p>
+<p  id="blk-121-22">Coïncident avec leurs symétriques par rapport à un plan :</p><div class="scan-inline"><img src="img/scan/srcpage-121.png"/></div></data><data data-scanhref="img/scan/srcpage-122.png"><p class="newpage"><!-- skp data-txt='102' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->les points du plan de symétrie, et non d'autres points;<!-- spr -->les droites situées dans le plan de symétrie et celles qui lui
+sont perpendiculaires;<!-- spr -->le plan de symétrie et les plans qui lui sont perpendiculaires.<!-- skp data-txt='M' --></p>
+<p class="article" id="blk-122-07"><strong class="article-num" id="article-420">420.</strong> Théorème. - Deux figures symétriques d'une même troisième,<!-- spr -->par rapport à deux centres différents,
+sont égales entre elles.</p>
+<p  id="blk-122-09">Si, en effet, M, et M2 sont les symé-
+triques de M par rapport aux deux
+centres O₁, 02 (fig. 326), la droite M₁M,
+est (Pl., 55) parallèle à 0,0, et double<!-- spr -->de 0,02.
+Donc, les figures symétriques d'une même troisième, par rapport
+à O₁ et O₂ respectivement, se déduisent l'une de l'autre par une
+translation parallèle à 002 et double de 0,02.</p>
+<p  id="blk-122-11">M₁<img class="fig" src="img/FIG. 326.OCR.png" alt="FIG. 326." /><!-- skp data-txt='2' --><!-- skp data-txt='-' --><!-- skp data-txt='M' --><!-- spr -->m<!-- skp data-txt='0' --></p>
+<p  id="blk-122-18">Théorème. — Deux figures symétriques d'une même troisième, l'une
+par rapport à un point, l'autre par rapport à un plan, sont égales
+entre elles.</p>
+<p  id="blk-122-19">Il suffit, d'après le théorème précédent, de faire la démonstration
+pour une situation déterminée du centre de symétrie : elle sera, par
+cela même, faite pour toutes les autres posi-
+tions de ce point.</p>
+<p  id="blk-122-20">Nous pouvons, par conséquent, suppo-
+ser que le centre de symétrie O est situé dans
+le plan de symétrie P. Dans ces conditions,
+nous allons faire voir que les symétriques
+d'une même figure F, l'une par rapport au
+point O, l'autre par rapport au plan P, se
+déduisent l'une de l'autre par une rotation
+de 180° autour d'une droite cette droite est la perpendiculaire Ox
+au plan P, menée par le point O.</p>
+<p  id="blk-122-21">Soient, en effet, M un point quelconque de F (fig. 327); M₁, son
+symétrique par rapport à 0; M., son symétrique par rapport à P,
+de sorte que la droite MM,, perpendiculaire au plan P, a son milieu
+m dans ce plan. La droite Ox, parallèle à MM, et menée par le milieu
+de MM₁, rencontre en son milieu le troisième côté M,M, du triangle
+MM,M..</p>
+<p  id="blk-122-22">M2</p>
+<p  id="blk-122-23">M₁'<img class="fig" src="img/FIG. 327.OCR.png" alt="FIG. 327." /><!-- skp data-txt='1' --></p><div class="scan-inline"><img src="img/scan/srcpage-122.png"/></div></data><data data-scanhref="img/scan/srcpage-123.png"><p class="newpage"></p>
+<p  id="blk-123-01">SYMÉTRIES.<!-- skp data-txt='103' --></p>
+<p  id="blk-123-03">D'ailleurs, M,M₂ est parallèle à Om (qui joint les milieux de MM, et
+de MM,) et, par suite, perpendiculaire à Ox. Donc, les points.
+[₁, M₂ sont bien symétriques l'un de l'autre par rapport à Ox.</p>
+<p  id="blk-123-04">M₁,<!-- skp data-txt='2' --></p>
+<p  id="blk-123-06">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p  id="blk-123-08">Corollaire. Deux figures symétriques d'une même troisième F,
+par rapport à deux plans différents, sont égales entre elles, puisqu'elles
+sont égales à la symétrique de la figure F par rapport à un point
+quelconque de l'espace.</p>
+<p  id="blk-123-09">On peut d'ailleurs (exercice 600) constater directement que ces
+figures se déduisent l'une de l'autre par une rotation ou
+translation convenable.<!-- spr -->une<!-- skp data-txt='-' --><!-- spr -->sa</p>
+<p class="article" id="blk-123-13"><strong class="article-num" id="article-421">421.</strong> Théorème. Une figure plane est égale à sa symétrique par
+rapport à un point ou à un plan quelconque.</p>
+<p  id="blk-123-14">Le théorème est évident lorsque le plan de symétrie coïncide avec
+le plan de la figure, puisque celle-ci coïncide alors avec
+symétrique. Il est dès lors vrai dans tous les cas, d'après le numéro
+précédent.</p>
+<p  id="blk-123-15">En particulier, la figure symétrique d'un plan est un plan;
+La figure symétrique d'une droite est une droite; la figure symétrique
+d'un segment de droite est un segment de droite égal au premier;</p>
+<p  id="blk-123-16">Deux angles symétriques l'un de l'autre sont égaux ;
+La figure symétrique d'une circonférence est une circonférence; etc.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-123-18"><strong class="article-num" id="article-421 bis">421 bis.</strong> Corollaires. I. Une droite et un plan, perpendiculaires
+entre eux, ont pour symétriques une droite et un plan perpendiculaires
+entre eux : cela résulte de la définition du plan perpendiculaire à
+une droite, puisqu'un angle droit a pour symétrique un angle droit.</p>
+<p  id="blk-123-19">II. L'angle d'une droite et d'un plan est égal
+à l'angle de leurs symétriques : cela résulte de la
+définition et du corollaire précédent. De même :</p>
+<p  id="blk-123-20">III. Deux dièdres symétriques sont égaux.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-123-22"><strong class="article-num" id="article-422">422.</strong> Théorème. Deux dièdres symétriques l'un
+de l'autre, par rapport à un point ou à un plan,
+sont de sens contraires (lorsque les sens choisis sur
+les arêtes se correspondent).</p>
+<p  id="blk-123-23">Si, en effet, le plan de symétrie est le plan de
+l'une des faces (fig. 328), les arêtes coïncident (et cela en direction<img class="fig" src="img/FIG. 328.OCR.png" alt="FIG. 328." /></p><div class="scan-inline"><img src="img/scan/srcpage-123.png"/></div></data><data data-scanhref="img/scan/srcpage-124.png"><p class="newpage"><!-- skp data-txt='104' --><!-- skp data-txt='GÉOMÉTRIE..' --><!-- spr -->et sens) pendant que les faces non communes sont de part et d'autre
+de la face commune.</p>
+<p  id="blk-124-04">Corollaire. Dans deux figures symétriques, les trièdres corres-
+pondants ont leurs dispositions inverses.<!-- skp data-txt='-' --></p>
+<p  id="blk-124-06">REMARQUE. Cette dernière proposition résulte d'ailleurs immé-
+diatement du n° 372 : car si on prend pour centre de symétrie le
+sommet d'un des trièdres considérés, on retombe évidemment sur
+la construction des trièdres symétriques indiquée au nº 370.</p>
+<p  id="blk-124-07">Les triedres symétriques considérés en cet endroit satisfont donc
+bien à la définition générale des figures symétriques, telles que
+nous les considérons actuellement.<!-- skp data-txt='-' --></p>
+<p  id="blk-124-09">D'après ce qui précède au lieu que deux figures symétriques
+par rapport à une droite sont superposables<!-- spr -->deux figures
+symétriqués par rapport à un point ou à un plan, tout en ayant
+tous leurs côtés, tous leurs angles, tous leurs dièdres égaux à
+chacun, ne sont pas en général superposables, parce que leur dispo-
+sition est inverse.</p>
+<p class="article" id="blk-124-11"><strong class="article-num" id="article-423">423.</strong> Théorème. - Deux polyèdres symétriques sont équivalents.
+Nous distinguerons deux cas :
+1° Les polyèdres considérés sont des pyramides.</p>
+<p  id="blk-124-12">Ces pyramides ont leurs bases égales (421); leur hauteurs sont
+d'ailleurs symétriques l'une de l'autre (421 bis, Coroll. I) et, par consé-
+quent, égales : elles sont donc équivalentes;</p>
+<p  id="blk-124-13">2° Cas général. Décomposons l'un des polyèdres donnés
+pyramides. L'autre sera décomposable en pyramides, symétriques
+respectivement des premières. Ces pyramides étant équivalentes
+chacune à chacune, les polyèdres totaux le sont aussi.<!-- spr -->en</p>
+<p  id="blk-124-15">C. Q. F. D.</p>
+<p class="article" id="blk-124-16"><strong class="article-num" id="article-424">424.</strong> On dit qu'une figure admet pour axe de symétrie la droite D,
+lorsqu'elle coïncide avec sa symétrique par rapport à D.</p>
+<p  id="blk-124-17">De même, une figure est dite admettre un plan ou un centre de
+symétrie, lorsqu'elle coïncide avec sa symétrique par rapport à ce
+plan ou à ce centre.</p>
+<p  id="blk-124-18">Une figure F qui a un plan P ou un centre C de symétrie (1) est</p>
+<p  id="blk-124-19">(1) Il est clair que la même conclusion ne s'appliquerait pas au cas où, au lieu d'un centre
+ou d'un plan de symétrie, la figure F admettrait un axe de symétrie.</p><div class="scan-inline"><img src="img/scan/srcpage-124.png"/></div></data><data data-scanhref="img/scan/srcpage-125.png"><p class="newpage"></p>
+<p  id="blk-125-01">SYMÉTRIES.<!-- skp data-txt='105' --><!-- spr -->superposable à sa symétrique F' par rapport à un point C' ou à un
+plan P' quelconque, puisque F et F' peuvent être considérées
+comme symétriques d'une même figure (à savoir F elle-même) l'une
+par rapport à P ou à C, l'autre par rapport à P' ou à C'.
+. Toutefois, il faut bien observer que, dans la superposition de F et
+de F', ce ne sont pas, en général, les points homologues (c'est-à-dire
+symétriques l'un de l'autre par rapport à P' ou à C') que l'on
+arrive à faire coïncider. C'est, par exemple, ce qui se produit dans
+le cas du trièdre isoscèle (383): un trièdre isoscèle est effectivement
+(voir exercice 480) une figure qui a un plan de symétrie.</p>
+<p  id="blk-125-04">EXERCICES<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-125-06"><strong class="article-num" id="article-600">600.</strong> Deux figures sont symétriques d'une même troisième, par rapport à deux
+plans différents. Quel est le déplacement qui amène la première à coïncider avec la
+seconde ?</p>
+<p  id="blk-125-07">(Distinguer deux cas, suivant que les deux plans sont concourants ou parallèles).</p>
+<p class="article" id="blk-125-08"><strong class="article-num" id="article-601">601.</strong> Même question pour deux figures symétriques d'une même troisième, l'une
+par rapport à un plan, l'autre par rapport à un point non situé dans ce plan.</p>
+<p class="article" id="blk-125-09"><strong class="article-num" id="article-602">602.</strong> Une figure limitée en tous sens peut-elle avoir deux centres de symétrie ?</p>
+<p class="article" id="blk-125-10"><strong class="article-num" id="article-603">603.</strong> Tout plan mené par le point d'intersection des diagonales d'un parallépipède
+divise celui-ci en deux parties équivalentes.</p>
+<p class="article" id="blk-125-11"><strong class="article-num" id="article-604">604.</strong> Symétrie oblique. Un point quelconque M étant considéré, soit M' le point
+tel que la droite MM' soit parallèle à une droite fixe D et divisée en deux parties
+égales par un plan P (sécant à D): le point M' est dit dériver de M par symétrie
+oblique.</p>
+<p  id="blk-125-12">Prouver que :
+La figure obliquement symétrique d'une droite est une droite ;
+La figure obliquement symétrique d'un plan est un plan.</p>
+<p  id="blk-125-13">Deux polyèdres obliquement symétriques l'un de l'autre sont équivalents. (On peut
+utiliser pour cela l'ex. 565.)</p>
+<p class="article" id="blk-125-14"><strong class="article-num" id="article-605">605.</strong> Même question lorsque le point M'est défini, à l'aide du point M, par la
+condition que la droite MM' soit parallèle à un plan fixe P et divisée en deux parties
+égales par une droite fixe D (sécante à P).</p>
+<p  id="blk-125-15">On démontrera que cette transformation peut se ramener à deux symétries obli-
+ques, telles qu'elles ont été définies à l'exercice précédent, ou encore à une symétrie
+oblique et une symétrie par rapport à un point.</p>
+<p class="article" id="blk-125-16"><strong class="article-num" id="article-606">606.</strong> Appliquer les conclusions de l'exercice précédent à l'exercice 568.</p>
+<p class="article" id="blk-125-17"><strong class="article-num" id="article-607">607.</strong> Si une figure F est égale à la symétrique, par rapport à un plan, d'une
+figure F', les deux figures peuvent être amenées à coïncider par une rotation pré-
+cédée ou suivie d'une symétrie par rapport à un plan perpendiculaire à l'axe de
+rotation ou par rapport à un point situé sur cet axe.</p>
+<p class="article" id="blk-125-18"><strong class="article-num" id="article-608">608.</strong> Inscrire, dans un angle polyèdre convexe donné, un angle polyèdre tel que la
+somme de ses faces soit minima. Cas du trièdre.</p><div class="scan-inline"><img src="img/scan/srcpage-125.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

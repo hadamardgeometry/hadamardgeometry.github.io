@@ -1,0 +1,446 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-090.png"><p class="newpage"><!-- skp data-txt='10' --><!-- skp data-txt='70' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-090-04">CHAPITRE II</p>
+<p  id="blk-090-05">VOLUME</p>
+<p  id="blk-090-06">DU</p>
+<p  id="blk-090-07">PRISME<!-- spr -->ou</p>
+<p class="article" id="blk-090-09"><strong class="article-num" id="article-396">396.</strong> Deux polyèdres sont dit adjacents lorsqu'ils ont une
+plusieurs faces (ou portions de faces) communes en étant, à cela
+près, entièrement extérieurs l'un à l'autre.</p>
+<p  id="blk-090-10">Étant donnés deux polyèdres adjacents P, P', si l'on supprime les
+faces communes, on forme un troisième polyèdre P", qui n'est autre
+que l'ensemble des deux premiers et qui en est dit la somme.</p>
+<p class="article" id="blk-090-11"><strong class="article-num" id="article-397">397.</strong> Définir les volumes des polyèdres, c'est faire correspondre à
+chaque polyèdre une grandeur (dite volume du polyèdre) possédant.
+les propriétés suivantes :</p>
+<p  id="blk-090-12">I. Deux polyèdres égaux ont le même volume, quelles que soient
+leurs situations dans l'espace;</p>
+<p  id="blk-090-13">II. Le polyèdre P", somme de deux polyèdres adjacents P et P', a
+pour volume la somme des volumes de Pet de P'.</p>
+<p  id="blk-090-14">Nous admettrons qu'une pareille correspondance existe (').</p>
+<p  id="blk-090-15">Il est d'ailleurs clair, comme pour les aires en géométrie plane,
+que, du moment qu'elle existe, elle existe d'une infinité de façons :
+car on peut évidemment remplacer la grandeur en question par une
+grandeur proportionnelle, sans que les propriétés I et II soient
+altérées. Aussi étudierons-nous plus particulièrement les rapports
+des volumes entre eux, ou encore les mesures des volumes.</p>
+<p  id="blk-090-16">On doit, à cet effet, commencer par désigner un certain polyèdre
+dont le volume sera pris pour unité la mesure d'un volume
+quelconque sera le rapport de ce volume à l'unité.</p>
+<p  id="blk-090-17">Nous convenons, ici dans et tout ce qui va suivre, de prendre pour
+unité de volume, le volume du cube qui a pour arête l'unité de
+longueur.</p>
+<p  id="blk-090-18">(1) Voir à la fin du volume (note F) la démonstration de ce fait.</p><div class="scan-inline"><img src="img/scan/srcpage-090.png"/></div></data><data data-scanhref="img/scan/srcpage-091.png"><p class="newpage"></p>
+<p  id="blk-091-01">VOLUME DU PRISME.<!-- skp data-txt='71' --></p>
+<p  id="blk-091-03">Cette convention, ainsi que la convention analogue du nº 244
+(Pl., liv. IV) sera implicitement supposée dans tous les théorèmes
+relatifs aux volumes.</p>
+<p  id="blk-091-04">Deux polyèdres qui ont même volume (sans être, en général,
+égaux) sont dits équivalents.<!-- skp data-txt='-' --></p>
+<p  id="blk-091-06">REMARQUE. De la propriété II résulte qu'un polyèdre P', entière-
+ment intérieur à un autre polyèdre P, a un volume plus petit que
+celui de P.</p>
+<p class="article" id="blk-091-07"><strong class="article-num" id="article-398">398.</strong> Parallélépipède rectangle.</p>
+<p  id="blk-091-08">Théorème. Deux parallélépipèdes rectangles qui ont même base
+sont entre eux comme leurs hauteurs.</p>
+<p  id="blk-091-09">D'après les considérations que nous avons déjà invoquées plu-
+sieurs fois, il suffit d'établir:</p>
+<p  id="blk-091-10">1° Que deux parallélépipèdes rectangles de même base et de même
+hauteur ont même volume: ce qui n'est autre que l'application de
+la propriété I, puisque de tels parallélépipèdes sont égaux;</p>
+<p  id="blk-091-11">2º que si trois parallélépipèdes P, P', P" ont même base et que la
+hauteur de P" soit la somme des hauteurs de P et de P', le volume<!-- spr -->de P" est la somme des volumes de P et de P'.</p>
+<p  id="blk-091-13">C'est ce qui résulte de la propriété II, puisque, si l'on divise la
+hauteur de P" (fig. 302) en deux segments égaux respectivement,</p>
+<p  id="blk-091-14">Pi</p>
+<p  id="blk-091-15">P.<!-- skp data-txt='P' --></p>
+<p  id="blk-091-17">P₁<img class="fig" src="img/FIG. 302.OCR.png" alt="FIG. 302." /><!-- spr -->l'un à la hauteur de P, l'autre à celle de P' et que, par le point de
+division on mène un plan parallèle à la base de P", on décompose
+ce dernier en deux paralélépipèdes P₁, P, égaux, l'un à P, l'autre
+à P'.</p><div class="scan-inline"><img src="img/scan/srcpage-091.png"/></div></data><data data-scanhref="img/scan/srcpage-092.png"><p class="newpage"><!-- skp data-txt='72' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-092-03">Le théorème est donc démontré. Nous engageons d'ailleurs le
+lecteur à répéter, sur cet exemple, la démonstration du théorème
+général d'arithmétique, comme nous l'avons fait plusieurs fois en
+Géométrie plane.</p>
+<p  id="blk-092-04">Comme n'importe quelle face d'un parallélépipède rectangle peut
+être prise comme base, il y a lieu d'énoncer le théorème précédent
+sous la forme suivante :</p>
+<p  id="blk-092-05">Deux parallélépipèdes rectangles qui ont deux dimensions communes
+sont entre eux comme les troisièmes dimensions.</p>
+<p class="article" id="blk-092-06"><strong class="article-num" id="article-399">399.</strong> Théorème. Deux parallélépipèdes rectangles sont entre eux
+comme les produits de leurs trois dimensions.</p>
+<p  id="blk-092-07">Nous venons de voir que, lorsque deux dimensions d'un parallélé-
+pipède rectangle restent constantes et que la troisième varie seule,
+le volume est proportionnel à cette troisième dimension. La propo-
+sition actuelle n'est donc que l'application de ce théorème d'arithmé-
+tique (1): Une grandeur qui est proportionnelle à plusieurs autres, est
+proportionnelle à leur produit.</p>
+<p  id="blk-092-08">Toutefois, en raison de l'importance de cette proposition, nous
+reprendrons, en l'appliquant au cas qui nous occupe, la marche
+suivie en arithmétique, comme nous l'avons fait pour l'aire du
+rectangle.</p>
+<p  id="blk-092-09">Cette marche consiste, en appelant a, b, c les trois dimensions
+du premier parallélépipède P; a', b', c', celles du second parallélépi-
+pède P', à considérer deux parallélépipèdes auxiliaires P₁, P₂
+dont l'un a pour dimensions a', b, c et l'autre a', b', c.</p>
+<p  id="blk-092-10">Dans les deux parallélépipèdes P, P₁, la première dimension
+diffère seule on a donc (nº précédent)<!-- skp data-txt='-' --><!-- skp data-txt='1' --><!-- skp data-txt='P' --><!-- spr -->a</p>
+<p  id="blk-092-15">P₁₂<!-- skp data-txt='1' --><!-- skp data-txt='2' --></p>
+<p  id="blk-092-18">De même, le parallélépipède P₂ ne diffère de P₁ que par la dimen-
+sion 6 changée en b': on a donc<!-- spr -->b</p>
+<p  id="blk-092-20">P₁
+P₂<!-- skp data-txt='-' --><!-- skp data-txt='2' --></p>
+<p  id="blk-092-23">(1) Tannery, Leçons d'Arithmétique, ch. XI.</p><div class="scan-inline"><img src="img/scan/srcpage-092.png"/></div></data><data data-scanhref="img/scan/srcpage-093.png"><p class="newpage"></p>
+<p  id="blk-093-01">VOLUME DU PRISME.<!-- skp data-txt='73' --></p>
+<p  id="blk-093-03">Enfin, les parallélépipèdes P2, P' ne diffèrent que par la dernière
+dimension; donc<!-- skp data-txt='C' --><!-- skp data-txt='2' --><!-- skp data-txt="P'" --></p>
+<p  id="blk-093-07">Dans les égalités précédentes, les premiers membres représentent
+des rapports de volumes (les rapports mutuels des parallélépi-
+pèdes P, P1, P2, P') et les seconds membres, des rapports de
+longueurs. Mais nous savons (Pl., 106) que ces rapports ne changent
+pas de valeur si nous remplaçons les grandeurs de chaque espèce
+par les nombres qui les mesurent, relativement à une même unité.
+Nous admettrons donc, conformément à la convention du n° 69
+(Pl., liv. II), qu'on a choisi une certaine unité de volume, une
+certaine unité de longueur et que les lettres P, P₁, P₂, P'; a, b, c,
+a', b', c' désignent, non plus les volumes et les longueurs de ce nom,
+mais les nombres qui leur servent respectivement de mesures. Dans
+ces conditions, si nous multiplions membre à membre les égalités
+précédentes, ce qui donne</p>
+<p  id="blk-093-08">PPP₂ abc
+P₁ P₁₂ P=abc</p>
+<p  id="blk-093-09">,<!-- skp data-txt='1' --><!-- skp data-txt='1' --><!-- skp data-txt='2' --><!-- spr -->le premier membre, qui est un produit de fractions, pourra s'écrire
+PP, P₂</p>
+<p  id="blk-093-14">On pourra également diviser le numérateur et le dénomi-
+P, P, P P'
+nateur par P₁ P₂, et il viendra</p>
+<p  id="blk-093-15">•<!-- skp data-txt='1' --><!-- skp data-txt='P' --><!-- spr -->abc</p>
+<p  id="blk-093-19">=====<!-- skp data-txt="P'" --><!-- spr -->a'b'c'</p>
+<p  id="blk-093-22">C. Q. F. D.</p>
+<p class="article" id="blk-093-23"><strong class="article-num" id="article-400">400.</strong> Introduisons maintenant la supposition faite en commençant,
+à savoir que l'on prend pour unité de volume le cube qui a pour
+arête l'unité de longueur: alors le théorème précédent nous donne
+la mesure du parallélépipède rectangle.<!-- skp data-txt='-' --></p>
+<p  id="blk-093-25">Théorème. Le volume d'un parallélépipède rectangle est égal au
+produit de ses trois dimensions.</p>
+<p  id="blk-093-26">Cet énoncé n'a de sens que moyennant la convention établie
+précédemment (Pl., 69): sa signification est celle-ci :</p><div class="scan-inline"><img src="img/scan/srcpage-093.png"/></div></data><data data-scanhref="img/scan/srcpage-094.png"><p class="newpage"><!-- skp data-txt='74' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-094-03">Le nombre qui mesure le volume d'un parallélépipède rectangle est
+égal au produit des nombres qui mesurent ses trois dimensions.</p>
+<p  id="blk-094-04">C'est ce qui résulte du théorème précédent, lorsqu'on prend, pour
+le second parallélépipède P', le cube qui a pour arête l'unité de lon-
+gueur et dont le volume est, par hypothèse, pris pour unité de
+volume. Alors, les nombres a', b', c', P'étant tous égaux à 1, le
+théorème précédent donne simplement<!-- skp data-txt='P' --><!-- spr -->abc</p>
+<p  id="blk-094-07">_</p>
+<p  id="blk-094-08">C. Q. F. D.</p>
+<p  id="blk-094-09">On voit clairement, par la démonstration même qui précède, que
+l'exactitude du théorème est subordonnée à la convention formulée
+plus haut, d'après laquelle on prend pour unité de volume le cube
+construit sur l'unité de longueur.</p>
+<p  id="blk-094-10">Si donc on veut que ce théorème (et les suivants) soient vrais, on
+peut choisir arbitrairement l'unité de longueur, mais, ce choix une
+fois fait, celui de l'unité de volume, comme celui de l'unité d'aire,
+est déterminé. On exprime souvent ce fait en disant que l'unité de
+volume est, comme l'unité d'aire, une unité dérivée.<!-- spr -->mesure<!-- skp data-txt="D'" --><!-- skp data-txt="A'" --><!-- skp data-txt='B' --></p>
+<p  id="blk-094-15">0.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-094-17"><strong class="article-num" id="article-401">401.</strong> Ayant appris à mesurer le volume du parallélépipède<!-- spr -->rectangle, nous déduirons de cette<!-- spr -->celle du parallélépipède
+droit et de celle-ci, celle du paral-
+lélépipède oblique. Cette double
+déduction s'opérera au moyen du
+théorème suivant :</p>
+<p  id="blk-094-20">Théorème. Tout prisme oblique
+est équivalent au prisme droit qui a
+pour base la section droite et pour
+hauteur l'arête latérale.</p>
+<p  id="blk-094-21">Soit le prisme oblique ABCDA'B'C'D'
+(fig. 303). Prolongeons toutes les
+arêtes latérales dans un même sens:
+soit, pour fixer les idées, l'arête
+A'A au delà du point A, l'arête B'B<!-- spr -->au delà du point B, etc.; puis me-
+nons les deux sections droites a'b'c'd', abcd, coupant toutes<!-- spr -->a<!-- spr -->b'<!-- skp data-txt='2' --><!-- spr -->b<img class="fig" src="img/FIG. 303.OCR.png" alt="FIG. 303." /></p><div class="scan-inline"><img src="img/scan/srcpage-094.png"/></div></data><data data-scanhref="img/scan/srcpage-095.png"><p class="newpage"></p>
+<p  id="blk-095-01">VOLUME DU PRISME.<!-- skp data-txt='75' --><!-- spr -->deux les prolongements des arêtes, comme l'indique la figure,
+et telles que la distance mutuelle des deux plans de section
+soit égale à l'arête latérale du prisme donné ABCD A'B'C'D'.
+Nous avons à prouver que celui-ci est équivalent au prisme droit
+abcd a'b'c'd'.</p>
+<p  id="blk-095-04">A cet effet, ajoutons à ces deux prismes un même polyèdre, le
+solide a'b'c'd'ABCD. Il nous suffit de faire voir que les deux
+polyèdres abcdABCD, a'b'c'd'A'B'C'D' ainsi obtenus sont équivalents.</p>
+<p  id="blk-095-05">Or nous allons voir que ces deux derniers polyèdres sont égaux.</p>
+<p  id="blk-095-06">Transportons, en effet, le second de ces polyèdres sur le premier,
+de manière à faire coïncider les bases égales a'b'c'd', abcd. L'arête
+a'A', perpendiculaire au plan a'b'c'd' en a', viendra suivant une
+perpendiculaire au plan abcd menée par a : elle coïncidera donc
+avec aA en direction, et aussi en sens, car les deux trièdres a'A'b'd',
+aAbd ont la même disposition (puisque les dièdres suivant a'A' et aA
+sont de même sens). Mais, d'autre part, a'A' et aA, sont égaux,
+comme se composant d'une partie commune a'A ajoutée à des
+segments égaux aa', AA'. Donc le point A' vient coïncider avec le
+point A.</p>
+<p  id="blk-095-07">Le même raisonnement s'appliquant à tous les autres sommets,
+la superposition est complète. Les deux polyèdres abcd ABCD,
+a'b'c' d'A'B'C'D' sont bien égaux, et, par suite, les deux prismes
+ABCDA'B'C'D', abcda'b'c'd', équivalents.</p>
+<p  id="blk-095-08">C. Q. F. D.</p>
+<p class="article" id="blk-095-09"><strong class="article-num" id="article-402">402.</strong> Parallélépipède droit.<!-- skp data-txt='-' --><!-- skp data-txt='B' --><!-- skp data-txt='C' --><!-- spr -->comme</p>
+<p  id="blk-095-14">Théorème. Le volume d'un parallélépipède droit est égal au
+produit de sa base par sa hauteur.</p>
+<p  id="blk-095-15">Soit le parallélépipède droit
+ABCDA'B'C'D' (fig. 304), qui est droit
+si nous considérons ABCI)
+base, de sorte que les arêtes AA',
+BB', CC', DD' sont perpendiculaires
+au plan ABCD, mais qui n'est pas
+rectangle, la face ABCD n'ayant pas
+ses angles droits. Si nous l'envisa-
+geons, au contraire, comme prisme ayant pour bases les faces
+A BA'B', CDC'D' et pour arêtes latérales AD, BC, A'D', B'C', ce même<img class="fig" src="img/FIG. 304.OCR.png" alt="FIG. 304." /></p><div class="scan-inline"><img src="img/scan/srcpage-095.png"/></div></data><data data-scanhref="img/scan/srcpage-096.png"><p class="newpage"><!-- skp data-txt='76' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->parallélépipède sera un prisme oblique, auquel nous pourrons
+appliquer le théorème précédent.</p>
+<p  id="blk-096-04">Nous mènerons donc la section droite, que nous pourrons faire
+passer par AA' (puisque cette arête est perpendiculaire à AD). Cette
+section droite AA'HH' est un rectangle, puisque AA' est perpendi-
+culaire au plan ABCD. Donc le parallélépipède droit qui a pour base
+AA'HH' et pour hauteur AD est un parallélépipède rectangle. Son
+volume est, comme nous le savons, AA' × AH × AD.</p>
+<p  id="blk-096-05">Comme AHAD est la surface de la base ABCD du parallélé-
+pipède donné, celui-ci est bien mesuré par le produit de cette base
+et de la hauteur AA'.</p>
+<p class="article" id="blk-096-06"><strong class="article-num" id="article-403">403.</strong> Prisme droit.<!-- skp data-txt='B' --></p>
+<p  id="blk-096-08">Du volume du parallélépipède droit résulte celui du prisme droit.</p>
+<p  id="blk-096-09">Théorème. Le volume d'un prisme droit est égal au produit de sa
+base par sa hauteur.</p>
+<p  id="blk-096-10">1° Soit d'abord un prisme droit triangulaire ABCA'B'C' (fig. 305).
+Achevons les parallélogrammes ABCD, A'B'C'D' (D, D' étant les<!-- spr -->sommets opposés à A, A'): ces parallélo-
+grammes sont les bases d'un parallélépipède
+droit ABCDA'B'C'D', composé du prisme
+triangulaire donné et du prisme triangulaire
+BCD B'C'D'. Or ce second prisme est égal au
+premier.</p>
+<p  id="blk-096-12">En effet, les triangles ABC, DCB, moitiés
+d'un même parallélogramme, sont égaux<!-- spr -->et de même sens de rotation. Si le second de
+ces triangles se déplace dans son plan de manière à venir coïncider
+avec le premier, en entraînant le prisme BCDB'C'D', l'arête DD',
+perpendiculaire au plan de base en D, viendra coïncider avec AA'
+en direction et aussi en sens (puisqu'elle n'a pas changé de côté par
+rapport au plan de base); comme elle est égale à AA', le point D'
+viendra en A'. De même les sommets B', D' viendront respective-
+ment en D', B', et le second prisme coïncidera avec le premier.</p>
+<p  id="blk-096-14">Ces deux prismes étant égaux, leur somme, c'est-à-dire le paral-
+lélépipède, est double de l'un d'eux. Donc le prisme ABCA'B'C' a
+bien pour mesure la moitié du parallélogramme ABCD (par consé-
+quent le triangle ABC) multipliée par la hauteur.<img class="fig" src="img/FIG. 305.OCR.png" alt="FIG. 305." /></p><div class="scan-inline"><img src="img/scan/srcpage-096.png"/></div></data><data data-scanhref="img/scan/srcpage-097.png"><p class="newpage"></p>
+<p  id="blk-097-01">VOLUME DU PRISME.<!-- skp data-txt='77' --></p>
+<p  id="blk-097-03">2° Soit le prisme polygonal ABCDEA'B'C'D'E' (fig. 306). On peut le
+décomposer en prismes triangulaires ayant pour bases respectives
+les triangles dans lesquels on peut décom-
+poser la base ABCDE. Ces prismes ayant
+même hauteur, leur somme s'obtient en
+multipliant cette hauteur par la somme des
+bases, c'est-à-dire par la base totale ABCDE.<!-- skp data-txt='D' --></p>
+<p  id="blk-097-05">C. Q. F. D.<!-- skp data-txt="A'" --><!-- skp data-txt='-' --><!-- skp data-txt="D'" --><!-- skp data-txt="B'" --></p>
+<p  id="blk-097-10">Corollaire. Le volume d'un prisme"
+oblique est égal au produit de sa section droite
+par son<!-- spr -->arête latérale. Cela résulte du
+théorème précédent, en vertu du théorème
+du nº 401.</p>
+<p  id="blk-097-12">Deux prismes qui ont même section droite et même arête latérale,
+sont équivalents.<img class="fig" src="img/FIG. 306.OCR.png" alt="FIG. 306." /></p>
+<p class="article" id="blk-097-14"><strong class="article-num" id="article-404">404.</strong> Parallélépipède quelconque.<!-- skp data-txt='-' --><!-- skp data-txt='M' --><!-- skp data-txt='0' --><!-- skp data-txt='N' --><!-- skp data-txt='B' --><!-- skp data-txt='C' --><!-- skp data-txt="A'" --><!-- skp data-txt="D'" --><!-- skp data-txt='M' --><!-- skp data-txt="B'" --><!-- skp data-txt='N' --></p>
+<p  id="blk-097-26">Théorème. Le volume d'un parallélépipède quelconque est égal au
+produit de sa base par sa hauteur.
+Soit le parallépipède ABCDA'B'C'D' (fig. 307). Nous allons montrer<!-- spr -->que son volume est égal au produit
+de la base ABCD par la hauteur
+correspondante.</p>
+<p  id="blk-097-28">A cet effet, nous considérerons tout
+d'abord le solide comme un prisme
+ayant pour base la face ABA'B',
+prisme en général oblique et auquel
+nous appliquerons le théorème du<!-- spr -->n°401.
+Ce théorème nous montre que, en désignant par MNM'N' la section
+droite du prisme, celui-ci est équivalent au parallélépipède droit.
+qui a pour base MNM'N' et pour hauteur AD; de sorte que son
+volume est mesuré (théor. préc.) par AD × surf. MNM'N', ou encore
+par AD × MN × HH', en désignant par HH' la hauteur du parallélo-
+gramme MNM'N'. MN est la hauteur du parallélogramme ABCD, de
+sorte que AD × MN représente la surface de la base du parallélépi-
+pède donné.<img class="fig" src="img/FIG. 307.OCR.png" alt="FIG. 307." /></p><div class="scan-inline"><img src="img/scan/srcpage-097.png"/></div></data><data data-scanhref="img/scan/srcpage-098.png"><p class="newpage"><!-- skp data-txt='78' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-098-03">D'autre part, HH' représente la hauteur de ce même parallélé-
+pipède; car, étant menée dans le plan MNM'N', perpendiculai-
+rement à l'arête du dièdre droit M'. MN. A, elle est perpendiculaire
+au plan ABCD (354).</p>
+<p  id="blk-098-04">Comme nous trouvons, pour le volume considéré, l'expression
+surf. ABCD HH', le théorème est démontré.</p>
+<p class="article" id="blk-098-05"><strong class="article-num" id="article-405">405.</strong> Prisme quelconque.<!-- skp data-txt='-' --><!-- skp data-txt='A' --><!-- skp data-txt='C' --><!-- spr -->a</p>
+<p  id="blk-098-10">Lemme. Le plan qui passe par deux arêtes opposées d'un<!-- spr -->parallélépipède divise ce solide en deux
+prismes triangulaires équivalents.</p>
+<p  id="blk-098-12">Soit le parallélépipède ABCDA'B'C'D',
+que le plan ACA'C' divise en deux pris-
+mes triangulaires ABCA'B'C', ACDA'C'D'
+(fig. 308).</p>
+<p  id="blk-098-13">Si nous coupons la figure par un
+plan perpendiculaire à AA', ce plan
+déterminera les sections droites abc, acd
+des deux prismes triangulaires ces
+sections seront égales, puisque abcd<!-- spr -->est un parallélogramme. Les deux
+prismes, ayant même section droite et même arête latérale, sont
+bien équivalents (403, coroll.).<!-- spr -->b<!-- skp data-txt="A'" --><img class="fig" src="img/FIG. 308.OCR.png" alt="FIG. 308." /><!-- skp data-txt='-' --></p>
+<p  id="blk-098-19">Théorème. Le volume d'un prisme est égal au produit de sa base
+par sa hauteur :</p>
+<p  id="blk-098-20">1° Considérons d'abord un prisme triangulaire ABCA'B'C' (fig. 309).
+Le parallélogramme ABCD, qui a trois sommets communs avec le<!-- skp data-txt='D' --><!-- skp data-txt='B' --><!-- skp data-txt="D'" --><!-- skp data-txt="B'" --><img class="fig" src="img/FIG. 309.OCR.png" alt="FIG. 309." /><img class="fig" src="img/FIG. 310.OCR.png" alt="FIG. 310." /><!-- spr -->triangle ABC, sert de base à un parallélépipède qui est (lemme
+précéd.) double du prisme donné. Celui-ci a donc pour mesure le</p><div class="scan-inline"><img src="img/scan/srcpage-098.png"/></div></data><data data-scanhref="img/scan/srcpage-099.png"><p class="newpage"></p>
+<p  id="blk-099-01">VOLUME DU PRISME.</p>
+<p  id="blk-099-02">7.9<!-- spr -->produit de sa hauteur par la moitié du parallélogramme ABCD,
+c'est-à-dire par le triangle ABC.</p>
+<p  id="blk-099-04">2° Si le prisme donné est polygonal, on le décomposera en
+prismes triangulaires (voir la fig. 310) et l'on raisonnera comme au
+n° 403, 2.</p>
+<p  id="blk-099-05">EXERCICES</p>
+<p class="article" id="blk-099-06"><strong class="article-num" id="article-539">539.</strong> Le volume d'un prisme triangulaire est égal au demi-produit d'une face
+latérale quelconque par la distance de cette face à l'arête opposée.</p>
+<p class="article" id="blk-099-07"><strong class="article-num" id="article-540">540.</strong> Sur trois parallèles données, on prend trois longueurs égales entre elles AA',
+BB', CC'. Démontrer que le volume du prisme ainsi formé ne dépend que de la posi-
+tion des parallèles données et de la longueur commune des arêtes AA', BB';, CC',
+mais non de la place occupée par ces segments sur les droites qui les portent.</p>
+<p class="article" id="blk-099-08"><strong class="article-num" id="article-541">541.</strong> Sur trois faces SBC, SCA, SAB d'un tétraèdre, comme bases inférieures, on
+construit trois prismes, quelconques d'ailleurs, extérieurs au tétraèdre. I étant le
+point d'intersection des plans des bases supérieures, on construit, sur la quatrième
+face ABC comme base, un prisme ayant son arête latérale égale et parallèle à SI.
+Montrer que ce dernier prisme est équivalent à la somme des trois premiers.</p>
+<p class="article" id="blk-099-09"><strong class="article-num" id="article-542">542.</strong> Étant donnés un rectangle ABCD dont le plan est P, les côtés a, b, et un point
+S situé à une distance du plan P, on considère la pyramide de sommet S et de base
+ABCD; on coupe cette pyramide par un plan Q parallèle à P et, dans le rectangle de
+section, on inscrit un quadrilatère q ayant trois côtés parallèles aux diagonales du
+rectangle. Enfin, on considère le prisme droit R dont l'une des bases est ce paral-
+lélogramme, l'autre étant dans le plan P.</p>
+<p  id="blk-099-10">1° Déterminer la distance du point S au plan Q de manière que la somme des
+12 arêtes du prisme R ait une valeur donnée 4 m. —- Cas d'impossibilité.</p>
+<p  id="blk-099-11">2° Parmi tous les prismes R qui correspondent à la même position du plan Q,
+lequel a le plus grand volume? Étudier les variations de ce volume maximum
+lorsque le plan Q se déplace.</p><div class="scan-inline"><img src="img/scan/srcpage-099.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

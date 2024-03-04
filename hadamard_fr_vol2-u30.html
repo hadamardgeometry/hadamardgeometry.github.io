@@ -1,0 +1,450 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-438.png"><p class="newpage"><!-- skp data-txt='418' --></p>
+<p  id="blk-438-02">GÉOMÉTRIE</p>
+<p  id="blk-438-03">CHAPITRE VI</p>
+<p  id="blk-438-04">SECTIONS PLANES DU CONE ET DU CYLINDRE DE RÉVOLUTION<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-438-06"><strong class="article-num" id="article-719">719.</strong> Théorème. - La section d'un cône de révolution par un plan est :</p>
+<p  id="blk-438-07">Une ellipse, si le plan mené par le sommet, parallèlement au plan
+sécant, est extérieur au cône;</p>
+<p  id="blk-438-08">Une hyperbole, si le plan mené par le sommet, parallèlement au<!-- skp data-txt='S' --><!-- skp data-txt='L' --><!-- spr -->m</p>
+<p  id="blk-438-12">°<!-- skp data-txt='A' --><!-- skp data-txt='M' --><!-- skp data-txt='1' --><!-- skp data-txt="D'" --><!-- skp data-txt="I'" --><!-- skp data-txt='1' --><!-- skp data-txt='1' --><!-- skp data-txt='1' --></p>
+<p  id="blk-438-21">1,
+1<!-- spr -->x<img class="fig" src="img/FIG. 587.OCR.png" alt="FIG. 587." /><!-- spr -->plan sécant, coupe le cône suivant deux génératrices distinctes ;</p>
+<p  id="blk-438-25">Une parabole, si le plan mené par le sommet, parallèlement au
+plan sécant, est tangent au cône.</p><div class="scan-inline"><img src="img/scan/srcpage-438.png"/></div></data><data data-scanhref="img/scan/srcpage-439.png"><p class="newpage"></p>
+<p  id="blk-439-01">SECTIONS PLANES DU CONE.<!-- skp data-txt='419' --></p>
+<p  id="blk-439-03">Soient S le sommet du cône, Sx son axe, P le plan sécant. Par Sx,
+menons un plan perpendiculaire à P, lequel coupera le cône suivant
+deux génératrices SA, SB: nous prendrons ce plan SAB, qui est un
+plan de symétrie de la figure, comme plan du tableau.</p>
+<p  id="blk-439-04">Conformément à l'énoncé, nous distinguerons trois cas:</p>
+<p  id="blk-439-05">1er CAS. (Le plan parallèle à P, mené par S, est extérieur au cône). Soient
+A et B les points d'intersection des génératrices situées dans le plan
+du tableau avec le plan P (fig. 587).</p>
+<p  id="blk-439-06">Parmi les cercles tangents aux trois côtés du triangle SAB, deux
+ont leurs centres O, O' situés sur Sx : ce sont le cercle inscrit et le
+cercle exinscrit dans l'angle S. Leurs points de contact F, F' avec
+AB sont situés tous deux entre A et B; leurs points de contact
+C, D, C, D' (fig. 587) avec SA et SB sont sur SA, SB eux-mêmes pour
+le cercle O; sur SA et SB prolongés au delà de A et de B, pour le
+cercle O'.</p>
+<p  id="blk-439-07">Faisons tourner la figure (à l'exception de AB) autour de Sx. Les
+droites SA, SB engendrent le cône; les cercles O, O' engendrent
+deux sphères inscrites dans le cône (452), la première suivant le
+parallèle CD, la seconde suivant le parallèle C'D'. Ces deux sphères
+sont d'ailleurs tangentes en F, F' au plan P (354).</p>
+<p  id="blk-439-08">Soit maintenant M un point quelconque de la section. La généra-
+trice qui passe par M coupe les cercles CD, C'D' en deux points I, I'
+et, en ces points, elle est tangente aux sphères O, O'. MF étant
+d'autre part tangente à la sphère O et MF' à la sphère O', on a, en
+vertu du théorème du n° 452,</p>
+<p  id="blk-439-09">MF</p>
+<p  id="blk-439-10">MI,</p>
+<p  id="blk-439-11">MF'</p>
+<p  id="blk-439-12">MI'.<!-- skp data-txt='-' --></p>
+<p  id="blk-439-14">_</p>
+<p  id="blk-439-15">Or, la somme MI + MI' est égale au segment II', lequel est
+constant, car il se déduit de CC' par une rotation autour de Sx. Donc
+le lieu est une ellipse de foyers F, F'.</p>
+<p  id="blk-439-16">Corollaire. A chacun des foyers correspond une droite du plan
+sécant (appelée directrice) telle que la distance d'un point quelconque de
+la section à cette droite soit dans un rapport constant avec la distance
+de ce même point au foyer.</p>
+<p  id="blk-439-17">En effet, nous venons de voir que l'on a MF MI. Or, MI est
+dans un rapport constant avec la distance Mm du point M au plạn du
+cercle CD, car le triangle rectangle MmI a son angle en M constant</p>
+<p  id="blk-439-18">_</p><div class="scan-inline"><img src="img/scan/srcpage-439.png"/></div></data><data data-scanhref="img/scan/srcpage-440.png"><p class="newpage"><!-- skp data-txt='420' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-440-03">(égal à l'angle de SI avec l'axe du cône) et, puisque M est dans le plan
+fixe P, cette distance Mm est elle-même proportionnelle (360) à la
+distance du point M à la droite Ly (fig. 587), intersection du plan P
+avec le plan du cercle CD.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-440-05"><strong class="article-num" id="article-719 bis">719 bis.</strong> 2 CAS. (Le plan parallèle à P, mené par S, coupe le cône suivant
+deux génératrices). Soient encore A et B (fig. 588) les points où les géné-
+ratrices situées dans le plan du tableau rencontrent P. Ces points
+sont sur deux nappes différentes du cône. Parmi les cercles tangents
+aux trois côtés du triangle SAB, les deux qui ont leurs centres O, O'
+sur l'axe sont exinscrits dans les angles en A et en B. Leurs points
+de contact F,F' avec AB comprennent entre eux le segment AB.</p>
+<p  id="blk-440-06">0'
+i</p>
+<p  id="blk-440-07">"<!-- skp data-txt='D' --><!-- spr -->im A</p>
+<p  id="blk-440-10">✓<!-- skp data-txt='M' --><!-- spr -->x<img class="fig" src="img/FIG. 588.OCR.png" alt="FIG. 588." /></p>
+<p  id="blk-440-14">Leurs points de contact avec SA, SB seront encore désignés par
+C,D, C',D' (fig. 588), le point C étant entre S et A, le point D' entre
+S et B.</p>
+<p  id="blk-440-15">Lorsqu'on fait tourner la figure (à l'exception de AB) autour de
+Sx, SA et SB engendrent le cône; les cercles 0,0' donnent deux
+sphères inscrites suivant les parallèles CD, C'D' et tangentes au
+plan P en F, F'.</p>
+<p  id="blk-440-16">M étant un point quelconque de la section, la génératrice qui</p><div class="scan-inline"><img src="img/scan/srcpage-440.png"/></div></data><data data-scanhref="img/scan/srcpage-441.png"><p class="newpage"></p>
+<p  id="blk-441-01">SECTIONS PLANES DU CONE.<!-- skp data-txt='421' --></p>
+<p  id="blk-441-03">_</p>
+<p  id="blk-441-04">_<!-- spr -->passe en ce point rencontre les cercles CD, C'D' en deux points I, I'
+et l'on a encore MF</p>
+<p  id="blk-441-06">MI, MF'</p>
+<p  id="blk-441-07">MI, de sorte que la différence
+entre MF et MF' est égale à celle qui existe entre MI et MI', c'est-à-
+dire à II': longueur constante (comparer 1º) et égale à CC'. Donc le
+lieu est une hyperbole de foyers F, F'.</p>
+<p  id="blk-441-08">Les deux branches de l'hyperbole sont évidemment situées
+chacune sur une des deux nappes du cône.<!-- skp data-txt='-' --></p>
+<p  id="blk-441-10">REMARQUE. Si le plan P, se déplaçant parallèlement à lui-
+même, vient à passer par le sommet du cône, la section se réduit à
+un système de deux génératrices.</p>
+<p  id="blk-441-11">On voit donc qu'un système de deux droites concourantes est une
+forme limite d'hyperbole.<!-- skp data-txt='-' --></p>
+<p  id="blk-441-13">Corollaire. A chacun des foyers correspond une droite du plan
+sécant (appelée directrice) telle que la distance d'un point quelconque de
+la section à cette droite soit dans un rapport constant avec la distance
+de ce même point au foyer.</p>
+<p  id="blk-441-14">Cette droite est (comme en 1º) l'intersection du plan sécant P et du
+plan du parallèle suivant lequel l'une des deux sphères O, O' est
+inscrite au cône.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-441-16"><strong class="article-num" id="article-720">720.</strong> 3 CAS. (Le plan mené par S, parallèlement à P, est tangent au
+còne). La génératrice de contact est alors, par raison de symétrie,
+dans le plan mené par Sx perpendiculairement à P; c'est donc une des
+deux droites SA, SB. Nous nommerons SB cette génératrice, et A sera
+le point où l'autre génératrice située dans le plan du tableau ren-
+contrera P, de sorte que Ab (fig. 589) sera la trace (parallèle à SB) de
+P sur le plan du tableau.</p>
+<p  id="blk-441-17">Il n'y a (Pl., 94) que deux cercles tangents aux trois droites SA,
+SB, Ab un seul a son centre O sur Sx : soient C, D, F (fig. 589)
+ses points de contact. Les deux premiers engendrent (comme en 1°
+et 2º), par révolution autour de l'axe, le parallèle de contact du cône
+donné avec la sphère de centre O et de rayon OF.</p>
+<p  id="blk-441-18">On voit, comme tout à l'heure (1° 2°, Corollaires), que la distance
+d'un point quelconque M de la section au point F est dans un
+rapport constant avec la distance du même point à la droite Ly,
+intersection du plan P avec le plan du cercle CD, droite qui est
+évidemment perpendiculaire au plan du tableau (355, Coroll. II),</p><div class="scan-inline"><img src="img/scan/srcpage-441.png"/></div></data><data data-scanhref="img/scan/srcpage-442.png"><p class="newpage"><!-- skp data-txt='422' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->son intersection avec ce plan étant le point L où se rencontrent les
+droites Ab, CD.</p>
+<p  id="blk-442-04">Or, lorsque le point M est en A, sa distance à Ly n'est autre que
+AL; d'autre part, AL est égal à AC, car le triangle LAC est manifes-
+tement semblable au triangle isoscèle SCD. Comme AC est égal à AF,<!-- skp data-txt='C' --><!-- skp data-txt='D' --><!-- skp data-txt='A' --><!-- skp data-txt='0' --><!-- spr -->mi<!-- skp data-txt='B' --><!-- skp data-txt='M' --><img class="fig" src="img/FIG. 589.OCR.png" alt="FIG. 589." /><!-- spr -->nous voyons que le rapport constant des distances du point M au
+point F et à la droite Ly est égal à l'unité. Donc la section est une
+parabole ayant F pour foyer et Ly pour directrice.</p>
+<p  id="blk-442-14">REMARQUE. C'est en raison du théorème précédent (et des réci-
+proques démontrées plus loin, n° 722) que l'ellipse, l'hyperbole et
+la parabole ont reçu le nom commun de sections coniques (ou sim-
+plement coniques).</p>
+<p class="article" id="blk-442-15"><strong class="article-num" id="article-721">721.</strong> Cas du cylindre.<!-- skp data-txt='-' --></p>
+<p  id="blk-442-17">Théorème. La section d'un cylindre de révolution par un plan
+est une ellipse.</p>
+<p  id="blk-442-18">Ce théorème peut évidemment être regardé comme un cas limite
+du précédent (1º), le sommet du cône étant supposé rejeté à l'infini.
+La démonstration est d'ailleurs calquée sur les précédentes: le
+plan du tableau mené perpendiculairement au plan sécant P, par</p><div class="scan-inline"><img src="img/scan/srcpage-442.png"/></div></data><data data-scanhref="img/scan/srcpage-443.png"><p class="newpage"></p>
+<p  id="blk-443-01">SECTIONS PLANES DU CONE.<!-- skp data-txt='423' --><!-- spr -->a<!-- spr -->b<!-- spr -->l'axe du cylindre, coupe ce dernier suivant deux génératrices paral-
+lèles Aa, Bb (fig. 590) qui remplaceront
+les génératrices SA, SB du raisonnement
+relatif au cône. Les deux cercles O, O'
+étant, comme précédemment, détermi-
+nés de manière à être langents à ces
+deux droites et à la trace AB du plan P
+sur le plan du tableau, le raisonnement
+s'achève sans modification (voir la figure<!-- skp data-txt='D' --><!-- skp data-txt='1' --><!-- skp data-txt="A'" --><!-- skp data-txt='B' --></p>
+<p  id="blk-443-10">590, où les notations sont les mêmes que sur la<!-- skp data-txt='M' --><!-- spr -->figure 587).</p>
+<p  id="blk-443-13">с<!-- skp data-txt="D'" --></p>
+<p class="article" id="blk-443-15"><strong class="article-num" id="article-722">722.</strong> Les théorèmes suivants peuvent
+être considérés comme les réciproques
+des précédents.<!-- skp data-txt='1' --><!-- skp data-txt='-' --><!-- spr -->un cône<img class="fig" src="img/FIG. 590.OCR.png" alt="FIG. 590." /></p>
+<p  id="blk-443-20">Théorème. Une ellipse quelconque
+donnée peut être placée sur
+de révolution quelconque donné.</p>
+<p  id="blk-443-21">Cherchons à déterminer le plan sécant P.de la figure 587,
+de manière que la section soit une ellipse E égale à une ellipse<!-- spr -->donnée.</p>
+<p  id="blk-443-23">A cet effet, remarquons que AB devra être le grand axe de l'el-
+lipse E et, par conséquent, égal au grand axe 2a de l'ellipse donnée.
+D'autre part, F et F' étant les foyers de E, FA-FB = FA — F'A=FF'
+devra être égal à la distance focale 2c de l'ellipse donnée. Or on
+a évidemment<!-- skp data-txt='-' --></p>
+<p  id="blk-443-25">FA-</p>
+<p  id="blk-443-26">FB<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-443-29">AC BDAC SC<!-- skp data-txt='--' --><!-- skp data-txt='-' --></p>
+<p  id="blk-443-32">(BD+SD)</p>
+<p  id="blk-443-33">SA - SB.</p>
+<p  id="blk-443-34">_-</p>
+<p  id="blk-443-35">Donc</p>
+<p  id="blk-443-36">SA</p>
+<p  id="blk-443-37">SB<!-- skp data-txt='-' --></p>
+<p  id="blk-443-39">= 2c.</p>
+<p  id="blk-443-40">===<!-- skp data-txt='-' --></p>
+<p  id="blk-443-42">Réciproquement, si les distances SA, SB sont telles que
+SA - SB</p>
+<p  id="blk-443-43">2c, AB 2a (les génératrices SA, SB étant dans un même plan
+avec l'axe), le plan mené par AB perpendiculairement au plan SAB
+coupera le cône suivant une ellipse dont la distance focale sera 2c et
+le grand axe 2a, donc égale à l'ellipse donnée.</p>
+<p  id="blk-443-44">Tout revient, par suite, à construire le triangle SAB, dans lequel
+on connaît l'angle en S (égal à l'angle au sommet du cône), le côté opposé
+AB et la différence SA - SB.</p>
+<p  id="blk-443-45">Prenons sur SB prolongé, SA' SA (fig. 591), de sorte que<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p><div class="scan-inline"><img src="img/scan/srcpage-443.png"/></div></data><data data-scanhref="img/scan/srcpage-444.png"><p class="newpage"><!-- skp data-txt='424' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-444-04">_</p>
+<p  id="blk-444-05">$</p>
+<p  id="blk-444-06">BA' SA SB. L'angle AA'B est connu, il est égal (puisque SAA' est
+isoscèle) au demi-supplément de l'angle au sommet du cône. Nous<!-- spr -->connaissons donc, dans le triangle
+BAA', deux côtés AB, BA' et l'angle
+opposé à l'un d'eux ; de plus, puisque
+l'angle connu est aigu et le côté
+opposé plus grand que le côté adja-
+cent, nous<!-- spr -->dans
+(Pl. 87) où le problème admet une
+solution, et une seule. Une fois le
+triangle BAA construit, il suffira de
+mener la perpendiculaire au milieu
+de AA', laquelle coupera bien A'B
+prolongé au delà du point B (à cause<!-- spr -->sommes<!-- spr -->un<!-- spr -->cas<!-- spr -->de la double circonstance que nous<!-- spr -->venons<img class="fig" src="img/FIG. 591.OCR.png" alt="FIG. 591." /><!-- spr -->de rappeler).<!-- skp data-txt='-' --></p>
+<p  id="blk-444-17">Corollaire. I. Toute ellipse a une directrice (719, Coroll.) cor-
+respondante à chaque foyer, puisqu'elle peut être considérée.
+comme la section d'un cône de ré-<!-- spr -->volution.</p>
+<p  id="blk-444-19">II. Le lieu des sommets des cônes</p>
+<p  id="blk-444-20">+.<!-- skp data-txt='F' --><img class="fig" src="img/FIG. 592.OCR.png" alt="FIG. 592." /><!-- spr -->de révolution qui passent par une
+ellipse est une hyperbole (fig. 592)
+qui a pour sommets les foyers de
+l'ellipse donnée, pour foyers les
+sommets du grand axe et dont le
+plan est perpendiculaire au premier.</p>
+<p  id="blk-444-24">Cette hyperbole est dite focale de
+l'ellipse donnée.</p>
+<p  id="blk-444-25">L'axe de chaque cône n'est autre que la tangente à l'hyperbole au
+sommet correspondant.</p>
+<p  id="blk-444-26">En effet, le sommet S d'un cône de révolution qui doit passer par
+une ellipse donnée de grand axe AB et de distance focale 2c, doit être :
+1º situé dans le plan mené par AB perpendiculairement au plan de
+l'ellipse; 2° tel que la différence entre SA et SB soit égale à 2 c.
+D'ailleurs l'hyperbole définie par ces conditions passe bien par les
+foyers F, F' de l'ellipse donnée (FA - FB = 2 c). De plus, l'axe du<!-- skp data-txt='-' --></p><div class="scan-inline"><img src="img/scan/srcpage-444.png"/></div></data><data data-scanhref="img/scan/srcpage-445.png"><p class="newpage"></p>
+<p  id="blk-445-01">SECTIONS PLANES DE CONE.<!-- skp data-txt='425' --><!-- spr -->cône est la bissectrice de l'angle ASB, c'est-à-dire la tangente à
+l'hyperbole.<!-- skp data-txt='-' --></p>
+<p  id="blk-445-05">Théorème. On peut placer une ellipse donnée sur un cylindre de
+révolution donné, si le petit axe de l'ellipse est égal au diamètre du
+cylindre.</p>
+<p  id="blk-445-06">On verra, comme dans la démonstration du théorème précédent, que
+la distance focale 2 c de l'ellipse devra être égale à la projection AA'
+de AB sur la génératrice Aa (fig. 590). Dès lors, on peut construire le
+triangle rectangle AA'B (construction toujours possible puisque AB</p>
+<p  id="blk-445-07">2 aAA). Le côté BA' est alors égal au petit axe de l'ellipse.
+S'il est égal au diamètre du cylindre, on a ainsi une solution du
+problème.</p>
+<p  id="blk-445-08">Au reste, le cylindre de révolution qui passe par une ellipse
+donnée peut être considéré comme limite des cônes qui contiennent
+cette ellipse. Son axe est une asymptote de l'hyperbole focale
+obtenue plus haut.<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-445-11">_</p>
+<p  id="blk-445-12">Théorème. On peut placer une hyperbole donnée sur un cône de
+révolution donné, pourvu que l'angle au sommet de ce cône soit au
+moins égal à l'angle formé par les asymptotes et comprenant la
+courbe.</p>
+<p  id="blk-445-13">Cherchons à déterminer le plan sécant P de la fig. 588 de manière
+que la section soit une hyperbole égale à une hyperbole donnée (de
+distance focale 2c et d'axe transverse 2a). La longueur AB (axe transverse de la
+section) devra être égale à 2a, la longueur FF' à 2c.</p>
+<p  id="blk-445-14">Mais FF: FA FA = FA+FB = BC + AD BC+AS+
+SC = SB SA.</p>
+<p  id="blk-445-15">Réciproquement, si AB: 2a, SA SB 2c, la section sera
+bien égale à l'hyperbole donnée.</p>
+<p  id="blk-445-16">Tout revient donc à construire le
+triangle SAB dans lequel on donne l'angle
+en S (supplément de l'angle au sommet du cône),
+le côté opposé AB et la somme SA + SB.</p>
+<p  id="blk-445-17">Prenons, sur SB prolongé au delà de S
+(fig. 593), la longueur SASA, de sorte.
+que BA=2c. L'angle AA'B est le demi-sup-
+plément de l'angle au sommet du cône, de sorte que, dans le triangle
+BAA', nous connaissons encore deux côtés et l'angle opposé à l'un</p>
+<p  id="blk-445-18">=<!-- skp data-txt='-' --><!-- skp data-txt='B' --><!-- skp data-txt='A' --><img class="fig" src="img/FIG. 593.OCR.png" alt="FIG. 593." /></p><div class="scan-inline"><img src="img/scan/srcpage-445.png"/></div></data><data data-scanhref="img/scan/srcpage-446.png"><p class="newpage"><!-- skp data-txt='426' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->d'eux. Seulement, il y a, cette fois, une condition de possibilité: il
+faut que, une fois placés l'angle A' et le côté A/B, la longueur 2a
+soit au moins égale à la perpendiculaire BH abaissée du point B sur
+AA'. Or, dans l'hyperbole donnée, la longueur 2c et la longueur 2a
+sont (513) l'hypoténuse et un côté de l'angle droit d'un triangle rec-
+tangle CC, C', (fig. 426) dans lequel l'angle CC,C, compris entre ces
+côtés est la moitié de l'angle formé par les asymptotes qui comprend
+l'hyperbole. L'inégalité BH < 2a équivaut donc (Pl., 35) à
+BB'A < CCC, ou à la condition que le demi-angle au sommet du
+cône (complément de BB'A) soit au moins égal à CC,C₁ (complément de
+C₁CC).</p>
+<p  id="blk-446-04">Cette condition étant supposée vérifiée, le problème a, en général,
+deux solutions, puisque 2c > 2a. Mais ces solutions ne correspon-
+dent pas à deux triangles SAB différents : car en prenant, sur le pro-
+longement de SA, la longueur SB' = SB, on obtient un triangle ABB
+répondant aux mêmes conditions que BAA', sans lui être, en géné-
+ral, égal.<!-- skp data-txt='-' --></p>
+<p  id="blk-446-06">Corollaires. - I. Toute hyperbole a une directrice (719 bis, Coroll.)
+correspondant à chaque foyer, puisqu'on peut toujours la considérer
+comme section d'un cône de révolution convenablement choisi.</p>
+<p  id="blk-446-07">II. Le lieu des sommets des cônes de révolution qui passent par une
+hyperbole donnée est une ellipse (dite focale de l'hyperbole) qui a pour<!-- spr -->foyers les sommets de cette hyperbole, pour
+grand axe sa distance focale et dont le plan
+est perpendiculaire au plan de l'hyperbole.</p>
+<p  id="blk-446-09">L'axe de chaque cône est la tangente à
+l'ellipse au sommet de ce cône.<!-- skp data-txt='S' --><!-- skp data-txt='-' --><!-- skp data-txt='A' --></p>
+<p  id="blk-446-13">Théorème. On peut toujours placer
+une parabole donnée sur un cône de révolu-
+tion donné.</p>
+<p  id="blk-446-14">En effet, pour que, dans la fig. 589, la
+section soit égale à une parabole donnée,
+il suffit que AF AL soit égal au demi-<!-- spr -->paramètre de celle-ci. On peut construire
+d'après cette condition le triangle isoscèle ALC, puisqu'on en
+connaît l'angle en A, égal à l'angle au sommet du cône. On peut<img class="fig" src="img/FIG. 594.OCR.png" alt="FIG. 594." /></p>
+<p  id="blk-446-17">_</p><div class="scan-inline"><img src="img/scan/srcpage-446.png"/></div></data><data data-scanhref="img/scan/srcpage-447.png"><p class="newpage"></p>
+<p  id="blk-447-01">SECTIONS PLANES DU CONE.<!-- skp data-txt='427' --><!-- spr -->ensuite tracer le cercle 0 (dont on connaît deux tangentes avec leurs points
+de contact) et, en menant la tangente SD (fig. 594) parallèle à AF,
+on achève de former une figure égale à la portion de la figure 589
+située dans le plan du tableau.<!-- skp data-txt='-' --></p>
+<p  id="blk-447-05">Corollaire. Le lieu des sommets des cônes de révolution qui passent
+par une parabole donnée est une parabole (dite focale de la première) dont
+le sommet et le foyer sont respectivement le foyer et le sommet de la
+parabole donnée, les plans des deux courbes étant perpendiculaires entre<!-- spr -->eux.</p>
+<p  id="blk-447-07">En effet, le symétrique A' de A par rapport au point O appartient à
+SD (symétrique de Ab par rapport 0). D'autre part, lorsque la parabole
+de section est donnée (et par conséquent, avec elle, les points A, F et le plan
+du tableau), ce point A décrit une droite fixe, perpendiculaire à SD :
+à savoir la parallèle à FO menée par le point L', symétrique de A par<!-- spr -->rapport à F. Comme le triangle SAA' est isoscèle (puisque SA'A = 6AA'<!-- skp data-txt='-' --></p>
+<p  id="blk-447-10">SAA), le point S est sur la parabole de foyer A et de directrice L'A':
+parabole dont les relations avec la parabole donnée sont bien celles
+qui sont indiquées dans l'énoncé.<!-- skp data-txt='-' --><!-- spr -->y</p>
+<p  id="blk-447-13">○•<!-- skp data-txt='B' --><!-- skp data-txt='A' --></p>
+<p class="article" id="blk-447-16"><strong class="article-num" id="article-723">723.</strong> Théorème (réciproque des corollaires des n° 719, 720 et du nº précé-
+dent.) - Le lieu des points d'un plan tels que leurs distances à un point
+et à une droite donnés dans ce plan
+soient dans un rapport constant, est
+une conique ayant le point donné pour
+foyer.</p>
+<p  id="blk-447-17">Soient, en effet, A, B (fig. 595) les
+points du lieu situés sur la perpen-
+diculaire FL abaissée, du point
+donné F, sur la droite donnée Ly.
+Par le point F, dans un plan perpendiculaire au plan donné,
+traçons une circonférence O tangente à FA et soit AC la seconde
+tangente menée du point A à cette circonférence.</p>
+<p  id="blk-447-18">Le cône (ou cylindre) circonscrit à la sphère de centre O et de rayon
+OF, suivant son cercle d'intersection avec le plan CLy, coupe le plan
+donné suivant une conique de foyer F, telle que le rapport des dis-</p>
+<p  id="blk-447-19">FA
+tances d'un quelconque de ses points à F et à Ly soit égal à</p>
+<p  id="blk-447-20">AL'<img class="fig" src="img/FIG. 595.OCR.png" alt="FIG. 595." /></p><div class="scan-inline"><img src="img/scan/srcpage-447.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

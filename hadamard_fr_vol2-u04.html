@@ -1,0 +1,468 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-044.png"><p class="newpage"><!-- skp data-txt='6' --><!-- skp data-txt='24' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-044-04">CHAPITRE IV</p>
+<p  id="blk-044-05">ANGLES DIÈDRES</p>
+<p  id="blk-044-06">PLANS PERPENDICULAIRES<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-044-08"><strong class="article-num" id="article-347">347.</strong> Définition. On nomme angle dièdre la figure formée par<!-- spr -->deux demi-plans limités par une droite commune
+(fig. 255). Cette droite est l'arête du dièdre; les
+deux demi-plans en sont les faces.</p>
+<p  id="blk-044-10">On peut désigner un angle dièdre par les lettres
+représentant ses deux faces, ou par les lettres de
+son arête, comprises entre les lettres relatives aux
+faces; ou encore par les lettres de l'arête seules, s'il
+ne peut en résulter de confusion avec d'autres<!-- spr -->dièdres de même arête. Ainsi, le dièdre représenté
+fig. 255 sera désigné, soit par la notation PQ, soit par la notation
+P.xy.Q, soit par la notation xy.<img class="fig" src="img/FIG. 255.OCR.png" alt="FIG. 255." /><!-- skp data-txt='A' --><!-- skp data-txt='-' --><!-- skp data-txt='P' --><!-- skp data-txt='Q' --><!-- skp data-txt='A' --></p>
+<p class="article" id="blk-044-18"><strong class="article-num" id="article-348">348.</strong> Définition. On nomme angle plan ou rectiligne d'un angle
+dièdre, l'angle rectiligne BAC formé en élevant, par un même point
+A de l'arête (fig. 256), les perpendiculaires AB, AC
+à cette arête dans les deux faces: autrement dit,
+en coupant le dièdre par un plan perpendiculaire
+à l'arête.</p>
+<p  id="blk-044-19">La grandeur de l'angle plan ainsi obtenu ne dépend
+que du dièdre considéré, et non du choix du point A,
+sommet de cet angle plan, lequel est pris arbi-
+trairement sur l'arête. Supposons, en effet, qu'en
+prenant successivement pour sommets les points
+A, A' (fig. 256), on obtienne les angles plans BAC,
+A'B'C' ces angles seront égaux, puisque les droites AB, A'B',<!-- skp data-txt="A'" --><!-- skp data-txt="B'" --><img class="fig" src="img/FIG. 256.OCR.png" alt="FIG. 256." /></p><div class="scan-inline"><img src="img/scan/srcpage-044.png"/></div></data><data data-scanhref="img/scan/srcpage-045.png"><p class="newpage"></p>
+<p  id="blk-045-01">ANGLES DIEDRES.<!-- skp data-txt='25' --><!-- spr -->perpendiculaires à AA' dans un même 'plan, sont parallèles et de
+même sens, et qu'il en est de même de AC, A'C'.<!-- skp data-txt='A' --><!-- skp data-txt='B' --><!-- skp data-txt='P' --><img class="fig" src="img/FIG. 257.OCR.png" alt="FIG. 257." /></p>
+<p class="article" id="blk-045-08"><strong class="article-num" id="article-349">349.</strong> Nous avons vu (Pl., 20) qu'étant donné un angle plan BAC,
+(fig. 257) on peut parler du sens de rotation de cet angle, pourvu
+toutefois que parmi les deux régions R, R' en
+lesquelles le plan ABC divise l'espace, on en
+désigne une, R, où l'on convient de se placer
+pour regarder ce plan.</p>
+<p  id="blk-045-09">Si, par le point A, sommet de l'angle, on
+élève une perpendiculaire au plan, la fixation
+de la région R revient au choix d'un sens sur
+cette perpendiculaire : à savoir, le sens (mar-
+qué par une flèche sur la fig. 257) dans lequel
+on se déplace lorsqu'on quitte le plan pour
+entrer dans la région en question. Au lieu de l'observateur que nous
+avons introduit à l'endroit cité de la géométrie plane, nous pourrons
+considérer un observateur placé suivant la perpendiculaire au plan,
+de manière que le sens ainsi fixé soit celui qui va de ses pieds à sa
+tête. Si, regardant l'intérieur de l'angle, cet observateur voit le côté
+AB à droite de AC, l'angle est direct; il est rétrograde dans le cas
+contraire.</p>
+<p  id="blk-045-10">D'après ce qui a été dit en géométrie plane, le sens de rotation
+dépend essentiellement du sens choisi sur la perpendiculaire; il
+change lorsqu'on change ce dernier. Bien entendu, le sens de
+rotation de l'angle dépend aussi de l'ordre dans lequel on énonce
+les côtés.</p>
+<p  id="blk-045-11">Soit maintenant un dièdre PQ (fig. 257). Appliquons ce qui vient
+d'être dit à l'angle plan BAC de ce dièdre (le côté AB étant dans la
+face P, le côté AC dans la face Q). La perpendiculaire au plan BAC
+n'est autre que l'arête du dièdre : nous devons donc supposer fixé un
+sens sur cette arête et considérer un observateur placé suivant
+l'arête, de manière que le sens en question soit celui qui va de ses
+pieds à sa tête, et regardant l'intérieur du dièdre. Celui-ci sera direct
+si cet observateur voit le côté AB à droite de AC. On peut encore
+dire que le dièdre sera direct si l'observateur voit la face P à droite
+de la face Q; sous cette forme, on voit que le sens de rotation ainsi
+obtenu est le même, quel que soit l'angle plan considéré.</p><div class="scan-inline"><img src="img/scan/srcpage-045.png"/></div></data><data data-scanhref="img/scan/srcpage-046.png"><p class="newpage"><!-- skp data-txt='26' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-046-03">Ainsi nous voyons qu'on peut dire d'un dièdre qu'il est direct ou
+qu'il est rétrograde, une fois que l'on a fixé un sens sur l'arête de
+ce dièdre; mais que, si ce sens n'a pas été fixé, on peut toujours le
+choisir tel que le dièdre soit direct.</p>
+<p class="article" id="blk-046-04"><strong class="article-num" id="article-350">350.</strong> Deux dièdres sont dit égaux (conformément à la définition
+générale des figures égales) si on peut les transporter l'un sur
+l'autre de manière à les faire coïncider.</p>
+<p  id="blk-046-05">Deux dièdres sont dits adjacents s'ils ont même arête, une face
+commune et qu'ils soient situés de part et d'autre de la face
+commune tels, les dièdres PQ, QR de la figure 258. Alors le
+dièdre PR, formé par les faces extrêmes, est dit la somme des<!-- spr -->deux premiers: de sorte que, pour faire la somme
+de deux dièdres, on les transporte l'un à côté de
+l'autre de manière à les rendre adjacents.</p>
+<p  id="blk-046-07">Pour comparer deux dièdres, on les transporte
+l'un sur l'autre de manière à ce qu'ils aient même
+arête, une face commune PR (fig. 258) et que les
+faces restantes Q, R soient de même côté par rap-
+port à P. Le dièdre PR est dit plus grand ou plus
+petit que le dièdre PQ, suivant que l'ordre des
+faces est P, Q, R ou P, R, Q. Dans les deux cas,<!-- spr -->le dièdre QR qui, ajouté à l'un des dièdres
+donnés, reproduit l'autre, est dit leur différence. Enfin, si le plan Q
+coïncide avec le plan R, les dièdres donnés sont égaux.</p>
+<p  id="blk-046-09">•<!-- skp data-txt='10' --><!-- skp data-txt='B' --><!-- skp data-txt='0' --><!-- skp data-txt='R' --><img class="fig" src="img/FIG. 258.OCR.png" alt="FIG. 258." /></p>
+<p  id="blk-046-15">Ces définitions sont, on le voit, entièrement analogues à celles
+que nous avons données pour les angles ordinaires, en géométrie
+plane. Seulement, cette fois, leur légitimité n'est pas évidente
+a priori. Il y a, en effet, une infinité de manières de transporter le
+dièdre PQ, sans qu'il cesse d'avoir l'arête et la face P commune avec
+le dièdre PR (puisqu'on peut le faire glisser le long de l'arête
+commune, sans que la face P cesse de coïncider avec elle-même), et
+il n'est nullement évident que, dans ces différents déplacements, la
+face Q ne vient pas prendre des positions différentes. Si cette
+hypothèse se réalisait, il pourrait arriver que cette face Q se trouvât
+tantôt d'un côté, tantôt de l'autre de la face R et, dès lors, le
+dièdre PQ pourrait être à la fois plus grand et plus petit que</p><div class="scan-inline"><img src="img/scan/srcpage-046.png"/></div></data><data data-scanhref="img/scan/srcpage-047.png"><p class="newpage"></p>
+<p  id="blk-047-01">ANGLES DIEDRES.<!-- skp data-txt='27' --><!-- spr -->le dièdre PR, suivant la manière dont on s'y prendrait pour les<!-- spr -->comparer.</p>
+<p  id="blk-047-05">Il n'en est rien : c'est ce qui va résulter du théorème suivant.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-047-07"><strong class="article-num" id="article-351">351.</strong> Théorème. Deux dièdres égaux ont des rectilignes égaux;</p>
+<p  id="blk-047-08">Deux dièdres inégaux ont des rectilignes inégaux, et au plus grand
+dièdre correspond le plus grand rectiligne;</p>
+<p  id="blk-047-09">A un dièdre somme (ou différence) de deux autres, correspond un
+rectiligne somme (ou différence) des deux rectilignes primitifs.</p>
+<p  id="blk-047-10">1° La première partie est évidente, puisque, lorsqu'on fait
+coïncider les deux dièdres, ils ont forcément même rectiligne;</p>
+<p  id="blk-047-11">2° Si deux dièdres, transportés l'un sur l'autre, comme il a été
+dit plus haut (par exemple PQ, PR (fig. 258)) sont inégaux, de
+manière que la face Q soit entre P et R: alors, en coupant ces
+dièdres par un plan perpendiculaire à l'arête commune, on aura,
+dans ce plan, deux rectilignes AOB, AOC tels que OB soit entre
+OA et OC, par conséquent tels que AOB < AOC.</p>
+<p  id="blk-047-12">3° Si les dièdres PQ, QR, rendus adjacents, ont pour somme le
+dièdre PR alors leurs rectilignes AOB, BOC, étant, dans leur plan
+commun, deux angles adjacents, ont bien pour somme l'angle AOC,
+rectiligne de PR.</p>
+<p  id="blk-047-13">Il est clair que les réciproques des propositions précédentes sont
+toutes vraies.</p>
+<p  id="blk-047-14">Le théorème que nous venons de démontrer prouve bien, ainsi
+que nous l'avions annoncé, que l'ordre de grandeur de deux dièdres,
+leur somme, leur différence, ne dépendent pas de la manière
+dont on transporte ces dièdres l'un sur l'autre, ou dont on les
+juxtapose, laquelle ne saurait, en effet, changer l'ordre de grandeur,
+ni la somme, ni la différence des angles plans. La circonstance dont
+nous avons parlé à la fin du numéro précédent ne peut donc se
+présenter.</p>
+<p  id="blk-047-15">Un dièdre peut être transporté sur lui-même de manière que chacune
+de ses faces prenne la place de l'autre (l'arête revenant à sa position
+primitive, mais avec inversion du sens).</p>
+<p  id="blk-047-16">Il suffit évidemment de retourner sur lui-même (Pl., 10) le
+rectiligne du dièdre.</p><div class="scan-inline"><img src="img/scan/srcpage-047.png"/></div></data><data data-scanhref="img/scan/srcpage-048.png"><p class="newpage"><!-- skp data-txt='28' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-048-04"><strong class="article-num" id="article-352">352.</strong> Théorème. Le rapport de deux angles dièdres est égal au
+rapport de leurs angles plans.</p>
+<p  id="blk-048-05">Ce théorème, comme nous le savons, résulte immédiatement du
+précédent (comparer Pl., 70, 113, 247). Le lecteur pourra d'ailleurs
+refaire, dans ce cas, le raisonnement général d'arithmétique, comme
+nous l'avons fait en géométrie plane (Pl., 70, 113).<!-- skp data-txt='-' --></p>
+<p  id="blk-048-07">Corollaire. Si l'on a pris, pour unité d'angle dièdre, le dièdre
+dont le rectiligne est égal à l'unité d'angle plan, tout angle dièdre a
+même mesure que son rectiligne.</p>
+<p  id="blk-048-08">Il suffit, pour le voir, de prendre, pour le second des deux dièdres
+dont il est question dans le théorème précédent, le dièdre unité.</p>
+<p  id="blk-048-09">Conformément à la conclusion que nous venons d'obtenir, on
+mesure les dièdres en degrés, minutes et secondes, le nombre de
+degrés, minutes et secondes d'un dièdre étant le nombre de degrés,
+minutes et secondes contenus dans son angle plan.</p>
+<p class="article" id="blk-048-10"><strong class="article-num" id="article-353">353.</strong> Plans perpendiculaires.</p>
+<p  id="blk-048-11">Définitions. On dit qu'un plan est perpendiculaire sur un autre,
+lorsqu'il forme, avec cet autre, deux dièdres adjacents égaux entre<!-- skp data-txt='-' --><!-- spr -->eux.</p>
+<p  id="blk-048-14">Un dièdre est dit droit, lorsqu'une de ses faces est perpendiculaire
+sur l'autre.<!-- skp data-txt='-' --><!-- spr -->xy. Q</p>
+<p  id="blk-048-17">Théorème. La condition nécessaire et suffisante pour qu'un<!-- spr -->dièdre soit droit, est que son angle
+plan soit droit.</p>
+<p  id="blk-048-19">1° Soit le dièdre P.
+(fig. 259), le plan P étant supposé
+perpendiculaire sur Q, c'est-à-dire
+que le dièdre PQ est égal au
+dièdre adjacent PQ' formé par le
+demi-plan P avec le prolongement
+du demi-plan Q. Menons, perpen-
+diculairement à l'arête<!-- spr -->xy,
+plan qui coupe le demi-plan P suivant OA, le plan Q suivant B'OB:
+la première de ces droites est bien perpendiculaire sur la seconde,<!-- skp data-txt='B' --></p>
+<p  id="blk-048-22">♡<!-- skp data-txt='B' --></p>
+<p  id="blk-048-24">Ꭹ<img class="fig" src="img/FIG. 259.OCR.png" alt="FIG. 259." /><!-- spr -->un<!-- spr -->car elle forme avec elle deux angles adjacents AOB, AOB', qui sont
+égaux comme rectilignes de dièdres égaux.</p><div class="scan-inline"><img src="img/scan/srcpage-048.png"/></div></data><data data-scanhref="img/scan/srcpage-049.png"><p class="newpage"></p>
+<p  id="blk-049-01">ANGLES DIÈDRES.<!-- skp data-txt='29' --></p>
+<p  id="blk-049-03">2º Inversement, si l'angle plan AOB (fig. 259) d'un dièdre P. xy. Q
+est droit, en prolongeant le demi-plan Q suivant Q', on forme un
+second dièdre PQ' égal à PQ, puisque son angle plan AOB' est droit<!-- spr -->comme AOB.<!-- skp data-txt='-' --></p>
+<p  id="blk-049-06">Corollaire. Si un plan est perpendiculaire à un autre, inver-
+sement celui-ci est perpendiculaire au premier.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-049-08"><strong class="article-num" id="article-354">354.</strong> Théorème. Quand deux plans sont perpendiculaires, toute
+perpendiculaire à leur intersection, menée dans l'un d'eux, est perpen-
+diculaire à l'autre.</p>
+<p  id="blk-049-09">Soit en effet, comme au nº précédent, P. xy. Q (fig. 259) un
+dièdre droit, et soit OA une perpendiculaire menée dans le plan P
+à xy. Cette droite OA pourra être considérée comme un côté de
+l'angle plan du dièdre PQ et, par conséquent, sera perpendiculaire
+au second côté OB de cet angle. Étant déjà perpendiculaire à xy,
+elle est perpendiculaire au plan Q.</p>
+<p  id="blk-049-10">C. Q. F. D.</p>
+<p class="article" id="blk-049-11"><strong class="article-num" id="article-355">355.</strong> L'hypothèse du théorème précédent peut être considérée
+comme formée de deux parties; à savoir: 1° les deux plans P, Q
+sont perpendiculaires l'un à l'autre; 2° la perpendiculaire OA à
+l'intersection est située dans le plan P.</p>
+<p  id="blk-049-12">Ce théorème a, en conséquence, deux réciproques.</p>
+<p  id="blk-049-13">1re Réciproque. Un plan est perpendiculaire à un autre, s'il
+contient une perpendiculaire à cet autre.</p>
+<p  id="blk-049-14">Si le plan P contient la droite OA, perpendiculaire au plan Q,
+il est perpendiculaire au plan Q, puisque l'angle plan AOB du
+dièdre PQ est droit.</p>
+<p  id="blk-049-15">2 Réciproque. Si deux plans sont perpendiculaires, et que, d'un
+point de l'un, on abaisse une perpendiculaire sur l'autre, celle-ci est
+située tout entière dans le premier plan.</p>
+<p  id="blk-049-16">Les plans P et Q étant perpendiculaires, la perpendiculaire
+abaissée sur le plan Q par un point A du plan P n'est autre (nº préc.)
+que la perpendiculaire abaissée du point A sur l'intersection des
+deux plans.</p><div class="scan-inline"><img src="img/scan/srcpage-049.png"/></div></data><data data-scanhref="img/scan/srcpage-050.png"><p class="newpage"><!-- skp data-txt='30' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-050-04">Corollaire I. Plus généralement,</p>
+<p  id="blk-050-05">Un plan est perpendiculaire à un autre, s'il est parallèle à une
+perpendiculaire à cet autre.</p>
+<p  id="blk-050-06">Si le plan P est parallèle à une droite D, perpendiculaire au
+plan Q, il contiendra (329) une parallèle à D et sera (1re récip.)
+perpendiculaire à P.</p>
+<p  id="blk-050-07">Un plan et une droite, perpendiculaires à un même plan, sont
+parallèles, puisque l'un contient (2 récip.) une parallèle à l'autre.</p>
+<p  id="blk-050-08">Corollaire II.<!-- skp data-txt='S' --><!-- skp data-txt='R' --></p>
+<p  id="blk-050-11">Quand deux plans qui se coupent sont perpen-<!-- spr -->diculaires à un troisième, leur intersection
+est perpendiculaire à ce troisième.</p>
+<p  id="blk-050-13">Si les deux plans Q, R (fig. 260) sont tous
+deux perpendiculaires à P, et que A soit un
+de leurs points communs, la perpendiculaire
+abaissée du point A sur le plan P est conte-
+nue (2 récipr.) dans Q et dans R elle est
+donc leur intersection.</p>
+<p  id="blk-050-14">:<img class="fig" src="img/FIG. 260.OCR.png" alt="FIG. 260." /><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-050-17"><strong class="article-num" id="article-356">356.</strong> Théorème. Par une droite non perpendiculaire à un plan,
+il passe un plan perpendiculaire au premier, et un seul.</p>
+<p  id="blk-050-18">Ce plan est le lieu géométrique des perpendiculaires au plan donné,
+menées par les différents points de la droite donnée.</p>
+<p  id="blk-050-19">Soit la droite AB, non perpendiculaire au plan P, mais qui peut
+d'ailleurs être contenue dans ce plan ou extérieure à ce plan (fig.261).
+Par le point A, menons à P la perpendi-
+culaire Ax, laquelle est distincte de AB, en
+vertu de l'hypothèse. Le plan xAB, déter-
+miné par ces deux droites, est perpendicu-
+laire à P (355, 1re récip.).</p>
+<p  id="blk-050-20">Inversement, tout plan mené par AB
+perpendiculairement à P contient Ax (355,
+2º récip.): un tel plan ne peut donc être que
+confondu avec xAB. D'autre part, il contient, de même, la perpendi-
+culaire menée à P par n'importe quel point de AB et, inversement,
+par tout point de ce plan passe une perpendiculaire à P, laquelle
+rencontre AB (comme située dans un même plan avec elle sans lui
+être parallèle) ce qui démontre la dernière partie de l'énoncé.</p>
+<p  id="blk-050-21">×<img class="fig" src="img/FIG. 261.OCR.png" alt="FIG. 261." /></p><div class="scan-inline"><img src="img/scan/srcpage-050.png"/></div></data><data data-scanhref="img/scan/srcpage-051.png"><p class="newpage"></p>
+<p  id="blk-051-01">ANGLES DIEDRES.<!-- skp data-txt='31' --></p>
+<p class="article" id="blk-051-03"><strong class="article-num" id="article-357">357.</strong> Tous les dièdres droits sont égaux, comme ayant même
+rectiligne.</p>
+<p  id="blk-051-04">On nomme dièdre aigu (obtus) un dièdre plus petit (plus grand)
+que le dièdre droit; dièdres complémentaires ou supplémentaires,
+deux dièdres dont la somme est égale à un ou à deux dièdres droits.
+Il est clair (351) qu'à des dièdres aigus, obtus, complémentaires,
+supplémentaires, correspondent des rectilignes aigus, obtus,
+complémentaires, supplémentaires, et réciproquement.</p>
+<p  id="blk-051-05">D'après cela, un demi-plan qui coupe un plan indéfini forme avec
+lui deux dièdres supplémentaires; inversement, quand deux dièdres
+adjacents sont supplémentaires, leurs faces extérieures sont en prolon-
+gement.</p>
+<p  id="blk-051-06">La somme des dièdres formés, du même côté d'un plan, par plusieurs
+demi-plans coupant le premier suivant la même droite, est égale à
+deux droits; la somme des dièdres formés par plusieurs demi-plans
+autour d'une droite commune, à quatre droits.</p>
+<p class="article" id="blk-051-07"><strong class="article-num" id="article-358">358.</strong> On nomme dièdres opposés par l'arête, deux dièdres PQ, P'Q'
+(fig. 262) tels, que les faces de l'un soient les
+prolongements des faces de l'autre.</p>
+<p  id="blk-051-08">Deux dièdres opposés par l'arête sont égaux,
+puisque leurs angles plans sont opposés par
+le sommet.</p>
+<p  id="blk-051-09">On remarquera que deux dièdres opposés
+par l'arête sont de même sens, pourvu qu'on
+choisisse le même sens sur l'arête commune
+et qu'on prenne, comme première face de
+l'un, le prolongement de la première face de
+l'autre. Cela résulte de ce que deux angles
+opposés par le sommet sont de même sens.<!-- skp data-txt="P'" --><img class="fig" src="img/FIG. 262.OCR.png" alt="FIG. 262." /></p>
+<p class="article" id="blk-051-12"><strong class="article-num" id="article-358 bis">358 bis.</strong> Deux dièdres qui ont leurs faces parallèles chacune à chacune,
+sont égaux ou supplémentaires, comme on le voit en les coupant par
+un plan perpendiculaire à la direction commune de leurs arêtes, de
+manière à déterminer les deux rectilignes, lesquels sont égaux ou
+supplémentaires.</p>
+<p  id="blk-051-13">REMARQUE.</p>
+<p  id="blk-051-14">On voit en même temps que, si les faces parallèles<!-- skp data-txt='-' --></p><div class="scan-inline"><img src="img/scan/srcpage-051.png"/></div></data><data data-scanhref="img/scan/srcpage-052.png"><p class="newpage"><!-- skp data-txt='32' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->sont de même sens (1), les deux dièdres sont de mêmes sens (lorsque le
+sens choisi sur l'arête est le même).</p>
+<p class="article" id="blk-052-04"><strong class="article-num" id="article-359">359.</strong> On nomme plan bissecteur d'un dièdre, le plan mené par
+l'arête et qui divise le dièdre en deux parties égales. Il est clair que
+ce plan peut être considéré comme déterminé par l'arête et la bissec-
+trice d'un angle plan. Les plans bissecteurs des quatre dièdres formés
+par deux plans indéfinis qui se coupent, forment deux plans indé-<!-- spr -->finis, perpendiculaires entre eux.</p>
+<p  id="blk-052-06">Le lieu des points équidistants de deux plans
+qui se coupent, se compose des plans bissecteurs des
+dièdres formés par ces deux plans. Car si, d'un
+point M (fig. 263), on abaisse sur les plans P, Q les
+perpendiculaires MA, MB, le plan MAB est perpen-
+diculaire à P (comme contenant MA) et à Q (comme
+contenant MB): il est donc perpendiculaire à leur<!-- skp data-txt='P' --><!-- skp data-txt='M' --><img class="fig" src="img/FIG. 263.OCR.png" alt="FIG. 263." /><!-- spr -->intersection et détermine l'angle plan AOB du dièdre</p>
+<p  id="blk-052-11">PQ. Par conséquent, les perpendiculaires MA, MB
+sont égales ou inégales, suivant que le point M appartient ou non
+à la bissectrice de cet angle plan; par conséquent, suivant qu'il
+appartient ou non au plan bissecteur du dièdre.<!-- skp data-txt='Q' --><!-- skp data-txt="'M'" --><!-- skp data-txt='M' --></p>
+<p class="article" id="blk-052-15"><strong class="article-num" id="article-360">360.</strong> Lorsque deux plans P et Q se coupent, la distance d'un
+point quelconque du plan Q au plan P est dans un rapport
+constant avec la distance du même
+point à l'arête du dièdre formé par les
+deux plans, et aussi avec la projection
+de cette distance sur le plan P. Car,
+si M, M' sont deux points du plan Q
+(fig. 264); Mm, M'm' leurs distances
+au plan P; MN, M'N', leurs distances à
+l'arête du dièdre PQ, les triangles rec-
+tangles MmN, M'm'N' sont semblables,
+comme ayant un angle aigu égal.</p>
+<p  id="blk-052-16">Le lieu géométrique des points tels que le rapport de leurs distances
+à deux plans donnés soit égal à un nombre donné, se compose de deux<!-- spr -->m'<!-- skp data-txt='Z' --><!-- spr -->m:<!-- skp data-txt='P' --></p>
+<p  id="blk-052-21">ܙ</p>
+<p  id="blk-052-22">У<img class="fig" src="img/FIG. 264.OCR.png" alt="FIG. 264." /></p>
+<p  id="blk-052-24">(1) Lorsque deux plans parallèles sont coupés par un même troisième, de manière que
+chacun d'eux soit divisé en deux demi-plans, deux des demi-plans ainsi obtenus sont dits de
+même sens ou de sens contraires, suivant qu'ils sont ou non du même côté du plan sécant.</p><div class="scan-inline"><img src="img/scan/srcpage-052.png"/></div></data><data data-scanhref="img/scan/srcpage-053.png"><p class="newpage"></p>
+<p  id="blk-053-01">ANGLES DIÈDRES.<!-- skp data-txt='33' --><!-- spr -->plans passant par l'intersection des premiers (comparer Pl., 157).</p>
+<p class="article" id="blk-053-04"><strong class="article-num" id="article-361">361.</strong> D'après les résultats obtenus dans ce chapitre et dans le
+précédent :<!-- spr -->par un point donné, il passe une seule droite perpendiculaire à un
+plan donné;<!-- spr -->par un point donné, il passe un seul plan perpendiculaire à une
+droite donnée;
+au contraire :<!-- spr -->par un point donné, il passe une infinité de droites perpendiculaires
+à une droite donnée, à savoir, toutes les droites du plan mené,
+perpendiculairement à celle-ci, par le point donné;<!-- spr -->par un point donné, il passe une infinité de plans perpendiculaires
+à un plan donné, à savoir, tous les plans qui passent par la perpen-
+diculaire à ce dernier menée par le point donné.</p>
+<p  id="blk-053-09">Deux droites perpendiculaires à un même plan sont nécessaire-
+ment parallèles, mais non pas deux droites perpendiculaires à une
+même droite.</p>
+<p  id="blk-053-10">Deux plans perpendiculaires à une même droite sont nécessaire-
+ment parallèles, mais non pas deux plans perpendiculaires à un
+même plan.</p>
+<p  id="blk-053-11">On voit que ces conclusions sont précisément inverses des conclusions
+analogues formulées au n° 337, pour les droites et plans parallèles.</p>
+<p  id="blk-053-12">EXERCICES</p>
+<p class="article" id="blk-053-13"><strong class="article-num" id="article-455">455.</strong> Les plans également inclinés sur deux plans sécants donnés, sont parallèles
+à l'une ou à l'autre de deux droites fixes.</p>
+<p class="article" id="blk-053-14"><strong class="article-num" id="article-456">456.</strong> Lieu des milieux des droites parallèles à une direction fixe et comprises
+entre deux plans fixes.</p>
+<p class="article" id="blk-053-15"><strong class="article-num" id="article-457">457.</strong> Lieu du troisième sommet d'un triangle dont les côtés restent parallèles à
+des droites fixes pendant que les deux premiers sommets sont assujettis à rester
+respectivement dans deux plans fixes.</p>
+<p class="article" id="blk-053-16"><strong class="article-num" id="article-458">458.</strong> Même question, lorsque les deux premiers sommets glissent respectivement
+sur une droite et sur un plan fixes.</p>
+<p class="article" id="blk-053-17"><strong class="article-num" id="article-459">459.</strong> Lieu des points tels que la somme ou la différence de leurs distances à deux
+plans donnés soit constante.<!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='3' --></p><div class="scan-inline"><img src="img/scan/srcpage-053.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

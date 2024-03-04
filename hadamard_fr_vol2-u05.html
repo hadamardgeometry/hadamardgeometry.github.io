@@ -1,0 +1,324 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-055.png"><p class="newpage"></p>
+<p  id="blk-055-01">PROJECTION D'UNE DROITE SUR UN PLAN.<!-- skp data-txt='35' --><!-- skp data-txt='339' --></p>
+<p  id="blk-055-04">CHAPITRE V</p>
+<p  id="blk-055-05">ANGLE D'UNE</p>
+<p  id="blk-055-06">PROJECTION D'UNE DROITE SUR UN PLAN.</p>
+<p  id="blk-055-07">DROITE ET D'UN PLAN
+PLUS COURTE DISTANCE DE</p>
+<p  id="blk-055-08">DEUX</p>
+<p  id="blk-055-09">DROITES</p>
+<p class="article" id="blk-055-10"><strong class="article-num" id="article-362">362.</strong> On nomme projection orthogonale (ou simplement projection)
+d'un point sur un plan, le pied de la perpendiculaire abaissée de ce
+point sur le plan.</p>
+<p  id="blk-055-11">La projection d'une figure quelconque est la figure formée par les
+projections des différents points de la primitive.</p>
+<p  id="blk-055-12">La projection d'une ligne droite sur un plan est une ligne droite,
+sauf si la droite donnée est perpendiculaire au plan (auquel cas la
+projection se réduit à un point).</p>
+<p  id="blk-055-13">En effet, nous avons vu (356) que le lieu des perpendiculaires
+menées au plan donné par les différents points de la droite donnée
+est un plan. Celui-ci (dit plan projetant la droite) coupe bien le plan
+donné suivant une seconde droite (fig. 265).<img class="fig" src="img/FIG. 265.OCR.png" alt="FIG. 265." /><img class="fig" src="img/FIG. 266.OCR.png" alt="FIG. 266." /></p>
+<p  id="blk-055-16">Lorsque la droite donnée est parallèle au plan donné, elle est
+manifestement parallèle à sa projection.</p>
+<p  id="blk-055-17">Les projections de droites parallèles sur un même plan sont paral-
+lèles, comme intersections de plans parallèles (les plans projetants, dont
+chacun contient deux parallèles à l'autre) par un troisième (fig. 266).</p><div class="scan-inline"><img src="img/scan/srcpage-055.png"/></div></data><data data-scanhref="img/scan/srcpage-056.png"><p class="newpage"><!-- skp data-txt='36' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-056-04"><strong class="article-num" id="article-363">363.</strong> Théorème de la projection de l'angle droit. La condition
+nécessaire et suffisante pour qu'un angle droit se projette suivant un
+angle droit, est que l'un au moins des côtés soit parallèle au plan de<!-- spr -->projection.</p>
+<p  id="blk-056-06">1° Soit l'angle droit AOB (fig. 267),
+dont le côté OB est parallèle au plan P,
+et qui est projeté sur ce plan suivant<!-- skp data-txt='A' --><!-- skp data-txt='0' --><!-- spr -->a<!-- skp data-txt='P' --></p>
+<p  id="blk-056-11">°<!-- spr -->aob. La droite ob, parallèle à OB, est
+perpendiculaire aux deux droites concou
+rantes OA et Oo. Donc elle est perpendi-
+culaire au plan OAoa et, par suite, à oa;<img class="fig" src="img/FIG. 267.OCR.png" alt="FIG. 267." /></p>
+<p  id="blk-056-14">2° Soit l'angle droit AOB, qui est<!-- spr -->projeté sur le plan P suivant l'angle droit ao b. La droite ob,
+perpendiculaire à oa et à Oo, est perpendiculaire au plan OAa et,
+par suite, à OA. Comme OA est aussi perpendiculaire à OB, il
+est perpendiculaire au plan OBob et, par suite (355, coroll. I),
+parallèle au plan P à moins que OB et ob ne soient parallèles :
+mais, dans ce dernier cas, c'est OB qui est parallèle à P.<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-056-18">"<!-- skp data-txt='A' --><!-- skp data-txt='B' --></p>
+<p class="article" id="blk-056-21"><strong class="article-num" id="article-364">364.</strong> Lorsque l'un des côtés de l'angle droit est situé dans le plan
+de projection, la première partie du théorème précédent peut
+s'énoncer:</p>
+<p  id="blk-056-22">Si, d'un point A de l'espace, on abaisse
+une perpendiculaire Aa sur un plan P et
+une perpendiculaire AO sur une droite
+OB de ce plan, la droite Oa qui joint les
+pieds de ces deux perpendiculaires est
+aussi perpendiculaire à OB (fig. 268).</p>
+<p  id="blk-056-23">Cet énoncé est connu sous le nom de théorème des trois perpendi-
+culaires. Il admet les deux réciproques suivantes :<!-- skp data-txt='0' --><img class="fig" src="img/FIG. 268.OCR.png" alt="FIG. 268." /><!-- skp data-txt='-' --></p>
+<p  id="blk-056-27">1re Réciproque. Si, d'un point a d'un plan, on abaisse une per-
+pendiculaire a✪ sur une droite quelconque OB de ce plan, la droite qui
+joint le point ○ à un point quelconque A de la perpendiculaire élevée
+sur ce plan en a, est également perpendiculaire à OB.</p>
+<p  id="blk-056-28">Car la droite OB, perpendiculaire aux deux droites concourantes
+a0, aA, est perpendiculaire à leur plan.</p><div class="scan-inline"><img src="img/scan/srcpage-056.png"/></div></data><data data-scanhref="img/scan/srcpage-057.png"><p class="newpage"></p>
+<p  id="blk-057-01">PROJECTION D'UNE DROITE SUR UN PLAN.<!-- skp data-txt='37' --><!-- skp data-txt='-' --></p>
+<p  id="blk-057-04">2e Réciproque. Si, d'un point A extérieur à un plan P, on abaisse
+la perpendiculaire AO sur la droite OB de ce plan, et qu'on élève en O,
+dans le plan P, la perpendiculaire Oa à OB, la perpendiculaire abaissée
+du point A sur Oa est perpendiculaire à P.</p>
+<p  id="blk-057-05">Cela résulte, en vertu du théorème du n° 354, de ce que le
+plan OAa est perpendiculaire à P (comme perpendiculaire à OB).</p>
+<p class="article" id="blk-057-06"><strong class="article-num" id="article-365">365.</strong> Angle d'une droite et d'un plan.<!-- skp data-txt='-' --></p>
+<p  id="blk-057-08">Théorème. Si, par le point d'intersection d'une droite et d'un
+plan, on mène, dans ce dernier, diverses droites, celle d'entre elles qui
+fait le plus petit angle avec la droite.
+donnée est la projection de celle-ci sur
+le plan.</p>
+<p  id="blk-057-09">Soit OA une demi-droite issue d'un
+point O du plan P (fig. 269): du point.
+A, abaissons sur le plan P la perpen-
+diculaire Aa, de manière à déterminer<!-- spr -->a<img class="fig" src="img/FIG. 269.OCR.png" alt="FIG. 269." /><!-- spr -->la projection Oa de OA. Je dis que l'angle AOà est plus petit
+que l'angle formé par OA avec n'importe quelle autre demi-droite
+Ob du plan P.</p>
+<p  id="blk-057-13">C'est ce que l'on verra en prenant Ob Oa et joignant Ab, lequel
+est (344) plus grand que Aa : les triangles AOa, AOb, qui ont deux
+côtés égaux et le troisième inégal, fournissent (Pl., 28) la démonstra-
+tion demandée.</p>
+<p  id="blk-057-14">_<!-- skp data-txt='-' --></p>
+<p  id="blk-057-16">REMARQUE. Si la droite Ob tourne autour du point O, dans le
+plan P, en s'éloignant de Oa, la distance ab va en augmentant, et
+par suite aussi la distance Ab: l'angle A06 augmente donc égale-
+ment jusqu'à sa valeur maxima AOa', qui correspond à Ob situé dans
+le prolongement de Oa (fig. 269).</p>
+<p  id="blk-057-17">L'angle aigu AOa que fait la droite OA avec sa projection sur le
+plan P est dit l'angle de la droite et du plan.</p>
+<p class="article" id="blk-057-18"><strong class="article-num" id="article-366">366.</strong> L'angle que fait une droite avec un plan est complémentaire
+de l'angle aigu que cette droite fait avec une perpendiculaire au plan.
+C'est ce qui se voit dans le triangle rectangle OAa de la figure 269,
+triangle dans lequel les angles aigus sont complémentaires.</p><div class="scan-inline"><img src="img/scan/srcpage-057.png"/></div></data><data data-scanhref="img/scan/srcpage-058.png"><p class="newpage"><!-- skp data-txt='38' --><!-- skp data-txt='80' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-058-04">Il est évident que l'angle d'une droite et d'un plan ne change pas
+si l'on remplace la droite par une droite parallèle et le plan par un
+plan parallèle.</p>
+<p class="article" id="blk-058-05"><strong class="article-num" id="article-367">367.</strong> Ligne de plus grande pente.<!-- skp data-txt='-' --><!-- skp data-txt='B' --><!-- skp data-txt="B'" --><!-- spr -->x<img class="fig" src="img/FIG. 270.OCR.png" alt="FIG. 270." /></p>
+<p  id="blk-058-11">Théorème. Lorsque deux plans se coupent, la droite du premier
+qui fait avec le second le plus grand angle possible, est perpendiculaire</p>
+<p  id="blk-058-12">à l'intersection.</p>
+<p  id="blk-058-13">Soient les deux plans P, Q, qui se coupent
+suivant la droite xy (fig. 270). D'après le
+nº précédent, la droite du plan P qui fera
+le plus grand angle possible avec Q sera
+celle qui fera le plus petit angle avec une
+perpendiculaire AB au plan Q. Or la droite
+du plan P qui fait le plus petit angle avec</p>
+<p  id="blk-058-14">AB est (365) la projection AB' de AB sur le
+plan P. Mais cette projection est bien perpendiculaire à xy,
+car le plan qui projette AB, étant perpendiculaire à Q (puisqu'il
+passe par AB) et à P, est perpendiculaire à leur intersection.</p>
+<p  id="blk-058-15">On voit par là que l'angle maximum n'est autre que l'angle des deux
+plans P et Q (on désigne sous ce nom le rectiligne du dièdre PQ).</p>
+<p  id="blk-058-16">La figure 270 montre aussi que l'angle de deux plans est complé-
+mentaire de l'angle que fait l'un d'eux avec une perpendiculaire à
+l'autre.</p>
+<p  id="blk-058-17">Lorsque le plan Q est le plan horizontal, la ligne AB' a reçu le
+nom de ligne de plus grande pente du plan P.</p>
+<p class="article" id="blk-058-18"><strong class="article-num" id="article-368">368.</strong> Plus courte distance de deux droites.</p>
+<p  id="blk-058-19">_</p>
+<p  id="blk-058-20">Théorème. Étant données deux droites non parallèles entre elles,
+il existe une droite, et une seule, qui les coupe toutes deux à angle
+droit.</p>
+<p  id="blk-058-21">On lui donne le nom de perpendiculaire commune aux deux droites
+données.</p>
+<p  id="blk-058-22">La longueur de cette perpendiculaire commune est la plus courte
+distance de ces deux droites.</p>
+<p  id="blk-058-23">Soient les deux droites AB, A'B' (fig. 271), non parallèles entre
+elles. Par ces deux droites on peut, et cela d'une seule façon (332),</p><div class="scan-inline"><img src="img/scan/srcpage-058.png"/></div></data><data data-scanhref="img/scan/srcpage-059.png"><p class="newpage"></p>
+<p  id="blk-059-01">PROJECTION D'UNE DROITE SUR UN PLAN.<!-- skp data-txt='39' --><!-- skp data-txt='B' --><!-- skp data-txt='H' --><!-- skp data-txt='A' --><!-- skp data-txt="P'" --><!-- skp data-txt="A'" --><!-- skp data-txt="H'" --><!-- spr -->faire passer deux plans parallèles P, P'. Toute droite perpendicu-
+laire à la fois à AB et à A'B' est perpendiculaire à P (341, coroll.), et,
+inversement, une perpendiculaire au plan
+P est perpendiculaire tant à AB qu'à A'B'.</p>
+<p  id="blk-059-10">Or le lieu des perpendiculaires au plan
+P qui rencontrent AB est un plan Q; le
+lieu des perpendiculaires au plan P qui
+rencontrent A'B' est un plan Q'. Ces deux
+plans, tous deux perpendiculaires à P, ne
+sont ni parallèles ni confondus (puisqu'il
+ne peut exister de plans parallèles à la fois
+à AB et à A'B' en même temps que per-
+pendiculaires à P): ils se coupent suivant une droite unique HH',
+perpendiculaire à P, qui est la droite cherchée et la seule.</p>
+<p  id="blk-059-11">La distance de AB à A'B', comptée sur la droite HH', est plus
+courte que la distance MM' de deux autres points quelconques pris
+respectivement sur AB et sur A'B', puisqu'elle est la plus courte
+distance des plans parallèles P, P'.<img class="fig" src="img/FIG. 271.OCR.png" alt="FIG. 271." /></p>
+<p  id="blk-059-13">C. Q. F. D.</p>
+<p  id="blk-059-14">Si les deux droites se coupent, la perpendiculaire commune passe
+par le point d'intersection et la plus courte distance est nulle.</p>
+<p  id="blk-059-15">Enfin deux droites parallèles ont une infinité de perpendiculaires
+communes, toutes égales entre elles.</p>
+<p  id="blk-059-16">EXERCICES</p>
+<p class="article" id="blk-059-17"><strong class="article-num" id="article-463">463.</strong> Toute ligne qui se projette, sur deux plans qui se coupent, suivant des lignes
+droites, est en général une ligne droite. Dans quel cas cette proposition est-elle en
+défaut?</p>
+<p class="article" id="blk-059-18"><strong class="article-num" id="article-464">464.</strong> Deux droites telles que leurs projections sur l'un comme sur l'autre de deux
+plans sécants entre eux, soient parallèles entre elles, sont elles-mêmes parallèles.
+Cas d'exception analogue à celui qui se présente pour la proposition précédente.</p>
+<p class="article" id="blk-059-19"><strong class="article-num" id="article-465">465.</strong> Dans un plan donné, par un point donné de ce plan, mener une droite
+faisant un angle donné avec une droite donnée (1).</p>
+<p  id="blk-059-20">Dans un plan donné, par un point de ce plan, mener une droite faisant un angle
+donné avec un autre plan donné (¹).</p>
+<p  id="blk-059-21">(1) Voir la note placée à la fin des problèmes du Ve livre.</p><div class="scan-inline"><img src="img/scan/srcpage-059.png"/></div></data><data data-scanhref="img/scan/srcpage-060.png"><p class="newpage"><!-- skp data-txt='40' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-060-03"><strong class="article-num" id="article-465 bis">465 bis.</strong> Par une droite donnée, faire passer un plan faisant un angle donné avec
+un plan donné (1). Condition de possibilité.</p>
+<p class="article" id="blk-060-04"><strong class="article-num" id="article-466">466.</strong> Une droite également inclinée sur les deux faces d'un dièdre coupe ces faces
+en deux points également distants de l'arête, et inversement.</p>
+<p class="article" id="blk-060-05"><strong class="article-num" id="article-467">467.</strong> Lieu des droites menées par un point donné et faisant des angles égaux avec
+deux plans donnés.</p>
+<p class="article" id="blk-060-06"><strong class="article-num" id="article-468">468.</strong> Lieu des points d'un plan tels que les droites qui les joignent à deux points
+donnés A, B soient également inclinées sur ce plan.</p>
+<p class="article" id="blk-060-07"><strong class="article-num" id="article-469">469.</strong> Lorsqu'on projette un angle AOB sur un plan parallèle à sa bissectrice OC,
+la projection est un angle dont la bissectrice est parallèle à OC.</p>
+<p class="article" id="blk-060-08"><strong class="article-num" id="article-470">470.</strong> Si l'on projette un angle droit sur un plan qui coupe les côtés eux-mêmes, ou
+sur un plan qui coupe les prolongements des deux côtés, la projection est un angle
+obtus; elle serait, au contraire, un angle aigu, si le plan de projection coupait l'un
+des côtés et le prolongement de l'autre.</p>
+<p class="article" id="blk-060-09"><strong class="article-num" id="article-470 bis">470 bis.</strong> Un angle est aigu ou obtus en même temps que sa projection sur un
+plan parallèle à l'un de ses côtés.</p>
+<p class="article" id="blk-060-10"><strong class="article-num" id="article-471">471.</strong> Le pied de la perpendiculaire commune à deux droites D, D' est situé, par
+rapport à un point quelconque M de D, du même côté que la partie de D qui fait,
+avec la perpendiculaire abaissée du point M sur D, un angle aigu.</p>
+<p class="article" id="blk-060-11"><strong class="article-num" id="article-471 bis">471 bis.</strong> Un point d'une droite fixe D est d'autant plus distant d'une droite
+fixe D' qu'il est plus éloigné du pied de la perpendiculaire commune à D et à D'.</p>
+<p class="article" id="blk-060-12"><strong class="article-num" id="article-472">472.</strong> Le lieu des droites issues d'un point donné et admettant, avec une droite
+donnée D, une perpendiculaire commune de longueur donnée, se compose de
+deux plans.</p>
+<p class="article" id="blk-060-13"><strong class="article-num" id="article-473">473.</strong> Étant donnés une droite D, projetée sur un plan P suivant une droite d,
+et un point O de l'espace, montrer qu'il existe sur le plan P un point O' tel que
+la distance du point 0 à un point quelconque M de D soit dans un rapport
+constant avec la distance de O' à la projection m de M sur le plan P.</p>
+<p class="article" id="blk-060-14"><strong class="article-num" id="article-473 bis">473 bis.</strong> Trouver, sur une droite donnée D, un point tel que ses distances à
+une autre droite donnée D' et à un point donné O soient dans un rapport donné.
+(Employer l'exercice précédent) (1).</p>
+<p  id="blk-060-15">(1) Voir la note placée à la fin des problèmes du Ve livre.</p><div class="scan-inline"><img src="img/scan/srcpage-060.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

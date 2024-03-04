@@ -1,0 +1,452 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-488.png"><p class="newpage"><!-- skp data-txt='468' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-488-03">CHAPITRE IX</p>
+<p  id="blk-488-04">SECTIONS DU CONE OBLIQUE A BASE CIRCULAIRE</p>
+<p  id="blk-488-05">PROPRIÉTÉS PROJECTIVES DES CONIQUES</p>
+<p class="article" id="blk-488-06"><strong class="article-num" id="article-754">754.</strong> Théorème. La section d'un cône quelconque à base circu-
+laire par un plan est une ellipse, une parabole ou une hyperbole.</p>
+<p  id="blk-488-07">La démonstration repose sur le théorème démontré au nº 727 : Le
+produit des distances d'un point quelconque d'un cône à base circulaire
+à deux plans tangents est dans un rapport constant avec le carré de la
+distance du même point au plan des deux génératrices de contact.</p>
+<p  id="blk-488-08">On en déduit, comme au nº 727, que, lorsqu'on coupe un cône à base
+circulaire par un plan, le produit des distances d'un point quelconque
+de la section à deux tangentes est dans un rapport constant avec le carré
+de la distance du même point à la corde de contact.</p>
+<p  id="blk-488-09">Cela posé, nous distinguerons trois cas, les mêmes que pour le
+cône de révolution.<!-- skp data-txt='-' --><!-- skp data-txt='2' --><!-- skp data-txt='2' --></p>
+<p  id="blk-488-13">PREMIER CAS. Le plan mené par le sommet du cône, parallèlement
+au plan sécant, est extérieur au cône. Soient d₁, d₂ (fig. 624), deux tan-
+gentes du cercle de base; d, leur corde de contact: ces trois droites
+auront pour perspectives, sur le plan sécant P, deux tangentes D₁, D₂
+de la section et leur corde de contact D. Nous allons chercher à
+choisir d, et d₂ de manière que D₁ et D₂ soient parallèles entre elles
+et toutes deux perpendiculaires à D.</p>
+<p  id="blk-488-14">A cet effet, soit xy l'intersection du plan de base du cône avec le
+plan mené par le sommet S de ce cône parallèlement à P, autrement
+dit la ligne de fuite du plan P sur le plan du cercle de base C : en
+vertu de l'hypothèse qui vient d'être faite, cette droite est extérieure
+au cercle C. Les droites D₁, D2, D sont parallèles aux droites qui
+joignent respectivement le point S aux points ₁, i, i où la droite xy
+rencontre d₁, d₂, d.</p>
+<p  id="blk-488-15">Si donc l'on veut que D, et D₂ soient parallèles, il faudra que les</p><div class="scan-inline"><img src="img/scan/srcpage-488.png"/></div></data><data data-scanhref="img/scan/srcpage-489.png"><p class="newpage"></p>
+<p  id="blk-489-01">CONE OBLIQUE A BASE CIRCULAIRE.<!-- skp data-txt='469' --><!-- spr -->points i̟, et i̟ coïncident. La droite d sera alors la polaire du point i̟
+par rapport à C, de sorte que les points i et i̟, seront conjugués, l'un
+de l'autre. De plus, pour que D soit perpendiculaire à D₁, il faudra
+que l'angle iSi, soit droit.</p>
+<p  id="blk-489-04">Inversement, si nous trouvons sur xy deux points i, i̟, conjugués</p>
+<p  id="blk-489-05">D.</p>
+<p  id="blk-489-06">A₂</p>
+<p  id="blk-489-07">D₂<!-- spr -->dz<!-- spr -->d₁<!-- spr -->y<!-- spr -->m<img class="fig" src="img/FIG. 624.OCR.png" alt="FIG. 624." /><!-- spr -->l'un de l'autre et tels que l'angle ¿Si̟, soit droit, nous pourrons tou-
+jours, du point ₁, mener des tangentes à C (puisque la droite xy est entiè-
+rement extérieure à ce cercle): ces tangentes et la corde de contact cor-
+respondante, laquelle passera bien par le point i, rempliront les
+conditions demandées.</p>
+<p  id="blk-489-14">Or, si les points i, i, sont conjugués par rapport au cercle, le</p><div class="scan-inline"><img src="img/scan/srcpage-489.png"/></div></data><data data-scanhref="img/scan/srcpage-490.png"><p class="newpage"><!-- skp data-txt='470' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->milieu m de ii, appartiendra (Pl., 204) à l'axe radical du cercle C et
+du point i₁, de sorte que le cercle c, décrit sur ii̟ comme diamètre
+dans le plan de C, coupera C à angle droit. Mais, si l'on doit avoir<!-- skp data-txt='-' --><!-- skp data-txt='1' --><!-- skp data-txt='1' --><!-- spr -->iSi, 1 dr., ce même cercle c devra évidemment passer par chacun
+des points S₁, S₁ que l'on obtient en rabattant le point S, dans un
+sens ou dans l'autre, sur le plan de C, autour de xy comme char-
+nière.</p>
+<p  id="blk-490-08">Inversement, un cercle passant par S₁ et S₁ aura son centre sur xy
+(les points S₁, S', étant symétriques l'un de l'autre par rapport à cette droite).
+S'il est orthogonal à C, il déterminera sur xy deux points i, i̟
+satisfaisant aux conditions requises. Or on peut toujours faire
+passer par les points S₁, S', un cercle orthogonal à C (Pl., 158) (¹).</p>
+<p  id="blk-490-09">Les points i, i, étant ainsi déterminés, et par suite aussi les
+droites D, D, D₂, la section considérée sera le lieu des points situés
+entre les parallèles (2) D₁, D₂ et tels que leur distance à la perpendi-
+culaire commune D soit dans un rapport constant avec la moyenne
+proportionnelle de leurs distances à D, D. Ce lieu n'est autre que
+celui que nous avons trouvé au nº 733, Coroll. I, le segment qui
+figure en cet endroit étant celui qui est compris entre les extrémités
+A₁, A₂ de D (fig. 624).</p>
+<p  id="blk-490-10">Donc la section est une ellipse.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-490-12"><strong class="article-num" id="article-754 bis">754 bis.</strong> REMARQUE. La section d'un cylindre quelconque à base
+circulaire par un plan est une ellipse: autrement dit, la projection
+d'un cercle sur un plan P, parallèlement à une direction quelconque,
+est une ellipse.
+Soient o le centre du cercle; xy, l'intersection de son plan<!-- spr -->avec P; O, la projection de o sur le plan P. Le
+théorème sera démontré (d'après ce qui précède) si
+deux tangentes, d₁, d₂ du cercle et leur corde de</p>
+<p  id="blk-490-14">(1) Ce cercle pourra d'ailleurs se réduire à une droite (la perpen-
+diculaire abaissée du centre de C sur xy): l'un des points i, sera
+alors rejeté à l'infini.</p>
+<p  id="blk-490-15">(2) En effet, la nappe du cône donné sur laquelle est situé le
+cercle C est tout entière dans un des dièdres formés par les plans
+tangents Sd₁, Sd2. Le plan Say, parallèle à P, passe par l'arête Si̟₁
+de ce dièdre et est extérieur au dièdre (puisqu'il est extérieur au<!-- spr -->cône). Or, quand on pratique une section plane d'un dièdre parallè-
+FIG. 625.<!-- spr -->lement à un plan qui passe par son arête et lui est extérieur (fig. 625),<!-- spr -->la portion du plan sécant intérieure au dièdre est comprise entre
+les deux droites suivant lesquelles sont coupées les faces. C'est ce qui a lieu pour le plan P,
+relativement au dièdre dont il vient d'être parlé, ou à son opposé par l'arête (suivant que P
+coupe la nappe qui contient le cercle C ou la nappe opposée).</p><div class="scan-inline"><img src="img/scan/srcpage-490.png"/></div></data><data data-scanhref="img/scan/srcpage-491.png"><p class="newpage"></p>
+<p  id="blk-491-01">CONE OBLIQUE A BASE CIRCULAIRE.<!-- skp data-txt='471' --><!-- spr -->contact d se projettent sur P suivant trois droites D₁, D2, D, telles
+que D, et D soient parallèles entre elles et perpendiculaires à D.
+Nous laissons au lecteur le soin de constater qu'on trouvera de
+telles tangentes en déterminant sur xy un segment i qui soit vu
+sous un angle droit tant du point o que du point 0 (ce qui se fera
+par une construction analogue à celle du numéro précédent): la droite d sera
+oi ou oi₁.<!-- skp data-txt='2' --></p>
+<p class="article" id="blk-491-05"><strong class="article-num" id="article-755">755.</strong> DEUXIÈME CAS. Le plan mené par le sommet du cône, paral-
+lèlement au plan sécant, coupe le cône suivant deux génératrices dis-
+tinctes. Nous prendrons alors pour D₁, D₂ les intersections du plan
+sécant P avec les plans tangents suivant ces deux génératrices.
+Dans ces conditions, le raisonnement du nº 729 montre que le pro-
+duit des distances d'un point quelconque de la section à D₁ et à D₂<!-- spr -->est constant.</p>
+<p  id="blk-491-07">Donc cette section est une hyperbole ayant D, et D₂ pour asymp-<!-- skp data-txt='2' --><!-- spr -->totes.</p>
+<p class="article" id="blk-491-10"><strong class="article-num" id="article-756">756.</strong> TROISIÈME CAS.<!-- skp data-txt='-' --></p>
+<p  id="blk-491-12">Le plan mené par le sommet du cône, paral-</p>
+<p  id="blk-491-13">..........<!-- skp data-txt='S' --></p>
+<p  id="blk-491-15">D₁<!-- spr -->da<img class="fig" src="img/FIG. 626.OCR.png" alt="FIG. 626." /><!-- spr -->lèlement au plan sécant, est tangent au cône. Prenons pour d₂ (fig. 626)</p><div class="scan-inline"><img src="img/scan/srcpage-491.png"/></div></data><data data-scanhref="img/scan/srcpage-492.png"><p class="newpage"><!-- skp data-txt='472' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->la tangente au cercle C située dans ce plan tangent, d₁ étant une
+autre tangente quelconque à C. Alors, si m est un point quelconque
+de C, M sa perspective sur le plan P, on aura<!-- skp data-txt='-' --></p>
+<p  id="blk-492-05">(M, D)
+k</p>
+<p  id="blk-492-06">(M, D₁)</p>
+<p  id="blk-492-07">"</p>
+<p  id="blk-492-08">(m, d)
+(m, d₁)<!-- spr -->d)
+(m, d₂)</p>
+<p  id="blk-492-10">(m 5<!-- skp data-txt='-' --><!-- spr -->k' (M, D),</p>
+<p  id="blk-492-13">(m, d)
+et, par conséquent la relation</p>
+<p  id="blk-492-14">(m, d₁) (m, d₂)</p>
+<p  id="blk-492-15">(m, d)</p>
+<p  id="blk-492-16">1 prend la forme</p>
+<p  id="blk-492-17">M.</p>
+<p  id="blk-492-18">D)
+(M, D₁)°</p>
+<p  id="blk-492-19">(M,</p>
+<p  id="blk-492-20">D)</p>
+<p  id="blk-492-21">=<!-- spr -->k"</p>
+<p  id="blk-492-23">.<!-- spr -->ou</p>
+<p  id="blk-492-25">(22)</p>
+<p  id="blk-492-26">(M, D) 2:</p>
+<p  id="blk-492-27">==<!-- spr -->k" (M, D₁).</p>
+<p  id="blk-492-29">Nous pouvons d'ailleurs nous arranger de façon que D soit per-
+pendiculaire à D₁. Car D est ici parallèle à la génératrice de contact
+Si (fig. 626) du plan Sd, et D₁, à la droite qui joint le sommet au
+point d'intersection des tangentes d₁, d₂. Il suffira donc de prendre
+d2 de manière que i̟, soit le point (à distance finie ou à l'infini) où d₂ est
+rencontré par une perpendiculaire à Si, menée par S.<!-- skp data-txt='-' --></p>
+<p  id="blk-492-31">REMARQUE. La parabole doit être regardée comme tangente à la
+droite de l'infini, puisque sa perspective (le cercle C) est tangente à la
+droite d₂, ligne de fuite du plan P.</p>
+<p  id="blk-492-32">D étant perpendiculaire à D₁, l'équation (22) est l'équation d'une
+parabole ayant D pour axe et D₁ pour tangente au sommet (535).</p>
+<p  id="blk-492-33">Si D n'était pas perpendiculaire à D₁, l'équation (22) se ramènerait d'ail-
+leurs (536) à l'équation d'une parabole ayant D pour diamètre et D₁ pour
+tangente à l'extrémité de ce diamètre.</p>
+<p class="article" id="blk-492-34"><strong class="article-num" id="article-757">757.</strong> Le théorème précédent s'énonce encore ainsi : Toute perspec-
+tive d'un cercle est une conique.</p>
+<p  id="blk-492-35">Ace théorème on peut joindre le suivant, que nous énoncerons sans
+démonstration (1): Tout cône du second ordre (c'est-à-dire qui a pour base
+une conique) peut être coupé suivant un cercle.</p>
+<p  id="blk-492-36">(1) La raison pour laquelle cette démonstration n'est pas donnée ici (cette démonstration
+se trouvera plus loin, exercice 1161) est la suivante: toutes les fois qu'au cours de ces Leçons
+nous avons démontré l'existence d'une figure (par exemple d'une droite ou d'un plan), nous
+avons, à cet effet, donné un moyen de construire cette figure. Or un cône quelconque</p><div class="scan-inline"><img src="img/scan/srcpage-492.png"/></div></data><data data-scanhref="img/scan/srcpage-493.png"><p class="newpage"></p>
+<p  id="blk-493-01">PROPRIÉTÉS PROJECTIVES DES CONIQUES.<!-- skp data-txt='473' --></p>
+<p  id="blk-493-03">Nous savons, d'ailleurs (722) que toute conique peut être consi-
+dérée, d'une infinité de manières, comme la perspective d'un cercle.</p>
+<p  id="blk-493-04">Ce dernier théorème fournit immédiatement une série de pro-
+priétés des coniques: il montre en effet qu'une propriété du cercle
+s'étend à une conique quelconque si elle est projective (621), c'est-à-
+dire si elle n'est pas altérée par la perspective.</p>
+<p class="article" id="blk-493-05"><strong class="article-num" id="article-758">758.</strong> Avant d'énumérer les plus importantes des propriétés
+qu'on peut établir ainsi, nous déduirons des théorèmes ci-dessus
+démontrés les conséquences suivantes :</p>
+<p  id="blk-493-06">Toute perspective d'une conique est une conique, car c'est la figure
+homographique d'un cercle.</p>
+<p  id="blk-493-07">Étant donnés un triangle et un point situé dans son plan, mais non
+sur un de ses côtés, on peut trouver une conique passant par ce point et
+tangente à deux côtés du triangle en leurs points communs avec le
+troisième côté.</p>
+<p  id="blk-493-08">Soient en effet ABC le triangle donné, D le point donné. Si nous
+prenons, sur un cercle quelconque, trois points b, c, d, les tangentes
+aux points b et c concourant en a, nous pourrons (634) trouver une
+homographie dans laquelle les points A, B, C, D correspondent res-
+pectivement à a, b, c, d. La figure homographique du cercle bcd sera
+alors la conique demandée.</p>
+<p  id="blk-493-09">On peut déduire de là la proposition suivante, réciproque d'une
+de celles que nous avons démontrées plus haut (727): le lieu des
+points tels que le produit de leurs distances à deux côtés d'un triangle
+soit dans un rapport constant avec le carré de leur distance au troisième
+côté, est une conique.</p>
+<p  id="blk-493-10">Car si ABC est le triangle donné et que D désigne un point du lieu,
+la conique qui passe par D et qui est tangente en B et C à AB et à AC
+coïncide avec le lieu en question, puisque les distances de l'un
+quelconque de ses points aux côtés AB, AC, BC présentent entre elles
+la relation qui caractérise ce lieu.</p>
+<p  id="blk-493-11">On voit d'ailleurs que la conique qui passe par D et est tangente
+en B et C à AB et à AC est unique car elle ne peut être autre que le
+lieu précédent.</p>
+<p class="article" id="blk-493-12"><strong class="article-num" id="article-759">759.</strong> Par cinq points d'un plan, dont trois quelconques ne sont pas en<!-- spr -->ayant pour base une conique étant donné, il existe toujours des plans qui le coupent suivant
+des cercles; mais ces plans ne peuvent pas être construits à l'aide de la règle et du compas
+(voir note E).</p><div class="scan-inline"><img src="img/scan/srcpage-493.png"/></div></data><data data-scanhref="img/scan/srcpage-494.png"><p class="newpage"><!-- skp data-txt='474' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --><!-- spr -->ligne droite, on peut faire passer une conique. Soient en effet
+A, B, C, D, E les cinq points considérés (fig. 627). Prenons sur un
+cercle trois points quelconques a,b,c, puis un quatrième point d tel
+que le rapport anharmonique de ces quatre points sur le cercle<!-- spr -->a<img class="fig" src="img/FIG. 627.OCR.png" alt="FIG. 627." /></p>
+<p  id="blk-494-07">(Pl., 212) soit égal au rapport anharmonique E.ABCD et un cinquième
+point e tel que le rapport anharmonique des quatre points a, b, c, e
+sur le cercle soit égal au rapport anharmonique D.ABCE. Considé-
+rons alors l'homographie dans laquelle les points B, C, D, E corres-
+pondent respectivement aux points b, c, d, e: L'homologue de ea sera
+EA (à cause de l'égalité E. ABCD = e. abcd et l'homologue de da, DA
+(à cause de l'égalité D. ABCE = d. abce). Donc l'homologue de a sera A et
+la figure homographique du cercle abcde sera une conique passant
+par les points A, B, C, D, E.</p>
+<p  id="blk-494-08">,</p>
+<p  id="blk-494-09">Moyennant cette proposition, le théorème de Pappus (728, Rem.) admet
+évidemment la réciproque suivante : Le lieu des points d'un plan tels que le
+produit de leurs distances à deux droites données soit dans un rapport cons-
+tant avec le produit de leurs distances à deux autres droites données est une
+conique circonscrite au quadrilatère formé par les quatre droites.</p>
+<p  id="blk-494-10">On voit d'ailleurs, comme tout à l'heure, que la conique passant par
+les cinq points A, B, C, D. E est unique.<!-- skp data-txt='-' --></p>
+<p  id="blk-494-12">REMARQUE. La plupart des raisonnements précédents subsis-
+tent lorsqu'un ou deux des points considérés sont rejetés à l'infini.
+Par exemple, on peut faire passer par quatre points une conique ayant
+une direction asymptotique parallèle à une direction donnée cela.
+revient à dire qu'on peut faire passer une conique par quatre points
+à distance finie et un point à l'infini.</p>
+<p class="article" id="blk-494-13"><strong class="article-num" id="article-760">760.</strong> De même, on peut tracer une conique tangente à cinq droites
+données d'un plan, pourvu que trois quelconques de ces droites ne passent
+pas par un même point.</p>
+<p  id="blk-494-14">Si A, B, C, D, E sont ces cinq droites, on considérera trois tangentes</p><div class="scan-inline"><img src="img/scan/srcpage-494.png"/></div></data><data data-scanhref="img/scan/srcpage-495.png"><p class="newpage"></p>
+<p  id="blk-495-01">PROPRIÉTÉS PROJECTIVES DES CONIQUES.<!-- skp data-txt='475' --><!-- spr -->quelconques a, b, c d'un cercle, puis une quatrième d tel que le rap-
+port anharmonique qu'elle forme avec les trois premières soit égal
+au rapport anharmonique intercepté sur E par les droites A, B, C, D
+et une cinquième e telle que le rapport anharmonique qu'elle forme
+avec a, b, c, soit égal au rapport anharmonique intercepté sur D par
+A, B, C, E. Alors, dans l'homographie qui fait correspondre aux
+droites b, c, d, e les droites B, C, D, E, la droite A sera l'homologue de
+a et le cercle tangent à a, b, c, d, e aura comme homologue une
+conique tangente à A, B, C, D, E.</p>
+<p class="article" id="blk-495-04"><strong class="article-num" id="article-761">761.</strong> Parmi les propriétés projectives du cercle, nous considére-
+rons d'abord la suivante (Pl., 212) : le rapport anharmonique du fais-
+ceau obtenu en joignant quatre points fixes d'une circonférence à un
+cinquième point variable du même cercle est constant.</p>
+<p  id="blk-495-05">On en déduit immédiatement :</p>
+<p  id="blk-495-06">Théorème. - Le rapport anharmonique du faisceau obtenu en joi-
+gnant quatre points fixes d'une conique à un cinquième point variable de
+la même conique est constant.</p>
+<p  id="blk-495-07">Car il est égal (623) au rapport anharmonique du faisceau corres-
+pondant, formé dans le cercle dont la conique considérée est la
+perspective.</p>
+<p  id="blk-495-08">Ce rapport anharmonique constant est dit le rapport anharmonique
+des quatre points sur la conique.</p>
+<p  id="blk-495-09">Plaçons successivement l'origine du faisceau en deux points diffé-
+rents de la courbe: nous voyons que le théorème précédent peut
+encore s'énoncer ainsi :<!-- skp data-txt='-' --></p>
+<p  id="blk-495-11">Théorème de Chasles. Les droites qui joignent respectivement
+deux points fixes d'une conique à un point variable de la même courbe
+décrivent respectivement deux faisceaux homographiques.</p>
+<p  id="blk-495-12">Réciproquement, le lieu du point commun à deux rayons homologues
+de deux faisceaux homographiques qui n'ont pas le même centre est une
+conique passant par les centres des deux faisceaux.</p>
+<p  id="blk-495-13">Soient en effet A, B les centres des deux faisceaux; C, D, E, trois
+points du lieu. Par les points A, B, C, D, E, on peut faire passer une
+conique. Si M est un point variable de cette conique, les droites
+AM, BM décrivent deux faisceaux homographiques, lesquels ne sont
+autres que les faisceaux donnés, puisqu'ils ont en<!-- spr -->commun</p><div class="scan-inline"><img src="img/scan/srcpage-495.png"/></div></data><data data-scanhref="img/scan/srcpage-496.png"><p class="newpage"><!-- skp data-txt='476' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->avec eux les trois couples de rayons homologues AC, BC; AC,</p>
+<p  id="blk-496-04">BD;</p>
+<p  id="blk-496-05">AE,</p>
+<p  id="blk-496-06">BE.</p>
+<p  id="blk-496-07">Un cas d'exception est celui où les faisceaux ont un rayon homo-
+logue commun (suivant la droite qui joint les centres): le lieu est alors une
+droite (642), mais il convient de considérer, en outre, comme faisant
+partie du lieu, le rayon homologue commun tout entier, puisqu'un
+point quelconque de ce rayon satisfait à la définition du lieu. Ainsi
+complété, le lieu est un système de deux droites, c'est-à-dire un
+cas limite de conique (719 bis, Rem.).</p>
+<p  id="blk-496-08">Ce cas est d'ailleurs le seul où le lieu ne soit pas une véritable
+conique car, pour que cette circonstance se produise, il faut (759)
+que trois des cinq points A, B, C, D, E soient en ligne droite. Or,
+deux quelconques des points C, D, E ne peuvent être en ligne droite
+avec A ou avec B (sauf dans le cas, que nous écartons ici, mais que l'on a
+parfois à considérer, où à n'importe quel rayon issu de A correspond un seul et
+même rayon issu de B ou inversement). D'autre part, si C, par exemple,
+est en ligne droite avec A et B, AB est un rayon homologue com-
+mun, et il en est de même si C, D, E sont sur une même droite
+coupant AB en I, puisque le rapport anharmonique (A.CDEI) sera
+égal à (B.CDEI).</p>
+<p class="article" id="blk-496-09"><strong class="article-num" id="article-762">762.</strong> Les deux théorèmes précédents permettent de construire par
+points une conique donnée par cinq points on voit, en effet, qu'il
+fournit le second point d'intersection de la courbe avec une droite
+quelconque AM passant par un des points donnés :</p>
+<p  id="blk-496-10">Ce point sera sur le rayon BM, homologue de AM dans l'homogra-
+phie dont AC, BC; AD, BD; AE, BE sont trois couples de rayons.
+homologues. Ceci montre à nouveau, comme on le voit, que la
+conique qui passe par cinq points donnés d'un plan (dont trois ne sont pas
+en ligne droite) est unique.</p>
+<p  id="blk-496-11">Le même théorème donne aussi la tangente en un point quelcon-
+que la tangente au point A, centre d'un des faisceaux, n'est en effet
+autre (comparer Pl., 212, Rem.) que l'homologue du rayon de l'autre
+faisceau qui passe en A.</p>
+<p  id="blk-496-12">Cette remarque permet évidemment d'étendre la construction d'une
+conique donnée par cinq points au cas où deux des points donnés
+sont confondus, en convenant de dire qu'on donne deux points con-
+fondus de la courbe, lorsqu'on donne un point et la tangente en ce
+point. De même, elle permet de traiter le cas où l'on donne trois</p><div class="scan-inline"><img src="img/scan/srcpage-496.png"/></div></data><data data-scanhref="img/scan/srcpage-497.png"><p class="newpage"></p>
+<p  id="blk-497-01">PROPRIÉTÉS PROJECTIVES DES CONIQUES.<!-- skp data-txt='477' --><!-- spr -->points et les tangentes en deux d'entre eux, c'est-à-dire celui de la
+conique étudiée au nº 758.<!-- skp data-txt='-' --></p>
+<p  id="blk-497-05">REMARQUE. Les constructions que nous venons d'indiquer
+peuvent s'effectuer (645) à l'aide de la règle seule.<!-- skp data-txt='M' --><!-- spr -->m<!-- spr -->m</p>
+<p class="article" id="blk-497-09"><strong class="article-num" id="article-763">763.</strong> Les mêmes propositions permettent, d'autre part, de trouver
+les points de rencontre d'une droite quelconque avec une conique donnée
+par cinq points.</p>
+<p  id="blk-497-10">En effet, M étant encore un point variable de la conique ABCDE,
+soient m, m' les points où les rayons AM, BM coupent la droite
+donnée A (fig. 628): ces points forment sur A deux divisions homo-
+graphiques, en vertu de la propriété des rayons qui les déterminent
+(761). Mais si M est un point commun
+à la conique et à la droite A, les points.
+m, m' sont tous deux confondus en M.
+Donc les points communs cherchés (s'ils
+existent) ne sont autres que les points
+doubles des divisions homographiques
+dont nous venons de parler.</p>
+<p  id="blk-497-11">On doit (621) considérer comme un
+cas particulier du problème précédent la détermination des points à
+l'infini (c'est-à-dire des directions asymptotiques) de la conique ABCDE: si
+l'on mène, par un point arbitraire du plan, des parallèles à AM et à
+BM, on obtient deux faisceaux homographiques dont les rayons
+doubles (s'iis existent) sont parallèles aux directions asymptotiques
+cherchées.</p>
+<p  id="blk-497-12">Bien entendu, de ce que nous venons de dire résulte à nouveau
+que la conique qui passe par cinq points donnés est unique.<img class="fig" src="img/FIG. 628.OCR.png" alt="FIG. 628." /></p>
+<p class="article" id="blk-497-14"><strong class="article-num" id="article-764">764.</strong> Enfin nous pouvons ajouter la conséquence suivante :<!-- skp data-txt='-' --></p>
+<p  id="blk-497-16">Théorème. Étant donnés, dans un plan, quatre points, dont trois
+quelconques ne sont pas en ligne droite, le lieu du sommet d'un faisceau
+dont les rayons passent respectivement par ces quatre points et dont le
+rapport anharmonique soit égal à un nombre donné est une conique
+passant par les points donnés.</p>
+<p  id="blk-497-17">Car, si M, M' sont deux points du lieu, les faisceaux M.ABCD et
+M. ABCD ayant même rapport anharmonique, la conique déterminée
+par M, M', A, B, C passe par le point D. Les six points A, B, C, D, M, M'</p><div class="scan-inline"><img src="img/scan/srcpage-497.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

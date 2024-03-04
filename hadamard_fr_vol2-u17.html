@@ -1,0 +1,497 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-189.png"><p class="newpage"></p>
+<p  id="blk-189-01">SURFACE ET VOLUME DE LA SPHÈRE.<!-- skp data-txt='169' --></p>
+<p  id="blk-189-03">CHAPITRE V</p>
+<p  id="blk-189-04">SURFACE ET</p>
+<p  id="blk-189-05">VOLUME DE</p>
+<p  id="blk-189-06">LA SPHÈRE<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-189-08"><strong class="article-num" id="article-480">480.</strong> Théorème.</p>
+<p  id="blk-189-09">La surface engendrée par un segment de droite
+tournant autour d'un axe situé avec lui dans un même plan et ne le
+traversant pas, a pour mesure la projection du segment sur l'axe,<!-- spr -->multi-
+pliée par la circonférence qui a son centre sur l'axe et touche le segment
+en son milieu (1).</p>
+<p  id="blk-189-11">La surface engendrée par un segment de droite AB (fig. 394)
+tournant autour d'un axe xy situé avec lui dans un même plan et ne
+le traversant pas, est en général, celle d'un tronc de cône dont les
+circonférences de bases ont pour rayons les perpendiculaires Aa,
+Bb abaissées des points A, B sur l'axe.</p>
+<p  id="blk-189-12">Exceptionnellement, le trone de cône se réduit à un cône, lorsque<!-- skp data-txt='B' --><!-- skp data-txt='B' --><!-- skp data-txt='A' --></p>
+<p  id="blk-189-16">×<!-- spr -->b<!-- spr -->a<!-- spr -->b</p>
+<p  id="blk-189-20">Ꭹ</p>
+<p  id="blk-189-21">×<!-- skp data-txt='Y' --></p>
+<p  id="blk-189-23">Ꭹ<img class="fig" src="img/FIG. 393.OCR.png" alt="FIG. 393." /><img class="fig" src="img/FIG. 393 bis.OCR.png" alt="FIG. 393 bis." /><img class="fig" src="img/FIG. 393 ter.OCR.png" alt="FIG. 393 ter." /><!-- spr -->le segment a une extrémité sur l'axe (fig. 393), ou à un cylindre,
+lorsque le segment est parallèle à l'axe (fig. 393 bis) (2).</p>
+<p  id="blk-189-28">Soient M le milieu de AB; Mm, la perpendiculaire abaissée de ce</p>
+<p  id="blk-189-29">(1) L'expression ainsi obtenue cesse d'avoir un sens lorsque le segment est perpendiculaire
+à l'axe (fig. 393 ter). Cette circonstance ne se présentera pas dans les raisonnements qui
+suivront.</p>
+<p  id="blk-189-30">(2) Dans le cas, exclu par la note précédente, où le segment donné serait perpendiculaire à
+l'axe, on aurait une couronne circulaire ou un cercle.</p><div class="scan-inline"><img src="img/scan/srcpage-189.png"/></div></data><data data-scanhref="img/scan/srcpage-190.png"><p class="newpage"><!-- skp data-txt='170' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->point sur l'axe. La surface latérale du tronc de cône a pour mesure
+(445) le produit 2 AB. Mm; et cette expression est encore valable
+lorsque le tronc de cône est remplacé, soit par un cône, soit par
+un cylindre (445, REM.).</p>
+<p  id="blk-190-04">Par le point M, menons la perpendiculaire à AB, jusqu'à rencontre
+en O avec l'axe. D'autre part, par le point A, menons la parallèle
+AH à l'axe, jusqu'à rencontre en H avec Bb. Le segment AH est égal
+à ab, c'est-à-dire à la projection de AB sur l'axe. D'autre part, les
+triangles ABH, MmO sont semblables, comme ayant leurs côtés
+perpendiculaires, et donnent<!-- skp data-txt='B' --></p>
+<p  id="blk-190-06">AB</p>
+<p  id="blk-190-07">AH</p>
+<p  id="blk-190-08">"</p>
+<p  id="blk-190-09">OM</p>
+<p  id="blk-190-10">Mm</p>
+<p  id="blk-190-11">M.<!-- spr -->ce qui s'écrit</p>
+<p  id="blk-190-13">A.</p>
+<p  id="blk-190-14">Hi<!-- skp data-txt='1' --></p>
+<p  id="blk-190-16">AB.Mm = OM.AH.</p>
+<p  id="blk-190-17">×<!-- spr -->a<!-- skp data-txt='M' --><!-- skp data-txt='0' --></p>
+<p  id="blk-190-21">У<img class="fig" src="img/FIG. 394.OCR.png" alt="FIG. 394." /></p>
+<p  id="blk-190-23">Donc</p>
+<p  id="blk-190-24">Surf. AB</p>
+<p  id="blk-190-25">2π ΑΒ. Μη<!-- skp data-txt='-' --></p>
+<p  id="blk-190-27">=</p>
+<p  id="blk-190-28">2π OM.AH</p>
+<p  id="blk-190-29">27 OM. ab.</p>
+<p  id="blk-190-30">C. Q. F. D.</p>
+<p class="article" id="blk-190-31"><strong class="article-num" id="article-481">481.</strong> Aire de la zone.<!-- skp data-txt='-' --><!-- spr -->que l'on</p>
+<p  id="blk-190-34">Définition. On nomme zone, la portion de surface sphérique
+comprise entre deux plans parallèles (fig. 395). Les circonférences<!-- spr -->situées dans ces deux plans et qui limi-
+tent, par conséquent, la zone, en sont
+dites les bases. La distance des deux
+plans de bases est la hauteur de la zone.
+L'une quelconque des deux portions.<!-- spr -->détermine dans une surface
+sphérique en la coupant par un plan,
+est dite une calotte sphérique. On peut
+évidemment considérer la calotte sphé-
+rique comme une zone dans laquelle un des<!-- spr -->plans de bases est tangent à la sphère.
+La zone (ou la calotte) peut être encore définie comme la surface
+engendrée par la révolution d'un arc de cercle AB (fig. 396, 396 bis)
+autour d'un diamètre sans point commun avec lui (cas de la zone) ou<img class="fig" src="img/FIG. 395.OCR.png" alt="FIG. 395." /></p><div class="scan-inline"><img src="img/scan/srcpage-190.png"/></div></data><data data-scanhref="img/scan/srcpage-191.png"><p class="newpage"></p>
+<p  id="blk-191-01">SURFACE ET VOLUME DE LA SPHÈRE.<!-- skp data-txt='171' --><!-- spr -->passant par une de ses extrémités (cas de la calotte). La hauteur est
+alors la projection de l'arc AB sur l'axe.<!-- skp data-txt='B' --><!-- spr -->b<!-- skp data-txt='B' --><!-- spr -->a<!-- spr -->a<!-- skp data-txt='A' --><img class="fig" src="img/FIG. 396.OCR.png" alt="FIG. 396." /><img class="fig" src="img/FIG. 396 bis.OCR.png" alt="FIG. 396 bis." /></p>
+<p class="article" id="blk-191-12"><strong class="article-num" id="article-482">482.</strong> Pour définir l'aire de la zone, nous remplacerons d'abord
+l'arc AB par une ligne brisée (ACDEB, fig. 397) inscrite dans cet
+arc. L'aire de la zone sera, par définition, la limite vers laquelle
+tend l'aire engendrée par cette ligne en tournant autour de l'axe,
+lorsque le nombre des côtés de la ligne augmente indéfiniment de
+manière<!-- spr -->que<!-- spr -->chacun d'eux tende vers zéro.
+L'existence de cette limite et son expression résultent des deux
+théorèmes suivants :</p>
+<p  id="blk-191-15">Théorème.</p>
+<p  id="blk-191-16">L'aire engendrée par une ligne brisée inscrite à
+un cercle, en tournant autour d'un diamètre qui ne la coupe pas, est
+égale à la projection de la ligne brisée sur le diamètre, multipliée par
+la longueur d'une circonférence dont le rayon est compris entre la plus
+petite et la plus grande des distances du centre aux côtés de la ligne
+brisée.</p>
+<p  id="blk-191-17">Soit la ligne brisée ACDEB (fig. 397) inscrite dans un cercle de
+centre O et tournant autour du diamètre xy, lequel ne la traverse
+pas (une des extrémités de la ligne brisée, ou les deux, pouvant être
+sur xy). Soient a, c, d, e, b, les projections des sommets sur xy.</p>
+<p  id="blk-191-18">Les perpendiculaires aux milieux H, K, L, M des côtés de la ligne
+brisée concourant toutes en O, le théorème du nº 480 donne ici (¹) :<!-- skp data-txt='D' --></p>
+<p  id="blk-191-20">Surf. AC<!-- skp data-txt='1' --></p>
+<p  id="blk-191-22">2π αε . ΟΗ</p>
+<p  id="blk-191-23">H.</p>
+<p  id="blk-191-24">Surf. CD<!-- skp data-txt='-' --></p>
+<p  id="blk-191-26">2π cd. OK<!-- skp data-txt='M' --><!-- skp data-txt='A' --><!-- skp data-txt='B' --></p>
+<p  id="blk-191-30">Surf. DE<!-- skp data-txt='-' --></p>
+<p  id="blk-191-32">2π de OL</p>
+<p  id="blk-191-33">•</p>
+<p  id="blk-191-34">ха<!-- skp data-txt='C' --><!-- spr -->do<!-- spr -->e<!-- spr -->b</p>
+<p  id="blk-191-39">27 26. ΟΜ</p>
+<p  id="blk-191-40">Surf. EB</p>
+<p  id="blk-191-41">Ꭹ</p>
+<p  id="blk-191-42">_<img class="fig" src="img/FIG. 397.OCR.png" alt="FIG. 397." /></p>
+<p  id="blk-191-44">(1) Le cas d'exception signalé à la page 169, note 2, ne peut se présenter dans le
+raisonnement actuel, une corde d'un cercle ne pouvant être perpendiculaire à un diamètre
+sans être traversée par lui.</p><div class="scan-inline"><img src="img/scan/srcpage-191.png"/></div></data><data data-scanhref="img/scan/srcpage-192.png"><p class="newpage"><!-- skp data-txt='172' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-192-03">La surface engendrée par la ligne ACDEB est donc mesurée par</p>
+<p  id="blk-192-04">2л (ac · OH + cd · OK + de· OL +ēb · OM).
+Or, d'après un théorème connu d'arithmétique ('), l'expression
+entre parenthèses est égale au produit de la somme ac + cd
++de+eb, c'est-à-dire de ab, par une quantité comprise entre la
+plus grande et la plus petite des quantités OH, OK, OL, OM : ce
+qui démontre le théorème.<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-192-07">Corollaire. Si la ligne brisée est régulière, les distances
+OH, OK, OL, OM, sont toutes égales à l'apothème de cette ligne
+brisée.</p>
+<p  id="blk-192-08">Donc l'aire engendrée par une ligne brisée régulière tournant autour
+d'un axe situé dans son plan, passant par son centre et ne la traver-
+sant pas, est égale à la projection de cette ligne sur l'axe, multipliée
+par la longueur de la circonférence inscrite.</p>
+<p class="article" id="blk-192-09"><strong class="article-num" id="article-483">483.</strong> Théorème. L'aire engendrée par un arc de cercle tournant
+autour d'un diamètre qui ne le traverse pas, est égale à la projection
+de l'arc sur le diamètre, multipliée par la longueur de la circonférence
+entière.</p>
+<p  id="blk-192-10">Autrement dit, l'aire de la zone est égale au produit de sa hauteur
+par la circonférence d'un grand cercle.</p>
+<p  id="blk-192-11">Soient, en effet, l'arc AB, de centre O, tournant autour du diamètre
+xy; ab, la projection de AB sur xy. Si, dans l'arc AB, nous inscrivons
+une ligne brisée ACDEB, celle-ci, en tournant autour de xy, engen-
+drera une aire égale au produit de 2 ab par une quantité
+intermédiaire entre la plus grande et la plus petite des distances du
+centre aux côtés de la ligne brisée.</p>
+<p  id="blk-192-12">Si maintenant on augmente indéfiniment le nombre des côtés, de
+manière que chacun d'eux tende vers zéro, toutes les distances
+dont il vient d'être question tendent vers le rayon OA</p>
+<p  id="blk-192-13">R de la
+circonférence.</p>
+<p  id="blk-192-14">Donc l'aire engendrée a bien une limite, indépendante de la loi
+suivant laquelle on fait croître le nombre des côtés de la ligne
+brisée (pourvu que tous ces côtés tendent vers zéro) et cette</p>
+<p  id="blk-192-15">•</p>
+<p  id="blk-192-16">=<!-- spr -->limite est</p>
+<p  id="blk-192-18">2π R.ab.</p>
+<p  id="blk-192-19">C. Q. F. D.</p>
+<p  id="blk-192-20">(1) TANNERY, Leçons d'Arithmétique, nº 212, page 180.</p><div class="scan-inline"><img src="img/scan/srcpage-192.png"/></div></data><data data-scanhref="img/scan/srcpage-193.png"><p class="newpage"></p>
+<p  id="blk-193-01">SURFACE ET VOLUME DE LA SPHÈRE.<!-- skp data-txt='173' --><!-- skp data-txt='-' --></p>
+<p  id="blk-193-04">REMARQUE. Le raisonnement précédent et sa conclusion sont
+applicables au cas d'une calotte sphérique.<!-- skp data-txt='-' --></p>
+<p  id="blk-193-06">Corollaire. On voit, par le théorème précédent, que deux zones
+d'une même sphère sont proportionnelles à leurs hauteurs.</p>
+<p class="article" id="blk-193-07"><strong class="article-num" id="article-484">484.</strong> Aire de la sphère.<!-- skp data-txt='-' --></p>
+<p  id="blk-193-09">Théorème. L'aire de la sphère de rayon R est 4πR².</p>
+<p  id="blk-193-10">En effet, le raisonnement du numéro précédent est encore appli-
+cable lorsque l'arc AB devient la demi-circonférence. La projection
+ab est alors le diamètre 2R; la zone engendrée n'est autre que la
+sphère entière. La surface de cette sphère est donc mesurée par le
+produit</p>
+<p  id="blk-193-11">2TR X2R</p>
+<p  id="blk-193-12">_</p>
+<p  id="blk-193-13">4πR².</p>
+<p  id="blk-193-14">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p  id="blk-193-16">Corollaire. La surface de la sphère est égale à quatre fois la
+surface d'un grand cercle.<!-- skp data-txt='-' --></p>
+<p  id="blk-193-18">REMARQUE. On voit que les surfaces de deux sphères sont pro-
+portionnelles aux carrés de leurs rayons.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-193-20"><strong class="article-num" id="article-485">485.</strong> Théorème. Le volume engendré par un triangle tournant
+autour d'un axe situé dans son plan, passant par un de ses sommels et
+ne le traversant pas, a pour mesure le produit de la surface que décrit
+le côté opposé au sommet situé sur l'axe, par le tiers de la hauteur
+correspondante.</p>
+<p  id="blk-193-21">Nous distinguerons trois cas :
+1º Un des côtés du triangle est situé sur l'axe.
+Soit le triangle ABC (fig. 398, 398 bis) dont le côté AB est situé sur<!-- skp data-txt='C' --><!-- skp data-txt='H' --></p>
+<p  id="blk-193-24">オ<!-- skp data-txt='A' --><!-- skp data-txt='C' --><!-- skp data-txt='B' --><!-- skp data-txt='A' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 398.OCR.png" alt="FIG. 398." /><img class="fig" src="img/FIG. 398 bis.OCR.png" alt="FIG. 398 bis." /><!-- spr -->l'axe xy. Par le sommet C, menons, sur cet axe, la perpendi-
+culaire Cc. Les deux triangles rectangles ACc, BCC engendreront,</p><div class="scan-inline"><img src="img/scan/srcpage-193.png"/></div></data><data data-scanhref="img/scan/srcpage-194.png"><p class="newpage"><!-- skp data-txt='174' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->en tournant autour de xy, deux cônes ayant pour base commune
+le cercle de rayon cC, pour hauteurs respectives Ac, Bc, et dont les</p>
+<p  id="blk-194-04">1
+volumes seront respectivement</p>
+<p  id="blk-194-05">лСc² · Ac, Cc² Bc. Le volume<!-- skp data-txt='3' --><!-- skp data-txt='2' --><!-- skp data-txt='43' --></p>
+<p  id="blk-194-09">.<!-- spr -->sera<!-- spr -->engendré par ABC sera la somme ou la différence des deux cônes
+ainsi obtenus, suivant que le point c sur le segment AB
+(fig. 398) ou sur un de ses prolongements, par exemple au delà
+du point B (fig. 398 bis): on aura donc<!-- skp data-txt='1' --><!-- skp data-txt='2' --></p>
+<p  id="blk-194-14">Vol. ABC =</p>
+<p  id="blk-194-15">11. Ce². Ac + 13 = Ce². BC = ½ Ce² (Ac + Bc)</p>
+<p  id="blk-194-16">Сc²</p>
+<p  id="blk-194-17">•<!-- spr -->dans le premier cas, et</p>
+<p  id="blk-194-19">1
+Vol. ABC √ √ — ½ ½
+πCC². Ac 
+Сс². Вс<!-- spr -->c = 1/3 = Ce² (Ac — BC)
+3<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-194-23">__</p>
+<p  id="blk-194-24">π<!-- spr -->dans le second.</p>
+<p  id="blk-194-26">Mais comme on a, dans le premier cas,</p>
+<p  id="blk-194-27">AB</p>
+<p  id="blk-194-28">_</p>
+<p  id="blk-194-29">Ac Bc<!-- spr -->et, dans le second,</p>
+<p  id="blk-194-31">AB<!-- skp data-txt='-' --></p>
+<p  id="blk-194-33">Ac</p>
+<p  id="blk-194-34">Bc,<!-- skp data-txt='-' --><!-- spr -->il vient, en toute hypothèse,</p>
+<p  id="blk-194-37">Vol. ABC</p>
+<p  id="blk-194-38">=<!-- skp data-txt='1' --></p>
+<p  id="blk-194-40">л Сc² · AB.
+3</p>
+<p  id="blk-194-41">D'autre part, si AH est la hauteur du triangle issue du point A,<!-- spr -->on a</p>
+<p  id="blk-194-43">Сс. АВ</p>
+<p  id="blk-194-44">=</p>
+<p  id="blk-194-45">BC AH:</p>
+<p  id="blk-194-46">•<!-- spr -->car ces deux produits représentent tous deux le double de l'aire
+du triangle ABC. On peut donc écrire</p>
+<p  id="blk-194-48">Vol. ABC:</p>
+<p  id="blk-194-49">=</p>
+<p  id="blk-194-50">1½ 10</p>
+<p  id="blk-194-51">CC BC AH,</p>
+<p  id="blk-194-52">π</p>
+<p  id="blk-194-53">•<!-- spr -->ce qui donne</p>
+<p  id="blk-194-55">Vol. ABC<!-- skp data-txt='-' --><!-- skp data-txt='43' --></p>
+<p  id="blk-194-58">AH Surf. BC,</p><div class="scan-inline"><img src="img/scan/srcpage-194.png"/></div></data><data data-scanhref="img/scan/srcpage-195.png"><p class="newpage"></p>
+<p  id="blk-195-01">SURFACE ET VOLUME DE LA SPHÈRE.<!-- skp data-txt='175' --><!-- spr -->car la surface décrite par le côté BC est celle d'un cône et a pour
+mesure (443) □ BC. Cc.</p>
+<p  id="blk-195-04">2º Le côté opposé au sommet situé sur l'axe est parallèle à
+l'axe.</p>
+<p  id="blk-195-05">Soit le triangle ABC (fig. 399, 399 bis) dans lequel le sommet A
+est situé sur l'axe xy, tandis que le côté BC est parallèle à cet axe.
+Menons encore la hauteur AH et projetons les points B, C en b, c
+sur l'axe. Lorsqu'on fait tourner la figure autour de cet axe, le
+rectangle BbAH engendre un cylindre et le triangle AB6 engendre
+un cône; comme ces deux solides ont même base (le cercle de
+rayon 6B) et même hauteur (Ab), le cône est le tiers du cylindre :
+leur différence, c'est-à-dire le volume engendré par le triangle ABH,</p>
+<p  id="blk-195-06">2
+est les du cylindre engendré par le rectangle AbBH.</p>
+<p  id="blk-195-07">De même, le volume engendré par le triangle ACH est les<!-- spr -->du<!-- spr -->cylindre engendré par AcCH.</p>
+<p  id="blk-195-10">Donc le volume engendré par le triangle ABC, lequel est la somme
+(fig. 399) ou la différence (fig. 399 bis) des volumes engendrés par</p>
+<p  id="blk-195-11">2
+les deux triangles précédents, est les du cylindre engendré par le</p>
+<p  id="blk-195-12">3
+rectangle BbCc, ce cylindre étant la somme ou la différence des<!-- skp data-txt='B' --><!-- skp data-txt='B' --><!-- skp data-txt='C' --><!-- skp data-txt='H' --><!-- skp data-txt='H' --><!-- skp data-txt='C' --></p>
+<p  id="blk-195-19">✓ A<!-- skp data-txt='A' --></p>
+<p  id="blk-195-21">с<!-- skp data-txt='A' --><!-- spr -->b<!-- skp data-txt='C' --><img class="fig" src="img/FIG. 399.OCR.png" alt="FIG. 399." /><img class="fig" src="img/FIG. 399 bis.OCR.png" alt="FIG. 399 bis." /><!-- spr -->deux cylindres que nous venons de considérer. Autrement dit, on a</p>
+<p  id="blk-195-28">Vol. ABC<!-- skp data-txt='2' --></p>
+<p  id="blk-195-30">Vol. BbCc<!-- skp data-txt='2' --></p>
+<p  id="blk-195-32">Bb².BC
+Π<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-195-35">===</p>
+<p  id="blk-195-36">HIG</p>
+<p  id="blk-195-37">AH × 2π Bb. BC<!-- skp data-txt='1' --></p>
+<p  id="blk-195-39">AH surf. BC.
+3</p>
+<p  id="blk-195-40">3º Cas général.</p>
+<p  id="blk-195-41">Soit le triangle ABC (fig. 400) dont le sommet A est sur l'axe xy,
+le côté BC n'étant pas parallèle à cet axe. Soit D le point de</p><div class="scan-inline"><img src="img/scan/srcpage-195.png"/></div></data><data data-scanhref="img/scan/srcpage-196.png"><p class="newpage"><!-- skp data-txt='176' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->rencontre de xy avec BC prolongé. On a (1º), en appelant toujours
+AH la hauteur issue de A,</p>
+<p  id="blk-196-04">Vol. ABD:<!-- spr -->surf. BD</p>
+<p  id="blk-196-06">AH,
+3<!-- skp data-txt='H' --><!-- skp data-txt='B' --></p>
+<p  id="blk-196-09">Vol. ACD:<!-- spr -->surf. CD X<!-- skp data-txt='3' --></p>
+<p  id="blk-196-12">AH,<!-- skp data-txt='-' --></p>
+<p  id="blk-196-14">×<!-- skp data-txt='A' --><!-- skp data-txt='Y' --><!-- spr -->d'où, par différence,<img class="fig" src="img/FIG. 400.OCR.png" alt="FIG. 400." /></p>
+<p  id="blk-196-19">Vol. ABC:<!-- spr -->surf. BC<!-- skp data-txt='1' --></p>
+<p  id="blk-196-22">АН.
+3</p>
+<p  id="blk-196-23">_</p>
+<p  id="blk-196-24">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-196-26"><strong class="article-num" id="article-486">486.</strong> Volume du secteur sphérique.</p>
+<p  id="blk-196-27">Définition. On nomme secteur sphérique, la figure engendrée
+par un secteur circulaire tournant autour d'un diamètre qui ne le
+traverse pas. Dans ce mouvement, l'arc qui sert de base au secteur
+circulaire engendre une zone, qui est dite base du secteur sphérique.</p>
+<p  id="blk-196-28">Pour définir le volume du secteur sphérique, nous remplacerons
+le secteur circulaire par un secteur polygonal inscrit. Le volume du
+secteur sphérique sera, par définition, la limite vers laquelle tend le
+volume engendré par ce secteur polygonal, lorsque le nombre des
+côtés de la ligne brisée qui lui sert de base augmente indéfiniment,
+de manière que chacun d'eux tende vers zéro.</p>
+<p  id="blk-196-29">Les théorèmes suivants montrent l'existence de cette limite et en
+fournissent l'expression, laquelle est indépendante de la loi suivant
+laquelle on construit les lignes brisées inscrites.</p>
+<p  id="blk-196-30">Théorème. Le volume engendré par un secteur polygonal
+(Pl., 253 bis) en tournant autour d'un axe situé dans son plan, passant<!-- spr -->par son centre et ne le traversant pas,
+est égal au tiers de la surface engen-
+drée par la ligne brisée qui sert de
+base au secteur, multiplié par une
+quantité intermédiaire entre la plus
+grande et la plus petite des distances<!-- spr -->du centre aux côtés de cette ligne.
+Soit le secteur polygonal OACDEB (fig. 401), tournant autour d'un
+axe xy passant par son centre O, situé dans son plan et ne le traver-
+sant pas. Les triangles OAC, OCD, ODE, OEB engendrent respective-
+ment des volumes dont l'expression est fournie par le théorème<!-- skp data-txt='-' --><!-- skp data-txt='C' --><!-- skp data-txt='H' --><!-- skp data-txt='M' --><!-- skp data-txt='A' --><!-- skp data-txt='B' --><!-- spr -->x</p>
+<p  id="blk-196-40">Ꭹ<img class="fig" src="img/FIG. 401.OCR.png" alt="FIG. 401." /></p><div class="scan-inline"><img src="img/scan/srcpage-196.png"/></div></data><data data-scanhref="img/scan/srcpage-197.png"><p class="newpage"></p>
+<p  id="blk-197-01">SURFACE ET VOLUME DE LA SPHÈRE.<!-- skp data-txt='177' --><!-- spr -->précédent. On a ainsi, en désignant par OH, OK, OL, OM, les distances
+du centre aux côtés AC, DC, DE, EB :</p>
+<p  id="blk-197-04">Vol. OAC<!-- skp data-txt='1' --><!-- spr -->surf. AC OH
+3</p>
+<p  id="blk-197-07">Vol. OCD:<!-- skp data-txt='1' --><!-- spr -->surf. CD OK
+3</p>
+<p  id="blk-197-10">Vol. ODE<!-- skp data-txt='1' --><!-- spr -->surf. DE OL
+3</p>
+<p  id="blk-197-13">_</p>
+<p  id="blk-197-14">Vol. OEB<!-- spr -->surf. EBOM.
+3</p>
+<p  id="blk-197-16">En faisant la somme et recourant encore au théorème d'arithmé-<!-- spr -->tique déjà appliqué nº 482, on voit bien que le volume engendré par
+le secteur est égal au tiers de la somme surf. AC+ surf. CD + surf. DE<!-- spr -->surf. EB, c'est-à-dire au tiers de la surface qu'engendre la
+ligne ACDEB, multiplié par une quantité intermédiaire entre la
+plus grande et la plus petite des quantités OH, OK, OL, OM.<!-- skp data-txt='-' --></p>
+<p  id="blk-197-20">C. Q. F. D.</p>
+<p  id="blk-197-21">Corollaire. Si le secteur polygonal est régulier, les lignes OH,
+OK, OL, OM sont toutes égales à l'apothème de la ligne brisée
+régulière ACDEB.</p>
+<p  id="blk-197-22">Donc le volume engendré par un secteur polygonal régulier tournant
+autour d'un axe situé dans son plan, passant par son centre et ne le
+traversant pas, est égal à la surface engendrée par la ligne brisée qui
+sert de base au secteur, multipliée par le tiers de l'apothème.</p>
+<p  id="blk-197-23">Théorème. Le volume du secteur sphérique est égal à la zone qui
+lui sert de base, multipliée par le tiers du rayon.</p>
+<p  id="blk-197-24">En effet, si l'on augmente indéfiniment le nombre des côtés d'une
+ligne brisée inscrite dans l'arc AB (fig. 401) qui engendre la zone de
+base, - et cela de manière que chacun d'eux cités tende vers zéro,<!-- spr -->la surface engendrée par cette ligne brisée inscrite tend vers la
+surface de zone, pendant que les distances OH, OK, etc. (fig. 401), des
+différents côtés au centre tendent toutes vers le rayon. Donc le
+volume engendré par le secteur polygonal correspondant tend bien
+vers la limite indiquée dans l'énoncé.
+Corollaire. Si R est le rayon de la sphère, h la hauteur de la zone</p>
+<p  id="blk-197-26">1
+qui sert de base au secteur, le volume de celui-ci est</p>
+<p  id="blk-197-27">R2h.
+3</p>
+<p  id="blk-197-28">――<!-- skp data-txt='-' --><!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='12' --></p><div class="scan-inline"><img src="img/scan/srcpage-197.png"/></div></data><data data-scanhref="img/scan/srcpage-198.png"><p class="newpage"><!-- skp data-txt='178' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-198-03">Cette expression est bien, en effet, le produit de</p>
+<p  id="blk-198-04">R par l'aire de<!-- spr -->la zone, trouvée au nº 483.</p>
+<p class="article" id="blk-198-06"><strong class="article-num" id="article-487">487.</strong> Volume de la sphère.</p>
+<p  id="blk-198-07">4
+Théorème. Le volume de la sphère de rayon R est</p>
+<p  id="blk-198-08">πR³.
+3<!-- skp data-txt='-' --></p>
+<p  id="blk-198-10">En effet, les raisonnements qui précèdent sont applicables à la
+figure engendrée par un demi-cercle tournant autour de son dia-
+mètre, c'est-à-dire au volume de la sphère. On doit alors, dans
+l'expression indiquée au corollaire du numéro précédent, remplacer
+la hauteur par 2R; ce qui conduit bien au résultat annoncé.</p>
+<p  id="blk-198-11">Corollaire.</p>
+<p  id="blk-198-12">1
+Le volume de la sphère de diamètre D est D³.<!-- skp data-txt='6' --><!-- skp data-txt='-' --></p>
+<p  id="blk-198-15">D
+Il suffit, pour le voir, de remplacer R, par</p>
+<p  id="blk-198-16">2'<!-- spr -->dans l'expression</p>
+<p  id="blk-198-18">TR³.
+3</p>
+<p  id="blk-198-19">REMARQUE. On voit que les volumes des deux sphères sont
+proportionnels aux cubes de leurs rayons (ou de leurs diamètres).<!-- skp data-txt='A' --><!-- spr -->a<!-- skp data-txt='H' --><!-- skp data-txt='B' --><!-- spr -->b</p>
+<p  id="blk-198-25">○</p>
+<p class="article" id="blk-198-26"><strong class="article-num" id="article-488">488.</strong> Volume de l'anneau sphérique.
+On nomme anneau sphérique le solide engendré par la révolution<!-- spr -->d'un segment de cercle (Pl., 263) autour d'un dia-
+mètre qui ne le traverse pas.</p>
+<p  id="blk-198-28">Le volume engendré par un segment de cercle tour-
+nant autour d'un diamètre qui ne le traverse pas
+(volume de l'anneau sphérique) est le sixième du
+volume du cylindre qui a pour base la corde du
+segment et pour hauteur la projection de cette corde
+sur l'axe.</p>
+<p  id="blk-198-29">Soit le segment de cercle compris entre l'arc AB<!-- spr -->d'une circonférence O (fig. 402) et sa corde, tour-
+nant autour de l'axe xy qui passe par O. Soit encore ab la projec-
+tion AB sur xy.
+Lorsque la figure tourne autour de xy, le secteur circulaire OAB</p>
+<p  id="blk-198-31">2
+engendre un volume qui est mesuré (486) par le produit - OA² ab.<img class="fig" src="img/FIG. 402.OCR.png" alt="FIG. 402." /><!-- skp data-txt='2' --></p><div class="scan-inline"><img src="img/scan/srcpage-198.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

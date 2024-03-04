@@ -1,0 +1,500 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-258.png"><p class="newpage"><!-- skp data-txt='238' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-258-03">CHAPITRE IV</p>
+<p  id="blk-258-04">HÉLICE<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-258-06"><strong class="article-num" id="article-537">537.</strong> Définitions. Soit une courbe plane (C) (fig. 449) telle que
+l'on puisse définir la longueur d'un arc quelconque de cette courbe
+(Pl., 179, Note). C'est ce qui arrive, en particulier, dans le cas où la
+courbe (C) est un cercle. Nous pouvons, de plus, démontrer, dans
+ce cas, le théorème suivant :</p>
+<p  id="blk-258-07">Théorème. Le rapport d'un arc à sa corde tend vers l'unité
+lorsque l'arc tend vers zéro.</p>
+<p  id="blk-258-08">Il résulte, en effet, du n° 179 qu'un arc de cercle (plus petit qu'une
+demi-circonférence) est compris entre sa corde et la somme des
+tangentes menées à ses extrémités et terminées à leur point d'inter-
+section le rapport de la corde à l'arc est donc plus petit que 1,
+mais plus grand que le rapport de la corde à la somme des tangentes
+aux extrémités; or il résulte du n° 177 que ce dernier rapport tend
+vers 1 lorsque l'arc tend vers zéro (¹).</p>
+<p  id="blk-258-09">Nous venons de faire le raisonnement pour un arc de cercle; mais
+il subsiste (en vertu des remarques faites nº 179, Note) pour tous les
+arcs de courbes dont on peut définir la longueur.</p>
+<p  id="blk-258-10">Prenons, d'autre part, une droite indéfinie О₁₁ (fig. 449), sur
+laquelle nous aurons choisi un sens positif. Nous pourrons faire
+correspondre à chaque point de (C) un point de O₁₁, de manière
+que l'arc compris entre deux points quelconques de (C) soit égal à
+la distance des deux points qui leur correspondent sur la droite.</p>
+<p  id="blk-258-11">Pour cela, nous prendrons sur (C) un point O et, sur O₁₁, un
+point O₁, que nous ferons correspondre l'un à l'autre.</p>
+<p  id="blk-258-12">Nous nommerons abscisse curviligne d'un point M de la courbe,</p>
+<p  id="blk-258-13">(1) Voir aussi BOURLET, Trigonométrie, nº 99, p. 110.</p><div class="scan-inline"><img src="img/scan/srcpage-258.png"/></div></data><data data-scanhref="img/scan/srcpage-259.png"><p class="newpage"></p>
+<p  id="blk-259-01">HÉLICE.<!-- skp data-txt='239' --></p>
+<p  id="blk-259-03">(C)<!-- skp data-txt='M' --></p>
+<p  id="blk-259-05">→<!-- spr -->x,</p>
+<p  id="blk-259-07">וי<!-- skp data-txt='0' --><!-- spr -->relative à l'origine 0, la longueur de l'arc OM, prise positivement dans
+un certain sens (par exemple,
+celui qui est marqué par une
+flèche sur la figure 449), négati-</p>
+<p  id="blk-259-10">M₁
+vement dans le sens opposé.</p>
+<p  id="blk-259-11">Nous ferons correspondre, à
+chaque point M de (C), le point
+M₁ de la droite O₁x, dont l'abscisse rectiligne O₁M, est égale, en gran-
+deur et signe, à l'abscisse curviligne de M.</p>
+<p  id="blk-259-12">Si la courbe (C) est indéfinie dans les deux sens, on a ainsi associé
+à chaque point de cette courbe un point déterminé de la droite
+O₁₁, et inversement.<img class="fig" src="img/FIG. 449.OCR.png" alt="FIG. 449." /><!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-259-16">"</p>
+<p  id="blk-259-17">Supposons, au contraire, que la courbe (C) soit fermée (fig. 450)
+et soit sa longueur. Les abscisses comprises entre 0 et 1, autre-
+ment dit, les points de la droite compris entre le point et
+l'extrémité d'un segment O, O'₁ Į porté dans le sens positif
+correspondront aux différents points de la courbe, l'abscisse /
+correspondant, comme l'abscisse O, au point O lui-même.</p>
+<p  id="blk-259-18">Pour les abscisses supérieures à l, nous adopterons la convention
+usitée en trigonométrie (¹), savoir :</p>
+<p  id="blk-259-19">S'il s'agit d'une abscisse comprise entre 1 et 21, égale, par exemple
+à l†h (h étant une longueur comprise entre 0 et 7), nous la consi-
+dérerons comme étant la somme d'un arc égal à / (arc dont l'extrémité
+sur (C) est le point O, comme nous venons de le voir) et d'un arc<!-- skp data-txt='M' --></p>
+<p  id="blk-259-21">:O</p>
+<p  id="blk-259-22">(C)</p>
+<p  id="blk-259-23">Ag(1)</p>
+<p  id="blk-259-24">M₁</p>
+<p  id="blk-259-25">M₁<!-- skp data-txt='M' --></p>
+<p  id="blk-259-27">✗₁<img class="fig" src="img/FIG. 450.OCR.png" alt="FIG. 450." /></p>
+<p  id="blk-259-29">_</p>
+<p  id="blk-259-30">OM = h : l'abscisse 1+h correspondra donc au même point M de (C)
+que l'abscisse h; et par conséquent, le point M₁₁ de O₁x, tel que
+M,M', (fig. 450) correspondra au même point de (C) que M...
+L'abscisse 21 correspondra encore au point O.</p>
+<p  id="blk-259-31">S'il s'agit d'une abscisse comprise entre 27 et 31, égale à 21+ h
+(h étant compris entre 0 et 1), nous la considérerons comme somme</p>
+<p  id="blk-259-32">(1) Voir BOURLET, Leçons de Trigonométrie, ch. I, nos 13 et suiv.</p><div class="scan-inline"><img src="img/scan/srcpage-259.png"/></div></data><data data-scanhref="img/scan/srcpage-260.png"><p class="newpage"><!-- skp data-txt='240' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->d'un arc égal à 21, arc dont l'extrémité est le point O, et d'un arc égal
+à h. Le point correspondant de (C) sera donc le même que pour
+l'abscisse h;</p>
+<p  id="blk-260-04">Et ainsi de suite.</p>
+<p  id="blk-260-05">Des considérations toutes semblables s'appliqueront d'ailleurs (1)
+aux abscisses négatives.</p>
+<p  id="blk-260-06">D'après ces conventions, nous voyons qu'un point de la droite O₁x¡
+correspondra à un point parfaitement déterminé de (C), mais qu'à un
+point de (C) correspondront une infinité de points M₁, M, M",
+MQ, M, (fig. 450) de Ox₁, séparés les uns des autres par des
+intervalles égaux à 1.</p>
+<p  id="blk-260-07">... 9</p>
+<p  id="blk-260-08">...</p>
+<p class="article" id="blk-260-09"><strong class="article-num" id="article-538">538.</strong> Soient un cylindre droit, ayant pour base une courbe quel-
+conque (C), et une génératrice Oy de ce cylindre, coupant la courbe (C)
+en un point O, qui sera dit l'origine des coordonnées curvilignes</p>
+<p  id="blk-260-10">(fig. 451).</p>
+<p  id="blk-260-11">Pour définir un point M sur la sur-
+face du cylindre, il suffira de se don-</p>
+<p  id="blk-260-12">Y₁</p>
+<p  id="blk-260-13">M.<!-- skp data-txt='M' --><!-- spr -->ner:</p>
+<p  id="blk-260-16">[H<!-- spr -->m₁<!-- spr -->m</p>
+<p  id="blk-260-19">(C)<img class="fig" src="img/FIG. 431.OCR.png" alt="FIG. 431." /><img class="fig" src="img/FIG. 451 bis.OCR.png" alt="FIG. 451 bis." /></p>
+<p  id="blk-260-22">1º Le point m où la génératrice me-
+née par M coupe la courbe (C), ce qui
+se fera, en se donnant l'abscisse cur-
+viligne Om de ce point, rapportée à<!-- spr -->l'origine O;
+2º Le segment de génératrice mM, qui sera dit l'ordonnée de M.
+Cette ordonnée sera prise avec le signe + ou avec le signe
+suivant le sens dans lequel elle devra être portée, un sens positif
+ayant été indiqué sur la direction des génératrices du cylindre.</p>
+<p  id="blk-260-24">L'abscisse curviligne et l'ordonnée d'un point en seront dites les
+coordonnées sur le cylindre.</p>
+<p  id="blk-260-25">"</p>
+<p  id="blk-260-26">Soient, d'autre part, dans un plan, deux axes rectangulaires O₁₁,
+O₁₁. Nous ferons correspondre, au point M du cylindre, le point M,
+du plan qui aura, par rapport aux axes O₁₁, O₁₁, mêmes coor-
+données que le point M sur la surface cylindrique.</p>
+<p  id="blk-260-27">D'après ce que nous avons vu au numéro précédent, si la courbe
+(C) est indéfinie, le point M, ainsi défini sera unique; si, au contraire,</p>
+<p  id="blk-260-28">(1) BOURLET, Leçons de Trigonométrie, ch. I, nos 13 et suiv.</p><div class="scan-inline"><img src="img/scan/srcpage-260.png"/></div></data><data data-scanhref="img/scan/srcpage-261.png"><p class="newpage"></p>
+<p  id="blk-261-01">HÉLICE.<!-- skp data-txt='241' --></p>
+<p  id="blk-261-03">M()</p>
+<p  id="blk-261-04">MI<!-- skp data-txt="M'" --><!-- skp data-txt='1' --><!-- spr -->la courbe (C) est fermée et de longueur 1, un point M du cylindre
+correspondra à une infinité de points M₁,
+M... du plan, situés sur une même pa-
+rallèle à Ox, à des intervalles égaux à l
+(fig. 452).</p>
+<p  id="blk-261-08">M',
+Une figure F étant donnée sur le cylin-
+dre, son développement sera la figure
+plane F formée des points M₁ qui cor-
+respondent, ainsi qu'il vient d'être dit, aux différents points M de F.</p>
+<p  id="blk-261-09">Inversement, enrouler sur le cylindre une figure plane F₁, ce sera
+construire la figure F correspondante.<img class="fig" src="img/FIG. 452.OCR.png" alt="FIG. 452." /></p>
+<p class="article" id="blk-261-11"><strong class="article-num" id="article-539">539.</strong> La raison d'être de ces locutions apparaîtra si l'on substitue au
+cylindre considéré un prisme.</p>
+<p  id="blk-261-12">Soit donné un prisme ABCD... A'B'C'D'... (fig. 453). Construisons, dans
+un plan:</p>
+<p  id="blk-261-13">Un parallelogramme A,B, A, B₁, égal à la face AB A'B';</p>
+<p  id="blk-261-14">Un parallélogramme BC, BC, égal (1) à la face BC B'C' et adjacent à
+AB, AB, suivant le côté commun B¸B¸ ;</p>
+<p  id="blk-261-15">Un parallelogramme CD, CD, égale à CD C/D/ et adjacent à BC BC
+suivant le côté commun C₁C₁;
+et ainsi de suite.</p>
+<p  id="blk-261-16">Nous aurons ainsi étalé sur le plan l'aire latérale du prisme. Or la
+construction précédente revient à développer cette aire latérale, au sens<!-- skp data-txt="A'" --></p>
+<p  id="blk-261-18">ان<!-- skp data-txt="B'" --></p>
+<p  id="blk-261-20">Α΄,<!-- skp data-txt='B' --><!-- spr -->a<!-- spr -->b<!-- spr -->b<!-- skp data-txt='10' --><!-- spr -->d,<!-- spr -->d<!-- spr -->a₁<!-- skp data-txt='C' --><!-- skp data-txt='0' --><!-- skp data-txt='B' --></p>
+<p  id="blk-261-32">с<img class="fig" src="img/FIG. 453.OCR.png" alt="FIG. 453." /><!-- spr -->du nº précédent, le rôle de la ligne de base (C) étant joué par une section
+droite quelconque abcd... (fig. 453) du prisme. C'est ce dont on
+convaincra facilement en remarquant que les différents côtés ab, bc, cd,...<!-- spr -->se</p>
+<p  id="blk-261-36">(1) Dans ces deux parallélogrammes égaux, il est sous-entendu que c'est le point B₁ qui
+correspond au point B, le point C₁ au point C.
+GÉOMÉTRIE. II.<!-- skp data-txt='16' --></p><div class="scan-inline"><img src="img/scan/srcpage-261.png"/></div></data><data data-scanhref="img/scan/srcpage-262.png"><p class="newpage"><!-- skp data-txt='242' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-262-03">11'<!-- spr -->de cette section droite se transforment en segments a₁b₁, b₁₁,... tous en
+prolongement les uns des autres.</p>
+<p  id="blk-262-05">Pour définir le développement d'un cylindre, on pourrait remplacer ce
+cylindre par un prisme inscrit, développer ce dernier comme il vient d'être
+dit, puis passer à la limite en supposant que le nombre des côtés du
+polygone de base augmente indéfiniment de manière que chacun d'eux
+tende vers zéro. Il est clair, d'après les remarques précédentes, qu'on
+retomberait ainsi sur le développement, tel qu'il a été défini au nº pré-
+cédent.</p>
+<p  id="blk-262-06">(C)</p>
+<p class="article" id="blk-262-07"><strong class="article-num" id="article-540">540.</strong> Pour définir le développement F, d'une figure cylindrique F,
+nous avons dû nous donner sur le cylindre: 1º une génératrice Oy;
+2º une courbe de base (C). Mais on remarquera que la forme de la<!-- spr -->figure F, ne changerait pas si l'on substituait à la
+génératrice Oy une autre génératrice O'y' (fig. 454)
+ou à la courbe de base (C) une autre section droite
+(C) du même cylindre.</p>
+<p  id="blk-262-09">Le premier changement revient, en effet, à aug-
+menter toutes les abscisses d'une même quantité, à
+savoir l'arc O'0 et par conséquent, à faire subir à la
+figure F, une translation parallèle à O₁x et égale à
+cette quantité O'0.</p>
+<p  id="blk-262-10">Le second changement revient de même à aug-
+menter toutes les ordonnées d'une quantité, à savoir la distance
+des deux plans parallèles qui contiennent les lignes (C) et (C'); ou,
+par conséquent, à faire subir à la figure F, une translation parallèle</p>
+<p  id="blk-262-11">DO<!-- skp data-txt="'0'" --></p>
+<p  id="blk-262-13">(C'))<!-- skp data-txt='1' --><img class="fig" src="img/FIG. 454.OCR.png" alt="FIG. 454." /></p>
+<p  id="blk-262-16">à O₁₁</p>
+<p  id="blk-262-17">Au reste, la remarque que nous venons de faire serait évidente si l'on
+considérait le développement comme obtenu par le procédé indiqué au
+n° précédent.<!-- spr -->un</p>
+<p class="article" id="blk-262-19"><strong class="article-num" id="article-541">541.</strong> On nomme hélice la ligne obtenue en enroulant sur
+cylindre une ligne droite.</p>
+<p  id="blk-262-20">Si cette ligne droite est parallèle à la direction O₁₁ (fig. 452) qui
+correspond aux génératrices du cylindre, elle se transformera, par
+l'enroulement, en une de ces génératrices.</p>
+<p  id="blk-262-21">Si, au contraire, la ligne droite donnée est parallèle à l'axe des
+abscisses O₁₁, elle se transformera en une section droite (C).</p>
+<p  id="blk-262-22">Les sections droites et les génératrices sont donc des cas particu-
+liers d'hélices. Toutefois, dans ce qui va suivre, lorsque l'on parlera</p><div class="scan-inline"><img src="img/scan/srcpage-262.png"/></div></data><data data-scanhref="img/scan/srcpage-263.png"><p class="newpage"></p>
+<p  id="blk-263-01">HÉLICE.<!-- skp data-txt='213' --><!-- spr -->d'hélice, il sera souvent sous-entendu que ces deux cas limites sont<!-- spr -->exclus.</p>
+<p class="article" id="blk-263-05"><strong class="article-num" id="article-542">542.</strong> Puisque (540) la forme du développement d'une figure est
+indépendante du choix de la courbe de base et de l'origine O des
+coordonnées, nous pourrons toujours supposer que cette origine est
+sur l'hélice. C'est ce que nous ferons désormais.</p>
+<p  id="blk-263-06">Dans ces conditions, nous aurons le théorème suivant.<!-- skp data-txt='-' --><!-- skp data-txt='1' --></p>
+<p  id="blk-263-09">Théorème. L'ordonnée d'un point de l'hélice est proportionnelle
+à son abscisse curviligne.</p>
+<p  id="blk-263-10">Ce théorème, d'après la définition de l'hélice, revient au suivant :</p>
+<p  id="blk-263-11">Dans un plan O₁₁₁, l'ordonnée d'un point d'une droite passant
+par l'origine O₁ est proportionnelle à son abscisse.</p>
+<p  id="blk-263-12">Or soient M₁, N, (fig. 455) deux points de la droite, ayant pour
+abscisses Om₁, O̟n₁ еt pour ordonnées m₁M₁, n₁N₁. Les triangles
+semblables Om₁M₁, On N₁ montrent bien que l'on a<!-- spr -->n₁ N₁<!-- spr -->m₁M₁
+O₁m₁</p>
+<p  id="blk-263-15">_</p>
+<p  id="blk-263-16">O₁₂n</p>
+<p  id="blk-263-17">C. Q. F. D.</p>
+<p class="article" id="blk-263-18"><strong class="article-num" id="article-543">543.</strong> Tangente à l'hélice.</p>
+<p  id="blk-263-19">La courbe de base (C) étant supposée admettre une tangente en
+chacun de ses points, nous allons démontrer qu'il en est de même
+pour l'hélice, et trouver la position de cette tangente.</p>
+<p  id="blk-263-20">Théorème.<!-- skp data-txt='-' --></p>
+<p  id="blk-263-22">La tangente à l'hélice fait avec l'arête du cylindre un<!-- spr -->angle constant.<!-- skp data-txt='M' --><!-- skp data-txt='H' --></p>
+<p  id="blk-263-26">Ꭹ</p>
+<p  id="blk-263-27">N.<!-- spr -->m</p>
+<p  id="blk-263-29">× 1<!-- spr -->n₁<!-- spr -->m₁<img class="fig" src="img/FIG. 455.OCR.png" alt="FIG. 455." /><img class="fig" src="img/FIG. 456.OCR.png" alt="FIG. 456." /></p>
+<p  id="blk-263-34">Soient (fig. 456) O l'origine, M un point de l'hélice obtenue en
+enroulant sur le cylindre la droite O₁M₁ (fig. 455), et correspondant</p><div class="scan-inline"><img src="img/scan/srcpage-263.png"/></div></data><data data-scanhref="img/scan/srcpage-264.png"><p class="newpage"><!-- skp data-txt='244' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='1' --><!-- spr -->au point M₁ de cette droite. Soient encore N un point de l'hélice
+voisin de M et correspondant au point N, de la droite OM₁; m, n, les
+projections des points M, N sur le plan de base; m₁, n₁, les projec-
+tions de M₁, N₁ sur l'axe Ox₁; I, le point où MN coupe le plan de
+base. Menons la parallèle NH à mn, jusqu'à rencontre en H avec mM,
+et la parallèle N₁H¸ à m₁n₁, jusqu'à rencontre en H₁ avec m₁M₁. On a
+évidemment NH mn, NH mn₁. De plus le segment MH, étant
+égal à la différence des ordonnées mM, nN, est égal au segment M,H₁,
+différence des ordonnées m₁M₁, n₁N₁.</p>
+<p  id="blk-264-05">Or les triangles semblables IMm, MNH donnent<!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- spr -->mI</p>
+<p  id="blk-264-09">NH<!-- spr -->mn</p>
+<p  id="blk-264-11">Mm</p>
+<p  id="blk-264-12">HM</p>
+<p  id="blk-264-13">HM<!-- spr -->et les triangles semblables OM₁m₁, MNH¸,</p>
+<p  id="blk-264-15">Om</p>
+<p  id="blk-264-16">=</p>
+<p  id="blk-264-17">M,H
+N₁H₁<!-- spr -->m₁ nj
+H,M,</p>
+<p  id="blk-264-19">M₁m₁<!-- spr -->d'où, par division (puisque Mm</p>
+<p  id="blk-264-21">_</p>
+<p  id="blk-264-22">M₁m₁; HM</p>
+<p  id="blk-264-23">_</p>
+<p  id="blk-264-24">H₁M₁),<!-- spr -->mI<!-- spr -->mn</p>
+<p  id="blk-264-27">O, m₁<!-- spr -->mini</p>
+<p  id="blk-264-29">Mais m₁n, n'est autre que l'arc mn de la courbe (C). Son rapport
+au segment de droite mn tend donc vers l'unité lorsque le point n se<!-- spr -->mI
+rapproche indéfiniment de m. Donc le rapport.<!-- spr -->tend aussi vers 1</p>
+<p  id="blk-264-32">O₁m₁<!-- spr -->et le segment mI tend vers O̟m.</p>
+<p  id="blk-264-34">La direction ml ayant pour limite, dans les mêmes conditions, la
+tangente mT à la courbe (C) en m, le point I tend vers le point T
+obtenu en portant sur cette tangente une longueur mT = 0¡m¸.</p>
+<p  id="blk-264-35">La sécante MI tendant vers la position MT lorsque le point N tend
+vers M, la droite MT est la tangente à l'hélice en M.</p>
+<p  id="blk-264-36">L'angle que fait cette tangente avec la génératrice Mm est égal à<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-264-39">OM₁m₁, car, du moment que l'on a Mm</p>
+<p  id="blk-264-40">Mm₁, mT</p>
+<p  id="blk-264-41">Om₁, les
+triangles rectangles MmT, M₁m₁O₁ sont égaux. Cet angle est donc
+constant et égal à M₁₁₁</p>
+<p  id="blk-264-42">C. Q. F. D,</p><div class="scan-inline"><img src="img/scan/srcpage-264.png"/></div></data><data data-scanhref="img/scan/srcpage-265.png"><p class="newpage"></p>
+<p  id="blk-265-01">HÉLICE.<!-- skp data-txt='245' --><!-- skp data-txt='-' --></p>
+<p  id="blk-265-04">Corollaires. I. L'hélice fait avec les différents plans de sections
+droites un angle constant, complémentaire de celui qu'elle fait avec
+les génératrices.</p>
+<p  id="blk-265-05">II. On appelle sous-tangente à l'hélice la projection mT, sur le plan.
+de base, de la portion de tangente MT interceptée entre ce plan et
+le point de contact.</p>
+<p  id="blk-265-06">On voit que la sous-tangente à l'hélice est égale à l'abscisse curvi-
+ligne du point de contact: on a mT</p>
+<p  id="blk-265-07">Om<!-- spr -->arc Om.<!-- skp data-txt='-' --><!-- skp data-txt='S' --><!-- skp data-txt='1' --></p>
+<p  id="blk-265-12">У1</p>
+<p  id="blk-265-13">M.</p>
+<p  id="blk-265-14">N,</p>
+<p  id="blk-265-15">T₁ n₁<!-- spr -->x,</p>
+<p class="article" id="blk-265-17"><strong class="article-num" id="article-544">544.</strong> Plus généralement, soit une courbe quelconque MN tracée
+sur le cylindre, laquelle aura pour développement une courbe M₁N₁
+(fig. 457) et non une droite. Donnons aux lettres m, n, M₁, N₁,
+I le même sens qu'au numéro précédent
+et soit le point où la droite M₁N₁ coupe
+l'axe ₁₁
+En raisonnant comme tout à l'heure, on<!-- spr -->mI
+verra que le rapport tend vers l'unité<!-- spr -->m₁ I₁
+lorsque le point N se rapproche indéfiniment
+de M.</p>
+<p  id="blk-265-20">Mais si la courbe M,N, a une tangente en M₁, le point I tend vers
+l'intersection T₁ de cette tangente avec O₁ x₁, et m₁ I tend vers m T.
+Le segment mI tend donc aussi vers m, T, et la droite MI tend vers
+une position limite, obtenue en portant, sur la tangente à (C) en m,
+un segment mT m™ et joignant mT. Cette position limite MT
+est, dès lors, la tangente à la courbe MN. Elle fait (ainsi qu'on le
+verra comme au nº précédent) avec Mm un angle égal à T₁M,m₁.</p>
+<p  id="blk-265-21">On a donc le théorème suivant :<img class="fig" src="img/FIG. 457.OCR.png" alt="FIG. 457." /><!-- skp data-txt='1' --><!-- skp data-txt='1' --></p>
+<p  id="blk-265-25">=</p>
+<p  id="blk-265-26">Théorème. L'angle que fait une ligne tracée sur le cylindre
+avec la génératrice qui passe par un de ses points est égal à l'angle
+que fait le développement de cette ligne avec l'ordonnée correspon-
+dante.<!-- skp data-txt='-' --></p>
+<p  id="blk-265-28">Corollaire. L'angle de deux lignes tracées sur le cylindre est égal
+à l'angle de leurs développements. Car l'angle des deux lignes cylin-
+driques est égal à la somme ou à la différence des angles qu'elles
+font avec la génératrice qui passe en leur point commun (puisque
+leurs tangentes sont dans un même plan avec cette génératrice)</p><div class="scan-inline"><img src="img/scan/srcpage-265.png"/></div></data><data data-scanhref="img/scan/srcpage-266.png"><p class="newpage"><!-- skp data-txt='246' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-266-03">(fig. 458) et, par conséquent, à la somme ou à la différence des</p>
+<p  id="blk-266-04">Ꭹ</p>
+<p  id="blk-266-05">M₁</p>
+<p  id="blk-266-06">A A</p>
+<p  id="blk-266-07">Τ'</p>
+<p  id="blk-266-08">T₁.</p>
+<p  id="blk-266-09">Ji<!-- spr -->m,<!-- spr -->x₁<img class="fig" src="img/FIG. 438.OCR.png" alt="FIG. 438." /><!-- spr -->angles que font les développements avec l'ordonnée correspondant
+à cette génératrice.<!-- spr -->sens<!-- skp data-txt='T' --><!-- skp data-txt='M' --></p>
+<p class="article" id="blk-266-17"><strong class="article-num" id="article-545">545.</strong> On nomme développante d'une courbe (C) le lieu des points
+T obtenus en portant, sur la tangente en un point quelconque M de</p>
+<p  id="blk-266-18">(C) (fig. 459), un segment MT égal à l'abscisse.
+curviligne OM (rapportée à une origine O prise
+sur la courbe), ce segment étant porté en
+contraire de celui qui correspond à OM, c'est-à-
+dire du côté de M où se trouvent les projections
+des points de la courbe voisins de M et qu'on
+rencontre en cheminant de M vers O.</p>
+<p  id="blk-266-19">C'est le lieu que décrirait l'extrémité libre d'un
+fil primitivement enroulé sur la courbe, ayant son autre extrémité
+fixée en un point de cette courbe, et qu'on déroulerait en ayant
+soin de le maintenir toujours tendu.</p>
+<p  id="blk-266-20">Il résulte du corollaire II du nº 543 que le lieu des traces des tan-
+gentes à l'hélice sur le plan de base est une développante de la courbe
+de base.<img class="fig" src="img/FIG. 459.OCR.png" alt="FIG. 459." /><!-- spr -->sa</p>
+<p class="article" id="blk-266-23"><strong class="article-num" id="article-546">546.</strong> Les conditions précédentes s'appliquent, quelle que soit la
+courbe de base (C).</p>
+<p  id="blk-266-24">Supposons maintenant que celle-ci soit fermée, et soit l
+longueur. Alors, si nous portons sur l'axе O̟₁ x une longueur
+0₁₁' 1 et que, par le point of, nous menions une parallèle ά y à
+O₁₁, nous savons (537, 538) que la bande plane comprise entre les
+parallèles O₁₁, o vient recouvrir, après enroulement, le cylindre
+entier, la droite o^ venant sur la même génératrice Oy que la
+droite O₁₁.<!-- skp data-txt='-' --><!-- skp data-txt='12' --></p><div class="scan-inline"><img src="img/scan/srcpage-266.png"/></div></data><data data-scanhref="img/scan/srcpage-267.png"><p class="newpage"></p>
+<p  id="blk-267-01">HÉLICE.<!-- skp data-txt='217' --><!-- skp data-txt='۱۵۰' --></p>
+<p  id="blk-267-04">"Y","</p>
+<p  id="blk-267-05">Y₁"<!-- skp data-txt="M'" --></p>
+<p  id="blk-267-07">0%;</p>
+<p  id="blk-267-08">10:</p>
+<p  id="blk-267-09">와<!-- skp data-txt='M' --><!-- skp data-txt='01' --><!-- skp data-txt='1' --><!-- spr -->mo<!-- spr -->mo<img class="fig" src="img/FIG. 460.OCR.png" alt="FIG. 460." /></p>
+<p  id="blk-267-16">Une droite issue du point o₁ et coupant o en un point O' (fig. 460)
+s'enroulera suivant une hélice issue du point O et revenant couper
+la génératrice Oy en un point o' tel que
+00' = 0,0.</p>
+<p  id="blk-267-17">Si nous menons à O₁y, les parallèles
+oy, oy", etc., situées à la distance /
+les unes des autres et dont la première
+est située à la distance / de O'y₁, nous
+aurons ainsi partagé le plan en bandes
+qui, après enroulement, viendront toutes
+recouvrir la première : deux parallèles m₁M₁, m,M, à O₁y₁, situées à
+une distance / l'une de l'autre, venant suivant la même génératrice
+du cylindre.</p>
+<p  id="blk-267-18">Si M₁, M, sont les points où ces deux parallèles coupent la droite
+0,0, la différence m(Mm,M₁ est constante et égale à 0,0, comme
+on le voit en menant la parallèle MH, à O₁x₁, jusqu'à rencontre en
+H, avec m M, et remarquant que les triangles M₁HM, OoO sont
+égaux, puisqu'ils sont équiangles et ont le côté M₁H₁ == 0₁₁.</p>
+<p  id="blk-267-19">Donc les points M₁. M, viendront s'enrouler suivant deux points
+M, M' situés sur la même génératrice et séparés par une distance
+MM' 00.</p>
+<p  id="blk-267-20">On appelle spires les portions d'hélice suivant lesquelles viennent
+s'enrouler les segments 0,0% 0,0% 0,0,... déterminés sur la droite
+0,0 par les parallèles o₁₁, "", """", précédemment tracées.</p>
+<p  id="blk-267-21">Toutes les spires sont égales entre elles: elles se déduisent les unes
+des autres par une translation parallèle aux génératrices et de gran-
+deur égale à o, O car à chaque point M d'une spire, obtenu par
+enroulement d'un point M, de la droite, correspond un point M' de
+la spire suivante, obtenu par enroulement d'un point M', et tel que
+le segment MM' soit situé sur une génératrice et égal à o(O.</p>
+<p  id="blk-267-22">La longueur oO, est dite le pas de l'hélice.<!-- skp data-txt='1' --><!-- skp data-txt='-' --></p>
+<p  id="blk-267-25">,</p>
+<p class="article" id="blk-267-26"><strong class="article-num" id="article-547">547.</strong> Hélice circulaire.</p>
+<p  id="blk-267-27">Supposons, enfin, que la courbe (C) soit un cercle et, par consé-
+quent, le cylindre donné un cylindre de révolution.</p>
+<p  id="blk-267-28">Alors un point quelconque M de l'hélice peut être considéré
+comme obtenu en faisant tourner le point O autour de l'axe du
+cylindre, d'un angle quelconque, ce qui donnera un point m du</p><div class="scan-inline"><img src="img/scan/srcpage-267.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

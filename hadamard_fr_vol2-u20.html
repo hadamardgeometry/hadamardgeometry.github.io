@@ -1,0 +1,483 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-240.png"><p class="newpage"><!-- skp data-txt='220' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-240-03">CHAPITRE III</p>
+<p  id="blk-240-04">PARABOLE<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-240-06"><strong class="article-num" id="article-521">521.</strong> Définition. - On nomme parabole la courbe (fig. 434) lieu
+des points M d'un plan également distants d'un point F (appelé<!-- spr -->foyer) et d'une droite D (appelée direc-
+trice) donnés dans ce plan.</p>
+<p  id="blk-240-08">Si le point F était situé sur la droite
+D, le lieu se composerait évidemment
+de la droite Fx (fig. 435), perpendicu-
+laire à D (et d'elle seule, puisque la<!-- skp data-txt='M' --><!-- skp data-txt='M' --><!-- skp data-txt='F' --><!-- spr -->x<!-- skp data-txt='D' --><img class="fig" src="img/FIG. 434.OCR.png" alt="FIG. 434." /><img class="fig" src="img/FIG. 435.OCR.png" alt="FIG. 435." /><!-- spr -->perpendiculaire menée sur D par un point M extérieur à Fx serait
+plus courte que la droite MF, oblique à D). Cette droite est donc
+une forme limite de parabole. Il sera d'ailleurs sous-entendu, dans
+ce qui va suivre, que le foyer sera pris extérieur à la directrice. La
+distance FL (fig. 434) du foyer à la directrice est dite le paramètre
+de la parabole.</p>
+<p  id="blk-240-17">Toute courbe semblable à une parabole est une parabole.</p>
+<p  id="blk-240-18">Pour tracer la courbe par points, il est clair, d'après la définition,
+qu'il suffira de décrire (fig. 436): 1° une circonférence de centre Fet</p><div class="scan-inline"><img src="img/scan/srcpage-240.png"/></div></data><data data-scanhref="img/scan/srcpage-241.png"><p class="newpage"></p>
+<p  id="blk-241-01">PARABOLE.<!-- skp data-txt='221' --><!-- skp data-txt='L' --><!-- skp data-txt='A' --><!-- skp data-txt="M'" --><!-- spr -->de rayon quelconque ; 2° une parallèle à la directrice, à une distance
+de cette directrice égale au rayon de la cir-
+conférence, autrement dit, menée par un point
+m pris sur la perpendiculaire FL dont il vient
+d'être question, et tel que Lm soit égal à ce
+rayon.</p>
+<p  id="blk-241-07">Un point commun aux deux lignes ainsi ob-
+tenues est un point de la parabole, et tout point
+de la parabole peut être obtenu de cette façon.</p>
+<p  id="blk-241-08">Pour qu'un tel point commun existe, il faut
+et il suffit que le rayon, c'est-à-dire Lm, soit
+supérieur à Fm : par conséquent, que le point m soit du même côté
+que F, par rapport au milieu A de FL.</p>
+<p  id="blk-241-09">La parabole n'a donc aucun point situé du côté de la directrice où
+n'est pas le foyer.</p>
+<p  id="blk-241-10">Le point de la courbe le plus rapproché de la directrice est le
+point A. Ce point est dit le sommet de la parabole. Par contre, le
+point m peut s'éloigner autant qu'on le veut au delà de F, de sorte
+que la parabole s'étend indéfiniment.<img class="fig" src="img/FIG. 436.OCR.png" alt="FIG. 436." /></p>
+<p  id="blk-241-12">On pourrait décrire la parabole (ou du moins une portion de parabole),
+d'un mouvement continu à l'aide d'une règle fixée suivant la directrice<!-- spr -->d'une équerre dont un côté serait appliqué contre
+cette règle (fig. 437) et d'un fil, de longueur égale
+à l'autre côté de l'équerre et dont une extrémité
+P serait attachée au sommet libre de celle-ci,
+l'autre extrémité étant fixée au foyer. L'équerre
+glissant le long de la règle, on tendrait constam-
+ment le fil par une pointe M de manière à appli-
+quer la partie PM sur le côté de l'équerre. Le
+point M décrirait manifestement la parabole.</p>
+<p  id="blk-241-14">4.</p>
+<p  id="blk-241-15">Les deux points d'intersection d'une paral-
+lèle à la directrice et d'une circonférence de
+centre F sont symétriques l'un de l'autre par<!-- spr -->rapport à la perpendiculaire FL abaissée du
+foyer sur la directrice de sorte que la courbe admet cette droite
+comme axe de symétrie.<img class="fig" src="img/FIG. 437.OCR.png" alt="FIG. 437." /></p>
+<p class="article" id="blk-241-18"><strong class="article-num" id="article-522">522.</strong> La définition de la parabole équivaut manifestement à
+celle-ci :</p><div class="scan-inline"><img src="img/scan/srcpage-241.png"/></div></data><data data-scanhref="img/scan/srcpage-242.png"><p class="newpage"><!-- skp data-txt='222' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-242-03">La parabole est le lieu des centres des cercles passant par le foyer et
+tangents à la directrice (fig. 434).</p>
+<p  id="blk-242-04">La parabole sépare l'une de l'autre deux régions du plan : l'une
+est formée des points plus rapprochés du foyer que de la directrice:
+ces points sont dits intérieurs; ils sont centres de cercles passant
+par le foyer et sans point commun avec la directrice; l'autre
+comprend les points extérieurs, plus rapprochés de la directrice que
+du foyer et, par conséquent, centres de cercles passant par le foyer
+et coupant la directrice. On ne peut passer de l'une de ces régions à
+l'autre sans traverser la courbe. Au contraire, chacune des régions
+ainsi obtenues est d'un seul tenant (Voir nº 524, exercice 793).</p>
+<p class="article" id="blk-242-05"><strong class="article-num" id="article-523">523.</strong> Intersection d'une droite et d'une parabole.<!-- skp data-txt='-' --><!-- skp data-txt="M'" --><!-- skp data-txt='M' --></p>
+<p  id="blk-242-09">Problème. Trouver les points de rencontre d'une droite et d'une
+parabole.</p>
+<p  id="blk-242-10">Soit le symétrique du foyer F par rapport à la droite donnée.
+Le problème reviendra à faire passer par les points F, f une circon-<!-- spr -->férence tangente à la directrice.</p>
+<p  id="blk-242-12">Nous savons (Pl., 159) qu'on devra pro-
+longer Ff jusqu'à rencontre en I avec la
+directrice et reporter sur celle-ci, de part
+et d'autre de I, une longueur égale à la
+moyenne proportionnelle de IF et de If
+(fig. 438). On obtiendra ainsi le point de
+contact d'un cercle répondant à la question
+et en élevant en ce point de contact une
+perpendiculaire à la directrice jusqu'à ren-
+contre avec la droite donnée, on aura un
+des points de rencontre demandés.</p>
+<p  id="blk-242-13">La solution doit être modifiée lorsque la
+droite donnée D passe par le foyer. La
+condition imposée à la circonférence incon-
+nue de passer par le point f est alors rem-<!-- spr -->placée par celle d'être tangente, en F, à la
+perpendiculaire à D. On prolongera cette perpendiculaire jusqu'à
+rencontre en I avec la directrice et on prendra sur celle-ci, de
+part et d'autre du point I, une longueur égale à IF. Il est clair
+que cette solution n'est qu'un cas limite de la précédente.<!-- skp data-txt="N'" --><!-- skp data-txt='N' --><img class="fig" src="img/FIG. 438.OCR.png" alt="FIG. 438." /></p><div class="scan-inline"><img src="img/scan/srcpage-242.png"/></div></data><data data-scanhref="img/scan/srcpage-243.png"><p class="newpage"></p>
+<p  id="blk-243-01">PARABOLE.<!-- skp data-txt='223' --></p>
+<p  id="blk-243-03">Si la droite Ff est parallèle à la directrice (c'est-à-dire si la droite
+D est parallèle à l'axe), le point I est rejeté à l'infini, ainsi qu'un
+des points de contact, l'autre étant évidem-
+ment à l'intersection de la directrice avec D
+(fig. 438 bis).<!-- skp data-txt='M' --><!-- skp data-txt='D' --><!-- skp data-txt='L' --></p>
+<p  id="blk-243-07">Ainsi l'axe est une direction asymptotique de la para-
+bole. C'est d'ailleurs la seule. D'autre part, comme il
+n'arrive jamais que les deux points d'intersection
+soient rejetés à l'infini, la parabole n'a pas d'asymptote.</p>
+<p  id="blk-243-08">Cette proposition est également vraie lorsqu'on dé-'
+définit une asymptote comme une droite telle que<!-- spr -->la
+distance d'un point de la courbe à cette droite tende
+vers zéro lorsque le point s'éloigne indéfiniment :
+c'est ce que l'on verra en imitant la marche indiquée à l'ex. 789).<img class="fig" src="img/FIG. 438 bis.OCR.png" alt="FIG. 438 bis." /></p>
+<p  id="blk-243-11">Si les points F et f sont de part et d'autre de la directrice,
+le problème est impossible; et il n'y a pas d'autre condition de
+possibilité (Pl., 159, Constr. 14). Ainsi une droite coupe ou ne coupe
+pas une parabole, suivant que le foyer et son symétrique par rapport
+à cette droite sont ou non du même côté de la directrice.</p>
+<p  id="blk-243-12">Enfin, si le point f, symétrique du foyer par rapport à la droite
+donnée, est sur la directrice, les deux points communs
+confondus nous dirons que la droite est tangente.<!-- spr -->sont<!-- skp data-txt="M'" --><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-243-16"><strong class="article-num" id="article-524">524.</strong> Si la droite donnée D n'est pas parallèle à l'axe, un point M<!-- spr -->pris très loin (dans un sens ou dans l'autre) sur cette
+droite est nécessairement extérieur à la parabole. Car
+soient i le point où D coupe la directrice, M' la pro-
+jection de M sur la directrice (fig. 439): Mi est plus
+grand que MM' et la différence Mi MM' augmente
+indéfiniment à mesure que M s'éloigne (puisqu'elle
+est proportionnelle à Mi, le triangle MM'i restant
+constamment semblable à lui-même), tandis que la
+différence Mi - MF (si tant est que Mi soit supérieur</p>
+<p  id="blk-243-18">à MF) est moindre que la longueur fixe ¿F. Donc, si
+le point M est suffisamment éloigné du point i, dans un sens ou
+dans l'autre, MF sera supérieur à MM'.</p>
+<p  id="blk-243-19">D'après cela, on peut appliquer à la parabole les raisonnements
+présentés, au nº 498, relativement à l'ellipse et conclure:<img class="fig" src="img/FIG. 439.OCR.png" alt="FIG. 439." /></p><div class="scan-inline"><img src="img/scan/srcpage-243.png"/></div></data><data data-scanhref="img/scan/srcpage-244.png"><p class="newpage"><!-- skp data-txt='224' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-244-03">La région intérieure à une parabole est convexe.</p>
+<p  id="blk-244-04">Si une droite est sans point commun avec une parabole, elle lui est
+entièrement extérieure.</p>
+<p  id="blk-244-05">Si elle la coupe en deux points, le segment compris entre ces deux
+points est à l'intérieur de la parabole; ses prolongements, à l'exté-
+rieur.</p>
+<p  id="blk-244-06">Si la droite est tangente, tous ses points sont extérieurs à la para-
+bole, sauf le point de contact. La parabole et sa région intérieure sont
+alors tout entières du même côté de la droite.</p>
+<p  id="blk-244-07">On voit aisément que, si une droite est parallèle à l'axe et, par
+conséquent (numéro précédent), coupe la courbe en un seul point,
+elle est divisée par ce point commun en deux demi-droites, dont
+l'une (celle qui contient le point de rencontre de la droite avec la
+directrice) est tout entière extérieure à la parabole; l'autre, tout
+entière intérieure.</p>
+<p class="article" id="blk-244-08"><strong class="article-num" id="article-525">525.</strong> Nous aurons, comme précédemment, à prouver que la défi-
+nition donnée tout à l'heure, de la tangente à la parabole,
+concorde avec celle que l'on déduirait de la définition générale des
+tangentes.</p>
+<p  id="blk-244-09">C'est ce que nous ferons par des raisonnements tout semblables à
+ceux qui ont été employés pour l'ellipse (499, 499 bis) et l'hyperbole
+M étant un point de la parabole, c'est-à-dire le centre d'un cercle
+passant par F et tangent à la directrice en M', soit N un second
+point de la courbe voisine du premier, le cercle de centre N et de
+rayon NF étant tangent à la directrice en N. Ces deux cercles ont
+un second point d'intersection f, symétrique de F par rapport à
+MN, et la droite Ff coupe la directrice au milieu I de M'N'
+(fig. 438).</p>
+<p  id="blk-244-10">Lorsque le point N' tend vers M', il en est de même du point I.
+Comme on a, d'autre part, IM/2 IF. If, et que IF tend vers une
+limite différente de zéro, la distance If tend vers zéro. Le point f
+tend donc, lui aussi, vers M' et la droite MN tend vers la perpen-
+diculaire au milieu de M'F, laquelle est, par conséquent, la tangente
+cherchée.</p>
+<p  id="blk-244-11">Le triangle isoscèle M'MF montre, d'ailleurs, évidemment que ce
+résultat équivaut au suivant :</p>
+<p  id="blk-244-12">_</p>
+<p  id="blk-244-13">Théorème.<!-- skp data-txt='-' --></p>
+<p  id="blk-244-15">La tangente à la parabole divise en deux parties</p><div class="scan-inline"><img src="img/scan/srcpage-244.png"/></div></data><data data-scanhref="img/scan/srcpage-245.png"><p class="newpage"></p>
+<p  id="blk-245-01">PARABOLE.<!-- skp data-txt='225' --><!-- skp data-txt='D' --><!-- skp data-txt='P' --><!-- skp data-txt='-' --><!-- skp data-txt="M'" --><!-- skp data-txt='M' --><!-- skp data-txt='-' --></p>
+<p  id="blk-245-09">It'<!-- skp data-txt='F' --><!-- skp data-txt='T' --><!-- skp data-txt='-' --></p>
+<p  id="blk-245-13">égales l'angle formé par le rayon vecteur de point du contact et la
+perpendiculaire abaissée de ce point sur la directrice.</p>
+<p  id="blk-245-14">Nous pouvons, d'un autre côté, démontrer cette même proposition
+en imitant le raisonnement du nº 499 bis. Si, pour fixer les idées, le
+rayon vecteur FN est plus petit que FM (fig. 440),
+la distance NN' du point N à la directrice devra
+être plus petite, et cela de la même quantité,<!-- spr -->que la distance analogue MM'. Autrement
+dit, si, du point N, nous abaissons la perpendi-
+culaire NP sur MM (de manière que M'P =N'N)
+et si, du point N comme centre, avec FN comme
+rayon, nous décrivons un arc de cercle, jusqu'à
+rencontre en Q avec le rayon vecteur FM, on
+aura MP:</p>
+<p  id="blk-245-16">MQ.
+Prenons alors, sur MP prolongé, un point
+déterminé, par exemple le point M': la parallèle
+à PN menée par ce point ne sera autre que la directrice. Si, par le
+point où cette directrice coupe la droite MN prolongée, nous
+menons une parallèle à NQ, cette parallèle interceptera sur MF un
+segment égal à MM', puisqu'elle formera avec les droites MM', M't,
+MF une figure semblable à MNPQ (¹): autrement dit, elle passera
+par le point F. D'autre part, lorsque le point N tend vers M, l'angle
+de NQ avec MF tend vers 1 dr. (¹); donc la droite Ft tend vers la
+perpendiculaire FT élevée en F à FM, et la droite Mt, vers la droite.
+MT qui joint le point M au point T où la perpendiculaire en ques-
+tion coupe la directrice.</p>
+<p  id="blk-245-17">D'ailleurs, cette droite MT est bien bissectrice de l'angle M'MF, en
+vertu de l'égalité des triangles rectangles (1) MM'T, MFT.<img class="fig" src="img/FIG. 440.OCR.png" alt="FIG. 440." /><!-- skp data-txt='-' --></p>
+<p  id="blk-245-20">Corollaire. La normale à la parabole est bissectrice de l'angle que
+forme le rayon vecteur du point de contact avec le prolongement de la
+perpendiculaire abaissée de ce point sur la directrice (").</p>
+<p class="article" id="blk-245-21"><strong class="article-num" id="article-526">526.</strong> De ce qui précède résulte :<!-- skp data-txt='-' --></p>
+<p  id="blk-245-23">Théorème. Le lieu des symétriques du foyer d'une parabole par
+rapport à ses tangentes est la directrice.</p>
+<p  id="blk-245-24">Par suite, aussi :</p>
+<p  id="blk-245-25">(1) Comparer nº 499 bis.<!-- skp data-txt='GÉOMÉTRIE. II.' --></p>
+<p  id="blk-245-27">.15</p><div class="scan-inline"><img src="img/scan/srcpage-245.png"/></div></data><data data-scanhref="img/scan/srcpage-246.png"><p class="newpage"><!-- skp data-txt='226' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --><!-- skp data-txt='X' --></p>
+<p  id="blk-246-05">Théorème. Le lieu des projections du foyer d'une parabole sur<!-- spr -->ses tangentes est la tangente au sommet.</p>
+<p  id="blk-246-07">En effet, ce lieu est (comparer 500) homothétique
+du précédent par rapport au point F, avec 1/2 comme
+rapport d'homothétie.</p>
+<p  id="blk-246-08">C'est donc la perpendiculaire élevée au milieu A
+de la droite FL distance du foyer à la directrice,
+(fig. 441) autrement dit, la tangente au sommet.<!-- skp data-txt='A' --><img class="fig" src="img/FIG. 441.OCR.png" alt="FIG. 441." /><!-- skp data-txt='-' --></p>
+<p  id="blk-246-12">Inversement. Si le sommet d'un angle droit<!-- spr -->décrit une droite, pendant qu'un des côtés passe par
+un point fixe, l'autre côté reste tangent à une parabole fixe : celle
+qui a le point donné pour foyer et la droite donnée pour tangente<!-- spr -->au sommet.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-246-16"><strong class="article-num" id="article-527">527.</strong> Problème. Mener à la parabole une tangente parallèle à
+une direction donnée.</p>
+<p  id="blk-246-17">Le symétrique du foyer par rapport à la tangente cherchée se
+trouve à l'intersection de la directrice avec la perpendiculaire à la
+direction donnée, menée par le foyer.</p>
+<p  id="blk-246-18">Il y a toujours une solution (et une seule) sauf quand la direction
+donnée est parallèle à l'axe (la perpendiculaire étant alors parallèle
+à la directrice et la tangente rejetée à l'infini).</p>
+<p class="article" id="blk-246-19"><strong class="article-num" id="article-528">528.</strong> Problème. Mener une tangente à la parabole par un point
+de son plan.</p>
+<p  id="blk-246-20">Soit à mener, à une parabole de foyer F (fig. 442) une tangente
+par un point donné P. Le symétrique / du point F par rapport à
+cette tangente se trouvera : 1° sur la directrice; 2° sur la circonfé-
+rence de centre P et de</p>
+<p  id="blk-246-21">Inversement, tout point commun à ces deux lignes sera le symé-
+trique du foyer par rapport à une tangente répondant à la question.</p>
+<p  id="blk-246-22">Le problème est possible si la circonférence de centre P et de
+rayon PF coupe la directrice, c'est-à-dire si le point P est extérieur
+à la courbe.</p>
+<p  id="blk-246-23">Si le point P est intérieur, il n'y a aucune solution; si le point P
+est sur la courbe, une solution unique, la tangente en ce point,
+représentant deux tangentes confondues.</p>
+<p  id="blk-246-24">REMARQUE. De même que l'ellipse, la parabole est comprise
+tout entière dans l'angle formé par deux tangentes.<!-- spr -->rayon PF.<!-- skp data-txt='-' --></p><div class="scan-inline"><img src="img/scan/srcpage-246.png"/></div></data><data data-scanhref="img/scan/srcpage-247.png"><p class="newpage"></p>
+<p  id="blk-247-01">PARABOLE.<!-- skp data-txt='227' --></p>
+<p class="article" id="blk-247-03"><strong class="article-num" id="article-529">529.</strong> Théorèmes. Si, d'un point, on mène à une parabole les deux
+tangentes:</p>
+<p  id="blk-247-04">1º Ces tangentes sont vues du foyer sous des angles égaux;
+2° Leurs projections sur la directrice sont égales;</p>
+<p  id="blk-247-05">3º L'angle qu'elles forment a même bissectrice que l'angle formé par
+la droite qui joint le point donné au foyer et par la demi-droite menée
+parallèlement à l'axe, vers l'intérieur de la parabole.</p>
+<p  id="blk-247-06">1° Reprenons la figure du n° précédent et soient f, f, les symé-
+triques du foyer par rapport aux deux tangentes; M, M₁ les points
+de contact, lesquels s'obtiennent en coupant les tangentes par les
+perpendiculaires à la directrice. Nous voulons démontrer que l'on a</p>
+<p  id="blk-247-07">MFP</p>
+<p  id="blk-247-08">=</p>
+<p  id="blk-247-09">M₁FP.</p>
+<p  id="blk-247-10">Or l'angle MFP est égal M/P, puisqu'il est son symétrique par<!-- spr -->rapport à PM; de même l'angle M,FP est égal à M,/,P.<!-- skp data-txt="'M," --></p>
+<p  id="blk-247-13">Mais les angles MfP, MP sont égaux entre eux, car ils sont
+évidemment (Pl., 62) symétriques l'un -
+de l'autre par rapport à la perpendi-
+culaire Pp abaissée du point P sur la
+directrice; la proposition est donc
+démontrée.</p>
+<p  id="blk-247-14">2° Les projections des deux tan-
+gentes sur la directrice sont les seg-
+ments pf, pfi, manifestement égaux</p>
+<p  id="blk-247-15">×<!-- skp data-txt='F' --><!-- skp data-txt='M' --><!-- spr -->entre eux.<img class="fig" src="img/FIG. 442.OCR.png" alt="FIG. 442." /></p>
+<p  id="blk-247-20">3° Soient Px la parallèle à l'axe,
+menée vers<!-- spr -->l'intérieur de la para-
+bole (c'est-à-dire, suivant les cas,
+la demi-droite Pp ou son prolongement); Py la bissectrice de<!-- spr -->l'angle FPx.</p>
+<p  id="blk-247-23">On montrera, comme au nº 504, que l'angle yPM est la moitié de
+l'angle Pfet l'angle yPM, la moitié de l'angle xPf.</p>
+<p  id="blk-247-24">Mais les angles xPf, xPf, sont égaux entre eux : donc la droite Py
+fait des angles égaux avec les deux tangentes. Elle est d'ailleurs
+intérieure à leur angle, puisque les deux droites PF, Px sont
+intérieures à cet angle (nº précéd., Rem.): elle en est donc la
+bissectrice.</p><div class="scan-inline"><img src="img/scan/srcpage-247.png"/></div></data><data data-scanhref="img/scan/srcpage-248.png"><p class="newpage"><!-- skp data-txt='228' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-248-04"><strong class="article-num" id="article-530">530.</strong> Théorème. Le lieu des sommets des angles droits circonscrits
+à la parabole est la directrice.</p>
+<p  id="blk-248-05">En effet, dans la figure précédente, si l'angle MPM₁ = MPF +
+FPM, est droit, la somme des angles (PF, FP₁, respectivement
+doubles de MPF, FPM, est égale à deux droits, de sorte que le
+point P est sur la droite ffi, et réciproquement.</p>
+<p class="article" id="blk-248-06"><strong class="article-num" id="article-531">531.</strong> La définition donnée, en premier lieu, de la parabole est.
+très différente de celles qui ont été données de l'ellipse et de l'hy-
+perbole; mais il n'en est pas de même de celle qui lui a été
+substituée au nº 522, laquelle est évidemment analogue aux défi-
+nitions de l'ellipse et de l'hyperbole données aux nos 495, 508. Cette
+analogie se retrouve dans les théorèmes qui viennent d'être
+démontrés. Elle peut être précisée par le théorème suivant.<!-- skp data-txt='-' --><!-- skp data-txt="'M" --><!-- skp data-txt="'M'" --><!-- skp data-txt='F' --><!-- skp data-txt='L' --></p>
+<p  id="blk-248-12">Ai</p>
+<p  id="blk-248-13">、</p>
+<p  id="blk-248-14">Théorème. - La parabole est la limite d'une ellipse (ou d'une hyper-
+bole) dont un foyer et le sommet voisin restent fixes, pendant que<!-- spr -->l'autre foyer s'éloigne indéfiniment sur
+l'axe.</p>
+<p  id="blk-248-16">Soient F le foyer d'une parabole,
+A le sommet, de sorte que la direc-
+trice est la perpendiculaire à FA me-
+née par le point L, symétrique de A
+par rapport à F (fig. 443). Considé-
+rons une ellipse E ayant pour foyers
+le point F et un point F' situé sur AF
+prolongé au delà de F. Le cercle
+directeur C qui a F' pour centre passe
+par le point L (puisque celui-ci est
+situé sur le prolongement de F' A et
+tel que ALAF) et est tangent en ce<!-- spr -->point à la directrice de la parabole.
+Un point M de la parabole (autre que le sommet) est extérieur à toute
+ellipse telle que E. Car il est le centre d'un cercle c passant par F et
+touchant la directrice, lequel doit, par conséquent, couper le cercle
+C, puisque celui-ci passe entre le point F et la directrice.</p>
+<p  id="blk-248-18">Il est clair que le même raisonnement s'appliquerait à un point
+extérieur à la parabole.<img class="fig" src="img/FIG. 443.OCR.png" alt="FIG. 443." /></p><div class="scan-inline"><img src="img/scan/srcpage-248.png"/></div></data><data data-scanhref="img/scan/srcpage-249.png"><p class="newpage"></p>
+<p  id="blk-249-01">PARABOLE.<!-- skp data-txt='229' --></p>
+<p  id="blk-249-03">Au contraire, soit M' un point intérieur à la parabole, mais
+d'ailleurs aussi voisin de la courbe qu'on le voudra. Je dis que l'on
+pourra trouver sur l'axe un point F'. tel que, pour toute position
+du point F' située au delà de F'o, l'ellipse E comprenne le point M' à
+son intérieur.</p>
+<p  id="blk-249-04">En effet, le cercle c' de centre M' et de rayon M/F n'a aucun point
+commun avec la directrice. On peut, dès lors, trouver un cercle Co,
+ayant pour centre un point F'o, situé du même côté du point L que
+F, tangent en L à la directrice et auquel c' soit tangent intérieu-
+rement (1). Un cercle C, tangent à C. et ayant pour centre un point
+F' de l'axe situé au delà de F', comprendra à son intérieur le cercle
+C. et, par suite, le cercle c'. Par conséquent, le point M' sera bien
+intérieur à l'ellipse E qui aura F et F' pour foyers, C pour cercle
+directeur.</p>
+<p  id="blk-249-05">Il résulte de ce que nous venons de voir que si M est un point
+quelconque de la parabole, M' un point intérieur à la courbe, mais
+aussi voisin qu'on le veut de M, l'ellipse E, lorsque son second foyer
+F' sera suffisamment éloigné, traversera le segment de droite MM.
+En un mot, l'ellipse E, toujours intérieure à la parabole, s'en rapproche
+indéfiniment à mesure que le point F' s'éloigne sur l'axe.</p>
+<p  id="blk-249-06">Soit de même une hyperbole H qui a pour foyers le point F et
+un point F' de l'axe, situé, par rapport à la directrice, du côté où
+n'est pas le point F, le cercle directeur & de centre F' étant tangent
+en L à la directrice (fig. 444). Nous considérerons plus spécialement
+la branche de cette hyperbole voisine de F, branche dont le sommet
+n'est autre que le sommet A de la parabole (2).</p>
+<p  id="blk-249-07">Tout point M pris sur la parabole ou à son intérieur est intérieur à
+la branche d'hyperbole : car le cercle c de
+centre M et de rayon MF est sans point
+commun avec C, ces deux lignes étant
+de part et d'autre de la directrice.<!-- skp data-txt='M' --><!-- skp data-txt='H' --></p>
+<p  id="blk-249-10">Co</p>
+<p  id="blk-249-11">(1) La parallèle menée à la directrice, à une distance
+égale au rayon M/F de c' et du côté de cette directrice où
+est la courbe, fig. 443 bis, laisse le point M/ et la direc-
+trice de part et d'autre (puisque la distance du point M/ à
+la directrice est supérieure à M/F). Donc le cercle pas-
+sant par M et tangent à cette parallèle au point H où
+elle rencontre l'axe, aura son centre F/ au delà de H. Le<img class="fig" src="img/FIG. 443 bis.
+cercle concentrique à celui-là et passant par L remplit les
+conditions indiquées.OCR.png" alt="FIG. 443 bis.
+cercle concentrique à celui-là et passant par L remplit les
+conditions indiquées." /></p>
+<p  id="blk-249-13">(2) La seconde branche de l'hyperbole s'éloigne tout entière indéfiniment avec le point F'.</p><div class="scan-inline"><img src="img/scan/srcpage-249.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

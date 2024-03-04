@@ -1,0 +1,539 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-564.png"><p class="newpage"><!-- skp data-txt='544' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='--' --><!-- skp data-txt='-' --></p>
+<p  id="blk-564-05">"<!-- spr -->bases les différentes faces et pour sommet commun le centre. Son
+volume sera égal au tiers de la somme des bases, c'est-à-dire de la
+surface, multipliée par une quantité intermédiaire entre la plus grande
+et la plus petite des hauteurs. Or ces dernières tendent toutes vers le
+rayon, puisque le polyèdre et, par conséquent (puisqu'il est convexe), le
+plan de chacune de ses faces sont extérieurs (816) à une sphère quel-
+conque concentrique à la première et de rayon plus petit. Quant à la
+surface du polyèdre, elle tend vers celle de la sphère. On a donc bien ce
+théorème que le volume de la sphère est égal au produit de sa surface par le
+tiers du rayon. Le même raisonnement s'applique d'ailleurs évidemment
+au secteur sphérique.</p>
+<p class="article" id="blk-564-07"><strong class="article-num" id="article-826">826.</strong> Lorsqu'une surface S peut être développée sur un plan, on dé-
+montre que l'aire de toute figure tracée sur S est égale à celle de son
+développement (voir exerc. 822).</p>
+<p  id="blk-564-08">Bien entendu, la réciproque n'est pas vraie : nous voulons dire que, si
+l'on a fait correspondre les points d'une surface S aux points d'un plan
+de manière que les figures qui se correspondent aient même aire, il n'en
+résulte en aucune façon que S soit développable. Par exemple, dans l'exer-
+cice 1301, nous indiquons une correspondance de cette espèce entre une
+sphère (c'est-à-dire une surface non développable) et un cylindre (lequel peut être
+étalé sur un plan).</p>
+<p  id="blk-564-09">NOTE H</p>
+<p  id="blk-564-10">SUR LES POLYÈDRES RÉGULIERS ET LES GROUPES</p>
+<p  id="blk-564-11">DE ROTATIONS</p>
+<p class="article" id="blk-564-12"><strong class="article-num" id="article-827">827.</strong> Nous avons démontré, au nº 708, que tout polyèdre régulier admet
+un certain nombre de déplacements, c'est-à-dire que ces déplacements font
+coïncider le polyèdre avec lui-même, les sommets venant prendre la place
+les uns des autres.</p>
+<p  id="blk-564-13">Soient R et S deux déplacements qui laissent ainsi inaltéré le polyèdre
+considéré, ou, plus généralement, qui laissent inaltérée une figure donnée
+F quelconque. Il est clair que la figure F ne changera pas davantage, si
+l'on effectue successivement les deux déplacements R et S, autrement dit,
+si l'on effectue le déplacement RS, produit (Pl., 291) de R et de S.</p>
+<p  id="blk-564-14">Par conséquent, en introduisant une définition donnée au nº 291, si nous</p><div class="scan-inline"><img src="img/scan/srcpage-564.png"/></div></data><data data-scanhref="img/scan/srcpage-565.png"><p class="newpage"></p>
+<p  id="blk-565-01">POLYÈDRES RÉGULIERS.<!-- skp data-txt='545' --><!-- spr -->considérons l'ensemble des déplacements qui n'altèrent pas la figure F,
+ces déplacements forment un groupe, puisque R et S étant deux quelconques
+d'entre eux, les produits (1) RS et SR appartiennent au même ensemble.</p>
+<p  id="blk-565-04">Il est bien entendu que S peut n'être autre que R : le produit RR est
+désigné par la notation R² et de même les produits de trois, quatre.... fac-
+teurs tous égaux à R sont respectivement désignés par les notations
+R³, R4..., et sont dits les puissances successives de R.</p>
+<p  id="blk-565-05">Si R est un déplacement hélicoïdal composé d'une rotation d'angle × et
+d'une translation t parallèle à l'axe de la rotation, on voit immédiatement
+que Rm (en désignant par m un entier quelconque) sera un déplacement de
+mème axe, composé d'une rotation d'angle ma et d'une translation de
+grandeur mt.</p>
+<p  id="blk-565-06">Il faut observer, d'autre part, que nous comptons parmi les opérations
+appartenant au groupe celle dans laquelle on ne change rien aux positions
+des différents points: elle est dite l'opération identique et il nous arrivera
+de la représenter par le chiffre 1. Il est aisé de voir que la conclusion
+obtenue tout à l'heure (à savoir que si R et S laissent inaltérée la figure F,
+il en est de même de leur produit) suppose essentiellement la convention
+qui vient d'ètre faite, relativement à l'opération identique.</p>
+<p  id="blk-565-07">En effet, R étant un déplacement quelconque, qui a pour effet d'amener
+un point quelconque M de l'espace en une nouvelle position M', soit S le
+déplacement inverse de R, c'est-à-dire celui qui, appliqué au point M',
+donne pour résultat M (R étant un déplacement hélicoïdal composé d'une translation
+de grandeurt et d'une rotation d'angle a, le déplacement inverse a le même axe que R,
+sa translation et sa rotation ayant les mêmes grandeurs t et α, mais étant de sens opposés
+aux premiers). Si R laisse inaltérée la figure F, il en est de même de S et,
+par conséquent, si nous voulons pouvoir dire, comme nous l'avons fait
+tout à l'heure, que les déplacements qu'admet F forment un groupe, il faut
+compter au nombre de ces déplacements les produits RS et SR. Or chacun
+de ces deux produits donne, en vertu de la définition de S, l'opération
+identique (chacune des deux opérations R et S ayant pour effet de ramener
+à leurs positions primitives les figures transformées par l'autre).</p>
+<p  id="blk-565-08">L'opération inverse de R est représentée par le symbole R−¹; ses puis-
+sances successives, par R-2, R-³.... On voit immédiatement que R- est
+inverse de R et que l'inverse de RS (en désignant par S une seconde
+opération quelconque) est S−¹ R−¹.</p>
+<p class="article" id="blk-565-09"><strong class="article-num" id="article-828">828.</strong> Nous venons de remarquer que, si le groupe des déplacements qu'ad-
+met une figure quelconque F comprend un déplacement R, il comprend aussi
+le déplacement inverse R-1.</p>
+<p  id="blk-565-10">La mème propriété appartient à la plupart des groupes que l'on a à
+considérer dans les applications de cette notion aux diverses parties des
+mathématiques. On démontre, en particulier, qu'elle a lieu pour tout</p>
+<p  id="blk-565-11">(1) Rappelons que les deux produits RS et SR ne sont pas, en général, identiques entre
+eux (voir Pl., page 276, note 2 et exercice 624).
+GÉOMÉTRIE. II.<!-- skp data-txt='35' --><!-- skp data-txt='33' --></p><div class="scan-inline"><img src="img/scan/srcpage-565.png"/></div></data><data data-scanhref="img/scan/srcpage-566.png"><p class="newpage"><!-- skp data-txt='546' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->groupe composé d'un nombre fini de transformations; nous la démontre-
+rons d'ailleurs, chemin faisant (830 bis), pour les groupes dont nous allons
+avoir à nous occuper.</p>
+<p  id="blk-566-04">Elle entraîne, pour les groupes G qui la possèdent, cette conséquence
+que si une figure F' est homologue (1) d'une figure F (relativement à un
+groupe G), réciproquement F est homologue de F'; car si R est l'opération
+du groupe qui transforme F en F', l'inverse R-1 transformera F' en F.</p>
+<p class="article" id="blk-566-05"><strong class="article-num" id="article-829">829.</strong> Voici une nouvelle conséquence de la propriété précédente :</p>
+<p  id="blk-566-06">Soient R un déplacement (2), composé d'une translation de grandeur t,
+parallèle à un axe A et d'une rotation d'angle a autour du même axe
+(t ou z pouvant, bien entendu, être nul), et qui change une figure quel-</p>
+<p  id="blk-566-07">0/8/01</p>
+<p  id="blk-566-08">と<!-- skp data-txt='A' --><!-- skp data-txt='O' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 655.OCR.png" alt="FIG. 655." /><!-- skp data-txt='1' --><!-- spr -->conquef en f' (fig. 655); S, un autre déplacement quelconque d'axe B.
+Appliquons à la figure formée par l'axe A, la figure ƒ et la figure f', le
+déplacement S: f viendra en f₁, f' en f₁, l'axe A en A₁. Nous voyons dès
+lors que le déplacement R₁ qui a pour axe A₁, la translation t et la rota-
+tion a étant les mêmes que celles de R, change la figure f₁ (transformée
+de f' par S) en f₁ (c'est-à-dire en la transformée de f' par S).</p>
+<p  id="blk-566-15">On donne à ce nouveau déplacement R, le nom de transformé de R par S.
+Deux déplacements R, R₁, dont l'un est le transformé de l'autre par un
+troisième déplacement quelconque, sont dits semblables. On voit que deux
+déplacements semblables ont (en grandeur) même translation et même
+rotation, et qu'ils sont tous deux dextrorsum ou tous deux sinistrorsum
+(414, Rem.); ces conditions sont, d'ailleurs, suffisantes, car si elles sont
+remplies par deux déplacements R, R., on les transformera l'un dans
+l'autre par tout déplacement qui transformera les axes l'un dans l'autre</p>
+<p  id="blk-566-16">(1) Pour le sens de ce mot, nous renvoyons à la géométrie plane (293).</p>
+<p  id="blk-566-17">(2) Nous raisonnons ici sur des déplacements, mais la notion d'opérations semblables et son
+application aux groupes subsistent pour des opérations quelconques.</p><div class="scan-inline"><img src="img/scan/srcpage-566.png"/></div></data><data data-scanhref="img/scan/srcpage-567.png"><p class="newpage"></p>
+<p  id="blk-567-01">POLYÈDRES RÉGULIERS.<!-- skp data-txt='547' --></p>
+<p  id="blk-567-03">(le sens de translation donné sur le premier axe venant suivant le sens de
+translation donné sur le second).</p>
+<p  id="blk-567-04">Cela posé, admettons que les déplacements R et S, considérés il y a
+un instant, fassent partie d'un même groupe G, qui comprenne éga-
+lement (d'après la propriété énoncée au nº précédent) R-1 et S-¹. Alors
+fet f₁ sont homologues entre eux par rapport à G, de mème que f₁ et f'₁;
+et, comme fet f' sont aussi homologues l'une de l'autre, il en est de même
+Pl., 293) pour f₁ et f"₁; donc le déplacement R₁, qui change f₁ en f₁, appar-
+tient à G.</p>
+<p  id="blk-567-05">Ainsi, si deux déplacements R et S appartiennent à un groupe G, il en est
+de même du transformé R₁ de R par S.</p>
+<p  id="blk-567-06">Les deux déplacements R et R₁ sont dits homologues l'un de l'autre par
+rapport au groupe. Bien entendu, pour que deux déplacements soient
+homologues, il ne suffit pas qu'ils soient semblables, il faut encore que,
+parmi les opérations qui les transforment l'un dans l'autre, il y en ait au
+moins une qui fasse partie du groupe.</p>
+<p class="article" id="blk-567-07"><strong class="article-num" id="article-830">830.</strong> Dans le cas où la figure F est un polyèdre régulier, le nombre des
+déplacements qu'elle admet est fini.</p>
+<p  id="blk-567-08">Nous allons nous proposer de rechercher, d'une manière générale, tous
+les groupes composés de déplacements en nombre fini. Le nombre N de
+ces déplacements (le déplacement identique compris, bien entendu), sera.
+dit l'ordre du groupe.</p>
+<p  id="blk-567-09">Après avoir formé les groupes en question, nous chercherons s'il leur
+correspond des polyèdres réguliers. Nous nous appuierons, à cet effet, sur
+le théorème du n° 710. Par contre, nos raisonnements seront entièrement
+indépendants des considérations présentées aux nos 712-717; ils nous four-
+niront, dès lors, une nouvelle démonstration des résultats établis, relative-
+ment à l'existence et à la nature des polyèdres réguliers.</p>
+<p  id="blk-567-10">Mais l'utilité de la recherche que nous allons entreprendre n'est nullement
+limitée à l'étude des polyèdres réguliers. D'une part, en effet, on constate
+que les groupes cherchés jouent un rôle important dans le problème
+de la résolution des équations (voir note 2 de la page 522); d'autre part,
+certaines propriétés que nous démontrerons (telles que celle du domaine
+fondamental, nº 845) se transportent d'elles-mêmes à d'autres groupes ana-
+logues, composés d'une infinité d'opérations et dont l'étude est nécessaire
+à la solution de certaines questions importantes de mathématiques.</p>
+<p  id="blk-567-11">Soit G l'un des groupes cherchés. S'il contient un déplacement R, il
+contiendra aussi ses puissances successives R2, R³... Il faudra donc, tout
+d'abord, que ces puissances ne soient pas en nombre infini.</p>
+<p  id="blk-567-12">Dès lors, R ne peut pas être une translation: car, sit était la grandeur de
+cette translation, ses puissances successives seraient des translations de</p><div class="scan-inline"><img src="img/scan/srcpage-567.png"/></div></data><data data-scanhref="img/scan/srcpage-568.png"><p class="newpage"><!-- skp data-txt='548' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->grandeurs respectives 2t, 3t,... : de telles translations sont nécessairement
+toutes distinctes entre elles et en nombre infini.</p>
+<p  id="blk-568-04">De même R ne peut être un déplacement hélicoïdal: car, sit est la transla-
+tion qui entre dans R, les déplacements R², R³... comprendraient les
+translations 2t, 3t….. et seraient, par conséquent, aussi tous différents les
+uns des autres.</p>
+<p  id="blk-568-05">Donc le groupe G est exclusivement composé de rotations.</p>
+<p class="article" id="blk-568-06"><strong class="article-num" id="article-830 bis">830 bis.</strong> De plus, soit a l'angle d'une rotation R appartenant à G: les
+puissances successives de R auront pour angles respectifs 2a, 3a... Pour
+que ces puissances ne soient pas en nombre infini, il faut qu'une certaine
+puissance RP ne soit pas distincte d'une puissance précédente R”. Il est
+clair que ceci aura lieu lorsque les angles de RP et de RP différeront d'un
+nombre entier de circonférences, et dans ce cas seulement. Donc, si nous
+supposons que les angles soient mesurés en prenant pour unité la circonfé-
+rence entière, on aura :</p>
+<p  id="blk-568-07">ρα<!-- spr -->p'a +m,<!-- spr -->m étant un entier. Cette équation donne :<!-- spr -->m</p>
+<p  id="blk-568-11">(27)</p>
+<p  id="blk-568-12">α _<!-- skp data-txt='-2' --><!-- spr -->n<!-- spr -->p'</p>
+<p  id="blk-568-16">= n.<!-- spr -->en posant p</p>
+<p  id="blk-568-18">On voit alors que la puissance ne de R donnera une rotation composée
+d'un nombre entier m de circonférences, c'est-à-dire se réduira au dépla-
+cement identique : la puissance R^+¹ ne sera, dès lors, pas distincte de R,
+la puissance R₂+² de R²....</p>
+<p  id="blk-568-19">Nous pouvons d'ailleurs toujours supposer que n ait été choisi le plus petit
+possible (c'est-à-dire que R2 soit la première puissance de R qui se réduise
+au déplacement identique). Cela revient évidemment à supposer que la<!-- spr -->m
+fraction est réduite à sa plus simple expression. Lorsqu'il en est ainsi,<!-- spr -->n<!-- spr -->on dit que n est l'ordre de la rotation R. Par exemple, une rotation d'ordre 2
+n'est autre que ce que nous avons appelé précédemment transposition.</p>
+<p  id="blk-568-23">L'angle na étant un multiple de la circonférence, la rotation R^-P, la-
+quelle est d'angle (n - p)a, revient à une rotation d'angle pa effectuée en
+sens contraire, c'est-à-dire à R-P. En particulier, l'inverse R−1 Rn-1 de
+R figure parmi les puissances de R et, par conséquent, dans le groupe G.</p>
+<p  id="blk-568-24">Enfin, on peut remarquer que si n est l'ordre de R, la rotation ayant<!-- skp data-txt='-' --><!-- spr -->pour axe celui de R et pour angle figure également parmi les puissances</p>
+<p  id="blk-568-27">ገረ<!-- spr -->de R. Car les nombres met n qui figurent dans la relation (27) étant pre-
+miers entre eux, on peut (1) trouver deux entiers h et k tels que l'on ait<!-- spr -->km<!-- skp data-txt='- hn' --><!-- skp data-txt='1' --><!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-568-34">(1) TANNERY, Leçons d'Arithmétique, page 466.</p><div class="scan-inline"><img src="img/scan/srcpage-568.png"/></div></data><data data-scanhref="img/scan/srcpage-569.png"><p class="newpage"></p>
+<p  id="blk-569-01">POLYÈDRES RÉGULIERS.<!-- skp data-txt='549' --></p>
+<p  id="blk-569-03">Cette relation donne<!-- spr -->km<!-- spr -->ka<!-- spr -->h</p>
+<p  id="blk-569-07">"<!-- spr -->n<!-- spr -->n<!-- spr -->et montre, par conséquent, que la rotation R a son angle égal au nème de
+la circonférence, à un nombre entier h de circonférenee près, lequel peut
+être laissé de côté.</p>
+<p class="article" id="blk-569-11"><strong class="article-num" id="article-831">831.</strong> Considérons maintenant deux rotations R et S du groupe.</p>
+<p  id="blk-569-12">Leurs axes sont dans un même plan; l'hypothèse contraire serait, en effet,
+incompatible avec le résultat que nous venons de trouver au nº 829, en
+vertu de la proposition que nous énonçons à l'exercice 592.</p>
+<p  id="blk-569-13">De plus, ces axes (s'ils sont distincts) ne peuvent être parallèles, car, dans ce
+cas, ou bien R et S auraient leurs angles égaux et de sens contraires, et le
+déplacement RS serait une translation non nulle (comparer Pl., ex. 94);
+ou bien les angles de R et de S seraient inégaux (ou égaux et de même
+sens) et les deux opérations RS et SR seraient deux rotations égales, mais
+(ex. 623-624) autour d'axes forcément distincts entre eux, de sorte que
+l'opération RS (SR) - 1 (ou RSR-1 S-1) serait une translation non nulle.</p>
+<p  id="blk-569-14">Les deux axes (s'ils sont distincts) se coupent donc forcément en un
+certain point O.</p>
+<p class="article" id="blk-569-15"><strong class="article-num" id="article-832">832.</strong> Le groupe G renferme d'ailleurs nécessairement une rotation T
+dont l'axe passe par le point O et est situé en dehors du plan des deux
+premiers. Si, en effet, R et S sont toutes deux des transpositions, cette
+rotation T est donnée (416) par le produit RS; si, au contraire R, par
+exemple, n'est pas une transposition, la transformée de S par R a évidem-
+ment son axe en dehors du plan qui contient ceux de R et de S.</p>
+<p  id="blk-569-16">Dès lors, l'axe de toute rotation U du groupe doit passer par le point 0,
+puisqu'il doit (nº préc.) rencontrer les axes de R, de S et de T.</p>
+<p class="article" id="blk-569-17"><strong class="article-num" id="article-833">833.</strong> Nous arrivons donc à cette première conclusion:</p>
+<p  id="blk-569-18">Tous les déplacements du groupe sont des rotations dont les axes passent par
+un même point.</p>
+<p  id="blk-569-19">Nous prendrons le point O où se coupent tous les axes comme centre
+d'une sphère : il est clair qu'il suffira, pour étudier les rotations du
+groupe G, de les appliquer aux seuls points de la sphère Σ.</p>
+<p  id="blk-569-20">Chaque axe de rotation coupera Σ en deux points, les seuls que la rota-
+tion correspondante laisse inaltérés sur la sphère; pour abréger, nous
+donnerons aux points ainsi obtenus le nom de pôles de rotation.</p>
+<p  id="blk-569-21">Chaque pôle de rotation est, en général, commun à plusieurs rotations
+du groupe. La plus petite (1) R d'entre elles a pour angle une partie ali<!-- spr -->m<!-- spr -->m
+quote de la circonférence: car si cet angle était mesuré par (la fraction<!-- spr -->n<!-- spr -->n</p>
+<p  id="blk-569-26">(1) C'est-à-dire celle dont l'angle est le plus petit, le déplacement identique étant, bien
+entendu, excepté.</p><div class="scan-inline"><img src="img/scan/srcpage-569.png"/></div></data><data data-scanhref="img/scan/srcpage-570.png"><p class="newpage"><!-- skp data-txt='550' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-570-03">étant irréductible), nous savons que le groupe renfermerait la rotation de
+même axe et d'angle 14, qui serait plus petite que la première, si m était<!-- spr -->plus grand que 1: donc m = = 1.</p>
+<p  id="blk-570-05">D'ailleurs, toutes les autres rotations du groupe ayant les mêmes pôles
+que R seront des puissances de R: car si l'angle a de l'une d'elles était</p>
+<p  id="blk-570-06">Ρ</p>
+<p  id="blk-570-07">1
+mesuré par un nombre compris entre<!-- spr -->en la multipliant par</p>
+<p  id="blk-570-09">P et</p>
+<p  id="blk-570-10">"<!-- spr -->n<!-- spr -->n</p>
+<p  id="blk-570-13">RP, on obtiendrait évidemment une rotation de même axe et dont l'angle<!-- skp data-txt='-' --><!-- skp data-txt='1' --><!-- spr -->serait plus petit que<!-- spr -->par conséquent plus petit que celui de R (contraire-<!-- spr -->ment à l'hypothèse). Nous dirons que n est l'ordre du pôle de rotation consi-
+déré.</p>
+<p  id="blk-570-19">Un pòle d'ordre n est évidemment commun à n 1 rotations, le dépla-
+cement identique non compris.</p>
+<p class="article" id="blk-570-20"><strong class="article-num" id="article-834">834.</strong> N étant l'ordre du groupe, un point quelconque P de la sphère
+a N homologues, qu'on obtient en lui faisant subir successivement les N
+déplacements du groupe (déplacement identique compris). Si P n'est pas un
+pôle de rotation, ces homologues sont tous distincts entre eux; car si
+deux ou plusieurs d'entre eux coïncidaient en P', le point P' serait pôle
+d'une rotation R', et le point P, pòle d'une rotation R homologue de
+R' (823).</p>
+<p  id="blk-570-21">Si, au contraire, P est un pôle de rotation d'ordren, commun à la rotation R</p>
+<p  id="blk-570-22">(d'angle 1)<!-- spr -->et à ses puissances R2..., R" -₁, il coïncidera avec n — 1 de<!-- spr -->ses homologues. De plus, soit P' un autre homologue de P, déduit de P par
+un déplacement S du groupe et ne coïncidant pas avec P: il y aura n ho-
+mologues de P qui coïncideront avec P'; à savoir, ceux qu'on déduit de P
+par les rotations S, RS, R²S..., R₂- 'S. Il n'y en aura d'ailleurs pas
+d'autres car, sans cela, le point P' serait pôle de rotation d'un ordre n' su-
+périeur à n et le point P serait également, en vertu de ce que nous avons
+dit au nº 829, pôle de rotation d'ordre n' et non d'ordre n.</p>
+<p  id="blk-570-25">Ainsi, le nombre des homologues de P réunis en P/ est exactement n;
+et, puisque le point P/ a été pris quelconque parmi les homologues de P, on
+peut dire que les N homologues de P viennent se confondre entre eux n à n.</p>
+<p  id="blk-570-26">N
+On voit, par conséquent, que N est divisible par n et qu'il y a homologues<!-- spr -->n<!-- spr -->distincts de P (le point P lui-même étant compté dans le nombre).</p>
+<p class="article" id="blk-570-29"><strong class="article-num" id="article-835">835.</strong> Le résultat que nous venons d'obtenir va nous mener à une rela-
+tion fondamentale entre l'ordre N du groupe et les ordres des différents
+pôles de rotation.
+Soit en effet, P₁ un premier pôle de rotation d'ordre n₁: nous venons de</p>
+<p  id="blk-570-30">N
+voir que ce point avait homologues distincts. Mais, d'autre part, le pôle<!-- spr -->n₁</p><div class="scan-inline"><img src="img/scan/srcpage-570.png"/></div></data><data data-scanhref="img/scan/srcpage-571.png"><p class="newpage"></p>
+<p  id="blk-571-01">POLYÈDRES RÉGULIERS.<!-- skp data-txt='551' --><!-- skp data-txt='-' --><!-- skp data-txt='1' --></p>
+<p  id="blk-571-05">_</p>
+<p  id="blk-571-06">(1-A1)<!-- skp data-txt='1' --></p>
+<p  id="blk-571-08">P₁ est commun à n₁- 1 rotations (déplacement identique non compris) :
+ses homologues seront chacun (834) communs à n₁ 1 rotations homo-</p>
+<p  id="blk-571-09">N
+logues des premières: soit en tout (n₁ — 1) = N<!-- spr -->rotations. Si<!-- spr -->n₁
+maintenant, il existe un pòle P₁, non homologue de P₁ et d'ordre (1) n, ce</p>
+<p  id="blk-571-12">N
+point aura homologues distincts, fournissant N<!-- spr -->rotations. Un
+12
+troisième pôle P3 (s'il en existe), distinct de P₁, de P₂ et de leurs homo-</p>
+<p  id="blk-571-14">N
+logues, aura homologues fournissant N
+N3<!-- spr -->n3
+aurons donc finalement, pour le nombre total de ces rotations, une expres-
+sion de la forme</p>
+<p  id="blk-571-16">(1 - 1/12)</p>
+<p  id="blk-571-17">(1-1) rotations, etc. Nous</p>
+<p  id="blk-571-18">N +</p>
+<p  id="blk-571-19">+N</p>
+<p  id="blk-571-20">(1 --1/17)</p>
+<p  id="blk-571-21">N ( 1-1/2) +. . + N (1 - 1/1/1).<!-- spr -->np</p>
+<p  id="blk-571-23">Dans ce nombre, le déplacement identique n'est pas compté; mais chacun
+des N-1 autres déplacements du groupe figure deux fois (et deux fois
+seulement), une fois pour chacun des deux pôles qu'il possède: d'où la
+relation à laquelle nous voulions arriver<!-- spr -->x (1-1/2) + (1-1)</p>
+<p  id="blk-571-25">+ N ( 1 − 1) + ... + N (1<!-- skp data-txt='N' --><!-- skp data-txt='-' --><!-- skp data-txt='--' --></p>
+<p  id="blk-571-29">(MA)</p>
+<p  id="blk-571-30">;)</p>
+<p  id="blk-571-31">====</p>
+<p  id="blk-571-32">2 (N-<!-- skp data-txt='-' --><!-- spr -->i),</p>
+<p  id="blk-571-35">าว<!-- spr -->ou, en divisant par N,</p>
+<p  id="blk-571-37">(28)</p>
+<p  id="blk-571-38">(1)+(1) ++ (1-1/2) = 2-1/2-</p>
+<p  id="blk-571-39">+...+</p>
+<p  id="blk-571-40">C'est cette équation que nous allons résoudre par rapport aux entiers
+positifs (plus grands que l'unité) n₁, N2,..., Np, N.</p>
+<p  id="blk-571-41">Puisque les nombres n₁, n₂,..., n₁ sont au moins égaux à 2, chacune des<!-- spr -->parenthèses du premier membre est au moins égale à</p>
+<p  id="blk-571-43">: donc le nombre p<!-- spr -->de ces parenthèses est inférieur (et non égal) à 4, car le second membre est
+plus petit que 2 (l'égalité étant exclue).</p>
+<p  id="blk-571-45">D'autre part, le second membre étant au moins égal à 1 (l'égalité n'ayant
+lieu que pour N = 2) pendant que chacune des parenthèses du premier
+membre est plus petite que 1, on ne peut pas avoir p = 1.</p>
+<p class="article" id="blk-571-46"><strong class="article-num" id="article-836">836.</strong> Si p est égal à 2, l'équation (28) se réduit à<!-- skp data-txt='1' --><!-- skp data-txt='21' --><!-- spr -->n2</p>
+<p  id="blk-571-50">==<!-- spr -->et n'a pas d'autres solutions acceptables pour nous que n₁ = N2</p>
+<p  id="blk-571-52">= N. Car, il
+faudrait, sans cela, que l'un des nombres n₁, n₂ fût plus grand que N : ce
+qui est absurde, puisque N doit être divisible par n₁ et par n.</p>
+<p  id="blk-571-53">(1) Il est bien entendu (voir plus haut, 829) que n2 peut être égal à n₁ sans que P₁ et P
+soient homologues.</p><div class="scan-inline"><img src="img/scan/srcpage-571.png"/></div></data><data data-scanhref="img/scan/srcpage-572.png"><p class="newpage"><!-- skp data-txt='552' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->n₁<!-- spr -->n2<!-- skp data-txt='-' --></p>
+<p  id="blk-572-06">N montre qu'il n'y a que deux pôles de rotation distincts</p>
+<p  id="blk-572-07">1) et, par conséquent, qu'un seul axe : nous savons qu'alors,<!-- spr -->n2
+les rotations autour de cet axe sont toutes des puissances de l'une d'entre
+elles. Inversement, il est clair qu'on a bien ainsi un groupe: tel est le
+groupe des rotations qu'admet (707) un angle polyèdre régulier quelconque.</p>
+<p  id="blk-572-09">_</p>
+<p class="article" id="blk-572-10"><strong class="article-num" id="article-837">837.</strong> Envisageons maintenant le cas de p: : 3. Dans ce cas, il y a au moins
+un des nombres n₁, n₂, n¸ qui est égal à 2. Car si on avait n₁ ≥3, n ≥ 3,
+n3 3, chacune des parenthèses du premier membre de l'équation (28) se-<!-- spr -->rait au moins égale à : leur somme serait donc au moins égale à 2, ce qui</p>
+<p  id="blk-572-12">3
+ne se peut. Nous prendrons donc n 2, et la relation (28) devient</p>
+<p  id="blk-572-13">=</p>
+<p  id="blk-572-14">(29) ||=+==+3<!-- skp data-txt='11' --><!-- spr -->n₂</p>
+<p  id="blk-572-17">Nous pouvons remarquer tout de suite que cette équation coïnciderait
+avec l'équation (13) du n° 715 si l'on changeait n₁, n₂, N, respectivement
+en m, n, 2A.</p>
+<p  id="blk-572-18">Seulement, ici, l'un des nombres cherchés, n₁ par exemple, peut prendre
+la valeur 2, après quoi l'autre peut être choisi arbitrairement, le nombre N
+étant égal (comme le montre l'équation (29)) à 2n2. Il n'y a alors que deux
+pôles, et, par conséquent, un seul axe, d'ordre n₂, les rotations qui ne sont
+pas effectuées autour de cet axe étant toutes des transpositions; on verra
+aisément que les axes de celles-ci doivent être perpendiculaires au pre-
+mier et faire des angles égaux les uns avec les autres.</p>
+<p  id="blk-572-19">Les groupes ainsi obtenus ont reçu le nom de groupes diédraux (1): un
+tel groupe est celui qu'admet un polygone plan régulier quelconque ou
+la figure formée par un angle polyèdre régulier et son symétrique, formé en
+prolongeant les arètes au delà du sommet.</p>
+<p  id="blk-572-20">On notera le cas où n₂ est lui-même égal à 2. Le groupe se compose
+alors de trois transpositions dont les axes forment un trièdre trirectangle.</p>
+<p  id="blk-572-21">Si, maintenant, nous écartons le cas de n₁ 2, les raisonnements du
+n° 715 sont valables: n₁ est nécessairement à 3; n¸ a l'une des valeurs
+3, 4, 5. Les valeurs correspondantes de N sont N 12, 24, 60.</p>
+<p  id="blk-572-22">_<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-572-24"><strong class="article-num" id="article-838">838.</strong> Démontrons qu'à chacune des combinaisons ainsi obtenues, corres-
+pond bien un groupe d'ordre fini (2).</p>
+<p  id="blk-572-25">(1) Si on divise un grand cercle de la sphère en n parties égales, les n arcs ainsi obtenus
+peuvent être considérés, à un certain point de vue, comme les côtés (en prolongement les
+uns des autres) d'un polygone sphérique régulier comprenant un hémisphère entier et la
+sphère est divisée en deux tels polygones. Le polyèdre correspondant (dièdre) aura deux
+faces confondues l'une avec l'autre, ainsi qu'il arrivait pour le polygone régulier de deux
+côtés. (Pl., page 179, note.)</p>
+<p  id="blk-572-26">(2) Cela est évident si nous admettons la théorie des polyèdres réguliers, telle qu'elle est
+exposée aux Compléments, ch. V, puisque nous savons que les cinq espèces de polyèdres
+réguliers donnent précisément trois groupes qui correspondent aux trois combinaisons en</p><div class="scan-inline"><img src="img/scan/srcpage-572.png"/></div></data><data data-scanhref="img/scan/srcpage-573.png"><p class="newpage"></p>
+<p  id="blk-573-01">POLYÈDRES RÉGULIERS.<!-- skp data-txt='553' --><!-- skp data-txt='-' --></p>
+<p  id="blk-573-04">=</p>
+<p  id="blk-573-05">Les raisonnements sont absolument pareils pour les trois cas: nous
+traiterons plus particulièrement le plus compliqué, celui de n</p>
+<p  id="blk-573-06">5.
+Nous savons que le groupe doit comprendre : 1º des rotations d'ordre n;
+2º des rotations d'ordre n₁ 3; 3° des transpositions. Nous allons trouver
+une rotation d'ordre 3 et une transposition dont le produit soit une
+rotation d'ordre n₂.</p>
+<p  id="blk-573-07">A cet effet, nous construirons un triangle sphérique (fig. 656) ayant pour
+angles (en A, B, C respectivement) la n ème partie, la 2ème partie et la
+N3 ème partie de la demi-circonférence (le dernier
+angle étant droit, puisque nз 2). Ce triangle
+peut être construit, car ses angles satisfont aux
+conditions de possibilité énoncées au nº 379.
+Nous considérerons :</p>
+<p  id="blk-573-08">1º une rotation R, d'angle égal à la n
+de la circonférence, ayant un pòle en A et de
+même sens que la rotation d'angle égal à BAC</p>
+<p  id="blk-573-09">=</p>
+<p  id="blk-573-10">B₁</p>
+<p  id="blk-573-11">ème partie<!-- skp data-txt='A' --><!-- skp data-txt='B' --></p>
+<p  id="blk-573-14">B₂<!-- skp data-txt='C' --></p>
+<p  id="blk-573-16">(soit à 217143) qui amènerait le grand cercle AB<img class="fig" src="img/FIG. 656.OCR.png" alt="FIG. 656." /><!-- spr -->n.<!-- spr -->dans la direction AC;
+2º une rotation S, d'angle égal à la n2ème partie de la circonférence, ayant</p>
+<p  id="blk-573-20">1
+un pôle en B et de même sens que la rotation d'angle ABC<!-- spr -->qui<!-- spr -->n2
+amènerait le grand cercle BA dans la direction BC;</p>
+<p  id="blk-573-23">3º une transposition T ayant un pôle en C.</p>
+<p  id="blk-573-24">Cette dernière opération transforme B en un point B₂, symétrique de B
+par rapport au diamètre du point C et par conséquent aussi (puisque
+l'angle en C est droit) par rapport au plan du grand cercle AC. L'angle<!-- skp data-txt='1' --><!-- spr -->sphérique BAB₂ est dès lors mesuré par<!-- spr -->et le point B₂ n'est autre que le<!-- spr -->n1<!-- spr -->transformé de B par R.</p>
+<p  id="blk-573-30">Si à ce point B₂, lui-même, on applique la rotation R, on aura un troi-
+sième point B. Une troisième application de la rotation R ramènerait au
+point B, car, puisque n₁</p>
+<p  id="blk-573-31">3, on a R³
+Les triangles sphériques ABB, AВВ₁, АВВ étant isoscèles et égaux
+entre eux (1), l'angle sphérique BBB, double de l'angle à la base du</p>
+<p  id="blk-573-32">1.</p>
+<p  id="blk-573-33">_<!-- spr -->ne<!-- spr -->question. Mais, ainsi que nous l'avons dit, nous nous appuyons pas sur les résul-
+tats des nos 712-717, que nous allons, au contraire, démontrer à nouveau dans ce qui va
+suivre.</p>
+<p  id="blk-573-36">(1) Les triangles sphériques ABC, AB2C sont entièrement extérieurs l'un à l'autre et
+forment par leur ensemble le triangle sphérique ABB2. De même les triangles sphériques
+ABB2, AB2B1. AB₁B sont entièrement extérieurs les uns aux autres et forment par leur
+ensemble le triangle BB₁ B2. C'est ce que l'on verra immédiatement en remarquant : 1º que</p>
+<p  id="blk-573-37">1
+l'on peut construire un triangle sphérique BB₁B₂ ayant ses angles mesurés par ;</p>
+<p  id="blk-573-38">2º qu'en</p>
+<p  id="blk-573-39">12
+divisant ce triangle par les arcs de grands cercles qui joignent le pôle intérieur (466) du
+cercle circonscrit aux sommets et aux milieux des côtés, on obtient des triangles rectangles
+ayant les angles que nous avons assignés au triangle ABC. Au reste, il importe d'observer
+qu'aucune de ces remarques n'est nécessaire à la suite de nos raisonnements.</p><div class="scan-inline"><img src="img/scan/srcpage-573.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

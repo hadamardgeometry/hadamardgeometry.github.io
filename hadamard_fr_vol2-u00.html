@@ -1,0 +1,400 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-001.png"><p class="newpage"></p>
+<p  id="blk-001-01">Cours complet de mathématiques élémentaires
+Publié sous la direction de M. DARBOUX, doyen de la Faculté des Sciences de Paris.</p>
+<p  id="blk-001-02">Leçons
+Géométrie<!-- spr -->de</p>
+<p  id="blk-001-04">élémentaire</p>
+<p  id="blk-001-05">II</p>
+<p  id="blk-001-06">(Géométrie dans l'espace)</p>
+<p  id="blk-001-07">PAR</p>
+<p  id="blk-001-08">Jacques Hadamard</p>
+<p  id="blk-001-09">Professeur adjoint à la Faculté des Sciences de Paris,</p>
+<p  id="blk-001-10">Professeur suppléant au Collège de France.</p>
+<p  id="blk-001-11">Of</p>
+<p  id="blk-001-12">PARIS</p>
+<p  id="blk-001-13">Librairie Armand Colin</p>
+<p  id="blk-001-14">5, rue de Mézières, 5<!-- skp data-txt='1901' --></p>
+<p  id="blk-001-16">Tous droits réservés.</p><div class="scan-inline"><img src="img/scan/srcpage-001.png"/></div></data><data data-scanhref="img/scan/srcpage-002.png"><p class="newpage"></p><div class="scan-inline"><img src="img/scan/srcpage-002.png"/></div></data><data data-scanhref="img/scan/srcpage-003.png"><p class="newpage"></p>
+<p  id="blk-003-01">AVERTISSEMENT</p>
+<p  id="blk-003-02">Le présent ouvrage fait suite aux Leçons de Géométrie
+plane publiées précédemment dans la même collection, et
+est conçu dans le même esprit. Pour sa rédaction comme
+pour celle du volume précédent, j'ai profité à plusieurs
+reprises des importantes indications de M. Darboux, que
+je tiens à remercier encore une fois ici.</p>
+<p  id="blk-003-03">Dans l'exposition du cinquième livre, la théorie des
+droites et plans parallèles précède celle des droites et
+plans perpendiculaires. Cette marche tend à être de plus
+en plus généralement adoptée aujourd'hui; c'est celle
+dans laquelle les propositions se suivent le plus naturel-
+lement. Je me suis appliqué à bien mettre en évidence
+les analogies qui existent entre les diverses parties de
+ces théories.</p>
+<p  id="blk-003-04">Dans le chapitre consacré aux angles dièdres, j'ai dû
+m'occuper d'une difficulté qui semble n'avoir été remarquée
+d'aucun auteur et qu'il est cependant essentiel de lever, ce</p>
+<p  id="blk-003-05">1. Je ne saurais d'ailleurs me montrer complètement affirmatif sur ce point, et il
+semble qu'il y ait lieu d'éviter de l'être en pareille matière. C'est ainsi que la
+méthode exposée dans la Note C de la Géométrie plane, pour la construction des
+cercles tangents, avait déjà été donnée par M. FOUCHÉ, lequel avait été lui-même,
+à son insu, devancé par PONCELET.</p><div class="scan-inline"><img src="img/scan/srcpage-003.png"/></div></data><data data-scanhref="img/scan/srcpage-004.png"><p class="newpage"></p>
+<p  id="blk-004-01">VI</p>
+<p  id="blk-004-02">AVERTISSEMENT.<!-- spr -->qu'il est d'ailleurs bien aisé de faire: c'est celle dont il
+est question au nº 350.</p>
+<p  id="blk-004-04">Des compléments ont été consacrés, comme dans la
+Géométrie plane, aux théories qui, pour n'être pas inscrites
+au programme du baccalauréat, n'en sont pas moins
+indispensables à connaître. Il ne pouvait d'ailleurs être
+question d'un exposé complet des éléments de la géométrie
+moderne. Quand même le beau Traité de M. Rouché ne le
+rendrait pas inutile, un pareil exposé aurait dépassé le cadre
+de mon travail. Il m'a semblé naturel de me limiter en
+excluant tout ce qui repose sur l'introduction effective
+des imaginaires. Tous les raisonnements que je présente
+portent directement sur des éléments exclusivement réels,
+même lorsque j'ai tenu à montrer comment les conclusions
+obtenues quand toutes les parties d'une figure sont réelles
+se généralisent au cas où quelques-unes d'entre elles sont
+imaginaires ¹.</p>
+<p  id="blk-004-05">Par contre, j'ai jugé indispensable d'établir le théorème
+qui donne la perspective d'un cercle, que le cône corres-
+pondant soit ou non de révolution.</p>
+<p  id="blk-004-06">Dans la démonstration de ce théorème et, d'une manière
+générale, dans l'étude des coniques, j'ai donné un rôle
+plus important qu'on ne le fait habituellement à la pro-
+priété, si simple et d'un caractère si nettement élémentaire,
+qui rattache l'hyperbole à ses asymptotes. Cette propriété
+permet, en particulier, de faire l'étude de l'hyperbole d'une
+manière toute parallèle à celle de l'ellipse considérée
+comme projection d'un cercle. Il devient aisé, en parti-
+culier, d'indiquer, à côté de la quadrature de l'ellipse,
+celle de l'hyperbole de la sorte, on fait pressentir, autant
+qu'on peut le faire sans sortir du domaine réel, la rela-</p>
+<p  id="blk-004-07">1. C'est dans cet esprit, par exemple, que j'ai traité l'intersection des coniques.
+La marche suivie en cet endroit est celle de CHASLES, simplifiée sur quelques
+points.</p><div class="scan-inline"><img src="img/scan/srcpage-004.png"/></div></data><data data-scanhref="img/scan/srcpage-005.png"><p class="newpage"></p>
+<p  id="blk-005-01">AVERTISSEMENT.</p>
+<p  id="blk-005-02">VII<!-- spr -->tion qui existe entre les fonctions logarithmiques et circu-
+laires.</p>
+<p  id="blk-005-04">Il est un point sur lequel je me suis notablement écarté
+des usages antérieurs je veux parler du théorème d'Euler
+sur les polyèdres. Je traite cette question en introduisant
+explicitement la notion d'ordre de connexion, Je pourrais, à
+cet égard, me dispenser de toute autre justification en
+disant que, par cette méthode, on obtient peut-être la
+démonstration la plus simple du théorème d'Euler, du
+moins parmi les démonstrations correctes (on sait qu'il en
+existe beaucoup d'autres). Il y a, d'ailleurs, toujours incon-
+vénient à ne pas mettre en évidence la véritable origine
+des résultats que l'on a en vue. Mais j'ajouterai que je n'ai
+nullement cherché à éviter l'emploi de la Géométrie de
+situation. De toutes les théories mathématiques (sans en
+excepter les premiers livres de géométrie), il n'en est pas
+de plus élémentaire, de plus immédiatement accessible
+que celle-là. Lui déniera-t-on ce caractère uniquement en
+raison de son importance même et parce qu'elle est mêlée
+à la solution des problèmes les plus élevés que la Science
+mathématique ait à se poser ?</p>
+<p  id="blk-005-05">J'aurais désiré ajouter à ce chapitre la démonstration du
+théorème de Cauchy sur l'impossibilité de déformer les
+polyèdres convexes. J'y ai renoncé à cause des difficultés
+que soulève cette démonstration et dont on ne pourrait
+peut-être pas triompher sans la compliquer plus qu'il n'est
+possible dans un ouvrage élémentaire.</p>
+<p  id="blk-005-06">J'ai cru également nécessaire d'indiquer, à propos des
+polyèdres réguliers, une application de la théorie des
+groupes. Les considérations, forcément un peu abstraites,
+empruntées à cette théorie, ne pouvaient trouver place
+dans le texte. Mais on sait l'importance que l'étude des
+polyèdres réguliers, dont il semblait que la portée fût<!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- spr -->b</p><div class="scan-inline"><img src="img/scan/srcpage-005.png"/></div></data><data data-scanhref="img/scan/srcpage-006.png"><p class="newpage"></p>
+<p  id="blk-006-01">VIII</p>
+<p  id="blk-006-02">AVERTISSEMENT.<!-- spr -->des plus restreintes et l'intérêt depuis longtemps épuisé,
+a prise dans ces dernières années, et à quelles belles
+conquêtes des mathématiques modernes elle se relie de
+la manière la plus étroite. Il m'a semblé impossible de
+ne pas laisser soupçonner quelques-unes de ces relations.
+J'ai donc consacré une Note, placée à la fin du volume, à
+une seconde démonstration de l'existence des polyèdres
+réguliers, démonstration qui introduit certains des faits
+fondamentaux de la théorie des groupes et, en particulier,
+l'importante notion de domaine fondamental. La démonstra-
+tion ainsi présentée semble beaucoup moins simple que
+celle qui est donnée dans le texte; mais il faut remarquer
+que cette dernière perdrait complètement cet avantage de
+simplicité si l'on tenait à démontrer en toute rigueur que
+les procédés employés donnent de véritables polyèdres et
+que ces polyèdres sont convexes.</p>
+<p  id="blk-006-04">La Note dont je viens de parler est précédée de trois
+autres. La première concerne la résolubilité des problèmes
+de Géométrie, question dont il est si nécessaire de préciser
+la signification '.</p>
+<p  id="blk-006-05">La seconde est analogue à la Note D de la Géométrie plane
+et traite, au même point de vue qu'elle, de la définition des
+volumes polyédraux. On sait que cette question, comme
+celle des aires polygonales, a fait l'objet de nombreux
+travaux 2: la marche suivie dans le présent ouvrage a
+l'avantage d'être aussi élémentaire que possible.</p>
+<p  id="blk-006-06">Enfin une troisième Note est relative à la définition des
+longueurs, des surfaces et des volumes courbes. Il m'a été
+aisé d'aller jusqu'à la démonstration de ce fait qu'une</p>
+<p  id="blk-006-07">1. Cette Note est presque entièrement rédigée d'après les remarquables articles
+qu'ont insérés MM. GIACOMINI, CASTELNUOVO et ENRIQUES dans le volume publié
+par les soins de ce dernier et intitulé: Questioni riguardanti la Geometria elemen-
+tare.</p>
+<p  id="blk-006-08">2. Je citerai, entre autres, ceux de M. GÉRARD. Voir l'ouvrage susmentionné
+de M. ENRIQUES (article de M. AMALDI).</p>
+<p  id="blk-006-09">_</p><div class="scan-inline"><img src="img/scan/srcpage-006.png"/></div></data><data data-scanhref="img/scan/srcpage-007.png"><p class="newpage"></p>
+<p  id="blk-007-01">AVERTISSEMENT.</p>
+<p  id="blk-007-02">IX<!-- spr -->sphère n'est pas applicable sur un plan: fait dont la place
+me semble marquée dans une exposition, même élémen-
+taire, de la Géométrie.</p>
+<p  id="blk-007-04">Les exercices ont été multipliés plus encore que dans
+la Géométrie plane. J'ai dit, à propos de cette dernière, les
+raisons pour lesquelles je ne craignais pas de pécher par
+excès à cet égard. Plusieurs de ces exercices font connaître
+de nouvelles solutions pour certaines questions traitées,
+d'autre part, dans le texte. C'est ainsi que, dans les exercices
+766, 791, est indiquée une méthode permettant de par-
+venir à la notion de directrices des coniques. On sait que,
+dans ces derniers temps, M. Niewenglowski d'une part,
+M. Rouché de l'autre, se sont préoccupés de démontrer
+la propriété fondamentale des directrices sans faire appel
+à des constructions de géométrie dans l'espace. Les pro-
+priétés de l'axe radical de deux cercles me fournissent,
+pour arriver au même but, un raisonnement tout à fait
+intuitif.</p>
+<p  id="blk-007-05">De même, l'exercice 1020 bis contient une nouvelle
+expression des côtés des polyèdres réguliers inscrits à
+une sphère donnée. La considération d'un polygone régu-
+lier, dont les relations avec le polyèdre méritent peut-être
+d'être notées, donne aux valeurs de ces côtés une forme
+particulièrement simple.</p>
+<p  id="blk-007-06">Les exercices 876, 877, 1083, etc., sont consacrés à une
+sorte particulière de géométrie dans laquelle certaines rela-
+tions entre les éléments d'un triangle sont les mêmes que
+dans la géométrie ordinaire, pendant que d'autres se
+comportent d'une façon tout opposée. Cette considération
+permet d'élucider une difficulté que soulève la relation
+bien connue entre les distances mutuelles de quatre points
+d'un plan.</p>
+<p  id="blk-007-07">Un grand nombre d'autres exercices apportent, de même,
+des compléments aux théories exposées dans le corps de</p><div class="scan-inline"><img src="img/scan/srcpage-007.png"/></div></data><data data-scanhref="img/scan/srcpage-008.png"><p class="newpage"><!-- skp data-txt='X' --></p>
+<p  id="blk-008-02">AVERTISSEMENT.<!-- spr -->l'ouvrage. Je signalerai, entre autres, les exercices 1256-
+1268 (propriétés des cônes à base circulaire), 1269 et sui-
+vants (propriétés élémentaires des quadriques), 1287-1292
+(principales propriétés des cyclides de Dupin), 1249-1254
+(propriétés anallagmatiques de la figure formée par deux
+cercles dans l'espace); etc.</p><div class="scan-inline"><img src="img/scan/srcpage-008.png"/></div></data><data data-scanhref="img/scan/srcpage-009.png"><p class="newpage"></p>
+<p  id="blk-009-01">TABLE DES MATIÈRES</p>
+<p  id="blk-009-02">AVERTISSEMENT.<!-- skp data-txt='V' --></p>
+<p  id="blk-009-04">TABLE DES MATIÈRES.</p>
+<p  id="blk-009-05">XI</p>
+<p  id="blk-009-06">ERRATA DE LA GÉOMÉTRIE PLANE..</p>
+<p  id="blk-009-07">XXII</p>
+<p  id="blk-009-08">LIVRE V</p>
+<p  id="blk-009-09">LE PLAN</p>
+<p  id="blk-009-10">ET</p>
+<p  id="blk-009-11">LA LIGNE DROITE<!-- skp data-txt='1' --></p>
+<p class="article" id="blk-009-13"><strong class="article-num" id="article-319">319.</strong><!-- skp data-txt='1' --></p>
+<p  id="blk-009-15">320-323.</p>
+<p  id="blk-009-16">CHAPITRE PREMIER. Intersection des droites et des plans.
+Du plan. Situations respectives d'une droite et d'un plan.
+Modes de détermination d'un plan.
+Intersection de deux plans....
+Situations respectives de deux droites.<!-- skp data-txt='2' --></p>
+<p class="article" id="blk-009-18"><strong class="article-num" id="article-324">324.</strong><!-- skp data-txt='5' --></p>
+<p  id="blk-009-20">325-326.<!-- skp data-txt='6' --></p>
+<p  id="blk-009-22">Exercices 423–427.<!-- skp data-txt='6' --><!-- skp data-txt='-' --></p>
+<p  id="blk-009-25">327-328.<!-- skp data-txt='8889' --></p>
+<p class="article" id="blk-009-27"><strong class="article-num" id="article-329">329.</strong></p>
+<p  id="blk-009-28">330-332.<!-- skp data-txt='10' --></p>
+<p  id="blk-009-30">CHAPITRE II. Droites et plans parallèles..
+Droites parallèles..
+Droite parallèle à un plan..
+Plans parallèles. . . . .
+Deux angles qui ont leurs côtés parallèles sont égaux ou supplé-<!-- spr -->mentaires. Angle de deux droites quelconques dans l'espace....
+Trois plans parallèles interceptent, sur des sécantes quelconques,<!-- spr -->des segments proportionnels..
+Résumé des propriétés des droites et plans parallèles..</p>
+<p  id="blk-009-33">333-334.<!-- skp data-txt='12' --></p>
+<p  id="blk-009-35">335-336.<!-- skp data-txt='14' --></p>
+<p class="article" id="blk-009-37"><strong class="article-num" id="article-337">337.</strong><!-- skp data-txt='15' --></p>
+<p  id="blk-009-39">Exercices 428-438.<!-- skp data-txt='155' --><!-- skp data-txt='16' --><!-- skp data-txt='17' --><!-- skp data-txt='-' --></p>
+<p  id="blk-009-44">CHAPITRE III. Droite et plan perpendiculaires.
+338-341. Définition. Lieu des points également distants de deux points donnés.</p>
+<p  id="blk-009-45">Condition nécessaire et suffisante pour qu'une droite soit perpendi-<!-- spr -->culaire à un plan.
+341bis-343. Plan perpendiculaire à une droite par un point donné. Droite per-<!-- spr -->pendiculaire à un plan par un point donné.<!-- skp data-txt='17' --><!-- skp data-txt='1' --><!-- skp data-txt='19' --><!-- skp data-txt='8' --></p><div class="scan-inline"><img src="img/scan/srcpage-009.png"/></div></data><data data-scanhref="img/scan/srcpage-010.png"><p class="newpage"></p>
+<p  id="blk-010-01">XII</p>
+<p  id="blk-010-02">TABLE DES MATIÈRES.<!-- skp data-txt='21' --><!-- skp data-txt='2' --></p>
+<p  id="blk-010-05">344-345. Perpendiculaire et obliques à un plan. Distance d'un point à un<!-- spr -->plan. Application aux plans parallèles..
+346.</p>
+<p  id="blk-010-07">Lieu des droites qui font des angles égaux avec deux droites<!-- spr -->données..<!-- skp data-txt='22' --><!-- skp data-txt='22' --></p>
+<p  id="blk-010-11">Exercices 439-454.<!-- skp data-txt='22' --><!-- skp data-txt='24' --><!-- skp data-txt='-' --></p>
+<p  id="blk-010-15">CHAPITRE IV. Angles dièdres. Plans perpendiculaires.
+Définition. Angle plan d'un dièdre..</p>
+<p  id="blk-010-16">347-348.<!-- skp data-txt='24' --></p>
+<p class="article" id="blk-010-18"><strong class="article-num" id="article-349">349.</strong></p>
+<p  id="blk-010-19">Sens d'un dièdre.....<!-- skp data-txt='25' --></p>
+<p  id="blk-010-21">#10 CO<!-- skp data-txt='26' --><!-- skp data-txt='28' --></p>
+<p  id="blk-010-24">350-352. Comparaison des dièdres.
+353. Plans perpendiculaires. .
+354-355. Quand deux plans sont perpendiculaires, toute perpendiculaire à<!-- spr -->leur intersection, menée dans l'un d'eux, est perpendiculaire à<!-- spr -->l'autre....
+356. Plan perpendiculaire à un plan donné, mené par une droite donnée.
+357-359. Dièdres supplémentaires, opposés par l'arête, à faces paral-<!-- spr -->lèles..<!-- skp data-txt='29' --><!-- skp data-txt='30' --><!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- skp data-txt='31' --></p>
+<p class="article" id="blk-010-33"><strong class="article-num" id="article-360">360.</strong></p>
+<p  id="blk-010-34">Rapport des distances d'un point situé sur une face d'un dièdre à<!-- spr -->l'autre face et à l'arête...<!-- skp data-txt='32' --></p>
+<p class="article" id="blk-010-37"><strong class="article-num" id="article-361">361.</strong></p>
+<p  id="blk-010-38">Résumé des propriétés des droites et plans perpendiculaires.<!-- skp data-txt='33' --></p>
+<p  id="blk-010-40">33 w</p>
+<p  id="blk-010-41">Exercices 455-462...<!-- skp data-txt='33' --></p>
+<p  id="blk-010-43">CHAPITRE V. Projection d'une droite sur un plan. Angle<!-- spr -->d'une droite et d'un plan. Plus courte distance de
+deux droites..<!-- skp data-txt='35' --></p>
+<p  id="blk-010-46">SU CU</p>
+<p class="article" id="blk-010-47"><strong class="article-num" id="article-362">362.</strong></p>
+<p  id="blk-010-48">Définition..<!-- skp data-txt='35' --></p>
+<p  id="blk-010-50">363-364.</p>
+<p  id="blk-010-51">Théorèmes de la projection de l'angle droit et des trois perpendi-<!-- spr -->culaires...<!-- skp data-txt='36' --><!-- skp data-txt='37' --></p>
+<p  id="blk-010-55">365-367. Angle d'une droite et d'un plan. Ligne de plus grande pente………
+368.</p>
+<p  id="blk-010-56">Plus courte distance de deux droites..<!-- spr -->coco co co<!-- skp data-txt='38' --></p>
+<p  id="blk-010-59">Exercices 463-473 bis..<!-- skp data-txt='39' --><!-- skp data-txt='41' --></p>
+<p  id="blk-010-62">ཚུ་</p>
+<p  id="blk-010-63">369-372.<!-- skp data-txt='41' --></p>
+<p  id="blk-010-65">CHAPITRE VI. Angles polyèdres.
+Définitions. Trièdres symétriques..
+Dans tout angle polyèdre, une face est plus petite que la somme<!-- spr -->des autres. Conditions pour qu'on puisse construire un trièdre
+avec trois faces données..</p>
+<p  id="blk-010-67">373-375.<!-- skp data-txt='44' --></p>
+<p  id="blk-010-69">376-378.</p>
+<p  id="blk-010-70">Trièdres supplémentaires..<!-- skp data-txt='48' --></p>
+<p class="article" id="blk-010-72"><strong class="article-num" id="article-379">379.</strong></p>
+<p  id="blk-010-73">Inégalités entre les diedres d'un triedre.<!-- skp data-txt='50' --><!-- skp data-txt='51' --></p>
+<p  id="blk-010-76">380-382bis, Cas d'égalité des trièdres..
+383-385. Trièdre isoscèle. Analogies et différences entre la théorie des<!-- spr -->trièdres et celle des triangles...<!-- skp data-txt='53' --></p>
+<p  id="blk-010-79">Exercices 474-500...<!-- skp data-txt='55' --><!-- skp data-txt='3458' --></p>
+<p  id="blk-010-82">Problèmes (501-519) proposés sur le cinquième livre.<!-- skp data-txt='57' --></p><div class="scan-inline"><img src="img/scan/srcpage-010.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

@@ -1,0 +1,431 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-028.png"><p class="newpage"><!-- skp data-txt='8' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-028-03">CHAPITRE II</p>
+<p  id="blk-028-04">DROITES ET PLANS PARALLÈLES</p>
+<p class="article" id="blk-028-05"><strong class="article-num" id="article-327">327.</strong> Droites parallèles.<!-- skp data-txt='-' --><!-- skp data-txt='B' --><!-- skp data-txt='D' --></p>
+<p  id="blk-028-09">Théorème. Si deux droites sont parallèles, tout plan qui coupe.
+l'une coupe l'autre.</p>
+<p  id="blk-028-10">Soient les deux parallèles AB, CD (fig. 237) et le plan P, qui passe
+par le point A sans contenir AB. Ce plan P, distinct forcément du<!-- spr -->plan ABCD et ayant avec lui le point
+commun A, le coupera suivant une droite
+qui ne sera pas AB, et qui, par consé-
+quent, ne sera pas parallèle à CD. Dès
+lors, étant située dans le plan ABCD, cette
+droite coupera CD. Le plan P a donc un
+point commun avec CD; il ne saurait
+d'ailleurs la contenir, sans quoi, passant
+par le point A, il coïnciderait avec le
+plan ABCD, ce qui n'est pas.<!-- skp data-txt='A' --><img class="fig" src="img/FIG. 237.OCR.png" alt="FIG. 237." /></p>
+<p  id="blk-028-14">Réciproquement, si deux droites distinctes AB, CD, sont telles que
+tout plan qui coupe l'une coupe l'autre, elles sont parallèles.</p>
+<p  id="blk-028-15">En effet 1° Ces deux droites sont dans un même plan, sans quoi
+le plan mené par la première et un point C de la seconde couperait
+celle-ci, tout en contenant l'autre; 2º elles n'ont aucun point
+commun, sans quoi un autre plan quelconque mené par AB couperait
+CD en ce point commun.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-028-17"><strong class="article-num" id="article-328">328.</strong> Théorème. Deux droites A, B, parallèles à une même
+troisième C, sont parallèles entre elles (ou coïncident).</p>
+<p  id="blk-028-18">En effet, tout plan qui coupe A coupe C et, par suite, B.</p><div class="scan-inline"><img src="img/scan/srcpage-028.png"/></div></data><data data-scanhref="img/scan/srcpage-029.png"><p class="newpage"></p>
+<p  id="blk-029-01">DROITES ET PLANS PARALLÈLES.</p>
+<p  id="blk-029-02">REMARQUES. I. Le même énoncé avait été établi en géométrie
+plane (Pl., 40); mais il est clair (326) que cette démonstration ne
+saurait suffire en géométrie de l'espace.</p>
+<p  id="blk-029-03">II. On remplace souvent, comme en géométrie plane, l'expression
+droites parallèles par celle de droites de même direction. Cette
+manière de parler est justifiée par le théorème précédent.</p>
+<p  id="blk-029-04">Comme en géométrie plane, également, nous sommes conduits à
+considérer deux droites confondues comme un cas particulier de
+deux droites parallèles: on simplifie ainsi un certain nombre
+d'énoncés (c'est ce qui arrive évidemment, par exemple, pour le
+théorème précédent).<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-029-06"><strong class="article-num" id="article-329">329.</strong> Droite et plan parallèles.</p>
+<p  id="blk-029-07">Théorème. Un plan est parallèle à une droite (ou la contient)
+s'il contient une droite parallèle à la première.</p>
+<p  id="blk-029-08">Plus généralement, si deux droites sont parallèles, tout plan qui est
+parallèle à l'une ou la contient, est parallèle à l'autre ou la contient.</p>
+<p  id="blk-029-09">Sous cette dernière forme, cette proposition n'est pas distincte de
+celle du nº 327, puisqu'on peut l'énoncer: si deux droites sont paral-
+lèles, tout plan qui ne coupe pas l'une ne coupe pas l'autre.<!-- skp data-txt='-' --></p>
+<p  id="blk-029-11">REMARQUE. Ici encore, l'énoncé prend une forme plus simple
+si l'on convient de considérer, ainsi que nous le ferons, les droites
+contenues dans un plan comme cas particulier des droites parallèles
+à ce plan.<!-- skp data-txt='-' --></p>
+<p  id="blk-029-13">Corollaire I. Si une droite D est parallèle à un plan P et que,
+par un point du plan P, on mène une parallèle à D, cette parallèle est
+contenue tout entière dans P.</p>
+<p  id="blk-029-14">Car elle ne pourrait, sans cela, qu'être parallèle à P; or, elle a
+un point commun avec P.</p>
+<p  id="blk-029-15">D'après ce corollaire et le théorème précédent, on voit (en tenant
+compte de la remarque faite ci-dessus) que la condition nécessaire et
+suffisante pour qu'un plan soit parallèle à une droite est qu'il contienne
+au moins une parallèle à cette droite.</p>
+<p  id="blk-029-16">Corollaire II. Si deux plans qui se coupent sont parallèles à une
+même droite D, leur intersection est parallèle à cette droite.</p><div class="scan-inline"><img src="img/scan/srcpage-029.png"/></div></data><data data-scanhref="img/scan/srcpage-030.png"><p class="newpage"><!-- skp data-txt='10' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-030-03">Car si, par un point de cette intersection (fig. 238) on mène une
+parallèle à D, la parallèle ainsi obtenue devra être contenue dans les<!-- spr -->deux plans considérés (corollaire
+précédent).<!-- skp data-txt='D' --><!-- skp data-txt='D' --><!-- skp data-txt='D' --><img class="fig" src="img/FIG. 238.OCR.png" alt="FIG. 238." /><img class="fig" src="img/FIG. 238 bis.OCR.png" alt="FIG. 238 bis." /><!-- skp data-txt='-' --></p>
+<p  id="blk-030-11">Corollaire III. En particulier, quand une droite D est parallèle à
+un plan P, tout plan qui passe par D et coupe P, le coupe suivant une
+parallèle à D (fig. 238 bis).</p>
+<p class="article" id="blk-030-12"><strong class="article-num" id="article-330">330.</strong> Plans parallèles.</p>
+<p  id="blk-030-13">Un plan qui est parallèle à un autre est parallèle à toutes les droites
+de cet autre car, s'il avait un point commun avec une de ces
+droites, ce point commun appartiendrait aux deux plans.</p>
+<p  id="blk-030-14">Réciproquement, un plan qui est parallèle à toutes les droites d'un
+second plan (distinct du premier) est parallèle à celui-ci : car, s'il y
+avait un point commun, par celui-ci passeraient des droites du
+second plan, coupant le premier.</p>
+<p  id="blk-030-15">Mais il y a plus, et l'on peut énoncer le théorème suivant :<!-- skp data-txt='-' --></p>
+<p  id="blk-030-17">Théorème. Un plan qui est parallèle à deux droites concourantes
+d'un second plan, distinct du premier, est parallèle à celui-ci.</p>
+<p  id="blk-030-18">Car, si ces deux plans se coupaient, leur intersection devrait
+(nº précéd., coroll. III) être parallèle à chacune des deux droites
+dont il est question dans l'énoncé ce qui ne se peut.</p>
+<p class="article" id="blk-030-19"><strong class="article-num" id="article-330 bis">330 bis.</strong> Théorème. Par un point extérieur à un plan donné, il
+passe un plan parallèle au premier, et un seul. Ce plan est le lieu
+géométrique des droites parallèles au plan donné, menées par le point
+donné.</p>
+<p  id="blk-030-20">1° Par le point A, extérieur au plan P (fig. 239), il passe un plan
+parallèle à P. Pour l'obtenir, on mènera par le point A des paral-</p><div class="scan-inline"><img src="img/scan/srcpage-030.png"/></div></data><data data-scanhref="img/scan/srcpage-031.png"><p class="newpage"></p>
+<p  id="blk-031-01">DROITES ET PLANS PARALLÈLES.<!-- skp data-txt='11' --><!-- skp data-txt='A' --><!-- spr -->x<!-- spr -->lèles Ax, Ax' à deux droites D, D' du plan P, non parallèles entre
+elles. Le plan Axx' est parallèle au plan P (théorème précédent).</p>
+<p  id="blk-031-06">2º Tout plan parallèle à P mené par le point A coïncide avec celui
+que nous venons d'obtenir. Car il doit être parallèle à D et à D'
+et, par conséquent (329, coroll. I),
+contenir leurs parallèles Ax, Ax';</p>
+<p  id="blk-031-07">3º La démonstration précédente
+prouve que le plan Q parallèle à P
+mené par A, renferme toute parallèle
+menée par A à une droite de P (au-
+trement dit, toute parallèle menée
+par A au plan P).</p>
+<p  id="blk-031-08">Inversement, nous savons que toute
+droite de Q est parallèle à P, et, par
+conséquent, tout point M de Q appartient à<!-- spr -->droite (la
+droite AM) parallèle à P et menée par A.</p>
+<p  id="blk-031-10">Le plan Q possède donc la double propriété caractéristique du
+lieu géométrique indiqué dans l'énoncé.<!-- skp data-txt='D' --><img class="fig" src="img/FIG. 239.OCR.png" alt="FIG. 239." /><!-- spr -->une<!-- spr -->comme</p>
+<p class="article" id="blk-031-15"><strong class="article-num" id="article-331">331.</strong> Nous ferons, pour le parallélisme de deux plans, une conven-
+tion analogue à celles des deux numéros précédents et considérerons,<!-- spr -->cas particulier de deux plans parallèles, deux plans
+confondus.</p>
+<p  id="blk-031-17">De la condition nécessaire et suffisante de parallélisme (330), ainsi
+que de la condition analogue trouvée pour le parallélisme d'une
+droite et d'un plan (329), résultent alors les propositions, ana-
+logues au théorème du nº 329 :</p>
+<p  id="blk-031-18">1° Une droite D, parallèle à un plan P, l'est aussi à tout plan parallèle
+au premier; car ce second plan est parallèle aux parallèles à D
+contenues dans P;</p>
+<p  id="blk-031-19">2º Deux plans P, Q, parallèles à un même troisième R, sont paral-
+lèles entre eux. Car le plan P est parallèle aux droites de R et, par
+suite, à leurs parallèles contenues dans Q.</p>
+<p  id="blk-031-20">Par suite aussi, on a le théorème suivant :<!-- skp data-txt='-' --></p>
+<p  id="blk-031-22">Théorème. Quand deux plans sont parallèles:
+1° Toute droite qui coupe l'un, coupe l'autre ;</p>
+<p  id="blk-031-23">2° Tout plan qui coupe l'un, coupe l'autre, et les deux intersections
+sont parallèles.</p><div class="scan-inline"><img src="img/scan/srcpage-031.png"/></div></data><data data-scanhref="img/scan/srcpage-032.png"><p class="newpage"><!-- skp data-txt='12' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->ou</p>
+<p  id="blk-032-04">1º Les deux plans P, Q étant parallèles, toute droite qui coupe P
+coupe Q. Car si elle était parallèle à Q (ou contenue dans Q) elle<!-- spr -->serait parallèle à P,<!-- spr -->contenue
+dans P, ce qui n'est pas ;</p>
+<p  id="blk-032-07">2° Tout plan qui coupe P coupe Q
+(fig. 240). Car s'il était parallèle à Q
+(ou confondu avec lui), il serait paral-
+lèle à P ou confondu avec lui, ce qui<!-- skp data-txt='A' --><!-- skp data-txt='B' --><!-- spr -->n'est pas ;<img class="fig" src="img/FIG. 240.OCR.png" alt="FIG. 240." /></p>
+<p  id="blk-032-12">3º Les deux droites A, B, intersec-<!-- spr -->tions des deux plans parallèles P, Q
+par un troisième quelconque, sont parallèles entre elles: ceci
+n'est que l'application du coroll. III du nº 329 à la droite A, parallèle
+au plan Q.</p>
+<p class="article" id="blk-032-14"><strong class="article-num" id="article-332">332.</strong> D'après le théorème du n° 328, le second énoncé du nº 323
+peut être remplacé par le suivant : Le lieu géométrique d'une droite
+qui se meut en s'appuyant sur une droite fixe D et restant parallèle à
+une autre droite fixe D', non parallèle à la première (mais sans qu'il
+soit nécessaire, cette fois, que les droites D, D'se coupent) est un plan.</p>
+<p  id="blk-032-15">Il est clair qu'on peut mener par D un plan parallèle à D' et un
+seul le lieu géométrique que nous venons d'obtenir) que<!-- spr -->l'on
+déterminera par la droite D et une parallèle à D' menée par un
+point de D.</p>
+<p  id="blk-032-17">Plus généralement, par un point de l'espace, on peut mener un plan
+parallèle à la fois à D et à D', et on n'en peut mener qu'un, celui qui
+est déterminé par les parallèles à D et à D' menées par le point
+considéré.</p>
+<p  id="blk-032-18">Par deux droites, non situées dans un même plan, on peut faire
+passer deux plans parallèles entre eux, et on ne le peut que d'une seule
+manière. On devra, à cet effet, faire passer, par chaque droite, un
+plan parallèle à l'autre; et, d'autre part, les plans ainsi obtenus
+seront parallèles entre eux, puisque chacun d'eux sera parallèle à
+deux droites concourantes de l'autre.</p>
+<p class="article" id="blk-032-19"><strong class="article-num" id="article-333">333.</strong> Théorème. - Deux angles qui ont leurs côtés parallèles
+sont égaux ou supplémentaires.</p>
+<p  id="blk-032-20">Il suffit évidemment (Pl., 43) de montrer que deux angles
+qui ont leurs côtés parallèles et de même sens sont égaux.</p><div class="scan-inline"><img src="img/scan/srcpage-032.png"/></div></data><data data-scanhref="img/scan/srcpage-033.png"><p class="newpage"></p>
+<p  id="blk-033-01">DROITES ET PLANS PARALLÈLES.<!-- skp data-txt='13' --><!-- skp data-txt='A' --><!-- skp data-txt='C' --></p>
+<p  id="blk-033-05">A'B',</p>
+<p  id="blk-033-06">====</p>
+<p  id="blk-033-07">Soient les deux angles BAC, B'A'C' (fig. 241), tels que AB, A'B'
+soient parallèles et de même sens, ainsi que
+AC, A'C'. Je dis que ces deux angles sont
+égaux.</p>
+<p  id="blk-033-08">Pour le démontrer, prenons, sur les côtés
+de ces angles, les longueurs AB</p>
+<p  id="blk-033-09">AC
+=A'C'. Joignons AA', BB', CC. Le quadrila-
+tère A B A' B', ayant deux côtés égaux et
+parallèles, est (Pl., 46) un parallélogramme,
+de sorte que AA' est égal et parallèle à BB'.</p>
+<p  id="blk-033-10">On démontrerait de même que AA' est égal et parallèle à CC'.</p>
+<p  id="blk-033-11">Donc aussi BB' et CC' sont égaux et (328) parallèles, de sorte que
+BB'CC' est un parallélogramme et que BC</p>
+<p  id="blk-033-12">B'C'. Les triangles
+ABC, A'B'C' sont alors égaux, comme ayant les trois côtés égaux<!-- skp data-txt="A'" --><img class="fig" src="img/FIG. 241.OCR.png" alt="FIG. 241." /><!-- skp data-txt='-' --><!-- spr -->chacun à chacun et, par conséquent, aussi les angles A, A'.</p>
+<p  id="blk-033-17">C. Q. F. D.</p>
+<p class="article" id="blk-033-18"><strong class="article-num" id="article-334">334.</strong> Angle de deux droites quelconques.<!-- skp data-txt='-' --><!-- skp data-txt='D' --></p>
+<p  id="blk-033-21">Définition. On nomme angle de deux demi-droites D, D', situées
+ou non dans un même plan (fig. 242), l'angle que forment entre elles
+les parallèles à D, D', menées par un
+point quelconque O de l'espace.</p>
+<p  id="blk-033-22">Pour que cette définition ait un
+sens, il faut que la valeur de l'angle
+en question soit indépendante du
+choix du point O. Or, c'est ce qui
+résulte du théorème précédent : car
+si, par deux points différents O, O',
+on mène des parallèles à D, D', on a ainsi formé deux angles qui
+ont leurs côtés parallèles et de même sens.</p>
+<p  id="blk-033-23">Lorsque les deux droites D, D' se coupent, l'angle déduit de
+notre nouvelle définition est d'ailleurs évidemment identique
+à l'angle de D et de D', au sens que nous avons donné jusqu'ici à<img class="fig" src="img/FIG. 242.OCR.png" alt="FIG. 242." /><!-- spr -->ce mot.</p>
+<p  id="blk-033-26">On dit que deux droites, situées ou non dans un même plan, sont
+perpendiculaires si leur angle, défini comme il vient d'être dit, est
+droit.</p><div class="scan-inline"><img src="img/scan/srcpage-033.png"/></div></data><data data-scanhref="img/scan/srcpage-034.png"><p class="newpage"><!-- skp data-txt='14' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-034-04">REMARQUE. L'angle de deux droites ne change évidemment
+pas si l'on remplace chacune d'elles par une de ses parallèles. En
+particulier, si deux droites sont perpendiculaires, toute parallèle à
+l'une est perpendiculaire à toute parallèle à l'autre.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-034-06"><strong class="article-num" id="article-335">335.</strong> Théorème. Les portions de parallèles comprises entre deux
+plans parallèles, ou entre une droite et un plan parallèles, sont égales.</p>
+<p  id="blk-034-07">Soient les portions de parallèles AB, A'B', comprises entre les
+plans parallèles P, Q (fig. 243), ou entre la droite AA' et le plan Q<!-- skp data-txt='A' --></p>
+<p  id="blk-034-09">#<!-- skp data-txt='B' --><!-- skp data-txt="B'" --><!-- skp data-txt='B' --><!-- skp data-txt="B'" --><img class="fig" src="img/FIG. 243.OCR.png" alt="FIG. 243." /><img class="fig" src="img/FIG. 244.OCR.png" alt="FIG. 244." /><!-- spr -->parallèle à cette droite (fig. 244). Pour démontrer que ces deux por-
+tions de droites sont égales, il suffit de joindre BB' et de remarquer
+que cette droite est parallèle à AA' (331, 3° ou 329, coroll. III) : les<!-- spr -->segments AB, A'B' sont dès lors
+égaux comme côtés<!-- spr -->opposés d'un
+parallelogramme.<!-- skp data-txt='-' --><!-- skp data-txt='A' --><!-- skp data-txt='P' --><!-- skp data-txt='D' --><!-- skp data-txt="D'" --></p>
+<p  id="blk-034-24">ò</p>
+<p  id="blk-034-25">D"<!-- skp data-txt='B' --></p>
+<p class="article" id="blk-034-27"><strong class="article-num" id="article-336">336.</strong> Théorème.</p>
+<p  id="blk-034-28">Trois plans
+parallèles interceptent, sur des sécantes
+quelconques, des segments propor-
+tionnels.</p>
+<p  id="blk-034-29">Soient les plans parallèles P, Q, R
+(fig. 245) je dis que, si ces plans
+sont coupés par une première droite
+quelconque en A, B, C et par
+seconde droite quelconque en A', B',</p>
+<p  id="blk-034-30">AB
+C', le rapport est égal au rapport</p>
+<p  id="blk-034-31">AC<!-- skp data-txt='C' --><!-- spr -->une<img class="fig" src="img/FIG. 245.OCR.png" alt="FIG. 245." /></p>
+<p  id="blk-034-35">A'B'</p>
+<p  id="blk-034-36">A'C</p>
+<p  id="blk-034-37">En premier lieu, si les deux droites considérées sont dans un
+même plan (par exemple, les droites D, D', de la fig. 245), la propor-</p><div class="scan-inline"><img src="img/scan/srcpage-034.png"/></div></data><data data-scanhref="img/scan/srcpage-035.png"><p class="newpage"></p>
+<p  id="blk-035-01">DROITES ET PLANS PARALLÈLES.<!-- skp data-txt='15' --><!-- spr -->tion à démontrer revient au théorème analogue de géométrie
+plane (Pl., 113), puisque le plan DD' coupe les trois plans P, Q, R
+suivant trois droites parallèles.</p>
+<p  id="blk-035-04">En second lieu, considérons deux droites D, D" (fig. 245) qui ne
+sont pas dans un même plan. On ramènera ce cas au précédent en
+considérant une droite D', située dans un même plan avec D et dans
+un même plan avec D" (par exemple, la droite qui joint un point de
+D à un point de D", ou la parallèle menée à D" par un point de D).
+Le rapport des segments interceptés sur D et le rapport des seg-
+ments interceptés sur D", étant tous deux égaux au rapport analogue
+relatif à D', sont égaux entre eux.</p>
+<p  id="blk-035-05">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p  id="blk-035-07">Corollaire. Deux plans parallèles interceptent, sur des sécantes
+issues d'un même point, des segments proportionnels.</p>
+<p  id="blk-035-08">Cette proposition n'est autre que la précédente, appliquée aux
+deux plans donnés et à un troisième parallèle aux
+premiers, mené par le point donné (fig. 246;
+comparez Pl., 114).</p>
+<p  id="blk-035-09">]+II<!-- spr -->une<img class="fig" src="img/FIG. 246.OCR.png" alt="FIG. 246." /></p>
+<p class="article" id="blk-035-12"><strong class="article-num" id="article-337">337.</strong> Il importe de se rappeler qu'en vertu des
+propositions démontrées dans ce chapitre :
+1° Par<!-- spr -->un point donné, on peut mener
+parallèle à une droite donnée, et une seule ;</p>
+<p  id="blk-035-14">2° Par un point donné, on peut mener un plan
+parallèle à un plan donné, et un seul ;<!-- spr -->au contraire,</p>
+<p  id="blk-035-16">3° Par un point donné, on peut mener une infinité
+de parallèles à un plan donné, à savoir, toutes les droites du plan
+parallèle au plan donné mené par le point donné;</p>
+<p  id="blk-035-17">4° Par un point donné, on peut mener une infinité de plans paral-
+lèles à une droite donnée, à savoir, tous les plans qui passent par la
+droite menée par le point donné parallèlement à la droite donnée.</p>
+<p  id="blk-035-18">Deux droites parallèles ont toutes leurs parallèles communes et
+tous leurs plans parallèles communs; et il en est de même pour
+deux plans parallèles. Mais il n'en est pas de même pour une droite D
+et un plan P parallèles entre eux : un plan parallèle à D peut occuper,
+par rapport à P, une situation quelconque; de même une droite
+parallèle à P, par rapport à D.</p><div class="scan-inline"><img src="img/scan/srcpage-035.png"/></div></data><data data-scanhref="img/scan/srcpage-036.png"><p class="newpage"><!-- skp data-txt='16' --><!-- skp data-txt='15' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-036-04">EXERCICES</p>
+<p class="article" id="blk-036-05"><strong class="article-num" id="article-428">428.</strong> Que deviennent les conclusions de l'exemple 423, lorsqu'on sait seulement
+que deux quelconques des droites données sont dans un même plan?</p>
+<p class="article" id="blk-036-06"><strong class="article-num" id="article-429">429.</strong> Mener une droite parallèle à une droite donnée et rencontrant deux droites
+données (1).</p>
+<p class="article" id="blk-036-07"><strong class="article-num" id="article-430">430.</strong> Les milieux des côtés d'un quadrilatère gauche (exerc. 427) sont les sommets
+d'un parallelogramme. Le centre de ce parallélogramme est au milieu de la droite
+qui joint les milieux des diagonales du quadrilatère.</p>
+<p  id="blk-036-08">Lieu du centre de ce parallélogramme lorsque, trois sommets du quadrilatère
+restant fixes, le quatrième sommet décrit un plan donné ou une droite donnée.</p>
+<p class="article" id="blk-036-09"><strong class="article-num" id="article-431">431.</strong> Réciproque du théorème du nº 336. Si deux droites sont divisées en parties
+proportionnelles en A, B, C pour l'une, A', B', C' pour l'autre, on peut faire passer,
+par les droites AA', BB', CC' respectivement, trois plans parallèles entre eux.</p>
+<p class="article" id="blk-036-10"><strong class="article-num" id="article-432">432.</strong> Étant données deux droites D, D', non situées dans un même plan, quel est
+le lieu des points obtenus en divisant dans un rapport donné le segment de droite
+qui joint un point quelconque M de D à un point quelconque M' de D'?</p>
+<p class="article" id="blk-036-11"><strong class="article-num" id="article-432 bis">432 bis.</strong> Même question lorsque les points M, M', au lieu de varier d'une façon
+quelconque sur les droites données, sont assujettis à la condition que la droite MM'
+soit parallèle à un plan fixe.</p>
+<p  id="blk-036-12">Conclure de là qu'une droite qui varie en rencontrant deux droites fixes et restant
+parallèle à un plan donné, rencontre une infinité d'autres droites fixes, toutes
+parallèles à un même plan.</p>
+<p class="article" id="blk-036-13"><strong class="article-num" id="article-433">433.</strong> Inversement, lorsqu'une droite mobile rencontre trois droites fixes parallèles
+à un méme plan, elle est divisée par ces droites dans un rapport constant et reste
+parallèle à un plan fixe.</p>
+<p class="article" id="blk-036-14"><strong class="article-num" id="article-434">434.</strong> Montrer que si la droite mobile considérée aux deux exercices précédents
+s'éloigne indéfiniment, elle tend à devenir parallèle à une direction déterminée.</p>
+<p class="article" id="blk-036-15"><strong class="article-num" id="article-435">435.</strong> Mener une droite rencontrant trois droites données et qui soit divisée par
+elles dans un rapport donné (1).</p>
+<p class="article" id="blk-036-16"><strong class="article-num" id="article-436">436.</strong> Si une droite mobile rencontre deux droites fixes, D, D' et est divisée par
+celles-ci et un plan fixe (non parallèle à la fois à D, D') dans un rapport constant,
+elle est parallèle à un plan fixe.</p>
+<p class="article" id="blk-036-17"><strong class="article-num" id="article-437">437.</strong> Les droites qui joignent deux points pris sur deux côtés consécutifs d'un
+quadrilatère gauche aux points qui divisent respectivement dans les mêmes rapports
+les côtés opposés aux premiers, se rencontrent; et chacune d'elles est divisée par
+l'autre dans le même rapport que les côtés qu'elle ne rencontre pas.</p>
+<p class="article" id="blk-036-18"><strong class="article-num" id="article-438">438.</strong> Mener, entre deux droites données, une sécante de longueur donnée,
+parallèlement à un plan donné (1).</p>
+<p  id="blk-036-19">(1) Voir la note placée à la fin des problèmes du Ve livre.</p><div class="scan-inline"><img src="img/scan/srcpage-036.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

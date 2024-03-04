@@ -1,0 +1,468 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-150.png"><p class="newpage"><!-- skp data-txt='130' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-150-03">CHAPITRE III</p>
+<p  id="blk-150-04">GÉNÉRALITÉS SUR LA SPHÈRE</p>
+<p  id="blk-150-05">_<img class="fig" src="img/FIG. 347.OCR.png" alt="FIG. 347." /></p>
+<p class="article" id="blk-150-07"><strong class="article-num" id="article-447">447.</strong> Définition. On nomme sphère (fig. 347), le lieu géomé-
+trique des points de l'espace situés à une distance donnée d'un point<!-- spr -->donné, appelé centre de la sphère.</p>
+<p  id="blk-150-09">La droite qui joint le centre à un
+point de la surface est dite un rayon.
+Une droite qui joint deux points de la
+surface et qui, de plus, passe par le
+centre, est dite un diamètre. Il résulte
+de la définition que tous les rayons sont
+égaux entre eux et qu'un diamètre est
+double d'un rayon.</p>
+<p  id="blk-150-10">Un plan qui passe par le centre de la
+sphère est dit plan diamétral. La sphère sépare l'une de l'autre deux
+régions de l'espace : l'une, comprenant les points dont la dis-
+tance au centre est moindre que le rayon, est dite intérieure à la
+sphère (1); au contraire, les points dont la distance au centre est
+plus grande que le rayon sont dits extérieurs à la surface. On ne
+peut passer de l'une des deux régions à l'autre par un chemin continu
+sans traverser la surface.</p>
+<p  id="blk-150-11">La définition de la sphère, jointe à celle de la circonférence (Pl., 56)
+montre évidemment que la section d'une sphère par un plan diamétral
+est une circonférence de même centre et de même rayon que la
+sphère une telle circonférence est dite grand cercle de la sphère.</p>
+<p  id="blk-150-12">Théorème. La surface engendrée par la révolution d'une demi-
+circonférence autour de son diamètre est une sphère.<!-- skp data-txt='-' --></p>
+<p  id="blk-150-14">(1) On donne également, dans le langage courant, le nom de sphère à la région située à
+l'intérieur de la surface : cette manière de parler n'introduit aucune confusion dans les
+raisonnements.</p><div class="scan-inline"><img src="img/scan/srcpage-150.png"/></div></data><data data-scanhref="img/scan/srcpage-151.png"><p class="newpage"></p>
+<p  id="blk-151-01">GÉNÉRALITÉS SUR LA SPHERE.<!-- skp data-txt='131' --></p>
+<p  id="blk-151-03">Réciproquement, toute sphère peut être considérée comme engendrée
+de cette façon, l'axe étant un diamètre quelconque de la surface.</p>
+<p  id="blk-151-04">1° Soit une demi-circonférence du centre 0 (fig. 348) tournant
+autour de son diamètre AB. La distance OM d'un point quelconque
+de la demi-circonférence au. centre O ne changera pas dans ce
+déplacement, de sorte que le point M
+sera constamment sur une sphère S
+ayant même centre et même rayon que
+la circonférence donnée.</p>
+<p  id="blk-151-05">Inversement, tout point M de la
+sphère ainsi obtenue est tel que la dis-
+tance OM' soit égale à OA. Il appartient
+donc à une circonférence, section de la
+sphère par le plan AM/B, et qui est une
+des positions que vient prendre la cir-
+conférence donnée dans son mouvement
+de révolution autour de l'axe;</p>
+<p  id="blk-151-06">2º Soit AB un diamètre quelconque d'une sphère donnée O. Par
+AB, faisons passer un plan qui coupe la sphère suivant une circon-
+férence de centre O. La sphère engendrée par la révolution d'une
+des moitiés de cette circonférence autour de l'axe AB coïncide
+manifestement avec la sphère donnée.<!-- skp data-txt='M' --><!-- skp data-txt="M'" --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 348.OCR.png" alt="FIG. 348." /><!-- skp data-txt='-' --></p>
+<p  id="blk-151-12">REMARQUE. On voit que la sphère est de révolution autour d'un
+quelconque de ses diamètres.
+Par conséquent (438), la sphère admet tous ses plans diamétraux<!-- spr -->comme plans de symétrie.<!-- skp data-txt='0' --></p>
+<p  id="blk-151-15">Ꭹ</p>
+<p class="article" id="blk-151-16"><strong class="article-num" id="article-448">448.</strong>Intersection d'une
+droite et d'une sphère.</p>
+<p  id="blk-151-17">Pour étudier l'intersec -
+tion d'une droite xy et d'une
+sphère S (fig. 349), faisons
+passer un plan par la droite
+xy et le centre 0 de la<!-- spr -->sphère. Tout point commun
+à la droite et à la sphère appartenant forcément au grand cercle, sec-
+tion de la sphère par ce plan, les conclusions du n° 58 (Pl., liv. II),
+nous permettent d'énoncer les propositions suivantes :<img class="fig" src="img/FIG. 349.OCR.png" alt="FIG. 349." /></p><div class="scan-inline"><img src="img/scan/srcpage-151.png"/></div></data><data data-scanhref="img/scan/srcpage-152.png"><p class="newpage"><!-- skp data-txt='132' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='A' --></p>
+<p  id="blk-152-04">1° Une droite ne rencontre pas une sphère, si la distance de cette
+droite au centre est plus grande que le rayon;</p>
+<p  id="blk-152-05">2° Si cette distance est plus petite que le rayon, la droite et la sphère
+se coupent en deux points. La corde interceptée sur la droite est<!-- spr -->d'autant plus petite que la distance de
+la droite au centre est plus grande; le
+centre se projette au milieu de cette
+corde;</p>
+<p  id="blk-152-07">3° Enfin, dans le cas intermédiaire
+où la distance de la droite au centre
+est égale au rayon, la droite n'a, avec
+la sphère, qu'un point commun.</p>
+<p  id="blk-152-08">On dit alors qu'elle est tangente à
+la sphère (AT, fig. 350).</p>
+<p  id="blk-152-09">On voit qu'une tangente à la sphère
+est perpendiculaire au rayon du point de contact, et qu'inversement,
+toute droite perpendiculaire à l'extrémité d'un rayon est tangente.</p>
+<p  id="blk-152-10">(C)<img class="fig" src="img/FIG. 350.OCR.png" alt="FIG. 350." /></p>
+<p class="article" id="blk-152-12"><strong class="article-num" id="article-449">449.</strong> La définition que nous venons de donner de la tangente à la
+sphère n'est pas celle que nous avons indiquée, d'une façon générale,
+pour la tangente à une surface quelconque (433). Nous allons faire
+voir que ces deux définitions sont entièrement équivalentes l'une
+à l'autre.</p>
+<p  id="blk-152-13">Par un point A de la sphère (fig. 350), soit tracée une courbe
+quelconque (C), que nous supposerons avoir une tangente AT. Nous
+avons à démontrer que AT est tangente à la sphère, au sens du
+numéro précédent.</p>
+<p  id="blk-152-14">Or la tangente AT est la limite d'une sécante AB, lorsque le
+point B tend vers le point A. Le point M, projection du centre.
+AB, est le milieu de AB : il tend donc, dans les conditions dont
+nous venons de parler, vers le point A ; d'où résulte nécessairement
+la conséquence demandée.</p>
+<p  id="blk-152-15">Inversement, toute droite AT perpendiculaire à l'extrémité d'un
+rayon de la sphère est tangente au moins à une courbe tracée sur la
+surface, à savoir le grand cercle situé dans le plan OAT.</p>
+<p class="article" id="blk-152-16"><strong class="article-num" id="article-449 bis">449 bis.</strong> De ce qui précède, résulte le théorème suivant:<!-- skp data-txt='-' --></p>
+<p  id="blk-152-18">Théorème. Le lieu des tangentes à la sphère en un de ses points
+est le plan perpendiculaire au rayon qui aboutit en ce point (fig. 350).</p><div class="scan-inline"><img src="img/scan/srcpage-152.png"/></div></data><data data-scanhref="img/scan/srcpage-153.png"><p class="newpage"></p>
+<p  id="blk-153-01">GÉNÉRALITÉS SUR LA SPHÈRE.<!-- skp data-txt='133' --></p>
+<p  id="blk-153-03">Ce plan est dit plan tangent à la sphère, au point considéré.</p>
+<p  id="blk-153-04">Nous avons donc démontré, pour la sphère, un théorème analogue
+à celui qui avait été précédemment établi pour les cylindres (433) et
+pour les cônes (436).</p>
+<p  id="blk-153-05">Toutefois, nous avons à noter une différence importante: un plan
+tangent à la sphère n'a manifestement qu'un seul point de contact.
+Le cylindre et le cône présentaient, au contraire, cette particularité
+que le plan tangent était le même en une infinité de points (à savoir,
+tous les points d'une même génératrice).</p>
+<p class="article" id="blk-153-06"><strong class="article-num" id="article-450">450.</strong> Intersection d'une sphère et d'un plan.<!-- skp data-txt='-' --></p>
+<p  id="blk-153-08">Théorème. Si la distance d'un plan au centre d'une sphère est
+supérieure au rayon de celle-ci, les deux surfaces n'ont aucun point<!-- spr -->commun..</p>
+<p  id="blk-153-10">Si la distance du plan au centre de la sphère est moindre que le
+rayon, les deux surfaces se coupent suivant un cercle, dont le centre
+est la projection du centre de la sphère sur le plan.</p>
+<p  id="blk-153-11">Enfin, dans le cas intermédiaire où il y a égalité, le plan n'a qu'un
+point commun avec la sphère; il est (449 bis) tangent à cette surface.</p>
+<p  id="blk-153-12">Si, en effet, par la projection C du centre O de la sphère sur le
+plan considéré P, on mène, dans celui-ci, une série de droites<!-- skp data-txt='P' --></p>
+<p  id="blk-153-14">☑<!-- skp data-txt="M'" --><!-- skp data-txt='M' --><!-- skp data-txt='0' --><!-- skp data-txt="A'" --><img class="fig" src="img/FIG. 351.OCR.png" alt="FIG. 351." /><img class="fig" src="img/FIG. 352.OCR.png" alt="FIG. 352." /></p>
+<p  id="blk-153-21">(fig. 351, 352), la distance du centre à l'une quelconque d'entre elles
+est la même que celle du même point au plan.</p>
+<p  id="blk-153-22">Si donc cette distance est plus grande que le rayon, aucune des
+droites ainsi menées ne coupe la sphère (448).</p>
+<p  id="blk-153-23">Si cette distance est égale au rayon, les droites en question sont
+tangentes.</p><div class="scan-inline"><img src="img/scan/srcpage-153.png"/></div></data><data data-scanhref="img/scan/srcpage-154.png"><p class="newpage"><!-- skp data-txt='134' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-154-03">Si elle est plus petite que le rayon, toutes ces droites coupent la
+sphère. Le lieu des points communs est, d'après la définition de la
+sphère et le théorème du nº 344, une circonférence de centre C.</p>
+<p  id="blk-154-04">Ce dernier point résulte d'ailleurs de ce que le diamètre OC peut
+être considéré (447, Rem.), comme un axe de révolution de la
+sphère. Si, en effet, M est un point commun à celle-ci et au plan, ce
+point, en tournant autour de OC, engendre un cercle de centre C
+qui appartient à la fois à la sphère (engendrée par la révolution du
+demi-grand cercle AMA' situé dans le plan OCM) et au plan P
+(engendré par la demi-droite CM; 442, Rem.).</p>
+<p  id="blk-154-05">Inversement, si M' est un autre point quelconque commun à la
+sphère et au plan, le demi-grand cercle AMA' peut être amené, par
+une rotation autour de OC, à coïncider avec le demi-grand cercle
+AM'A', situé dans le plan OCM'. Le point M qui, dans ce mouvement,
+n'a pas cessé d'appartenir au plan P, se trouve alors amené à
+l'intersection de ce plan et du demi-grand cercle AM'A', c'est-
+à-dire au point M'. Ce dernier est donc bien une des positions que
+vient prendre le point M en tournant autour de OC.<!-- skp data-txt='-' --></p>
+<p  id="blk-154-07">Corollaires. 1. Une sphère de rayon R et un plan situé à une
+distance d du centre se coupent suivant un cercle dont le rayon r est
+donné par la formule<!-- spr -->r = √R²<!-- spr -->d².</p>
+<p  id="blk-154-10">C'est ce qui se voit dans le triangle rectangle OCM (fig. 352),
+lequel a pour hypoténuse R et pour côtés de l'angle droit r, d.</p>
+<p  id="blk-154-11">La formule précédente justifie la dénomination de grand cercle,
+donnée plus haut à la section de la sphère par un plan passant par
+le centre, section dont le rayon est R. On voit en effet que toutes
+les autres sections de la sphère (lesquelles sont appelées petits
+cercles) ont un rayon inférieur à R.</p>
+<p  id="blk-154-12">II. Toute sphère qui contient trois points d'un cercle, contient ce
+cercle tout entier. Car le plan de ce cercle coupe la sphère suivant un
+cercle, forcément identique au premier (Pl., 57).</p>
+<p  id="blk-154-13">III. Le lieu des centres des sphères qui passent par un cercle
+donné est la droite (dite axe du cercle) perpendiculaire au plan du
+cercle en son centre.</p>
+<p  id="blk-154-14">En effet, il résulte de ce que nous venons de voir que les centres</p><div class="scan-inline"><img src="img/scan/srcpage-154.png"/></div></data><data data-scanhref="img/scan/srcpage-155.png"><p class="newpage"></p>
+<p  id="blk-155-01">GÉNÉRALITÉS SUR LA SPHERE.<!-- skp data-txt='135' --><!-- spr -->des sphères qui contiennent le cercle donné sont tous sur la
+droite en question, et que, réciproquement, la sphère qui a pour
+centre un point quelconque de cette droite et qui passe par un
+point du cercle donné, contient ce cercle tout entier.<!-- skp data-txt='P' --><img class="fig" src="img/FIG. 353.OCR.png" alt="FIG. 353." /></p>
+<p class="article" id="blk-155-06"><strong class="article-num" id="article-451">451.</strong> Théorème. Deux cercles qui ont deux points communs
+sans être situés dans un même plan, déterminent une sphère.
+Soient les deux cercles C, C' (fig. 353) dont les plans sont P,</p>
+<p  id="blk-155-07">P'
+et qui ont les deux points com-
+muns A, B.</p>
+<p  id="blk-155-08">Toute sphère passant par le
+cercle C aura son centre sur la
+perpendiculaire Cx, élevée par
+le centre de ce cercle au plan P,
+et réciproquement, toute sphère
+ayant son centre sur cette droite
+et passant par A contiendra tout
+le cercle C. En particulier, il ré-
+sulte tout d'abord de là et du
+nº 340 que la droite Cx est dans le plan perpendiculaire au milieu
+de AB.</p>
+<p  id="blk-155-09">De même, toute sphère passant par le cercle C aura son centre
+sur la perpendiculaire C'x', élevée par le centre de ce cercle au
+plan P'; et, réciproquement, toute sphère ayant son centre sur
+cette droite et passant par le point A, contiendra tout le cercle C'.
+En particulier, cette droite est dans le plan perpendiculaire au
+milieu de AB.</p>
+<p  id="blk-155-10">Les deux droites Cr, C'x' sont dans un même plan; elles ne sont
+ni parallèles ni confondues (sans quoi les plans P, P', qui leur sont
+respectivement perpendiculaires, seraient eux-mêmes parallèles.
+ou confondus, ce qui n'est pas). Elles se coupent donc en un point
+unique O.</p>
+<p  id="blk-155-11">La sphère de centre O et de rayon OA répond, et répond seule, à
+la question.<!-- skp data-txt='-' --></p>
+<p  id="blk-155-13">REMARQUES. I. On verrait de même que deux cercles, qui sont
+tangents entre eux sans être dans un même plan (fig. 354), déterminent
+une sphère.</p>
+<p  id="blk-155-14">Il faudrait seulement, dans la démonstration précédente, rempla-</p><div class="scan-inline"><img src="img/scan/srcpage-155.png"/></div></data><data data-scanhref="img/scan/srcpage-156.png"><p class="newpage"><!-- skp data-txt='136' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->cer le plan perpendiculaire au milieu de AB par le plan mené au<!-- spr -->point de contact, perpendiculaire-
+ment à la tangente commune.</p>
+<p  id="blk-156-05">C..<!-- skp data-txt='A' --></p>
+<p  id="blk-156-07">II. Si les deux cercles donnés
+étaient dans un même plan, ce
+serait ce plan qui remplacerait la
+sphère. Le plan est un cas-limite
+de la sphère, comme la droite est
+un cas-limite du cercle (Pl., 90,
+Rem.).</p>
+<p  id="blk-156-08">/T<img class="fig" src="img/FIG. 354.OCR.png" alt="FIG. 354." /><!-- skp data-txt='-' --></p>
+<p  id="blk-156-11">Théorème. Un cercle et un point extérieur à son plan déter-
+minent une sphère.</p>
+<p  id="blk-156-12">Quatre points, non situés dans un même plan, déterminent une
+sphère.</p>
+<p  id="blk-156-13">1º La condition, imposée à la sphère cherchée de passer par un
+cercle et un point extérieur à son plan, peut être remplacée (450,
+Coroll. II) par celle de contenir deux cercles qui ont deux points
+communs à savoir, le cercle donné et celui qu'on peut mener par
+deux points de ce cercle et le point donné ;</p>
+<p  id="blk-156-14">2º De même, la condition, imposée à une sphère, de passer par
+quatre points donnés A,B,C,D, peut être remplacée par celle de
+contenir deux cercles qui se coupent en deux points: le cercle ABC
+et le cercle ABD.</p>
+<p  id="blk-156-15">_</p>
+<p  id="blk-156-16">Corollaire. Une sphère ne peut avoir deux centres, ni, par suite,
+deux rayons différents.</p>
+<p class="article" id="blk-156-17"><strong class="article-num" id="article-452">452.</strong> Cône et cylindre circonscrits à la sphère.<!-- skp data-txt='-' --></p>
+<p  id="blk-156-19">Théorème. Le lieu des tangentes que l'on peut mener à une
+sphère par un point extérieur est un cône de révolution.</p>
+<p  id="blk-156-20">Ces tangentes sont toutes égales entre elles.
+Le lieu de leurs points de contact est un petit cercle de la sphère.</p>
+<p  id="blk-156-21">Les plans tangents au cône, lieu des tangentes, sont tangents à la
+sphère. Ce sont les seuls plans jouissant de cette propriété qu'on
+puisse mener par le point donné.</p>
+<p  id="blk-156-22">Soient O le centre de la sphère donnée (fig. 355), S le point donné.
+Soit T le point de contact d'une tangente menée par S à l'un quel-
+conque des grands cercles dont les plans passent par OS. Si nous fai-</p><div class="scan-inline"><img src="img/scan/srcpage-156.png"/></div></data><data data-scanhref="img/scan/srcpage-157.png"><p class="newpage"></p>
+<p  id="blk-157-01">GÉNÉRALITÉS SUR LA SPHÈRE.<!-- skp data-txt='137' --><!-- skp data-txt='S' --><!-- skp data-txt='0' --><!-- spr -->sons tourner la droite ST autour de l'axe OS, elle ne cessera pas d'être
+tangente à la sphère, puisque celle-ci est de révolution autour de OS.</p>
+<p  id="blk-157-06">Les tangentes ainsi obtenues (à savoir
+les positions successives de ST) et qui
+satisfont évidemment aux conditions de
+l'énoncé, sont d'ailleurs les seules que l'on
+puisse mener du point S à la sphère : car
+une telle tangente est, d'après la démons-
+tration du nº 449, tangente au grand cercle
+situé dans le plan qui passe par son point
+de contact et les points O, S.</p>
+<p  id="blk-157-07">En chacune des positions du point T, le
+cône et la sphère ont même plan tangent,
+à savoir celui qui est déterminé par la
+droite ST et la tangente Tt au cercle lieu
+du point T.</p>
+<p  id="blk-157-08">Nous obtenons ainsi une série de plans tangents menés du point
+S à la sphère: ce sont d'ailleurs les seuls, car, si le plan tangent en
+un point T passe par le point S, la droite ST est tangente.</p>
+<p  id="blk-157-09">REMARQUE. On dit que le cône dont nous venons de parler est
+circonscrit à la sphère, et celle-ci inscrite au cône.<img class="fig" src="img/FIG. 355.OCR.png" alt="FIG. 355." /><!-- skp data-txt='-' --></p>
+<p  id="blk-157-12">Inversement, le long d'un petit cercle quelconque, on peut inscrire
+un cône à la sphère : le sommet de ce cône sera le point où le plan<!-- spr -->tangent en un point quelconque du
+cercle coupe le diamètre perpendicu-
+laire au plan de ce cercle,<!-- skp data-txt='-' --><!-- skp data-txt='T' --></p>
+<p  id="blk-157-16">Théorème.</p>
+<p  id="blk-157-17">Le lieu des tangentes
+menées à une sphère, parallèlement à une
+droite donnée, est un cylindre de révolu-
+tion. Les plans tangents à ce cylindre sont
+tangents à la sphère. Ce sont les seuls
+plans qui jouissent de cette propriété, tout
+en étant parallèles à la droite donnée.</p>
+<p  id="blk-157-18">Le lieu de leurs points de contact est le
+grand cercle dont le plan est perpendiculaire à la droite donnée.</p>
+<p  id="blk-157-19">Soit Ox (fig. 356) la parallèle à la droite donnée, menée par le
+centre de la sphère. Soit Ty une tangente menée, parallèlement à<img class="fig" src="img/FIG. 356.OCR.png" alt="FIG. 356." /></p><div class="scan-inline"><img src="img/scan/srcpage-157.png"/></div></data><data data-scanhref="img/scan/srcpage-158.png"><p class="newpage"><!-- skp data-txt='138' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->cette droite, à un grand cercle dont le plan passe par Ox. On pourra,
+comme tout à l'heure, faire tourner cette droite Ty autour de Ox,
+sans qu'elle cesse d'être tangente à la sphère. Elle décrira, dans ces
+conditions, un cylindre de révolution et le point T décrira un grand
+cercle, car le rayon OT, perpendiculaire à la tangente, décrira le
+plan mené par O perpendiculairement à la direction donnée.</p>
+<p  id="blk-158-04">On verrait, comme plus haut, que les seules tangentes à la sphère
+parallèles à Ox, sont les génératrices du cylindre dont nous venons de
+parler et que ce cylindre est circonscrit à la sphère, c'est-à-dire tan-
+gent (1) à cette surface en tous les points du cercle que décrit le point T.</p>
+<p  id="blk-158-05">Inversement, le long d'un grand cercle quelconque, on peut circonscrire
+à la sphère un cylindre, celui qui a pour section droite le grand cercle.</p>
+<p  id="blk-158-06">+19<!-- skp data-txt='0' --></p>
+<p class="article" id="blk-158-08"><strong class="article-num" id="article-452 bis">452 bis.</strong> Par une droite entièrement extérieure à une sphère, on
+peut mener deux plans tangents à cette sphère.
+Soient D la droite donnée (fig. 357); C, le cercle de contact du cône<!-- spr -->circonscrit à la sphère, ayant pour
+sommet un point P de cette droite.
+Le plan du cercle C coupe D en un
+point I, extérieur à C (puisqu'il est
+extérieur à la sphère). Du point I,
+on peut mener deux tangentes IT,
+IT' au cercle C. Le plan tangent à
+la sphère au point T n'est autre
+(n° précédent) que le plan TIP.</p>
+<p  id="blk-158-10">Inversement, tout plan tangent à
+la sphère passant par P doit (nº pré-<!-- spr -->cédent) être tangent au cône dont
+il vient d'être question. S'il passe également par I, il coïncide avec
+l'un des deux que nous venons d'obtenir.</p>
+<p  id="blk-158-12">On peut mener à une sphère deux plans tangents parallèles à un plan
+donné. Leurs points de contact sont les extrémités du diamètre
+perpendiculaire au plan donné.<img class="fig" src="img/FIG. 357.OCR.png" alt="FIG. 357." /></p>
+<p class="article" id="blk-158-14"><strong class="article-num" id="article-453">453.</strong> Intersection de deux sphères.<!-- skp data-txt='-' --></p>
+<p  id="blk-158-16">Théorème. Si deux sphères distinctes ont un point commun
+en dehors de la ligne des centres, leur intersection est un cercle, dont</p>
+<p  id="blk-158-17">(1) Par analogie avec la définition donnée en géométrie plane, on dit que deux surfaces
+sont tangentes en un de leurs points communs, lorsqu'elles ont même plan tangent en ce point.</p><div class="scan-inline"><img src="img/scan/srcpage-158.png"/></div></data><data data-scanhref="img/scan/srcpage-159.png"><p class="newpage"></p>
+<p  id="blk-159-01">GÉNÉRALITÉS SUR LA SPHÈRE.<!-- skp data-txt='139' --><!-- spr -->le plan est perpendiculaire à cette ligne et le centre, situé sur cette
+ligne.</p>
+<p  id="blk-159-04">Soient, en effet, O, O' deux sphères qui ont en commun un point A,
+situé en dehors de la ligne 00'. Le point A, en tournant autour de
+00', engendrera un cercle qui appartiendra à la fois aux deux
+surfaces. Celles-ci n'ont d'ailleurs aucun point commun en dehors
+de ce cercle, en vertu du nº 451.</p>
+<p class="article" id="blk-159-05"><strong class="article-num" id="article-453 bis">453 bis.</strong> La situation respective de deux sphères dépend de l'ordre
+de grandeur dans lequel sont rangées la distance 00' des centres, la
+somme RR' des rayons et la différence R - R' de ces mêmes
+rayons. Cette dépendance est indiquée par le théorème suivant :<!-- skp data-txt='-' --><!-- skp data-txt='--' --></p>
+<p  id="blk-159-08">Théorème. Deux sphères sont :</p>
+<p  id="blk-159-09">1º Extérieures (fig. 358), si la distance des centres est supérieure à
+la somme des rayons;<!-- skp data-txt='0' --><!-- skp data-txt='0' --><img class="fig" src="img/FIG. 358.OCR.png" alt="FIG. 358." /><img class="fig" src="img/FIG. 359.OCR.png" alt="FIG. 359." /><!-- spr -->un</p>
+<p  id="blk-159-15">2° Tangentes extérieurement (fig. 359), si la distance des centres est
+égale à la somme des rayons;
+3° Sécantes suivant<!-- spr -->cercle
+(fig. 360), si la distance des centres
+est comprise entre la somme des
+rayons et leur différence;</p>
+<p  id="blk-159-17">4° Tangentes intérieurement (fig.
+361), si la distance des centres est
+égale à la différence des rayons.</p>
+<p  id="blk-159-18">5° Intérieures (fig. 362), si la dis-
+tance des centres est plus petite que
+la différence des rayons.</p>
+<p  id="blk-159-19">La démonstration est identiquement la même qu'en géométrie
+plane (Pl., 66) sauf en 3º, où il suffit de remarquer qu'en coupant la<img class="fig" src="img/FIG. 360.OCR.png" alt="FIG. 360." /></p><div class="scan-inline"><img src="img/scan/srcpage-159.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

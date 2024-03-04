@@ -1,0 +1,441 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-539.png"><p class="newpage"></p>
+<p  id="blk-539-01">NOTE E</p>
+<p  id="blk-539-02">SUR LA RÉSOLUBILITÉ DES PROBLÈMES DE GÉOMÉTRIE</p>
+<p class="article" id="blk-539-03"><strong class="article-num" id="article-788">788.</strong> Ainsi que nous avons<!-- spr -->eu l'occasion de le faire remarquer à plu-
+sieurs reprises, les divers problèmes de construction que l'on peut rencon-
+trer en géométrie sont loin de pouvoir être tous résolus comme nous
+l'avons indiqué au livre II de la Géométrie plane, c'est-à-dire uniquement
+par le moyen de la règle et du compas.</p>
+<p  id="blk-539-05">A quels caractères peut-on reconnaître si un problème donné quelcon-
+que admet une solution de cette nature? Nous ne pouvons donner à cet
+égard que quelques indications, car, ainsi que nous allons le voir, les
+méthodes qui permettent de répondre à cette question appartiennent au
+domaine de l'algèbre.</p>
+<p  id="blk-539-06">Nous avons vu, en effet, au livre X, comment une figure plane quel-
+conque peut être considérée comme déterminée par des données numé-
+riques convenablement choisies: c'est ce que nous avons appelé faire le
+levé de la figure en question. Nous avons même vu qu'on peut, pour ces
+données, choisir exclusivement des mesures de longueur (levé à la chaîne
+seule, ou à la chaîne et à l'équerre). Nous supposerons essentiellement, dans ce qui
+va suivre, que cette dernière précaution ait été prise: si, par exemple, la
+figure considérée contient un angle, il est entendu que la détermination
+de cet angle sera ramenée à celle des trois côtés d'un triangle dont il fait
+partie.</p>
+<p class="article" id="blk-539-07"><strong class="article-num" id="article-789">789.</strong> Il est vrai que ces données numériques, nécessaires pour déter-
+miner la figure, sont quelquefois en nombre infini: c'est ce qui arrive si
+cette figure contient des lignes de forme quelconque qu'il faut construire
+par points, ceux-ci étant en nombre infini. Mais ce cas ne se présentera pas
+dans les problèmes dont nous nous occuperons. Nous supposerons, en
+effet, que les figures considérées sont de celles que l'on peut reproduire à
+l'aide de la règle et du compas et cela, par un nombre fini d'opérations:
+autrement dit, ces figures se composeront toujours de points, de droites et
+de cercles en nombre fini.</p>
+<p  id="blk-539-08">Par exemple, si, parmi les données de la question, figure une ellipse, il
+ne faudra pas supposer cette ellipse tracée puisqu'on ne peut le faire
+d'un mouvement continu, en n'employant que la règle et le compas</p>
+<p  id="blk-539-09">―<!-- skp data-txt='-' --></p><div class="scan-inline"><img src="img/scan/srcpage-539.png"/></div></data><data data-scanhref="img/scan/srcpage-540.png"><p class="newpage"><!-- skp data-txt='520' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->mais donnée par ses foyers et son grand axe, ou par cinq points (¹), ou
+par toutes autres données équivalentes à celles-là. De même, si une ellipse
+figure parmi les inconnues, il est clair qu'on ne pourra demander qu'elle
+soit tracée: elle devra être regardée comme obtenue lorsqu'on en connaî-
+tra cinq points.</p>
+<p  id="blk-540-04">Toute figure satisfaisant à la condition précédente sera déterminée par
+un nombre fini de points, puisqu'une droite est déterminée par deux points
+et un cercle par trois.</p>
+<p class="article" id="blk-540-05"><strong class="article-num" id="article-790">790.</strong> Pour déterminer la situation d'un point, nous pourrons prendre,
+en particulier, les coordonnées de ce point (533), un système d'axes, que
+nous supposerons rectangulaires, ayant été choisi dans le plan de la
+figure la connaissance de celle-ci sera alors fournie par la connaissance
+des coordonnées d'un certain nombre de points.</p>
+<p class="article" id="blk-540-06"><strong class="article-num" id="article-791">791.</strong> Soit maintenant un problème de construction, ayant pour objet la
+recherche d'une figure F' ayant avec une figure donnée F des relations
+données.</p>
+<p  id="blk-540-07">Si nous voulions déterminer la figure F par des mesures de longueur,
+autrement dit en faire le levé (à la chaîne seule, ou à la chaîne et à l'équerre, bien
+entendu), nous obtiendrions une certaine série de nombres N. De même, le
+problème étant supposé résolu et la figure F' construite, le levé de la figure<!-- spr -->formée par l'ensemble de F et
+de F conduirait à adjoindre aux
+nombres N d'autres nombres que
+nous désignerons par N'.</p>
+<p  id="blk-540-09">R3,<!-- skp data-txt='-' --></p>
+<p  id="blk-540-11">$61</p>
+<p  id="blk-540-12">021-R2</p>
+<p  id="blk-540-13">R₁</p>
+<p  id="blk-540-14">EXEMPLE. Dans le problème
+077-<!-- spr -->du cercle tangent à trois cercles
+donnés, les nombres N seront les
+coordonnées a₁, b₁; a₂, b₂; a3, b3
+des centres de trois cercles et leurs
+rayons R₁, R2, R3 : ces nombres
+détermineront entièrement la figure
+formée par ces trois cercles (fig. 643).
+Les nombres N' seront les coor-
+données α, 3 du centre du cercle
+cherché et le rayon p de ce cercle.</p>
+<p  id="blk-540-16">On pourra encore considérer les
+distances mutuelles 0203. 0301, 0102
+(fig. 643) des centres des cercles<!-- spr -->donnés et les rayons R1, R2, R3,
+comme constituant les quantités N, car ces longueurs suffisent à faire le levé de
+la figure formée par les cercles donnés. Les nombres N' seront alors, par exemple,
+les distances x, y, z du centre du cercle cherché aux points 01, 02, 03, et le
+rayon du même cercle.<!-- skp data-txt='22' --><img class="fig" src="img/FIG. 643.OCR.png" alt="FIG. 643." /></p>
+<p  id="blk-540-20">Cela posé, imaginons pour un instant qu'au lieu de construire la figure</p>
+<p  id="blk-540-21">(1) Ces deux manières de donner une conique sont équivalentes au point de vue qui nous
+occupe, car on peut (ex. 1175) construire, par la règle et le compas, les foyers d'une conique
+dont on connaît cinq points.</p><div class="scan-inline"><img src="img/scan/srcpage-540.png"/></div></data><data data-scanhref="img/scan/srcpage-541.png"><p class="newpage"></p>
+<p  id="blk-541-01">RÉSOLUBILITÉ DES PROBLÈMES DE GÉOMÉTRIE.<!-- skp data-txt='521' --></p>
+<p  id="blk-541-03">F', on se propose de calculer les nombres N' en supposant donnés les
+nombres N.</p>
+<p  id="blk-541-04">Dans ce but, il faudra former les conditions auxquelles doivent satis-
+faire les nombres N et N' pour que les figures F et F' aient entre elles les
+relations indiquées dans l'énoncé du problème: on aura ainsi un certain
+nombre d'équations qu'il faudra résoudre par rapport aux nombres N'. Cette
+résolution est un problème d'algèbre.</p>
+<p  id="blk-541-05">La condition nécessaire et suffisante pour que la figure cherchée F' puisse
+se construire à l'aide de la règle et du compas est que le calcul des nombres N'
+puisse être effectué en ne résolvant que des équations du premier et du second
+degré, à une inconnue chacune (ces équations successives étant d'ailleurs en nombre
+quelconque), les coefficients de chacune d'elles étant supposés formés rationelle-
+ment avec: 1º des nombres N; 2° des nombres déjà calculés à l'aide des équations
+précédentes; 3° des nombres entiers connus (1).</p>
+<p  id="blk-541-06">Par exemple, le côté du pentagone régulier inscrit à un cercle de rayon
+donné R peut être construit à l'aide de la règle et du compas. Or ce côté est</p>
+<p  id="blk-541-07">R
+mesuré (Pl., 170) par</p>
+<p  id="blk-541-08">10 2√5 autrement dit sa valeur æ est don-<!-- spr -->née par la résolution successive des équations du second degré :<!-- skp data-txt='-' --></p>
+<p  id="blk-541-11">(10 R<!-- skp data-txt="- 2) 2 20 R2\nd'où R(10 2√5))\nz =" --></p>
+<p  id="blk-541-13">—
+4x²</p>
+<p  id="blk-541-14">R²,<!-- skp data-txt='-' --><!-- spr -->dont la première ne contient, dans ses coefficients, que le rayon donné
+R et les nombres entiers 10 et 20; la seconde, que le nombre z déjà calculé,
+le rayon R et l'entier 4.</p>
+<p class="article" id="blk-541-17"><strong class="article-num" id="article-792">792.</strong> Dans un grand nombre de cas, on trouve plus ou moins aisément (2)
+les conditions auxquelles doivent satisfaire les nombres N et N' et on
+constate que ces conditions sont algébriques, c'est-à-dire s'expriment par
+un certain nombre d'équations de la forme</p>
+<p  id="blk-541-18">(23)<!-- skp data-txt='P' --></p>
+<p  id="blk-541-20">_</p>
+<p  id="blk-541-21">0,</p>
+<p  id="blk-541-22">P désignant chaque fois un polynôme entier par rapport aux nombres N et
+N', dont les coefficients sont des nombres entiers.<!-- skp data-txt='-' --></p>
+<p  id="blk-541-24">EXEMPLE. Dans le cas du problème des cercles tangents, les nombres cherchés
+a, ẞ, p (voir au numéro précédent) seront déterminés par les équations</p>
+<p  id="blk-541-25">_<!-- skp data-txt='- a₁)² + (ẞ -- b₁)² .\n(α-a₂)2 + (ẞ b₂)²\n(α a3)2 + (ß. b3)' --><!-- skp data-txt='-' --></p>
+<p  id="blk-541-28">: (R₁±p)²
+(R₂ ±p)²
+(R3 ±p) 2<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-541-31">Si, au contraire, on s'est donné (comme nous l'avons supposé en second lieu) les</p>
+<p  id="blk-541-32">(1) Nous avons donné, en Géométrie plane (155), le moyen de construire une longueur donnée
+par une équation du second degré.</p>
+<p  id="blk-541-33">(2) Cette partie du problème est, en général, du ressort de la géométrie analytique.</p><div class="scan-inline"><img src="img/scan/srcpage-541.png"/></div></data><data data-scanhref="img/scan/srcpage-542.png"><p class="newpage"><!-- skp data-txt='522' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->distances mutuelles des points 01, 02, 03, au lieu des coordonnées de ces mêmes
+points, on écrira les relations de contact</p>
+<p  id="blk-542-04">(24)<!-- spr -->x=R₁ = p,</p>
+<p  id="blk-542-06">У</p>
+<p  id="blk-542-07">±R₂<!-- skp data-txt='-' --></p>
+<p  id="blk-542-09">±</p>
+<p  id="blk-542-10">P,<!-- spr -->z=R3 ± 0,<!-- spr -->auxquelles on devra adjoindre l'équation obtenue en subtituant x, y, z, 0203,
+03 01, 01 02dans la relation (5′) (nº 612).</p>
+<p  id="blk-542-13">On obtient bien ainsi quatre équations de la forme (23).</p>
+<p class="article" id="blk-542-14"><strong class="article-num" id="article-793">793.</strong> Si, après avoir formé ces équations, on réussit à les résoudre par
+le moyen d'équations du premier et du second degré satisfaisant aux
+conditions précédemment indiquées, on aura décidé dans le sens de l'affir-
+mative la question posée : Peut-on construire la figure F' à l'aide de la règle
+et du compas?</p>
+<p  id="blk-542-15">EXEMPLE. Dans le problème des cercles tangents, si l'on remplace x, y, ≈ (nota-
+tions des deux numéros précédents) par leurs valeurs ±R₁ ±0, ± R₂ ± 0, + R3±0
+tirées de l'équation (24) et que l'on reporte ces valeurs dans l'équation (5') du nº 612,
+on aura pour p une équation du second degré (1).</p>
+<p  id="blk-542-16">Le problème est donc bien résoluble.</p>
+<p  id="blk-542-17">Si, au contraire, les divers essais auxquels on peut se livrer pour
+effectuer cette solution échouent, cela peut provenir de ce que l'on a mal
+opéré ou, au contraire, de ce que cette résolution est impossible à obtenir.
+Rien, au premier abord, ne force à considérer l'une des deux explications
+comme la véritable plutôt que l'autre.</p>
+<p  id="blk-542-18">Il est clair que le problème qui consiste à décider entre ces deux expli-
+cations est des plus difficiles. Il existe, en effet, une infinie variété de mé-
+thodes que l'on peut essayer d'appliquer à la résolution proposée, une
+infinité de manières dont on peut combiner des équations du premier et de
+second degré pour arriver à cette résolution, et il s'agit de savoir si aucune
+de toutes ces méthodes ou de ces combinaisons imaginables ne permet
+d'atteindre le but.</p>
+<p  id="blk-542-19">Aussi la réponse n'a-t-elle pu être fournie que dans ce siècle, par le
+moyen de la théorie des groupes (2): cette théorie permet de décider en
+toute certitude la question précédente (toutes les fois que les conditions qui
+déterminent les N' sont algébriques): autrement dit, elle permet,<!-- spr -->ou bien
+d'opérer la résolution demandée, ou bien de démontrer en toute rigueur
+que cette résolution est impossible.</p>
+<p  id="blk-542-21">Parmi les problèmes dont l'impossibilité (au point de vue de la construction
+par la règle et le compas) a pu être ainsi démontrée, nous citerons:<!-- skp data-txt='-' --><!-- skp data-txt='--' --></p>
+<p  id="blk-542-24">(1) C'est ce que l'on reconnaît en formant d'abord les binômes y2-52, ≈2--x², x²-y² (qui
+figurent dans la relation du n° 612) et constatant qu'ils sont du premier degré en p.</p>
+<p  id="blk-542-25">(2) La notion de groupe a été introduite, précisément en vue du problème dont nous parlons
+en ce moment et de problèmes analogues, par divers mathématiciens du commencement de
+ce siècle; mais les découvertes capitales sur ce sujet sont dues à GALOIS (savant français,
+mort à vingt ans (1826-1846)), qui a pu, grâce à elles, résoudre complètement les problèmes
+en question. En même temps, il reconnaissait l'importance générale de la notion de groupe,
+qui, depuis ses travaux, tend à jouer un rôle prépondérant dans toutes les parties des mathé-
+matiques.</p><div class="scan-inline"><img src="img/scan/srcpage-542.png"/></div></data><data data-scanhref="img/scan/srcpage-543.png"><p class="newpage"></p>
+<p  id="blk-543-01">RÉSOLUBILITÉ DES PROBLÈMES DE GÉOMÉTRIE.<!-- skp data-txt='523' --><!-- skp data-txt='-' --></p>
+<p  id="blk-543-04">Le problème de la trisection de l'angle, qui consiste à diviser un angle,
+donné arbitrairement, en trois parties égales (ou plus généralement, en un nombre
+quelconque de parties égales, ce nombre n'étant pas une puissance de 2);</p>
+<p  id="blk-543-05">Le problème de la duplication du cube, ou problème délique (¹), qui
+consiste à trouver un cube dont le volume soit double de celui d'un cube
+donné, ou, d'une manière générale, à trouver deux lignes dont le rap-
+port soit égal à √/n, n étant le rapport de deux lignes données (2) ;</p>
+<p  id="blk-543-06">Le problème de l'inscription du polygone régulier de N côtés, lorsque N
+n'appartient pas à l'une des catégories énumérées au nº 173 de la Géométrie
+plane;</p>
+<p  id="blk-543-07">La recherche des points communs à deux coniques données quelcon-
+ques (3), ou (ce qui revient au même) celle de leurs sécantes communes
+ou celle de leurs pôles doubles;</p>
+<p  id="blk-543-08">La recherche des plans de symétrie et des sections circulaires d'un còne
+ayant pour base une conique (757) (4).</p>
+<p class="article" id="blk-543-09"><strong class="article-num" id="article-794">794.</strong> Problèmes transcendants.</p>
+<p  id="blk-543-10">L'impossibilité du problème est démontrée à plus forte raison, si l'on
+constate que les relations données ne peuvent pas s'exprimer par des
+équations algébriques à coefficients entiers (de la forme (23)) entre les don-
+nées N et les inconnues N'. Le problème est alors dit transcendant.</p>
+<p  id="blk-543-11">Seulement, on peut se trouver en présence d'uné difficulté tout ana-
+logue à celle que nous avons rencontrée tout à l'heure. Pour affirmer
+qu'un problème est transcendant, il faut prouver qu'il est impossible de
+déterminer les inconnues du problème par des équations algébriques de la
+forme indiquée.</p>
+<p  id="blk-543-12">On ne possède pas de méthode entièrement générale pour triompher de
+cette dernière difficulté.</p>
+<p  id="blk-543-13">Mais elle a pu être surmontée pour les deux principaux problèmes trans-
+cendants que nous ayons rencontrés en géométrie élémentaire, ceux qui
+sont relatifs aux nombres e et . Les découvertes de MM. Hermite et Lin-
+demann à cet égard ont précisément consisté à démontrer que l'un comme
+l'autre de ces nombres n'est racine d'aucune équation algébrique à coefficients</p>
+<p  id="blk-543-14">(1) La légende raconte qu'Apollon, pour faire cesser la peste qui ravageait l'ile de Délos,
+aurait demandé que l'on doublåt le volume de l'autel élevé en son honneur, et qui était de
+forme cubique: d'où le nom donné à ce problème.</p>
+<p  id="blk-543-15">(2) Ainsi que nous l'avons dit (ex.1102, note), on est conduit, en algèbre, à réunir en une
+seule cette question et celle de la trisection de l'angle.</p>
+<p  id="blk-543-16">(3) On suppose, bien entendu, que les coniques sont données ainsi qu'il est expliqué au
+n° 789. On voit ici qu'il n'est pas indifférent de savoir si l'on applique ou non la règle formulée
+en cet endroit : car si les coniques étaient entièrement tracées, le problème qui consiste à
+trouver leurs intersections serait tout résolu.</p>
+<p  id="blk-543-17">(4) Nous avons indiqué (particulièrement au livre II) un certain nombre de problèmes ayant
+pour objet la construction d'un triangle déterminé par trois éléments. Si l'on choisit ces trois
+éléments de toutes les façons possibles parmi les côtés, les hauteurs, les médianes, les bissec-
+trices intérieures ou extérieures, les rayons des cercles circonscrits, inscrits et exinscrits, on
+obtient 244 questions (en ne comptant que celles qui sont véritablement distinctes les unes
+des autres). Sur ces 244, on constate que 69 au moins ne sont pas résolubles par la règle et le
+compas (Korselt, Archiv. der Math. und Phys., Leipzig, 1900.)</p><div class="scan-inline"><img src="img/scan/srcpage-543.png"/></div></data><data data-scanhref="img/scan/srcpage-544.png"><p class="newpage"><!-- skp data-txt='524' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->entiers. Par conséquent aussi il est impossible de construire avec la règle
+et le compas deux lignes dont le rapport soit égal à e ou deux lignes dont
+le rapport soit égal à : c'est de là que ressort l'impossibilité de la quadra-
+ture du cercle.</p>
+<p  id="blk-544-04">La recherche de la longueur d'un arc de cercle donné quelconque est
+également un problème transcendant il n'existe pas d'angle que l'on
+puisse construire avec la règle et le compas, en même temps que la lon-
+gueur de l'arc qu'il intercepte sur un cercle de rayon donné.</p>
+<p class="article" id="blk-544-05"><strong class="article-num" id="article-795">795.</strong> Constructions effectuées par la règle seule.</p>
+<p  id="blk-544-06">Quels sont les problèmes de construction que l'on pourrait résoudre si,
+au lieu d'une règle et d'un compas, on ne pouvait employer que la
+règle ?</p>
+<p  id="blk-544-07">Avant de répondre à cette question, il est nécessaire de spécifier com-
+ment l'on entend l'emploi de la règle. Nous supposerons que celle-ci ait
+un bord rectiligne et un seul, l'instrument étant, dans tous les autres sens,
+terminé par des bords de forme inconnue, dont on s'interdit, d'ailleurs, de
+faire usage, de quelque façon que ce soit, au cours des constructions.
+Autrement dit, les seules opérations que nous pourrons effectuer avec notre
+règle seront les suivantes :</p>
+<p  id="blk-544-08">1º Tracer la droite qui passe par deux points donnés;
+2º Marquer le point commun à deux droites données.</p>
+<p  id="blk-544-09">Cela posé, nous considérerons encore la figure donnée F et la figure
+cherchée F' comme déterminées par des nombres. Mais le choix entre les
+différents modes de levé possibles, choix qui était indifférent dans le cas
+où l'on pouvait se servir de la règle et du compas, ne l'est plus ici :
+nous supposerons essentiellement que les longueurs mesurées, pour déter-
+miner les deux figures ne soient autres que les coordonnées de leurs diffé-
+rents points (voir nº 790) par rapport à deux axes déterminés.</p>
+<p  id="blk-544-10">Dans ces conditions, il faudra que les nombres inconnus N' soient déter-
+minés exclusivement par des équations du premier degré formées rationnel-
+lement à l'aide des nombres connus N et de nombres entiers.</p>
+<p  id="blk-544-11">Cette condition est nécessaire; mais elle n'est pas suffisante. Par
+exemple, le problème de mener par un point donné A, une parallèle à une
+droite donnée D, satisfait à cette condition (1): il est aisé, cependant, de
+voir que ce problème ne peut pas être résolu à l'aide de la règle seule.</p>
+<p  id="blk-544-12">Supposons, en effet, que l'on ait pu obtenir la solution dans ces condi-
+tions. Faisons la perspective de la figure considérée sur un autre plan P' :
+le point A aura pour perspective un point A' et la droite D, une droite D'.</p>
+<p  id="blk-544-13">Or les deux opérations précédemment indiquées comme exécutables
+avec la règle, sont toutes deux projectives. Par conséquent, la série des
+constructions effectuées dans le plan P, à partir du point A et de la droite</p>
+<p  id="blk-544-14">(1) C'est-à-dire qu'étant données les coordonnées du point A et celles de deux points de
+la droite D, on peut déterminer, par des équations du premier degré, les coordonnées d'un
+second point de la parallèle cherchée.</p><div class="scan-inline"><img src="img/scan/srcpage-544.png"/></div></data><data data-scanhref="img/scan/srcpage-545.png"><p class="newpage"></p>
+<p  id="blk-545-01">RÉSOLUBILITÉ DES PROBLÈMES DE GÉOMÉTRIE.<!-- skp data-txt='525' --></p>
+<p  id="blk-545-03">D aura pour image, sur le plan P', une série de constructions toutes sem-
+blables effectuées à l'aide du point A' et de la droite D'. Cette dernière série
+de constructions devrait dès lors fournir la parallèle menée par le point
+A' à la droite D': ce qui est absurde, puisque nous savons que cette
+parallèle n'est pas la perspective de la parallèle menée par A à D.</p>
+<p  id="blk-545-04">Il est clair qu'on peut raisonner de même dans tout autre cas analogue,
+et que la conclusion est la suivante: pour qu'un problème soit résoluble à
+l'aide de la règle seule, il faut que son énoncé ne contienne (ou tout au moins
+puisse être amené à ne contenir) que des propriétés projectives, du moins tant qu'on
+ne connaît, entre les éléments de la figure donnée, aucune relation non pro-
+jective.</p>
+<p class="article" id="blk-545-05"><strong class="article-num" id="article-796">796.</strong> Inversement, l'ensemble des deux conditions que nous venons
+d'indiquer à savoir, que le problème soit du premier degré et qu'il soit pro-
+jectif, est suffisant pour que la construction soit possible par la règle seule.
+C'est ainsi que l'on peut construire, avec la règle, l'homologue d'un point
+quelconque, dans une homographie déterminée par trois couples de points
+homologues (645); le conjugué harmonique d'un point d'une droite par
+rapport à un segment de cette droite (Pl., 203); le second point d'in-
+tersection d'une conique avec une droite menée par un point connu de la
+courbe; etc.</p>
+<p class="article" id="blk-545-06"><strong class="article-num" id="article-797">797.</strong> Ainsi que nous l'avons spécifié dans l'énoncé qui vient d'ètre
+donné, la conclusion peut se trouver modifiée si l'on connaît entre les
+éléments de la figure donnée une relation non projective.</p>
+<p  id="blk-545-07">Supposons, par exemple, que l'on donne quelque part dans le plan de
+la figure un parallélogramme. Alors on pourra mener, par un point quel-
+conque, une parallèle à une droite quelconque (¹) (voir ex. 895); par suite
+aussi, on peut (Pl., 151) diviser une droite en segments proportion-
+nels à des segments donnés d'une même droite, ou encore (en combi-
+nant cette construction avec l'exercice 129) diviser une droite donnée en un
+nombre quelconque donné de parties égales. D'une manière générale, on
+peut résoudre, dans ces conditions, tout problème du premier degré dont
+l'énoncé se conserve par projection parallèle.</p>
+<p class="article" id="blk-545-08"><strong class="article-num" id="article-798">798.</strong> Enfin si, dans le plan du dessin, on se donne un carré, il n'y a plus
+de condition de projectivité: il suffit que le problème soit du premier
+degré (exemple: mener d'un point une perpendiculaire sur une droite) (2).</p>
+<p  id="blk-545-09">(1) La possibilité de ce problème, dans les conditions indiquées, résulte de ce que le pro-
+blème suivant: mener, par un point donné, une droite coupant une droite donnée L en un point
+situé sur une droite à non directement donnée, mais qui passe par l'intersection de deux droites
+données A, B et par l'intersection de deux droites données C, D, est possible par la règle seule
+(car il est du premier degré et projectif). Lorsque A et B sont parallèles entre elles ainsi que
+C, D, la droite A est la droite de l'infini, et on retombe sur le problème proposé. La seule
+difficulté nouvelle provient de ce qu'ici la droite A ne peut être tracée. On a vu, à l'exer-
+cice 895, que cette difficulté peut être tournée en construisant une figure homographique de
+la première et où l'homologue de A soit à distance finie.</p>
+<p  id="blk-545-10">(2) On peut concevoir que ce problème soit résoluble dans ces conditions par la règle seule,
+si l'on remarque que son énoncé peut être mis sous la forme suivante. Étant donnés un</p><div class="scan-inline"><img src="img/scan/srcpage-545.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

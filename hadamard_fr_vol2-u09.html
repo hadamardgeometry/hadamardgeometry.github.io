@@ -1,0 +1,532 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-100.png"><p class="newpage"><!-- skp data-txt='80' --><!-- skp data-txt='60' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-100-04">CHAPITRE III</p>
+<p  id="blk-100-05">VOLUME DE LA PYRAMIDE<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-100-07"><strong class="article-num" id="article-406">406.</strong> Lemme. Les sections faites, dans deux pyramides de bases
+équivalentes et de même hauteur, par des plans menés parallèlement
+aux bases et à la même distance des sommets, sont équivalentes.</p>
+<p  id="blk-100-08">Soient, en effet, H la hauteur commune des deux pyramides, h la
+distance de chaque section au sommet correspondant: le rapport de<!-- spr -->h2
+cette section à la base correspondante est (393, coroll.)</p>
+<p  id="blk-100-10">H2 par<!-- spr -->conséquent le même dans les deux pyramides. Les sections étant
+proportionnelles aux bases, si celles-ci sont équivalentes, les
+sections le sont aussi.<!-- skp data-txt='-' --></p>
+<p  id="blk-100-13">Théorème. Deux pyramides triangulaires de bases équivalentes
+et de même hauteur sont équivalentes.</p>
+<p  id="blk-100-14">Soient les pyramides triangulaires SABC, S'A'B'C' (fig. 311) dans<!-- skp data-txt="S'" --><!-- skp data-txt='S' --><!-- skp data-txt='21' --><!-- spr -->aź</p>
+<p  id="blk-100-19">მე</p>
+<p  id="blk-100-20">2'<!-- skp data-txt='N' --><!-- skp data-txt='2' --></p>
+<p  id="blk-100-23">III<!-- skp data-txt="A'" --><!-- skp data-txt="C'" --><!-- skp data-txt='A' --><!-- skp data-txt='C' --><!-- skp data-txt="B'" --><img class="fig" src="img/FIG. 311.OCR.png" alt="FIG. 311." /><!-- spr -->lesquelles les bases ABC, A'B'C' sont équivalentes, tandis que les
+hauteurs correspondantes ont la même longueur H; soient V, V' leurs
+volumes.</p><div class="scan-inline"><img src="img/scan/srcpage-100.png"/></div></data><data data-scanhref="img/scan/srcpage-101.png"><p class="newpage"></p>
+<p  id="blk-101-01">VOLUME DE LA PYRAMIDE.<!-- skp data-txt='81' --></p>
+<p  id="blk-101-03">=α₁₂</p>
+<p  id="blk-101-04">====<!-- skp data-txt='19' --><!-- skp data-txt='-' --></p>
+<p  id="blk-101-07">و-</p>
+<p  id="blk-101-08">Divisons l'arête SA en un certain nombre de parties égales, trois,
+par exemple, Sa,<!-- spr -->aA. Par les points de division a₁, a₁,
+menons des sections α₁₁₁, α2b2c₂ parallèles à la base : les plans de
+ces sections divisent la hauteur en trois parties égales. Si nous
+répétons la même construction sur la seconde pyramide · autre-
+ment dit, si nous divisons S'A' en trois parties égales et que nous
+menions par les points de division les sections ab₁₁c'₁, a'₂b′₂c′₂
+parallèles à la base A'B'C' les sections obtenues sont équivalentes
+chacune à chacune, d'après le lemme précédent.</p>
+<p  id="blk-101-10">Construisons deux prismes, l'un ayant pour base le triangle ab₁c
+et pour l'une de ses arêtes latérales aα (de sorte que sa seconde
+base sera dans le plan αb₁₂ et deux de ses faces latérales dans
+les plans SAB, SAC); l'autre ayant pour base le triangle ab₁₂ et pour
+l'une de ses arêtes latérales a₂A (de sorte que sa seconde base sera
+dans le plan ABC, deux faces latérales étant toujours dans les plans
+SAB, SAC). Nous désignerons par les chiffres 1 et 2 les prismes ainsi
+construits, qui sont intérieurs à la pyramide SABC, et forment, par
+leur ensemble, un solide qu'on peut appeler inscrit à cette
+pyramide.</p>
+<p  id="blk-101-11">Si nous opérons de même dans la seconde pyramide, en construi-
+sant des prismes 1', 2′ qui aient respectivement pour bases a'₁ b'₁ c'₁,
+a'b'' et pour arêtes latérales a₁a', a'A', ces prismes seront
+respectivement équivalents aux premiers, comme ayant des bases
+équivalentes (ainsi que nous l'avons remarqué) et même hauteur
+(le tiers de la hauteur commune H).</p>
+<p  id="blk-101-12">La somme s, des volumes des prismes intérieurs a donc la même
+valeur de part et d'autre et elle est plus petite que le volume de
+chacune des deux pyramides.</p>
+<p  id="blk-101-13">Construisons, en second lieu, trois prismes extérieurs désignés
+sur la figure par les chiffres I, II, III, ayant respectivement pour
+bases a,b,c, ab₂С2, ABC et pour arêtes latérales α₁S, α¸α, Aα. Ces trois
+prismes forment, par leur ensemble, un solide circonscrit à la pyra-
+mide SABC, c'est-à-dire la comprenant tout entière à son intérieur
+et ayant, par conséquent, un volume plus grand. Si nous opérons
+de même pour la pyramide S'A'B'C' (¹), nous obtiendrons un solide
+circonscrit équivalent au premier, pour les mêmes raisons que<!-- skp data-txt='1' --><!-- skp data-txt='1' --><!-- skp data-txt='2' --><!-- skp data-txt='2' --></p>
+<p  id="blk-101-18">(1) Pour simplifier la figure, les prismes extérieurs n'ont été figurés que sur la première
+pyramide.<!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='6' --></p><div class="scan-inline"><img src="img/scan/srcpage-101.png"/></div></data><data data-scanhref="img/scan/srcpage-102.png"><p class="newpage"><!-- skp data-txt='82' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-102-04">: la<!-- skp data-txt='-' --><!-- spr -->précédemment, et le volume commun S, de ces deux solides sera
+supérieur au volume de chacune des deux pyramides.</p>
+<p  id="blk-102-07">Les volumes V, V' étant ainsi tous deux compris entre S, et s,
+leur différence est moindre que S, $3.
+Or les prismes I, II sont respectivement équivalents (1) aux prismes</p>
+<p  id="blk-102-08">H
+1, 2 comme ayant mêmes bases abc₁, abc et même hauteur</p>
+<p  id="blk-102-09">3
+différence S3 s, est donc égale au volume du prisme III, c'est-à-</p>
+<p  id="blk-102-10">H
+dire (405) à surf. ABC ×</p>
+<p  id="blk-102-11">3་
+Si, au lieu de diviser SA en trois parties égales, nous avions pris
+le nombre des divisions égales à n, nous construirions, dans chaque
+pyramide, n-1 prismes intérieurs, n prismes extérieurs, et le raison-
+nement précédent nous montrerait que la différence entre V et V'.</p>
+<p  id="blk-102-12">H
+est inférieure à surf. ABC × c'est-à-dire à la ne partie du prisme<!-- skp data-txt="'\nn" --><!-- spr -->de base ABC et de hauteur H.</p>
+<p  id="blk-102-15">Mais cette quantité peut être rendue aussi petite que l'on veut, en
+prenant n assez grand. La conclusion à laquelle nous arrivons ne
+peut donc avoir lieu si V et V' ne sont pas égaux.</p>
+<p  id="blk-102-16">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p  id="blk-102-18">Corollaire. Le raisonnement qui précède montre que le volume
+de la pyramide SABC est la limite commune des volumes S, s, lorsque
+n augmente indéfiniment, puisque ce volume V diffère de chacune
+des quantités S, s moins qu'elles ne diffèrent entre elles, et que<!-- spr -->n<!-- spr -->n<!-- spr -->la différence S.<!-- skp data-txt='-' --><!-- spr -->s tend vers zéro.</p>
+<p  id="blk-102-24">ጎረ</p>
+<p  id="blk-102-25">ก</p>
+<p class="article" id="blk-102-26"><strong class="article-num" id="article-407">407.</strong> Théorème. Le volume d'une pyramide est égal au tiers du
+produit de sa base par sa hauteur.</p>
+<p  id="blk-102-27">1° Nous démontrerons d'abord le théorème pour une pyramide
+triangulaire SABC (fig. 312). A cet effet, nous mènerons les droites
+BD, CE, égales à parallèles à SA, de manière à former le prisme
+ABCSDE qui a pour base ABC et pour arête latérale AS. Ce prisme a
+même base et même hauteur que la pyramide. Nous allons voir que
+celle-ci en est le tiers.</p>
+<p  id="blk-102-28">(1) Il est aisé de voir que les prismes I, II sont respectivement égaux aux prismes 1, 2,
+mais nous ne démontrons pas ce fait, dont nous n'avons pas à nous servir.</p><div class="scan-inline"><img src="img/scan/srcpage-102.png"/></div></data><data data-scanhref="img/scan/srcpage-103.png"><p class="newpage"></p>
+<p  id="blk-103-01">VOLUME DE LA PYRAMIDE.<!-- skp data-txt='83' --><!-- skp data-txt='E' --><!-- skp data-txt='S' --></p>
+<p  id="blk-103-05">B.</p>
+<p  id="blk-103-06">Si nous enlevons, de ce prisme, le tétraèdre donné SABC, il restera
+une pyramide quadrangulaire SBCDE, dont la base est le parallélo-
+gramme BCDE et le sommet, S. En décompo-
+sant le parallelogramme en deux triangles
+par la diagonale BE, nous décomposerons la
+pyramide quadrangulaire en deux tétraèdres
+SBCE, SBDE.</p>
+<p  id="blk-103-07">Ces derniers sont équivalents entre eux,
+comme ayant des bases égales (les deux moi-
+tiés du parallélogramme BCDE) et même
+hauteur (la perpendiculaire abaissée du
+point S sur le plan BCDE).</p>
+<p  id="blk-103-08">Mais le tétraèdre SBDE peut être considéré comme ayant pour
+sommet B et pour base SDE, et l'on voit alors qu'il est équivalent à
+SABC, les bases ABC, SDE étant égales, et la hauteur étant, de part et
+d'autre, égale à celle du prisme.</p>
+<p  id="blk-103-09">Les trois tétraèdres dont se compose ce prisme étant équivalents
+entre eux, le volume du tétraèdre SABC est égal au tiers de celui
+du prisme, donc au tiers du produit de la base ABC par la hauteur.</p>
+<p  id="blk-103-10">2° Pour étendre le théorème à une pyramide polygonale, il suffit
+de la décomposer en pyramides triangulaires. On répétera alors le
+raisonnement du nº 403, 2º.<img class="fig" src="img/FIG. 312.OCR.png" alt="FIG. 312." /></p>
+<p  id="blk-103-12">Corollaires. Deux pyramides qui ont même base, sont entre elles
+comme leurs hauteurs. Deux pyramides qui ont même hauteur, sont
+entre elles comme leurs bases.</p>
+<p class="article" id="blk-103-13"><strong class="article-num" id="article-408">408.</strong> La connaissance du volume de la pyramide peut être considérée
+comme le but essentiel de la théorie des volumes des polyèdres,
+développée dans ce chapitre.</p>
+<p  id="blk-103-14">Elle permet, en effet (ce à quoi la connaissance du volume du prisme
+n'aurait pas suffi), d'obtenir les volumes de tous les polyèdres. Car
+pour évaluer le volume d'un polyèdre quelconque, on n'aura qu'à le
+décomposer en pyramides.</p>
+<p  id="blk-103-15">Nous allons indiquer deux applications de cette méthode.</p>
+<p  id="blk-103-16">Tronc de pyramide.</p>
+<p  id="blk-103-17">Définition. On appelle tronc de pyramide à bases parallèles, ou
+simplement tronc de pyramide, la portion d'une pyramide comprise</p><div class="scan-inline"><img src="img/scan/srcpage-103.png"/></div></data><data data-scanhref="img/scan/srcpage-104.png"><p class="newpage"><!-- skp data-txt='81' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->entre la base et une section parallèle à la base (fig. 313). Cette sec-
+tion est la base supérieure du tronc, la base primitive en étant la
+base inférieure.</p>
+<p  id="blk-104-04">La hauteur est la distance des plans des bases.<!-- skp data-txt="C'" --><!-- skp data-txt="B'" --></p>
+<p  id="blk-104-07">AN<!-- skp data-txt='C' --><!-- skp data-txt='A' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 313.OCR.png" alt="FIG. 313." /><img class="fig" src="img/FIG. 314.OCR.png" alt="FIG. 314." /><!-- skp data-txt='-' --></p>
+<p  id="blk-104-14">Théorème. Un tronc de pyramide est équivalent à la somme de
+trois pyramides ayant pour hauteur commune, la hauteur du tronc et
+pour bases respectives, la base supérieure, la base inférieure et une
+moyenne proportionnelle entre ces deux bases.</p>
+<p  id="blk-104-15">1° Supposons d'abord qu'il s'agisse d'un tronc de pyramide trian-
+gulaire ABCA'B'C' (fig. 314). Le plan A'BC décompose ce solide en
+deux pyramides. L'une A'ABC a bien pour base la base ABC du tronc
+et, pour hauteur, celle du tronc c'est la première pyramide dont
+il est question dans l'énoncé. L'autre est la pyramide quadrangu-
+laire A'BCB'C', laquelle peut à son tour se décomposer, par le plan
+diagonal A'B'C, en deux tétraèdres A'B'C'C et A'B'BC.</p>
+<p  id="blk-104-16">A'B'C'C est la seconde pyramide de l'énoncé, puisqu'on peut la
+considérer comme ayant pour base A'B'C' et pour sommet C.</p>
+<p  id="blk-104-17">Pour évaluer le tétraèdre restant A'B'BC, comparons-le d'abord
+au tétraèdre A'ABC obtenu en premier lieu. Les deux solides
+peuvent être considérés comme ayant pour sommet commun C et
+pour bases respectives A'B'B, A'AB ils ont alors même hauteur.
+Mais les triangles A'B'B, A'AB, étant considérés comme ayant pour
+bases respectives A'B', AB, ont même hauteur (la hauteur du trapèze
+A'B'AB) ces deux triangles et, par suite, les deux tétraèdres sont
+donc entre eux comme les côtés A'B', AB.</p>
+<p  id="blk-104-18">Comparons maintenant à A'B'BC le second tétraèdre déjà obtenu
+A'B'C'C, en leur donnant le même sommet A'. Nous voyons, par un
+raisonnement tout semblable au précédent, que ces deux tétraèdres
+sont entre eux comme les trianglės B'CC', B'BC, lesquels à leur</p><div class="scan-inline"><img src="img/scan/srcpage-104.png"/></div></data><data data-scanhref="img/scan/srcpage-105.png"><p class="newpage"></p>
+<p  id="blk-105-01">VOLUME DE LA PYRAMIDE.<!-- skp data-txt='85' --><!-- spr -->tour, ayant même hauteur (celle du trapèze B'C'BC), sont dans le</p>
+<p  id="blk-105-04">B'C'
+rapport</p>
+<p  id="blk-105-05">BC</p>
+<p  id="blk-105-06">B'C'
+Or ce rapport est égal (393) au rapport, obtenu tout à l'heure,</p>
+<p  id="blk-105-07">BC</p>
+<p  id="blk-105-08">A'B'</p>
+<p  id="blk-105-09">AB</p>
+<p  id="blk-105-10">A'B'BC</p>
+<p  id="blk-105-11">A'B'C'C</p>
+<p  id="blk-105-12">Donc on a aussi</p>
+<p  id="blk-105-13">A'ABG</p>
+<p  id="blk-105-14">A'B'BC'<!-- spr -->autrement dit, le troisième tétraèdre A'B'BC est moyen proportionnel
+entre les deux premiers. Il est donc (n° précéd., coroll.) équivalent
+à une pyramide ayant même hauteur que les deux premières et une
+base moyenne proportionnelle entre les deux premières bases,
+c'est-à-dire à la troisième pyramide de l'énoncé.</p>
+<p  id="blk-105-16">C. Q. F. D.<img class="fig" src="img/FIG. 314 bis.OCR.png" alt="FIG. 314 bis." /></p>
+<p  id="blk-105-18">2° Supposons maintenant que le tronc de pyramide soit poly-
+gonal, et décomposons sa base inférieure en triangles (fig. 314 bis)
+de surfaces B₁, B₂,... Les plans, menés par
+les côtés de ces triangles et le sommet S de
+la pyramide dont fait partie le tronc, décom-
+posent la base supérieure en triangles B'₁,
+B'..., respectivement semblables aux pre-
+miers, et le tronc de pyramide donné en
+troncs de pyramides triangulaires.</p>
+<p  id="blk-105-19">En appliquant à ceux-ci le théorème
+démontré en 1º, nous voyons que le tronc
+de pyramide donné équivaut à la somme de pyramides ayant, pour
+hauteur commune, la hauteur du tronc, et pour bases respectives :</p>
+<p  id="blk-105-20">1° Les triangles B₁, B₂,... La somme de ces pyramides est une
+pyramide de même hauteur, ayant pour base la base inférieure B
+du tronc, somme de tous ces triangles;</p>
+<p  id="blk-105-21">2º Les triangles B'₁. B′₂... La somme de ces pyramides est une
+pyramide de même hauteur, ayant pour base la base supérieure B'
+du tronc, somme des triangles B'₁, B'₂,...;</p>
+<p  id="blk-105-22">3º Les triangles b₁, b,..., respectivement moyens proportionnels
+entre B₁ et B'₁, entre B₂ et B½‚……. La somme de ces pyramides est<!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- skp data-txt='--' --></p><div class="scan-inline"><img src="img/scan/srcpage-105.png"/></div></data><data data-scanhref="img/scan/srcpage-106.png"><p class="newpage"><!-- skp data-txt='86' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='2' --></p>
+<p  id="blk-106-04">B′2,<!-- skp data-txt='1' --><!-- spr -->une pyramide ayant toujours la même hauteur (la hauteur du
+trone) et dont la base est b₁ + b₂...</p>
+<p  id="blk-106-07">Il nous reste à faire voir que la somme b₁ + b₂ + ... est moyenne
+proportionnelle entre B et B'.</p>
+<p  id="blk-106-08">Or ceci résulte (1) de ce que les parties B₁, B2... sont (393, Coroll.)
+proportionnelles à B'₁,</p>
+<p  id="blk-106-09">B₁
+b₁</p>
+<p  id="blk-106-10">B₁
+En effet, le rapport<!-- spr -->est la racine carrée du rapport
+b₁<!-- skp data-txt="B'" --></p>
+<p  id="blk-106-13">B₁ B₁ b₁
+(puisqu'on peut écrire.</p>
+<p  id="blk-106-14">; par conséquent, puisque les
+B'₁ b₁ B'₁
+B₁ B₁₂</p>
+<p  id="blk-106-15">B, B₂
+rapports<!-- spr -->sont égaux entre eux, les rapports
+B'₁ B'₁<!-- spr -->b₁' b₂
+b₁ b₂</p>
+<p  id="blk-106-18">ხა
+sont égaux et aussi les rapports</p>
+<p  id="blk-106-19">B'₁' B'₁₂<!-- skp data-txt='-' --></p>
+<p  id="blk-106-21">B'₁</p>
+<p  id="blk-106-22">·<!-- skp data-txt='-' --></p>
+<p  id="blk-106-24">•</p>
+<p  id="blk-106-25">:)<!-- skp data-txt='1' --><!-- skp data-txt='2' --><!-- skp data-txt="'" --></p>
+<p  id="blk-106-29">,</p>
+<p  id="blk-106-30">"...<!-- skp data-txt='1' --></p>
+<p  id="blk-106-32">,<!-- skp data-txt='1' --><!-- skp data-txt='2' --></p>
+<p  id="blk-106-35">On peut donc écrire</p>
+<p  id="blk-106-36">B₁</p>
+<p  id="blk-106-37">B₂<!-- skp data-txt='2' --></p>
+<p  id="blk-106-39">55
+||<!-- spr -->b₁<!-- spr -->b₂
+b₂</p>
+<p  id="blk-106-42">B₁+B+...
+6₁₂+62 + ...
+b₁₂+b₂+...
+B'₁+B₂+<!-- spr -->b₁<!-- skp data-txt="B'" --></p>
+<p  id="blk-106-45">B'₁<!-- skp data-txt='1' --><!-- skp data-txt='2' --><!-- skp data-txt='1' --></p>
+<p  id="blk-106-49">Donc b₁b... est bien moyen proportionnel entre B et B'.<!-- skp data-txt='2' --></p>
+<p  id="blk-106-51">C. Q. F. D.</p>
+<p  id="blk-106-52">La moyenne proportionnelle entre B et Best BB'. Si donc h est
+la hauteur d'un tronc de pyramide dont les bases sont mesurées par
+B, B', le volume est<!-- skp data-txt="'" --><!-- skp data-txt='V' --><!-- skp data-txt='-' --></p>
+<p  id="blk-106-56">Bh B'h √BB'. h</p>
+<p  id="blk-106-57">+ +
+3
+3<!-- skp data-txt='3' --><!-- spr -->h</p>
+<p  id="blk-106-60">(BB√BB').
+3<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-106-62"><strong class="article-num" id="article-409">409.</strong> Tronc de prisme. Définition. On nomme tronc de
+prisme, le polyèdre limité par une surface prismatique et deux faces
+planes (dites encore bases du tronc), les plans de celles-ci n'étant
+pas (comme dans le cas du prisme) parallèles entre eux.</p>
+<p  id="blk-106-63">B'₁,</p>
+<p  id="blk-106-64">....</p>
+<p  id="blk-106-65">...</p>
+<p  id="blk-106-66">(1) Si B₁, B2, ..., n'étaient pas proportionnels à B',<!-- spr -->la somme b₁ + 62. + serait
+plus petite que la moyenne proportionnelle entre B et B (Voir, dans les Leçons d'Algèbre de
+M. Bourlet, l'exercice 55, page 161, où l'on remplacera les lettres a, a',<!-- spr -->respecti-
+vement par √Ⓑ₁, √B₂,</p>
+<p  id="blk-106-69">..., b, b',</p>
+<p  id="blk-106-70">...</p>
+<p  id="blk-106-71">√ B₁,</p>
+<p  id="blk-106-72">√√√B₂, ...).</p>
+<p  id="blk-106-73">....</p><div class="scan-inline"><img src="img/scan/srcpage-106.png"/></div></data><data data-scanhref="img/scan/srcpage-107.png"><p class="newpage"></p>
+<p  id="blk-107-01">VOLUME DE LA PYRAMIDE.<!-- skp data-txt='87' --><!-- skp data-txt='-' --></p>
+<p  id="blk-107-04">Théorème. Un tronc de prisme triangulaire équivaut à la somme
+de trois pyramides ayant, pour base commune, l'une des bases du tronc
+et, pour sommets respectifs, les trois sommets de l'autre base.</p>
+<p  id="blk-107-05">Soit le tronc de prisme ABCDEF (fig. 315), dont les bases sont
+ABC, DEF, les arêtes latérales AD, BE, CF.</p>
+<p  id="blk-107-06">Le plan BCD détache de ce tronc de
+prisme une première pyramide DABC, qui
+est une de celles dont il est question dans
+l'énoncé.<!-- skp data-txt='D' --><!-- skp data-txt='E' --><img class="fig" src="img/FIG. 315.OCR.png" alt="FIG. 315." /></p>
+<p  id="blk-107-10">Reste la pyramide quadrangulaire DBCEF,
+que le plan diagonal DCE décompose en
+deux tétraèdres DBCE, DCEF.</p>
+<p  id="blk-107-11">Considérons le tétraèdre DBCE: nous n'en
+changerons pas le volume en remplaçant le
+sommet D par A, car nous ne changeons pas
+ainsi la base BCE, non plus que la hauteur, puisque les deux points
+A, D, situés sur une même parallèle au plan de la base, sont égale-
+ment distants de ce plan. Or le tétraèdre ABCE, pouvant être
+considéré comme ayant pour base ABC et pour sommet E, constitue
+la seconde pyramide de l'énoncé.</p>
+<p  id="blk-107-12">Nous ferons subir la même transformation au troisième tétraèdre
+DCEF, que nous remplacerons par ACEF: ce qui ne changera pas
+le volume, pour la même raison que tout à l'heure. Mais, si l'on
+considère le tétraèdre ACEF comme ayant pour base ACF et pour
+sommet E, on voit qu'on peut de même remplacer ce dernier par le
+point B, la droite BE étant parallèle au plan ACF. On obtient ainsi
+le tétraèdre ABCF, qui est précisément la troisième pyramide de<!-- spr -->l'énoncé.</p>
+<p  id="blk-107-14">C. Q. F. D.</p>
+<p  id="blk-107-15">Corollaire. Un tronc de prisme triangulaire a pour volume le
+produit de sa section droite par la moyenne arithmétique (!) de ses
+arêtes latérales.</p>
+<p  id="blk-107-16">En effet, dans la figure précédente, la pyramide DABC est le tiers
+du prisme de base ABC et d'arête latérale AD: elle a donc pour
+mesure le tiers du produit de AD par la section droite abc de la sur-</p>
+<p  id="blk-107-17">(1) Voir, pour la définition de la moyenne arithmétique, BOURLET, Leçons d'Algèbre, nº 127,
+page 385, note 2.</p><div class="scan-inline"><img src="img/scan/srcpage-107.png"/></div></data><data data-scanhref="img/scan/srcpage-108.png"><p class="newpage"><!-- skp data-txt='88' --><!-- skp data-txt='8' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->face prismatique. Les deux autres pyramides étant de même mesurées
+BE</p>
+<p  id="blk-108-05">CF
+par × abc, abc, le volume du tronc de prisme est égal à
+3<!-- skp data-txt='3' --></p>
+<p  id="blk-108-07">(ADBE CF)</p>
+<p  id="blk-108-08">× abc (¹).
+3</p>
+<p  id="blk-108-09">EXERCICES</p>
+<p class="article" id="blk-108-10"><strong class="article-num" id="article-543">543.</strong> Démontrer directement la formule qui donne le volume de la pyramide
+triangulaire, en considérant celle-ci comme limite de la somme des prismes inscrit ș
+(nº 406, Coroll.). (On emploiera la formule qui donne la somme des carrés des n
+premiers nombres entiers, Bourlet, Leçons d'Algèbre, page 402.)</p>
+<p class="article" id="blk-108-11"><strong class="article-num" id="article-544">544.</strong> Trouver le volume du tétraèdre régulier (ex. 526) dont l'arête est a.</p>
+<p class="article" id="blk-108-12"><strong class="article-num" id="article-545">545.</strong> Deux tétraèdres qui ont un angle trièdre égal ou symétrique sont entre eux
+comme les produits des arêtes qui comprennent cet angle.</p>
+<p class="article" id="blk-108-13"><strong class="article-num" id="article-546">546.</strong> Deux tétraèdres qui ont en commun une arête et le dièdre suivant cette arête,
+sont entre eux comme les produits des faces qui comprennent ce dièdre.</p>
+<p class="article" id="blk-108-14"><strong class="article-num" id="article-547">547.</strong> Trouver un point tel qu'en le joignant aux sommets d'un tétraèdre donné, on
+divise celui-ci en quatre tétraèdres équivalents.</p>
+<p class="article" id="blk-108-15"><strong class="article-num" id="article-548">548.</strong> On donne trois parallèles, non situées dans un même plan. Sur l'une d'elles,
+on prend un segment de longueur donnée AB; sur les deux autres, respectivement,
+deux points arbitraireș C, D.</p>
+<p  id="blk-108-16">Montrer que le volume du tétraèdre ainsi formé ne dépend pas de la position des
+points A, C, D, non plus que du choix, entre les trois parallèles données, de la droite
+sur laquelle sont pris A et B, pourvu que AB ait toujours la même longueur.</p>
+<p class="article" id="blk-108-17"><strong class="article-num" id="article-549">549.</strong> Par chaque sommet d'un tétraèdre, ou même un plan parallèle à la face
+opposée. Quel est le rapport du nouveau tétraèdre ainsi formé au premier?</p>
+<p class="article" id="blk-108-18"><strong class="article-num" id="article-550">550.</strong> Par chaque arête d'un tétraèdre, on mène un plan parallèle à l'arête opposée.
+Quel est le rapport du parallélépipède ainsi formé au tétraèdre donné?</p>
+<p class="article" id="blk-108-19"><strong class="article-num" id="article-551">551.</strong> Le volume d'un tétraèdre est le sixième du produit obtenu en multipliant la
+plus courte distance de deux arêtes opposées par l'aire du parallélogramme qui a ses
+côtés respectivement égaux et parallèles à ces deux arêtes.</p>
+<p class="article" id="blk-108-20"><strong class="article-num" id="article-552">552.</strong> En portant sur deux droites données D, D', des segments respectivement
+égaux à a, a', on obtient quatre points formant un tétraèdre dont le volume ne
+varie pas lorsque les segments en question se déplacent sur leurs droites respectives
+sans changer de longueur.</p>
+<p class="article" id="blk-108-21"><strong class="article-num" id="article-553">553.</strong> On donne deux segments AB, CD et on considère les droites L telles que les
+deux tétraèdres ayant une arête commune sur L, l'arête opposée à celle-là étant AB
+pour l'un, CD pour l'autre, soient dans un rapport donné. Lieu de celles de ces
+droites qui passent par un point donné.</p>
+<p  id="blk-108-22">Cas où AB et CD sont dans un même plan. Montrer qu'alors la droite L rencontre
+toujours l'une ou l'autre de deux droites fixes.</p>
+<p  id="blk-108-23">.(1) On trouvera plus loin (Compl., 608) d'autres formes sous lesquelles on peut mettre
+l'expression du volume du tronc de prisme.</p><div class="scan-inline"><img src="img/scan/srcpage-108.png"/></div></data><data data-scanhref="img/scan/srcpage-109.png"><p class="newpage"></p>
+<p  id="blk-109-01">VOLUME DE LA PYRAMIDE.<!-- skp data-txt='89' --></p>
+<p class="article" id="blk-109-03"><strong class="article-num" id="article-554">554.</strong> Soit AD la diagonale du parallélogramme dont deux côtés adjacents sont
+AB, AC. Montrer que si EF est un segment quelconque, le tétraèdre ADEF équivaut
+à la somme ou à la différence des tétraèdres ABEF, ACEF.</p>
+<p class="article" id="blk-109-04"><strong class="article-num" id="article-555">555.</strong> On prolonge, au delà du sommet, les arêtes d'une pyramide et on coupe ces
+prolongements par un plan parallèle à la base. Exprimer la somme des deux
+pyramides, étant données les deux bases B, B' et la distance h de leurs plans.</p>
+<p  id="blk-109-05">PROBLÈMES</p>
+<p  id="blk-109-06">PROPOSÉS SUR LE SIXIÈME LIVRE</p>
+<p class="article" id="blk-109-07"><strong class="article-num" id="article-556">556.</strong> Couper un tétraèdre par un plan de manière que la section soit un parallélo-
+gramme. Il y a trois directions de plans répondant à la question. Trouver, pour
+chacune de ces directions, le parallélogramme maximum.</p>
+<p  id="blk-109-08">Mener la section de manière qu'elle soit un losange. Exprimer le côté de ce losange
+à l'aide des longueurs des arêtes du tétraèdre.</p>
+<p class="article" id="blk-109-09"><strong class="article-num" id="article-557">557.</strong> En joignant trois sommets d'un tétraèdre régulier au milieu de la hauteur
+abaissée du quatrième sommet, on obtient trois droites rectangulaires deux à deux.</p>
+<p class="article" id="blk-109-10"><strong class="article-num" id="article-558">558.</strong> Si la somme de deux arêtes opposées d'un tétraèdre est égale à celle de deux
+autres arêtes opposées, la même relation a lieu entre les dièdres correspondants.</p>
+<p class="article" id="blk-109-11"><strong class="article-num" id="article-559">559.</strong> Si les perpendiculaires abaissées, des sommets d'un tétraèdre, sur les faces
+d'un second tétraèdre, concourant en un même point, il en est de même des perpen-
+diculaires abaissées, des sommets du second tétraèdre, sur les faces du premier.</p>
+<p class="article" id="blk-109-12"><strong class="article-num" id="article-560">560.</strong> Si un tétraèdre est à arêtes orthogonales (ex. 535), le parallélépipède qu'on
+en déduit dans l'ex. 550 a toutes ses arêtes égales.</p>
+<p class="article" id="blk-109-13"><strong class="article-num" id="article-561">561.</strong> Si d'un point O pris sur la base ABC d'un tétraèdre SABC, on mène des paral-
+lèles Oa, Ob, Oc aux arêtes SA, SB; SC, jusqu'à rencontre avec les faces SBC, SCA,
+SAB respectivement, on a</p>
+<p  id="blk-109-14">O a Ob</p>
+<p  id="blk-109-15">+ +
+SA SB</p>
+<p  id="blk-109-16">0 с</p>
+<p  id="blk-109-17">= 1.</p>
+<p  id="blk-109-18">SC</p>
+<p class="article" id="blk-109-19"><strong class="article-num" id="article-562">562.</strong> Le plan bissecteur d'un dièdre d'un tétraèdre divise l'arête opposée dans le
+rapport des aires des faces qui comprennent le dièdre.</p>
+<p class="article" id="blk-109-20"><strong class="article-num" id="article-563">563.</strong> Trouver les rapports mutuels des triangles en lesquels une face d'un tétraèdre
+est divisée par les plans bissecteurs des dièdres formés par les autres faces.</p>
+<p class="article" id="blk-109-21"><strong class="article-num" id="article-564">564.</strong> On coupe une pyramide triangulaire SABC par un plan parallèle à la base
+ABC. Soient D, E, F les points de rencontre de ce plan avec les arêtes SA, SB, SC.
+Trouver, lorsque le plan de section se déplace parallèlement à lui-même :</p>
+<p  id="blk-109-22">1º Le lieu décrit par le point d'intersection des plans AEF, BFD, cde;
+2º Le lieu décrit par le point d'intersection des plans BCD, CAE, AB F.</p>
+<p class="article" id="blk-109-23"><strong class="article-num" id="article-565">565.</strong> Tout polyèdre peut être décomposé en troncs de prismes ayant leurs arêtes
+latérales parallèles à une même direction donnée quelconque.</p>
+<p class="article" id="blk-109-24"><strong class="article-num" id="article-566">566.</strong> Mener, dans un prisme, une section parallèle aux bases, telle que la pyramide
+ayant son sommet en un point de la base supérieure, sa base dans le plan de base
+inférieure et dont les arêtes passent par les sommets de la section, soit équivalente
+au prisme.</p>
+<p class="article" id="blk-109-25"><strong class="article-num" id="article-567">567.</strong> La somme des pyramides ayant pour bases les faces latérales d'un prisme
+et pour sommet commun un point intérieur quelconque, est constante. Dans quel
+rapport est-elle avec le volume du prisme?</p><div class="scan-inline"><img src="img/scan/srcpage-109.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

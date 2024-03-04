@@ -1,0 +1,508 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-337.png"><p class="newpage"></p>
+<p  id="blk-337-01">PROPRIÉTÉS DE LA PERSPECTIVE.<!-- skp data-txt='317' --></p>
+<p  id="blk-337-03">CHAPITRE II</p>
+<p  id="blk-337-04">PROPRIÉTÉS DE LA</p>
+<p  id="blk-337-05">PERSPECTIVE</p>
+<p class="article" id="blk-337-06"><strong class="article-num" id="article-616">616.</strong> Étant donnés un plan P, appelé plan du tableau, et un point O
+(quelconque, sous la condition d'être extérieur au plan P) appelé
+point de vue ou centre de perspective, on appelle perspective, ou
+encore projection centrale d'un point quelconque M de l'espace, le
+point M' (fig. 517) où la droite OM perce le plan P.</p>
+<p  id="blk-337-07">On appelle de même projection du point M sur le plan P, parallè-<!-- skp data-txt='0' --><!-- skp data-txt='M' --><!-- skp data-txt='M' --><!-- skp data-txt='D' --><!-- skp data-txt='R' --><!-- skp data-txt="M'" --><!-- skp data-txt='P' --><img class="fig" src="img/FIG. 517.OCR.png" alt="FIG. 517." /><img class="fig" src="img/FIG. 518.OCR.png" alt="FIG. 518." /></p>
+<p  id="blk-337-17">:<!-- spr -->lement à une direction donnée D, non parallèle à ce plan, le point M'
+(fig. 518), où la parallèle à D, menée par M, perce le plan P.</p>
+<p  id="blk-337-19">La projection parallèle à une droite est manifestement un cas
+limite de la projection centrale elle dérive de la première lorsqu'on
+suppose que le point de vue O s'éloigne à l'infini sur une droite
+parallèle à D.</p>
+<p  id="blk-337-20">Si la direction D est perpendiculaire au plan du tableau P, on
+retrouve évidemment la projection orthogonale (362). Dans le cas
+contraire, la projection parallèle est encore dite oblique (1).</p>
+<p class="article" id="blk-337-21"><strong class="article-num" id="article-617">617.</strong> On voit qu'étant donné un système de projection, centrale ou
+parallèle, tout point de l'espace a une projection déterminée.</p>
+<p  id="blk-337-22">Toutefois, dans le cas de la projection centrale, il existe des points</p>
+<p  id="blk-337-23">(1) On donne encore à la projection oblique le nom de perspective cavalière.</p><div class="scan-inline"><img src="img/scan/srcpage-337.png"/></div></data><data data-scanhref="img/scan/srcpage-338.png"><p class="newpage"><!-- skp data-txt='318' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->dont la projection est rejetée à l'infini: c'est ce qui arrivera pour
+tout point N (fig. 517) tel que la droite ON soit parallèle au plan du
+tableau.</p>
+<p  id="blk-338-04">Il est évident que le lieu des points dont la perspective est rejetée à
+l'infini est le plan P。 mené par le point de vue parallèlement au
+plan du tableau (fig. 517).</p>
+<p  id="blk-338-05">Par contre, tout point M' du plan P est la projection commune
+d'une infinité de points de l'espace : à savoir, tous ceux qui sont sur
+une même projetante (c'est-à-dire sur une même droite passant
+par le point de vue, s'il s'agit d'une perspective; sur une même
+parallèle à la direction donnée, s'il s'agit d'une projection oblique.
+ou orthogonale).</p>
+<p class="article" id="blk-338-06"><strong class="article-num" id="article-618">618.</strong> Une droite de l'espace a pour projection une droite en effet,
+que la projection soit parallèle ou centrale, le lieu des projetantes
+qui rencontrent la droite donnée est un plan, et ce plan ne se
+confond pas avec le plan du tableau, dans lequel nous savons que
+les projetantes ne sont pas contenues. Il le rencontre donc, en
+général, suivant une droite. Toutefois, la projection d'une droite peut
+être rejetée à l'infini: ceci se produit (fig. 317) pour les droites
+situées dans le plan P., précédemment considéré, qui passe par le
+point de vue et est parallèle au plan du tableau.</p>
+<p  id="blk-338-07">Il est clair que trois droites passant par un même point M ont pour
+projection trois droites passant par un même point M', la projection du
+point M. Si la projetante OM du point M est parallèle au plan du
+tableau, les trois projections sont (329, Coroll. III) parallèles à cette
+droite on est encore fondé à dire, dans ce cas, que les projections
+passent par un même point rejeté à l'infini.</p>
+<p class="article" id="blk-338-08"><strong class="article-num" id="article-619">619.</strong> Perspective des parallèles. Point de fuite.</p>
+<p  id="blk-338-09">Dans la projection parallèle, deux droites parallèles se projettent
+suivant deux droites parallèles: le raisonnement que nous avons
+donné (362) pour la projection orthogonale s'applique sans modifi-
+cation à la projection oblique.</p>
+<p  id="blk-338-10">Il n'en va pas de même pour la projection centrale :<!-- skp data-txt='-' --></p>
+<p  id="blk-338-12">Théorème. Lorsque le point de vue est supposé à distance finie,
+une série de droites parallèles entre elles ont pour perspectives une série
+de droites toutes concourantes en un même point.</p><div class="scan-inline"><img src="img/scan/srcpage-338.png"/></div></data><data data-scanhref="img/scan/srcpage-339.png"><p class="newpage"></p>
+<p  id="blk-339-01">PROPRIÉTÉS DE LA PERSPECTIVE.<!-- skp data-txt='319' --></p>
+<p  id="blk-339-03">Dans le seul cas où la direction commune des parallèles est parallèle
+au plan du tableau, les perspectives sont également parallèles entre
+elles.</p>
+<p  id="blk-339-04">Soient, en effet, les droites parallèles D, D₁, D₂ (fig. 519), proje-
+tées sur le plan P, avec O comme point de vue leurs projections
+seront les traces, sur le plan P, des
+plans OD, OD, OD. Or, tous ces plans
+passent par une même droite Ox, la
+parallèle aux droites données menée
+par le point de vue.</p>
+<p  id="blk-339-05">Si la droite Ox et, par conséquent, les
+droites données sont parallèles au plan
+P, les projections seront toutes paral-<!-- skp data-txt='02' --></p>
+<p  id="blk-339-07">བ་་་<!-- skp data-txt='0' --><!-- spr -->lèles à Ox.<img class="fig" src="img/FIG. 519.OCR.png" alt="FIG. 519." /></p>
+<p  id="blk-339-11">Mais s'il n'en est pas ainsi, toutes les
+projections passeront (fig. 519) par le point I, où cette droite Ox
+coupe le plan P et qui peut être considéré comme la perspective
+du point à l'infini sur la direction commune des parallèles.</p>
+<p  id="blk-339-12">Ce point I a une très grande importance en perspective, soit
+théorique, soit appliquée. On l'appelle le point de fuite correspondant.
+à la direction D.<!-- spr -->p.<!-- skp data-txt='0' --></p>
+<p  id="blk-339-15">P.</p>
+<p class="article" id="blk-339-16"><strong class="article-num" id="article-620">620.</strong> Perspective d'une figure plane. Ligne de fuite.
+Supposons, maintenant, que la figure F dont on se propose de<!-- spr -->prendre la perspective soit
+plane nous appellerons P son
+plan, et nous désignerons par P'.
+le plan du tableau (fig. 520), la
+perspective obtenue étant dési-
+gnée par F.</p>
+<p  id="blk-339-18">Il est clair, d'ailleurs, qu'en
+prenant la perspective de la
+figure F' sur le plan P, avec le
+même point de vue 0, on<!-- spr -->tomberait sur F.
+Si les plans P et P' sont parallèles, les deux figures F et F' sont
+semblables.</p>
+<p  id="blk-339-20">Ce cas écarté, il existe une infinité de points du plan P dont la<!-- skp data-txt='P' --><!-- spr -->re-<img class="fig" src="img/FIG. 520.OCR.png" alt="FIG. 520." /></p><div class="scan-inline"><img src="img/scan/srcpage-339.png"/></div></data><data data-scanhref="img/scan/srcpage-340.png"><p class="newpage"><!-- skp data-txt='320' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->perspective sur le plan P' sera rejetée à l'infini: le lieu de ces points
+est l'intersection du plan P avec le plan P'. mené par le point de vue
+parallèlement à P'. Cette droite a sa perspective entièrement rejetée
+à l'infini : c'est la seule ligne du plan P qui soit dans ce cas.</p>
+<p  id="blk-340-04">Inversement, il y a une infinité de points du plan P' qui corres-
+pondent à des points à l'infini du plan P, le lieu de ces points étant
+l'intersection f du plan P' avec le plan P. mené, par le point de vue,
+parallèlement à P.</p>
+<p  id="blk-340-05">Cette droite est dite la ligne de fuite (¹) du plan P sur le plan P'.
+Il résulte de sa définition même qu'elle est le lieu des points de
+fuite des diverses directions situées dans le plan P; c'est d'ailleurs
+ce qu'on peut constater directement, puisque le point de fuite
+relatif à une direction située dans le plan P est à l'intersection du
+plan P' avec la parallèle à cette direction menée par le point de<!-- spr -->vue.</p>
+<p class="article" id="blk-340-07"><strong class="article-num" id="article-621">621.</strong> Parmi les propriétés que peut posséder une figure plane F,
+on réserve le nom de propriétés projectives à celles qui se conservent
+dans la perspective, c'est-à-dire qui sont forcément communes à la
+figure F et à sa projection F', quels que soient le point de vue et le
+plan du tableau.</p>
+<p  id="blk-340-08">La plus simple de ces propriétés est celle d'avoir trois points en
+ligne droite. Cette propriété est bien projective, d'après ce qui
+précède nous savons qu'à trois points en ligne droite de F corres-
+pondent trois points en ligne droite de F' et réciproquement.</p>
+<p  id="blk-340-09">Toutefois, cette proposition ne pourrait pas être énoncée sans
+restriction si nous ne faisions une convention spéciale. Si, en effet,
+on considère trois points du plan P' situés sur la ligne de fuite du
+plan P, ces points seront les perspectives non pas de trois points en
+ligne droite, mais de trois points tous rejetés à l'infini. Pour
+supprimer ce cas d'exception, il y a lieu (2), dans l'étude des pro-
+priétés projectives, de considérer les points à l'infini d'un plan comme
+silués sur une même ligne droite, que l'on nomme droite de l'infini du
+plan. C'est cette droite qui, en perspective, se projette suivant la
+ligne de fuite.</p>
+<p  id="blk-340-10">(1) Dans les applications de la perspective, il y a une ligne de fuite qui joue un rôle impor-
+tant c'est la ligne de fuite du plan horizontal, laquelle est dite ligne d'horizon.</p>
+<p  id="blk-340-11">(2) Nous entendons par là simplement qu'en assimilant les points à l'infini d'un plan à des
+points en ligne droite, on simplifie les énoncés d'un grand nombre de propositions (comparer,
+par exemple, Pl., 64, 76 [Rem.], etc.).</p><div class="scan-inline"><img src="img/scan/srcpage-340.png"/></div></data><data data-scanhref="img/scan/srcpage-341.png"><p class="newpage"></p>
+<p  id="blk-341-01">PROPRIÉTÉS DE LA PERSPECTIVE.<!-- skp data-txt='321' --><!-- skp data-txt='0' --><!-- skp data-txt='C' --><!-- skp data-txt='B' --><!-- skp data-txt='D' --></p>
+<p class="article" id="blk-341-07"><strong class="article-num" id="article-622">622.</strong> La propriété précédente est purement descriptive, c'est-à-dire
+qu'il n'y entre aucune mesure. Nous connaissons, au contraire, une
+propriété métrique, c'est-à-dire dans la définition de laquelle il entre
+des éléments numériques, et qui est
+également projective. Nous voulons.
+parler du rapport anharmonique.</p>
+<p  id="blk-341-08">Le rapport anharmonique de qua-
+tre points en ligne droite est projec-
+tif: autrement dit, le rapport an-
+harmonique de quatre points en ligne
+droite du plan P est égal au rapport
+anharmonique de leurs perspectives.</p>
+<p  id="blk-341-09">La simple inspection de la figure 521 fait reconnaître que cet
+énoncé n'est autre que le théorème du n° 200 (Pl., page 198).<!-- skp data-txt="C'" --><!-- skp data-txt="A'" --><!-- skp data-txt="B'" --><img class="fig" src="img/FIG. 521.OCR.png" alt="FIG. 521." /></p>
+<p class="article" id="blk-341-14"><strong class="article-num" id="article-623">623.</strong> Rapport anharmonique de quatre plans.
+De la proposition précédente résulte immédiatement:<!-- skp data-txt='-' --></p>
+<p  id="blk-341-16">Théorème. Le rapport anharmonique de quatre droites concou-
+rantes d'un plan est égal à celui de leurs perspectives.</p>
+<p  id="blk-341-17">En effet, par définition, le rapport anharmonique de quatre
+droites concourantes du plan P est égal au rapport anharmonique
+des quatre points obtenus en les coupant par une sécante quel-
+conque: or, nous venons de constater que ce dernier rapport anhar-<!-- spr -->monique est projectif.</p>
+<p  id="blk-341-19">Le théorème précédent peut<!-- spr -->encore s'énoncer:<!-- skp data-txt='P' --></p>
+<p  id="blk-341-22">Théorème.</p>
+<p  id="blk-341-23">Étant donnés<!-- skp data-txt='-' --></p>
+<p  id="blk-341-25">P₁</p>
+<p  id="blk-341-26">Pa</p>
+<p  id="blk-341-27">P3</p>
+<p  id="blk-341-28">P4<!-- spr -->quatre plans qui se coupent sui-
+vant une même droite, le rapport
+anharmonique des droites obte-
+nues en coupant ces plans par un
+cinquième plan quelconque, ou
+par une droite quelconque, est<img class="fig" src="img/FIG. 522.OCR.png" alt="FIG. 522." /><!-- spr -->constant.</p>
+<p  id="blk-341-32">Les quatre plans P1, P2, P3, P4 (fig. 522), concourants suivant la
+même droite xy, coupent deux plans quelconques P, P' suivant des<!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='21' --></p><div class="scan-inline"><img src="img/scan/srcpage-341.png"/></div></data><data data-scanhref="img/scan/srcpage-342.png"><p class="newpage"><!-- skp data-txt='322' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->faisceaux ayant le même rapport anharmonique, puisque le fais-
+ceau situé dans le plan P' est la perspective du faisceau situé
+dans le plan P, par rapport à un point de vue pris sur xy. Ce
+rapport anharmonique est d'ailleurs évidemment égal à celui que
+l'on obtiendrait en coupant les plans p₁, P2, P3, P4, par une droite
+quelconque.</p>
+<p  id="blk-342-04">Le rapport anharmonique ainsi défini est dit le rapport anhar-
+monique des quatre plans.</p>
+<p  id="blk-342-05">Le rapport anharmonique de quatre plans est égal à celui des quatre
+perpendiculaires abaissées, sur ces plans, d'un point quelconque de
+l'espace : car on obtient de telles perpendiculaires en prenant pour
+le plan sécant P un plan perpendiculaire à xy et faisant tourner les
+droites d'intersection d'un angle droit autour de xy.<!-- skp data-txt='2' --></p>
+<p class="article" id="blk-342-07"><strong class="article-num" id="article-624">624.</strong> On peut exposer les remarques précédentes sous une forme
+différente que nous allons faire connaître.</p>
+<p  id="blk-342-08">Soient D₁, D₂ deux droites du plan P, que nous supposerons
+choisies une fois pour toutes; M, un point variable du plan P. La
+distance du point M à la droite D₁ est (360) dans un rapport cons-
+tant (1) avec la distance du même point au plan OD₁. De même, la
+distance du point M à D₂ est dans un rapport constant avec sa dis-
+tance au plan OD₂.</p>
+<p  id="blk-342-09">Donc le rapport des distances du point M aux deux plans OD ODĄ
+est proportionnel au rapport des distances du même point aux deux
+droites D₁, D₂.</p>
+<p  id="blk-342-10">En désignant, pour abréger, par (M, D) la distance du point M à
+la droite D et par (M, P) la distance du point M au plan P, on peut
+écrire</p>
+<p  id="blk-342-11">(M, D₁)
+(M, D₂)<!-- skp data-txt='-' --></p>
+<p  id="blk-342-13">(M, OD₁)
+k.</p>
+<p  id="blk-342-14">(M, OD₂)<!-- spr -->k dépendant des droites D₁, D₂ et du point O, mais ne dépendant pas
+de la position du point M dans le plan P.</p>
+<p  id="blk-342-16">(1) Nous ne nous sommes occupés, au nº 360, que de la valeur absolue du rapport en question.
+Mais on peut attribuer des signes aux distances du point M à la droite D₁ et au plan OD₁ sui-
+vant le côté où sera placé le point M par rapport à cette droite et à ce plan. On reconnaît
+alors immédiatement que le rapport des distances considérées est constant, non seulement
+en grandeur, mais en signe.</p><div class="scan-inline"><img src="img/scan/srcpage-342.png"/></div></data><data data-scanhref="img/scan/srcpage-343.png"><p class="newpage"></p>
+<p  id="blk-343-01">PROPRIÉTÉS DE LA PERSPECTIVE.<!-- skp data-txt='323' --></p>
+<p  id="blk-343-03">Soient maintenant D, D₂, M' les perspectives des droites D₁, D,
+et du point M sur le plan P'. On aura aussi</p>
+<p  id="blk-343-04">(M', D)</p>
+<p  id="blk-343-05">(M', OD')
+k'</p>
+<p  id="blk-343-06">(M', OD)</p>
+<p  id="blk-343-07">(M', OD)
+k'</p>
+<p  id="blk-343-08">(M', OD,)'</p>
+<p  id="blk-343-09">_</p>
+<p  id="blk-343-10">=<!-- skp data-txt="'" --></p>
+<p  id="blk-343-12">(M', D₂)<!-- spr -->k'étant encore un nombre indépendant de la position des points
+M, M'.
+(M, OD₁)</p>
+<p  id="blk-343-14">(M', OD₁)
+Mais le rapport
+est égal au rapport</p>
+<p  id="blk-343-15">(360),
+(M, OD₂)</p>
+<p  id="blk-343-16">(M', OD₂)
+puisque les points M, M' sont, avec l'intersection des plans OD₁,
+OD₂, dans un même plan.</p>
+<p  id="blk-343-17">Donc, lorsque le point M varie dans le plan P, le rapport des
+distances de ce point aux deux droites D₁, D₂ est proportionnel au
+rapport des distances de sa perspective M' aux perspectives D, D
+de ces droites.<!-- skp data-txt='2' --><!-- skp data-txt='1' --><!-- spr -->venons<!-- spr -->m2<!-- spr -->m<!-- skp data-txt='5212' --><!-- spr -->my<!-- skp data-txt='02' --><!-- skp data-txt='N' --><!-- skp data-txt='M' --></p>
+<p  id="blk-343-28">K₁</p>
+<p  id="blk-343-29">D₁₂<img class="fig" src="img/FIG. 523.OCR.png" alt="FIG. 523." /></p>
+<p class="article" id="blk-343-31"><strong class="article-num" id="article-625">625.</strong> Le résultat que nous
+d'obtenir revient au<!-- spr -->théorème sur la
+conservation du rapport anharmonique
+dans la perspective.</p>
+<p  id="blk-343-33">Soient, en effet (fig. 523), M, N deux
+points du plan dont les distances à la
+droite D, sont Mm₁, Nn, et les distances
+à la droite D₂, Mm, Nn.</p>
+<p  id="blk-343-34">La proposition établie au n° précédent montre que le rapport
+(M, D₁) (N, D,) Mm₁ Nn₁<!-- spr -->est égal au rapport analogue
+(M, D2) (N, D₂)</p>
+<p  id="blk-343-36">Nn₂
+(M', D₁') (N', D₁)<!-- spr -->calculé sur la figure perspective de la première.
+(M', D₁₂) (N', D₂)</p>
+<p  id="blk-343-38">Mm₁ Nn₁
+Or de rapport<!-- spr -->est égal au rapport anharmonique</p>
+<p  id="blk-343-40">Mm2 Nn₂
+que forment les points M, N avec les points K₁, K, où la droite MN
+rencontre D₁, D. Car on peut écrire</p>
+<p  id="blk-343-41">:</p>
+<p  id="blk-343-42">Mm<!-- skp data-txt='2' --></p>
+<p  id="blk-343-44">Mm₁</p>
+<p  id="blk-343-45">Mm</p>
+<p  id="blk-343-46">Mm Nn₁
+Mm Nna</p>
+<p  id="blk-343-47">=</p>
+<p  id="blk-343-48">Mm2</p>
+<p  id="blk-343-49">Nn₁</p>
+<p  id="blk-343-50">Nn₂</p><div class="scan-inline"><img src="img/scan/srcpage-343.png"/></div></data><data data-scanhref="img/scan/srcpage-344.png"><p class="newpage"><!-- skp data-txt='324' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->et les triangles semblables Mm₁K₁, Nn₁₁<!-- spr -->donnent</p>
+<p  id="blk-344-05">Mm₁
+Nn<!-- skp data-txt='-' --></p>
+<p  id="blk-344-07">K,M
+KN<!-- skp data-txt='1' --><!-- skp data-txt='2' --><!-- skp data-txt='2' --></p>
+<p  id="blk-344-11">P.<!-- skp data-txt='2' --><!-- skp data-txt="M'" --></p>
+<p  id="blk-344-14">Mm2</p>
+<p  id="blk-344-15">K,M
+pendant que le rapport est, de même, égal à
+Nn₂</p>
+<p  id="blk-344-16">KN
+626. Nous avons supposé, dans ce qui précède, que les droites
+D₁, D₂, D½₁, D½₂ étaient toutes à distance finie. Supposons maintenant
+que D₂ soit rejeté à l'infini, de sorte que D½₂ sera la ligne de fuite du<!-- spr -->plan P (fig. 524).</p>
+<p  id="blk-344-18">Le rapport des distances du
+point M' aux droites D'₁, D½₂ sera
+encore proportionnel au rapport
+des distances du point M aux plans
+OD₁, OD', rien n'étant changé, à
+cet égard, dans les raisonnements
+des nos précédents.</p>
+<p  id="blk-344-19">La distance du point M au plan</p>
+<p  id="blk-344-20">OD₁ est encore proportionnelle à
+la distance du même point à la droite D. Mais quant à la distance
+du point M au plan OD 2, elle est constante, puisque le plan OD'₂ est
+parallèle au plan P.</p>
+<p  id="blk-344-21">Donc le rapport des distances du point M' aux droites D'₁, D'₂ est
+proportionnel à la distance du point M à la droite D.<!-- skp data-txt='M' --><!-- skp data-txt='P' --><img class="fig" src="img/FIG. 524.OCR.png" alt="FIG. 524." /><!-- skp data-txt='1' --><!-- skp data-txt='2' --><!-- skp data-txt='1' --><!-- skp data-txt='1' --><!-- skp data-txt='2' --></p>
+<p class="article" id="blk-344-30"><strong class="article-num" id="article-627">627.</strong> Supposons enfin que, la droite D₂ étant toujours à l'infini, la
+droite D, vienne suivant la ligne de fuite correspondant au plan P',
+de sorte que D'₁ est à son tour rejeté à l'infini.</p>
+<p  id="blk-344-31">(M', OD,)
+Alors le rapport<!-- spr -->des distances du point M' aux plans</p>
+<p  id="blk-344-33">(M', OD₂)
+OD′, OD½₂ est encore, ainsi que nous venons de le voir, proportionnel
+à la distance du point M à la droite D₁.</p>
+<p  id="blk-344-34">Mais, d'une façon tout analogue, ce rapport est inversement pro-
+portionnel à la distance du point M' à D½₂ puisque la distance du
+point M' au plan OD, est constante.</p>
+<p  id="blk-344-35">Par conséquent, la distance du point M à D₁ est inversement pro-
+portionnelle, dans ce cas, à la distance du point M' à D'₂.</p>
+<p  id="blk-344-36">En un mot, quand deux points varient, chacun dans un plan donné,
+en restant en perspective l'un avec l'autre, le produit des distances de
+chacun d'eux à la ligne de fuite située dans son plan est constant.<!-- skp data-txt='2' --></p><div class="scan-inline"><img src="img/scan/srcpage-344.png"/></div></data><data data-scanhref="img/scan/srcpage-345.png"><p class="newpage"></p>
+<p  id="blk-345-01">PROPRIÉTÉS DE LA PERSPECTIVE.<!-- skp data-txt='325' --></p>
+<p class="article" id="blk-345-03"><strong class="article-num" id="article-628">628.</strong> Lorsque la projection est parallèle, le rapport de deux
+segments AB, CD (Pl., 113) pris sur une même droite est égal à celui
+de leurs projections A'B', C'D'.</p>
+<p  id="blk-345-04">La même relation a lieu, en projection centrale, si la droite ABCD
+est parallèle à sa projection (Pl., 121); ce qui arrive si elle est
+parallèle à la ligne de fuite et dans ce cas seulement (329).</p>
+<p  id="blk-345-05">Dans le cas général, au contraire, la perspective ne conserve pas
+les rapports des segments. Mais les propositions précédentes
+donnent le moyen de trouver ce que devient un tel rapport sur la
+figure projetée. A, B, C étant trois points en ligne droite, le rap-</p>
+<p  id="blk-345-06">CA
+port est, en effet (Pl., 199), égal au rapport anharmonique des</p>
+<p  id="blk-345-07">CB
+quatre points A, B, C, ∞. Il sera donc représenté, dans la per-
+spective, par le rapport anharmonique des points A', B', C', cor-
+respondant à A, B, C et du point de fuite situé sur la droite
+A' B' C'.<!-- skp data-txt='H' --><!-- skp data-txt='E' --><!-- skp data-txt='F' --><!-- skp data-txt='A' --></p>
+<p class="article" id="blk-345-12"><strong class="article-num" id="article-629">629.</strong> L'emploi de la perspective permet de ramener certaines
+propositions de géométrie plane à d'autres beaucoup plus simples.
+Il fournit, par exemple, une démonstration immédiate du théorème
+suivant (Pl., 202) :
+Chaque diagonale d'un quadrilatère complet est divisée harmonique-<!-- spr -->ment
+par<!-- spr -->les deux autres.
+Soit, en effet, le quadrilatère
+complet ABCDEF (fig. 525). Pour
+démontrer que la diagonale AB,
+par exemple, est divisée harmoni-
+quement par les deux autres CD,
+EF, il suffira de projeter la figure
+de manière que EF soit ligne de<!-- spr -->fuite. Alors, les points E, F ayant
+leurs perspectives à l'infini, la figure projetée A'B'C'D' (fig. 525 bis)
+est un parallélogramme dont les diagonales se coupent en un point
+I' situé au milieu de A'B'.</p>
+<p  id="blk-345-16">Donc le point I, qui a pour perspective I', est (nº précédent) le
+conjugué harmonique, par rapport à AB, du point H où cette droite
+rencontre la ligne de fuite EF.<!-- skp data-txt="'B'" --><!-- skp data-txt='B' --><!-- skp data-txt="'" --><img class="fig" src="img/FIG. 525.OCR.png" alt="FIG. 525." /><img class="fig" src="img/FIG. 525 bis.OCR.png" alt="FIG. 525 bis." /></p>
+<p  id="blk-345-22">C. Q. F. D.</p><div class="scan-inline"><img src="img/scan/srcpage-345.png"/></div></data><data data-scanhref="img/scan/srcpage-346.png"><p class="newpage"><!-- skp data-txt='326' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-346-03"><strong class="article-num" id="article-630">630.</strong> Figures homographiques.
+On donne le nom de figures homographiques à deux figures telles :</p>
+<p  id="blk-346-04">1° Qu'à chaque point de l'une corresponde un point déterminé
+de l'autre ;</p>
+<p  id="blk-346-05">2° Qu'à trois points en ligne droite correspondent trois points en
+ligne droite;</p>
+<p  id="blk-346-06">30 Que le rapport anharmonique de quatre points en ligne droite.
+soit égal à celui de leurs homologues.</p>
+<p  id="blk-346-07">Lorsque deux figures remplissent ces conditions, on peut ajouter
+que le rapport anharmonique de quatre droites concourantes est le
+même que celui de leurs homologues. Cette condition est bien une
+conséquence des trois précédentes, comme le montre le raisonne-
+ment même du nº 622.</p>
+<p  id="blk-346-08">Il est clair que deux figures homographiques d'une même troisième
+sont homographiques entre elles.</p>
+<p  id="blk-346-09">Autrement dit, dans le langage dont nous nous sommes servis au nº 291
+(Pl., note A), toutes les homographies forment un groupe.</p>
+<p class="article" id="blk-346-10"><strong class="article-num" id="article-631">631.</strong> De ce qui précède résulte que deux figures planes, telles que
+l'une soit égale à une perspective de l'autre, sont homographiques.</p>
+<p  id="blk-346-11">Nous démontrerons un peu plus loin (636) que la réciproque est
+vraie, c'est-à-dire que (sauf un cas d'exception que nous indiquerons)
+deux figures planes homographiques peuvent toujours être placées
+de manière que l'une soit la perspective de l'autre.</p>
+<p  id="blk-346-12">Auparavant, nous allons établir le théorème suivant :<!-- skp data-txt='-' --></p>
+<p  id="blk-346-14">Théorème. On peut construire la figure F' homographique d'une<!-- spr -->figure plane F donnée, dès qu'on
+connaît les homologues de quatre
+points (dont trois quelconques ne
+sont pas en ligne droite) de F.</p>
+<p  id="blk-346-16">Soient, en effet, A, B, C, D les
+quatre points en question; A', B',
+C', D' leurs homologues donnés;
+.M un point quelconque de F, dont<!-- spr -->nous cherchons l'homologue M'.
+Supposons d'abord que le point M soit sur la droite BC, et soit E
+le point d'intersection de BC avec AD. L'homologue du point E est
+connu c'est le point E' (fig. 526) où B'C' est rencontré par A'D'.</p>
+<p  id="blk-346-18">AA<!-- skp data-txt='B' --><img class="fig" src="img/FIG. 526.OCR.png" alt="FIG. 526." /></p><div class="scan-inline"><img src="img/scan/srcpage-346.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

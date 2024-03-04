@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-306.png"><p class="newpage"><!-- skp data-txt='286' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-306-03">CHAPITRE III</p>
+<p  id="blk-306-04">ARPENTAGE</p>
+<p class="article" id="blk-306-05"><strong class="article-num" id="article-587">587.</strong> L'arpentage a pour objet de trouver l'aire d'un terrain, ou,
+plus exactement, l'aire de sa projection horizontale. C'est, en
+général, cette dernière qui est utile à connaître. Les terrains que
+l'on arpente sont, en effet, le plus ordinairement destinés à la
+culture ou à la bâtisse : or, comme c'est verticalement que les
+végétaux croissent et que les constructions sont élevées, les dimen-
+sions des édifices, ou le nombre de plantes d'une espèce déterminée,
+qui peuvent trouver place sur un terrain donné, ne dépendent que
+de la projection horizontale de ce terrain.</p>
+<p class="article" id="blk-306-06"><strong class="article-num" id="article-588">588.</strong> Toute méthode par laquelle on a pu lever le plan d'un
+terrain permet, par cela même, de l'arpenter. Pour mesurer, en
+effet, l'aire d'un terrain polygonal, on le considérera comme une
+somme de triangles et, du moment que l'on aura les éléments
+nécessaires pour déterminer chaque triangle (lesquels seront fournis
+par le levé), les formules de la trigonométrie permettront d'en
+calculer la surface.</p>
+<p  id="blk-306-07">Si l'on a mesuré les trois côtés de chaque triangle, on en aura
+l'aire par la formule (Pl.,</p>
+<p  id="blk-306-08">251)<!-- skp data-txt='S' --></p>
+<p  id="blk-306-10">=====</p>
+<p  id="blk-306-11">√p (p — a) (p — b) (p — c).</p>
+<p class="article" id="blk-306-12"><strong class="article-num" id="article-589">589.</strong> L'arpentage est le plus ordinairement effectué par des
+opérateurs qui ne sont pas en état de se livrer à des calculs trigono-
+métriques l'instrument employé est alors l'équerre d'arpenteur.</p>
+<p  id="blk-306-13">Pour arpenter un polygone, on pourrait le décomposer en
+triangles dont on mesurerait la base et (avec l'équerre) la hauteur.</p>
+<p  id="blk-306-14">Mais on préfère opérer différemment et faire choix tout d'abord</p><div class="scan-inline"><img src="img/scan/srcpage-306.png"/></div></data><data data-scanhref="img/scan/srcpage-307.png"><p class="newpage"></p>
+<p  id="blk-307-01">ARPENTAGE.<!-- skp data-txt='287' --><!-- spr -->d'une droite xy (fig. 498) ou base, par exemple la plus grande
+diagonale AE du polygone, sur laquelle on abaisse des perpendi-
+culaires Bb, Cc, Dd, Ff, Gg (fig. 498) de tous les sommets. On a
+ainsi décomposé le polygone en triangles (ABb, AGg, DɗE, Fƒe,
+fig. 498) et en trapèzes rectangles (BbCc, CcDd, GgFf, fig. 498), dont
+on sait évaluer les aires par les formules connues.</p>
+<p  id="blk-307-04">Sur la figure 498, tous les triangles et trapèzes sont additifs : il
+peut en être autrement: sur la figure 498 bis, par exemple, l'aire<!-- skp data-txt='C' --><!-- skp data-txt='B' --><!-- skp data-txt='E' --><!-- skp data-txt='B' --><!-- spr -->h A<!-- skp data-txt='A' --><!-- spr -->y<!-- skp data-txt='K' --><!-- skp data-txt='G' --><!-- skp data-txt='H' --><img class="fig" src="img/FIG. 498.OCR.png" alt="FIG. 498." /><img class="fig" src="img/FIG. 498 bis.OCR.png" alt="FIG. 498 bis." /><!-- spr -->du polygone s'obtient en retranchant, de la somme ABb BbCc
++CcDd DdEe + FGg + Gg Hh +KkA, la somme FEe + HhKk.</p>
+<p  id="blk-307-18">Il est clair que, dans cette manière d'arpenter, on opère comme
+s'il s'agissait d'un levé à l'équerre, la base jouant le rôle d'axe des
+abscisses.</p>
+<p class="article" id="blk-307-19"><strong class="article-num" id="article-590">590.</strong> Quant au cas où le terrain est limité par un contour curvi-
+ligne, il se ramène au précédent en remplaçant la courbe par un
+polygone d'un nombre suffisamment grand de côtés.<!-- skp data-txt='B' --><img class="fig" src="img/FIG. 499.OCR.png" alt="FIG. 499." /><img class="fig" src="img/FIG. 500.OCR.png" alt="FIG. 500." /></p>
+<p  id="blk-307-23">On commence par inscrire un premier polygone ABCD... (fig. 499)
+d'un nombre de côtés peu élevé, que l'on arpente comme nous
+l'avons dit au numéro précédent, puis on évalue la partie comprise
+entre la courbe et chaque côté en prenant ce côté pour base (1).</p>
+<p  id="blk-307-24">(1) Il existe des formules d'approximation permettant d'arriver, pour ces aires mixtilignes,
+à des résultats un peu plus exacts que ceux que l'on obtiendrait par la sommation pure et
+simple des trapèzes.</p><div class="scan-inline"><img src="img/scan/srcpage-307.png"/></div></data><data data-scanhref="img/scan/srcpage-308.png"><p class="newpage"><!-- skp data-txt='288' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-308-03"><strong class="article-num" id="article-591">591.</strong> Il peut être nécessaire d'arpenter un terrain dans lequel on
+ne peut pénétrer (fig. 500). On entoure alors ce terrain d'un polygone
+facile à mesurer, par exemple d'un rectangle (fig. 500) et l'on
+arpente la partie de ce dernier comprise à l'extérieur du terrain
+proposé il ne reste plus qu'à faire la différence des deux résultats.<!-- skp data-txt='C' --><!-- skp data-txt='S' --></p>
+<p class="article" id="blk-308-06"><strong class="article-num" id="article-592">592.</strong> Cubage.</p>
+<p  id="blk-308-07">On peut se proposer d'évaluer le volume d'un terrain compris à
+l'intérieur du cylindre qui projette sur un plan horizontal déterminé<!-- spr -->une aire S (fig. 501) prise sur ce ter-
+rain.</p>
+<p  id="blk-308-09">Supposons d'abord que la surface
+S soit comprise entre deux courbes
+de niveau consécutives C, C'. Alors
+on pourra, avec une approximation
+suffisante, considérer tous ses points
+comme ayant au-dessus du plan hori-
+zontal donné, une même cote, par
+exemple une moyenne entre la cote<!-- spr -->de C et la cote de C'. Le volume à
+évaluer sera alors celui d'un cylindre ayant pour hauteur cette
+cote et pour base, la projection horizontale de S.</p>
+<p  id="blk-308-11">Si maintenant l'aire S est quelconque, on pourra toujours
+(fig. 501) la décomposer en parties comprises entre courbes de
+niveau consécutives et que l'on traitera comme il vient d'être dit.<img class="fig" src="img/FIG. 501.OCR.png" alt="FIG. 501." /></p>
+<p class="article" id="blk-308-13"><strong class="article-num" id="article-592 bis">592 bis.</strong> Le plus ordinairement, toutefois, l'aire S a la forme
+d'une bande étroite tracée dans le voisinage d'une certaine ligne L<!-- skp data-txt='M' --><!-- skp data-txt="'M'" --></p>
+<p  id="blk-308-16">"M"<!-- skp data-txt="'N" --><!-- skp data-txt='N' --><!-- skp data-txt="'N'" --><img class="fig" src="img/FIG. 502.OCR.png" alt="FIG. 502." /></p>
+<p  id="blk-308-21">(fig. 502). C'est ce qui arrive lorsque le cubage proposé est destiné
+à l'établissement d'une route.
+Dans ce cas, la méthode que nous venons d'indiquer n'est<!-- spr -->pas<!-- spr -->la
+plus commode : il convient plutôt de déterminer une série de profils</p><div class="scan-inline"><img src="img/scan/srcpage-308.png"/></div></data><data data-scanhref="img/scan/srcpage-309.png"><p class="newpage"></p>
+<p  id="blk-309-01">ARPENTAGE.<!-- skp data-txt='289' --><!-- spr -->en travers, c'est-à-dire de profils (584) suivant des alignements
+MN, M'N'... normaux à L et de considérer le volume compris entre
+chacun de ces profils et le suivant comme un cylindre ayant pour
+hauteur la distance des deux profils et pour base l'un d'eux.</p>
+<p  id="blk-309-04">EXERCICES</p>
+<p class="article" id="blk-309-05"><strong class="article-num" id="article-852">852.</strong> Vérifier si une équerre d'arpenteur est juste.</p>
+<p class="article" id="blk-309-06"><strong class="article-num" id="article-853">853.</strong> Mener, à un alignement donné, une perpendiculaire par un point extérieur
+sans employer d'autre instrument que la chaîne et sans tȧtonnement (appliquer
+Pl., 126).</p>
+<p class="article" id="blk-309-07"><strong class="article-num" id="article-854">854.</strong> Diviser un alignement en deux parties égales, à l'aide du graphomètre seul.</p>
+<p class="article" id="blk-309-08"><strong class="article-num" id="article-854 bis">854 bis.</strong> Porter sur un alignement donné, à partir d'un point donné, une
+longueur égale à celle d'un autre alignement donné à l'aide du graphomètre seul.</p>
+<p class="article" id="blk-309-09"><strong class="article-num" id="article-855">855.</strong> Un niveau d'eau a un tube horizontal de 1 mètre de long, porté par un axe
+qui aboutit à 1 centimètre du milieu du tube. On a installé l'appareil de manière</p>
+<p  id="blk-309-10">1
+que l'axe passe avec la verticale un angle dont la tangente est Calculer approxi-</p>
+<p  id="blk-309-11">10'<!-- spr -->mativement la variation maximum du plan de visée, lorsque l'appareil tourne
+autour de son axe. Le résultat obtenu dépend-il de la longueur du tube?</p>
+<p class="article" id="blk-309-13"><strong class="article-num" id="article-856">856.</strong> Prolonger un alignement au delà d'un obstacle qui arrête la vue.</p>
+<p class="article" id="blk-309-14"><strong class="article-num" id="article-857">857.</strong> Montrer qu'on peut remplacer le niveau d'eau par un miroir plan dont on
+peut faire varier la direction en la maintenant verticale.</p>
+<p class="article" id="blk-309-15"><strong class="article-num" id="article-858">858.</strong> Montrer que le point M (fig. 485, nº 571) d'un plan, tel que les droites qui le
+joignent à trois points donnés A, B, C fassent entre elles des angles donnés, peut
+s'obtenir de la manière suivante: on construit sur BC, CA, AB comme bases, des
+triangles BCa, CAb, ABC tous semblables au triangle T dont les angles sont égaux
+aux angles donnés ou à leurs suppléments (les sommets homologues étant pris
+convenablement chaque fois). Les droites Aa, Bb, Cc concourent en un même point,
+qui répond à la question. Les points a, b, c ne sont autres que ceux où les droites
+MA, MB, MC rencontrent respectivement les segments de cercles MBC, MCA, MAB.<!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='19' --><!-- skp data-txt='0' --></p><div class="scan-inline"><img src="img/scan/srcpage-309.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

@@ -1,0 +1,425 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-134.png"><p class="newpage"></p>
+<p  id="blk-134-01">LIVRE VIII</p>
+<p  id="blk-134-02">LES CORPS</p>
+<p  id="blk-134-03">RONDS</p>
+<p  id="blk-134-04">CHAPITRE PREMIER</p>
+<p  id="blk-134-05">DÉFINITIONS GÉNÉRALES</p>
+<p  id="blk-134-06">CYLINDRE</p>
+<p class="article" id="blk-134-07"><strong class="article-num" id="article-432">432.</strong> Parmi les surfaces qui ne sont pas planes, les plus simples
+sont les surfaces cylindriques, les surfaces coniques et les surfaces<!-- spr -->de révolution.</p>
+<p  id="blk-134-09">On nomme surface cylindrique (fig. 331), ou
+simplement cylindre, la surface engendrée par une
+droite, dite génératrice, qui se déplace en restant
+parallèle à une droite fixe.</p>
+<p  id="blk-134-10">Il est clair qu'on déterminera une surface cylin-
+drique en se donnant : 1º la direction commune.
+des génératrices; 2° un point de chacune d'elles..
+On prend, en général, ces points de manière qu'ils
+varient continûment lorsque la génératrice varie
+continûment et forment une ligne (C, fig. 331), qui
+est dite la directrice.</p>
+<p  id="blk-134-11">Il est clair qu'on peut considérer comme direc-
+trice toute ligne tracée sur la surface et rencontrant<!-- spr -->toutes les génératrices. Il est souvent avanta-
+geux de prendre pour directrice une courbe plane.</p>
+<p  id="blk-134-13">Le plan est une surface cylindrique, à savoir celle qu'on obtient
+(332) en prenant pour directrice une droite.<img class="fig" src="img/FIG. 331.OCR.png" alt="FIG. 331." /></p><div class="scan-inline"><img src="img/scan/srcpage-134.png"/></div></data><data data-scanhref="img/scan/srcpage-135.png"><p class="newpage"></p>
+<p  id="blk-135-01">CYLINDRE.<!-- skp data-txt='115' --><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-135-04"><strong class="article-num" id="article-433">433.</strong> Définition. Une droite est dite tangente à une surface, en
+un point A de cette surface, lorsqu'elle est tangente en A à une ligne
+tracée sur la surface.<!-- skp data-txt='-' --><!-- skp data-txt='G' --><!-- skp data-txt='G' --><!-- skp data-txt="M'" --><img class="fig" src="img/FIG. 332.OCR.png" alt="FIG. 332." /></p>
+<p  id="blk-135-10">Théorème. Toutes les tangentes que l'on peut mener à une sur-
+face cylindrique, en un point de cette surface, sont dans un même
+plan.</p>
+<p  id="blk-135-11">Ce plan est dit le plan tangent au cylindre, mené
+au point considéré.</p>
+<p  id="blk-135-12">Le plan tangent au cylindre en un point contient la
+génératrice qui passe par ce point et est le même tout
+le long de cette génératrice.</p>
+<p  id="blk-135-13">Soient A le point donné (fig. 332); G, la génératrice
+qui passe par ce point; C, une courbe tracée sur la
+surface par le point A et admettant une tangente AT,
+distincte (1) de G; C', une autre courbe tracée par A
+sur la surface et admettant une tangente AT'. Soient
+maintenant M' un point de C', voisin de A; M, le
+point où la génératrice G' du point M' vient rencontrer la courbe C(2):
+les deux droites AM, AM' sont, avec G, dans un même plan (le plan
+des deux génératrices G, G'). Donc leurs positions limites seront
+aussi (3) dans un même plan avec G: autrement dit, toutes les
+droites telles que AT' seront dans le même plan GAT.</p>
+<p  id="blk-135-14">Ce plan contient bien la droite G et est bien le même en tous les
+points de G (comme position limite (3) du plan GG').</p>
+<p class="article" id="blk-135-15"><strong class="article-num" id="article-434">434.</strong> Une surface cylindrique peut être considérée comme le lieu des
+positions que vient occuper la directrice, lorsqu'on lui fait subir suc-
+cessivement les différentes translations parallèles aux génératrices.
+Car, dans ces différentes translations, chaque point de la directrice
+se déplace évidemment sur la génératrice correspondante et décrit
+toute cette génératrice.</p>
+<p  id="blk-135-16">Les sections d'une surface cylindrique par des plans parallèles entre</p>
+<p  id="blk-135-17">(1) Nous ne considérerons pas le cas où il ne passerait pas. par le point A, de courbe ayant
+une tangente distincte de G. Ce cas, qui n'est pas théoriquement impossible, ne se présente
+pas dans les cylindres que l'on a à considérer habituellement.</p>
+<p  id="blk-135-18">(2) On démontre que ce point existe nécessairement lorsque la tangente AT est distincte
+de G.</p>
+<p  id="blk-135-19">(3) Nous admettons ici (voir Pl., 104, note) les propositions suivantes : Quand trois droites
+variables issues d'un même point sont dans un même plan, il en est de même de leurs positions limites
+(si celles-ci existent). Quand une droite variable et un plan variable qui la contient tendent
+chacun vers une position limite, la position limite du plan contient la position limite de la droite.
+Ces propositions se démontrent d'ailleurs aisément (V. Exercices 486 et 487).</p>
+<p  id="blk-135-20">―</p><div class="scan-inline"><img src="img/scan/srcpage-135.png"/></div></data><data data-scanhref="img/scan/srcpage-136.png"><p class="newpage"><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='116' --><!-- spr -->eux (mais non parallèles aux génératrices) (fig. 333) sont égales. Car<!-- spr -->elles se déduisent l'une de l'autre par translation (335).</p>
+<p  id="blk-136-05">En particulier, on désigne sous le nom de sections
+droites du cylindre, les sections par des plans per-
+pendiculaires aux génératrices. On voit que toutes.
+les sections droites d'un même cylindre sont égales<!-- spr -->entre elles.</p>
+<p  id="blk-136-07">Dans le cas où le plan sécant est parallèle à la
+direction commune des génératrices, la section se
+compose évidemment d'une ou plusieurs de celles-ci.<img class="fig" src="img/FIG. 333.OCR.png" alt="FIG. 333." /></p>
+<p class="article" id="blk-136-09"><strong class="article-num" id="article-435">435.</strong> On nomme plus spécialement cylindre le<!-- spr -->volume obtenu en coupant une surface cylindrique
+par deux plans parallèles (fig. 334) et limité, par conséquent, par
+une portion de surface cylindrique et deux aires
+planes égales entre elles (dites bases).</p>
+<p  id="blk-136-11">La hauteur du cylindre est la distance des plans
+des bases.</p>
+<p  id="blk-136-12">Un cylindre est dit droit, lorsque ses généra-
+trices sont perpendiculaires aux plans des bases:
+autrement dit, lorsque celles-ci sont des sections<!-- spr -->droites.<img class="fig" src="img/FIG. 334.OCR.png" alt="FIG. 334." /><!-- skp data-txt="N'" --><!-- skp data-txt='S' --></p>
+<p class="article" id="blk-136-17"><strong class="article-num" id="article-436">436.</strong> On nomme surface conique (fig. 335) ou
+plus simplement cône, la surface engendrée par
+une droite (dite génératrice) qui se déplace en passant par un point<!-- spr -->fixe (dit sommet du cône).</p>
+<p  id="blk-136-19">Il est clair qu'on déterminera une surface
+conique en se donnant : 1° le sommet;
+2º un point de chaque génératrice. On
+prend, en général, ces points de manière
+qu'ils varient continûment et forment une
+ligne (C, fig. 335), qui est dite directrice
+ou base du cône. On peut considérer comme
+directrice toute ligne tracée sur la surface
+et rencontrant toutes les génératrices.</p>
+<p  id="blk-136-20">Le plan est une surface conique, à<!-- spr -->savoir celle qu'on obtient en prenant
+pour directrice une droite (323).<!-- skp data-txt='M' --><!-- skp data-txt='N' --><img class="fig" src="img/FIG. 335.OCR.png" alt="FIG. 335." /></p><div class="scan-inline"><img src="img/scan/srcpage-136.png"/></div></data><data data-scanhref="img/scan/srcpage-137.png"><p class="newpage"></p>
+<p  id="blk-137-01">CYLINDRE.<!-- skp data-txt='117' --><!-- skp data-txt='---' --></p>
+<p  id="blk-137-04">Théorème. Les tangentes que l'on peut mener à une surface
+conique, en un point autre que le sommet, sont toutes dans un même
+plan.</p>
+<p  id="blk-137-05">Ce plan est dit le plan tangent au cône au point considéré.</p>
+<p  id="blk-137-06">Le plan tangent au cône contient la génératrice du point de contact
+et est le même en tous les points d'une même génératrice.</p>
+<p  id="blk-137-07">Même démonstration que pour le cylindre (433).</p>
+<p  id="blk-137-08">Une surface conique peut être considérée comme le lieu des positions
+que vient occuper la directrice, lorsqu'on lui fait subir successivement
+toutes les homothéties qui ont pour centre le sommet.</p>
+<p  id="blk-137-09">Lorsque la directrice est fermée, ses homothétiques directes
+forment une première portion ou nappe du cône, pendant que ses
+homothétiques inverses forment la seconde nappe.</p>
+<p  id="blk-137-10">Ces deux nappes sont alors séparées l'une de l'autre par le som-
+met (fig. 335).</p>
+<p  id="blk-137-11">Les sections d'un même cône par des plans parallèles sont
+semblables (393, Rem.).</p>
+<p  id="blk-137-12">La section d'un cône par un plan passant par le sommet se
+compose évidemment d'une ou plusieurs génératrices.</p>
+<p class="article" id="blk-137-13"><strong class="article-num" id="article-437">437.</strong> On appelle, plus spécialement, cône, le volume obtenu en
+coupant une nappe de surface conique par un plan, autrement<!-- spr -->dit, limité par une aire plane
+(dite base) et une portion de sur-
+face conique (fig. 336).</p>
+<p  id="blk-137-15">La hauteur du cône est la dis-
+tance du sommet au plan de la
+base.<img class="fig" src="img/FIG. 336.OCR.png" alt="FIG. 336." /><img class="fig" src="img/FIG. 337.OCR.png" alt="FIG. 337." /></p>
+<p  id="blk-137-18">On nomme tronc de cône (fig. 337)
+le volume obtenu en coupant un<!-- spr -->cône par un plan parallèle à la
+base; autrement dit, limité par une portion de surface conique
+et deux aires planes semblables (dites bases). La hauteur du tronc
+du cône est la distance des plans des bases.</p>
+<p class="article" id="blk-137-20"><strong class="article-num" id="article-438">438.</strong> On nomme surface de révolution, la surface engendrée par
+une ligne C qui se déplace en tournant autour d'un axe fixe, l'angle</p><div class="scan-inline"><img src="img/scan/srcpage-137.png"/></div></data><data data-scanhref="img/scan/srcpage-138.png"><p class="newpage"><!-- skp data-txt='118' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->de rotation prenant successivement toutes les valeurs possibles.</p>
+<p  id="blk-138-04">Dans ces conditions, un point quelconque M de C se déplacera,
+d'après ce que nous savons, dans le plan mené par ce point per-
+pendiculairement à l'axe: il décrira dans ce plan, un cercle ayant son
+centre sur l'axe.
+Ce cercle est dit un parallèle de la surface.</p>
+<p  id="blk-138-05">Comme il passe un parallèle par tout point de la surface, on voit
+qu'une surface de révolution peut être considérée comme le lieu décrit
+par un cercle qui varie (en changeant, en général, de rayon) de
+manière que son centre décrive une droite, son plan restant perpendi-
+culaire à cette droite.</p>
+<p  id="blk-138-06">On achèvera de définir la surface en imposant au cercle variable
+la condition de rencontrer constamment la ligne donnée C. Comme,
+une fois l'axe donné, il suffit de se donner un point quelconque
+d'un parallèle pour le déterminer entièrement, on voit que la
+ligne C peut être remplacée par n'importe quelle autre courbe tracée
+sur la surface et rencontrant tous les parallèles.</p>
+<p  id="blk-138-07">On choisit, le plus souvent, pour la ligne C, la section de la sur-
+face par un plan quelconque passant par l'axe. Cette section MM'</p>
+<p  id="blk-138-08">(fig. 338), dite méridienne de la surface, est
+évidemment symétrique par rapport à l'axe,
+puisqu'elle contient les points diamétralement
+opposés de chaque parallèle. On pourra, par
+conséquent, se contenter d'en considérer une
+moitié, par exemple la partie située d'un seul
+et même côté de l'axe.</p>
+<p  id="blk-138-09">On nomme méridiens les diverses positions
+occupées par la méridienne, lorsque son plan
+tourne autour de l'axe. Par chaque point de<!-- spr -->la surface, il passe évidemment un méridien.
+Une surface de révolution admet une infinité de plans de symétrie :
+elle est symétrique par rapport à tout plan passant par l'axe, car
+un parallèle quelconque jouit de cette propriété, en vertu du
+n° 419 bis et du nº 62 (Pl., liv. II).<!-- skp data-txt="M'" --></p>
+<p  id="blk-138-12">}+{<!-- skp data-txt='C' --><!-- skp data-txt='M' --><img class="fig" src="img/FIG. 338.OCR.png" alt="FIG. 338." /></p>
+<p  id="blk-138-16">On démontre qu'en un point quelconque d'une surface de révolution existe,
+en général, un plan tangent, c'est-à-dire que les tangentes que l'on peut
+mener aux différentes courbes tracées sur la surface par ce point, sont
+dans un même plan. Ce plan doit, d'après ce qui précède, coïncider avec</p><div class="scan-inline"><img src="img/scan/srcpage-138.png"/></div></data><data data-scanhref="img/scan/srcpage-139.png"><p class="newpage"></p>
+<p  id="blk-139-01">CYLINDRE.<!-- skp data-txt='119' --><!-- spr -->son symétrique par rapport au plan méridien qui passe au point consi-
+déré, et, par suite, être perpendiculaire à ce dernier plan.<!-- skp data-txt='A' --></p>
+<p class="article" id="blk-139-05"><strong class="article-num" id="article-439">439.</strong> Après le plan, les surfaces cylindriques les plus simples sont
+celles qui ont pour directrices des cercles.</p>
+<p  id="blk-139-06">Parmi celles-là, on considère, en particulier, celle qui a pour
+section droite un cercle et qui est la surface cylindrique de révolu-
+tion cette surface est, en effet, celle qu'on obtient en faisant
+tourner une droite D autour d'un axe A qui lui est parallèle, car,
+dans ce mouvement, la droite reste constamment parallèle à A, pen-
+dant qu'un quelconque de ces points décrit un
+cercle dont le plan est perpendiculaire à A; et
+inversement, tout cylindre dont la section droite
+est un cercle peut être obtenu de cette manière,
+l'axe A étant la parallèle menée par le centre du
+cercle à la direction des génératrices.</p>
+<p  id="blk-139-07">En coupant la surface cylindrique de révolution.
+par deux plans de sections droites, on obtient le.
+cylindre droit à base circulaire ou cylindre de révo-
+lution (fig. 339), que l'on peut encore considérer
+comme la figure engendrée par un rectangle AA'DD' (fig. 339)
+tournant autour d'un de ses côtés.</p>
+<p  id="blk-139-08">Un cylindre de révolution est manifestement défini quand on se
+donne le cercle de base et la hauteur (ainsi que le sens dans lequel<!-- spr -->elle doit être portée). Deux cylindres de
+révolution qui ont même rayon de base et
+même hauteur, sont égaux.<!-- skp data-txt='D' --><!-- skp data-txt="A'" --><img class="fig" src="img/FIG. 339.OCR.png" alt="FIG. 339." /><!-- skp data-txt="A'" --><!-- skp data-txt='B' --><!-- spr -->a<!-- skp data-txt='B' --></p>
+<p class="article" id="blk-139-17"><strong class="article-num" id="article-440">440.</strong> Surface latérale du cylindre.</p>
+<p  id="blk-139-18">Un cylindre étant donné (fig. 340), ins-
+crivons dans la première courbe de base
+un polygone quelconque ce polygone.
+sera la base d'un prisme ABCDEA'B'C' D'E'
+(fig. 340) ayant pour arêtes des généra-<!-- spr -->trices du cylindre et pour seconde base un
+polygone inscrit dans la seconde base de celui-ci prisme qui sera
+dit inscrit au cylindre.</p>
+<p  id="blk-139-20">L'aire latérale du cylindre est, par définition, la limite vers
+laquelle tend l'aire latérale d'un prisme inscrit, lorsque le nombre<img class="fig" src="img/FIG. 340.OCR.png" alt="FIG. 340." /></p><div class="scan-inline"><img src="img/scan/srcpage-139.png"/></div></data><data data-scanhref="img/scan/srcpage-140.png"><p class="newpage"><!-- skp data-txt='120' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->des côtés du polygone de base augmente indéfiniment, de manière
+que chacun d'eux tende vers zéro.</p>
+<p  id="blk-140-04">Dans le cas du cylindre droit à base circulaire, nous allons
+prouver l'existence de cette limite et en trouver la valeur.<!-- skp data-txt='-' --></p>
+<p  id="blk-140-06">.Théorème. L'aire latérale d'un cylindre droit à base circulaire<!-- spr -->est égale au produit du périmètre de la base par la
+hauteur.</p>
+<p  id="blk-140-08">En effet, l'aire latérale du prisme inscrit
+(fig. 341) est égale (388), au périmètre de la sec-
+tion droite (qui se confond ici avec la base) mul-
+tiplié par l'arête latérale.</p>
+<p  id="blk-140-09">Si l'on augmente indéfiniment le nombre des
+côtés du polygone de base, de manière que cha-
+cun d'eux tende vers zéro, le périmètre de ce
+polygone tend, ainsi que nous l'avons démontré</p>
+<p  id="blk-140-10">(Pl., 176-177), vers une limite, qui est la longueur
+de la circonférence de base du cylindre; l'arête du prisme étant
+d'ailleurs constamment égale à la hauteur du cylindre, le théorème
+est démontré (').<img class="fig" src="img/FIG. 341.OCR.png" alt="FIG. 341." /><!-- skp data-txt='-' --></p>
+<p  id="blk-140-13">Corollaire. Soient R le rayon de base du cylindre, h sa hauteur.
+L'aire latérale est 2□Rh, puisque la circonférence de base a pour
+longueur 2R.</p>
+<p  id="blk-140-14">Pour avoir l'aire totale du cylindre, il faudrait ajouter, bien
+entendu, les aires des deux cercles de bases. L'aire totale est donc
+2Rh2R² = 2πR (h+R).<!-- skp data-txt='L' --></p>
+<p class="article" id="blk-140-16"><strong class="article-num" id="article-441">441.</strong> Volume du cylindre.</p>
+<p  id="blk-140-17">Le volume d'un cylindre est, par définition, la limite vers laquelle
+tend le volume d'un prisme inscrit, lorsque le nombre des côtés du
+polygone de base augmente indéfiniment, de manière que chacun
+d'eux tende vers zéro.</p>
+<p  id="blk-140-18">Dans le cas du cylindre à base circulaire, droit ou non, nous
+allons prouver l'existence de cette limite et en trouver la valeur.</p>
+<p  id="blk-140-19">(1) Le raisonnement s'applique à un cylindre quelconque, du moment que l'on a pu définir
+(Pl., 179, note) la longueur de la courbe de section droite de ce cylindre: c'est-à-dire, du
+moment que le périmètre d'un polygone inscrit dans cette courbe et dont le nombre de côtés
+augmente indéfiniment tend vers une limite (voir fig. 340). La conclusion est évidemment
+la suivante L'aire latérale d'un cylindre quelconque est égale au périmètre de la section droite,
+multiplié par l'arête.</p><div class="scan-inline"><img src="img/scan/srcpage-140.png"/></div></data><data data-scanhref="img/scan/srcpage-141.png"><p class="newpage"></p>
+<p  id="blk-141-01">CYLINDRE.<!-- skp data-txt='121' --><!-- skp data-txt='-' --></p>
+<p  id="blk-141-04">Théorème. Le volume du cylindre à base circulaire est égal à la
+surface de base, multipliée par la hauteur.</p>
+<p  id="blk-141-05">Le volume du prisme inscrit est, en effet, égal au produit de la
+surface de sa base par sa hauteur: cette dernière est commune au
+prisme et au cylindre, pendant que la surface de base du prisme a
+pour limite la surface de base du cylindre (1).<!-- skp data-txt='-' --></p>
+<p  id="blk-141-07">Corollaire. Soient, comme précédemment, R le rayon du
+cylindre; h sa hauteur. Le volume est R²h.</p>
+<p  id="blk-141-08">REMARQUE. Nous avons défini l'aire latérale et le volume d'un cylin-
+dre comme limites de l'aire latérale et du volume d'un prisme inscrit.
+Nous serions évidemment arrivés à la même limite en considérant l'aire
+latérale et le volume d'un prisme circonscrit (on désigne sous ce nom
+un prisme ayant pour bases des polygones circonscrits aux courbes de
+bases et dont les arètes sont parallèles et égales aux génératrices du
+cylindre).</p>
+<p  id="blk-141-09">EXERCICES</p>
+<p class="article" id="blk-141-10"><strong class="article-num" id="article-629">629.</strong> Si une droite a plus de deux points communs avec une surface cylindrique à
+base circulaire, elle est une génératrice de la surface.</p>
+<p class="article" id="blk-141-11"><strong class="article-num" id="article-630">630.</strong> Trouver le lieu des milieux des cordes interceptées par une surface cylindri-
+que à base circulaire sur des droites issues d'un point fixe.</p>
+<p class="article" id="blk-141-12"><strong class="article-num" id="article-631">631.</strong> Mener, par un point donné de l'espace, un plan tangent à un cylindre de
+révolution donné.</p>
+<p class="article" id="blk-141-13"><strong class="article-num" id="article-632">632.</strong> Lieu des centres des homothéties de rapport donné et telles que l'homologue
+d'une droite donnée rencontre un cercle donné.</p>
+<p class="article" id="blk-141-14"><strong class="article-num" id="article-633">633.</strong> Trouver le lieu des points de l'espace tels que leurs projections sur les côtés
+d'un triangle donné soient trois points en ligne droite.</p>
+<p class="article" id="blk-141-15"><strong class="article-num" id="article-634">634.</strong> Démontrer que les seules surfaces de révolution, qui soient en même temps
+des cylindres, sont les cylindres de révolution définis au nº 439.</p>
+<p class="article" id="blk-141-16"><strong class="article-num" id="article-635">635.</strong> Calculer les dimensions du litre qui sert à mesurer les grains et du litre qui
+sert à mesurer les liquides, sachant que ces deux instruments ont tous deux la
+forme cylindrique, la hauteur étant, dans le premier, égale au diamètre de la base
+et, dans le second, double de ce diamètre.</p>
+<p class="article" id="blk-141-17"><strong class="article-num" id="article-636">636.</strong> Quel est le rapport des volumes engendrés par un rectangle tournant succes-
+sivement autour de deux côtés consécutifs ?</p>
+<p class="article" id="blk-141-18"><strong class="article-num" id="article-637">637.</strong> Étant donnés un cercle et deux diamètres rectangulaires, trouver un rec-
+tangle ayant deux côtés suivant ces diamètres, un sommet sur la circonférence et
+et qui, en tournant autour d'un de ses côtés, engendre un cylindre de surface totale
+donnée. Maximum de cette surface totale.</p>
+<p  id="blk-141-19">(1) Le raisonnement s'applique évidemment à un cylindre de base quelconque, en admettant
+toutefois<!-- spr -->que<!-- spr -->la définition (Pl., 260, note) de l'aire d'une courbe fermée s'applique à la courbe
+de base de ce cylindre. Moyennant cette condition, on a donc le théorème suivant: Le volume
+d'un cylindre quelconque est égal au produit de sa base par sa hauteur.</p><div class="scan-inline"><img src="img/scan/srcpage-141.png"/></div></data><data data-scanhref="img/scan/srcpage-142.png"><p class="newpage"><!-- skp data-txt='122' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-142-03"><strong class="article-num" id="article-638">638.</strong> Étant donné un cylindre droit à base circulaire, évaluer la portion de l'aire
+latérale comprise entre la base, un plan Ppassant par un diamètre de la base et deux
+génératrices quelconques (voir la figure ci-contre). Montrer que l'aire ainsi définie<!-- spr -->est quarrable, c'est-à-dire qu'on peut construire un rectangle
+équivalent (on suppose qu'on a tracé le cercle de base, marqué
+sur sa circonférence les pieds des deux génératrices, donné la
+longueur interceptée par le plan P sur l'une d'elles et la
+direction du diamètre commun aux deux plans).</p>
+<p  id="blk-142-05">(On imitera la méthode du nº 440, en remplaçant d'abord la
+surface cylindrique par une surface prismatique inscrite).</p>
+<p class="article" id="blk-142-06"><strong class="article-num" id="article-639">639.</strong> En coupant une surface cylindrique à base circulaire
+par deux plans non parallèles entre eux (mais ne se coupant
+pas à l'intérieur de la surface), on obtient un solide (qu'on<!-- spr -->peut appeler tronc de cylindre). Montrer que l'aire latérale
+et le volume de ce solide sont les mêmes que ceux d'un cylindre limité par la même
+surface cylindrique et deux plans parallèles à la base du cylindre menés aux points
+où la parallèle aux génératrices menée par le centre de cette base rencontre les
+plans donnés.<!-- skp data-txt='B' --></p><div class="scan-inline"><img src="img/scan/srcpage-142.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

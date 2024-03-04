@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-408.png"><p class="newpage"><!-- skp data-txt='388' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-408-03">CHAPITRE</p>
+<p  id="blk-408-04">IV</p>
+<p  id="blk-408-05">AIRES DES POLYGONES SPHÉRIQUES</p>
+<p class="article" id="blk-408-06"><strong class="article-num" id="article-692">692.</strong> Nous supposerons, dans le présent chapitre, que l'on a pris
+pour unité d'angle, l'angle droit et, pour unité d'aire, l'aire du
+triangle sphérique trirectangle tracé sur la sphère donnée. La sur-
+face de cette sphère a alors pour mesure le nombre 8, car elle peut
+évidemment être décomposée en 8 triangles trirectangles.</p>
+<p  id="blk-408-07">Si le rayon de cette sphère ou l'unité de longueur n'ont pas été choisis
+d'une façon particulière (exerc. 990), cette hypothèse ne sera pas d'accord
+avec la convention générale formulée au nº 244 (et rappelée au nº 397).</p>
+<p  id="blk-408-08">Il faudra donc, pour revenir au cas où les unités seront prises conformé-
+ment à ces conventions générales (exerc. 989) appliquer les règles connues
+du changement d'unités (1).</p>
+<p class="article" id="blk-408-09"><strong class="article-num" id="article-693">693.</strong> Ce choix d'unités une fois fait, nous allons commencer par
+évaluer l'aire du fuseau sphérique.</p>
+<p  id="blk-408-10">On nomme fuseau sphérique la portion de sphère comprise entre
+deux demi-grands cercles limités à leurs points communs : autre-
+ment dit la section de la sphère par un dièdre ayant pour arête un
+diamètre l'angle de ces deux demi-grands cercles est l'angle du
+fuseau (fig. 562). Cela posé, on a le<!-- skp data-txt='A' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 563.OCR.png" alt="FIG. 563." /><img class="fig" src="img/FIG. 562.OCR.png" alt="FIG. 562." /></p>
+<p  id="blk-408-15">Théorème.<!-- skp data-txt='-' --></p>
+<p  id="blk-408-17">Deux fuseaux sont entre eux comme leurs angles.</p>
+<p  id="blk-408-18">(1) Tannery, Leçons d'Arithmétique, ch. x, nos 325 et suivants.</p><div class="scan-inline"><img src="img/scan/srcpage-408.png"/></div></data><data data-scanhref="img/scan/srcpage-409.png"><p class="newpage"></p>
+<p  id="blk-409-01">AIRES DES POLYGONES SPHÉRIQUES.<!-- skp data-txt='389' --></p>
+<p  id="blk-409-03">En effet:</p>
+<p  id="blk-409-04">1° Deux fuseaux de même angle sont égaux : car ils coïncideront
+lorsqu'on fera coïncider les dièdres correspondants;</p>
+<p  id="blk-409-05">2º Le fuseau C qui a pour angle la somme des angles de deux fuseaux
+A, B, a pour aire la somme des aires de A et de B. C'est ce qui est
+évident (fig. 562) si on rend adjacents (4) les deux fuseaux, ce qu'on
+a le droit de faire en vertu de 1º.</p>
+<p  id="blk-409-06">Des deux remarques précédentes résulte, comme nous savons, le
+théorème que nous voulions démontrer.<!-- skp data-txt='-' --></p>
+<p  id="blk-409-08">Corollaire. L'aire d'un fuseau a pour mesure le double de son
+angle (dans notre système actuel d'unités).</p>
+<p  id="blk-409-09">Car le fuseau dont l'angle est droit se compose (fig. 563) de deux
+triangles trirectangles: son aire est donc mesurée par le nombre 2.
+La mesure d'un fuseau quelconque sera donc égale à 2 multiplié par
+le rapport de son angle à l'angle droit (théorème précédent),
+c'est-à-dire par la mesure de l'angle dans notre système actuel
+d'unités.</p>
+<p class="article" id="blk-409-10"><strong class="article-num" id="article-694">694.</strong> Pour déduire de là la mesure d'un triangle sphérique quel-
+conque, nous démontrerons d'abord le lemme suivant.</p>
+<p  id="blk-409-11">Lemme. Deux triangles sphériques symétriques l'un de l'autre
+sont équivalents.</p>
+<p  id="blk-409-12">1º Cas des triangles isoscèles. Deux triangles sphériques isoscèles
+symétriques sont aussi égaux (476) et, par conséquent, équiva-<!-- spr -->lents.</p>
+<p  id="blk-409-14">· 2º Cas général. Soient ABC un triangle sphérique, A'B'C' son symé-
+trique. Soit O l'un des pôles du cercle circonscrit à ABC et suppo-
+sons, pour fixer les idées, ce point intérieur au triangle (fig. 564):
+alors ce dernier sera décomposé en trois triangles isoscèles OBC, OCA,
+OAB. Le triangle A'B'C' est alors évidemment la somme de trois
+triangles isoscèles respectivement égaux aux premiers et, par
+conséquent, le théorème est démontré.</p>
+<p  id="blk-409-15">Si le point O n'était pas intérieur au triangle, si, par exemple, la
+disposition était (2) celle de la fig. 565, le triangle ABC serait la</p>
+<p  id="blk-409-16">(1) Nous appelons fuseaux adjacents ceux qui sont déterminés par deux dièdres adjacents.</p>
+<p  id="blk-409-17">(2) On peut toujours supposer que la disposition est l'une ou l'autre des deux représentées
+figures 561 et 563; autrement dit, que O est, par rapport à deux au moins des côtés, dans le</p><div class="scan-inline"><img src="img/scan/srcpage-409.png"/></div></data><data data-scanhref="img/scan/srcpage-410.png"><p class="newpage"><!-- skp data-txt='390' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->somme de deux triangles isoscèles OBC, OCA diminuée du triangle<!-- skp data-txt='B' --><!-- skp data-txt='B' --><!-- skp data-txt='A' --><!-- skp data-txt="A'" --><!-- skp data-txt="O'" --><!-- skp data-txt="'B'" --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 564.OCR.png" alt="FIG. 564." /><img class="fig" src="img/FIG. 565.OCR.png" alt="FIG. 565." /><!-- skp data-txt='A' --><!-- spr -->isoscèle OAB et le triangle A'B'C' serait aussila somme de deux trian-<!-- spr -->gles isoscèles diminuée d'un troisième, ces
+trois triangles étant respectivement égaux
+aux premiers: de sorte que la conclusion
+serait la même.<!-- skp data-txt='B' --><!-- skp data-txt='-' --><!-- skp data-txt='C' --></p>
+<p class="article" id="blk-410-19"><strong class="article-num" id="article-695">695.</strong> Théorème. L'aire d'un triangle
+sphérique a pour mesure l'excès de la
+somme de ses angles sur deux droits.</p>
+<p  id="blk-410-20">Soient ABC le triangle sphérique consi-
+déré; A', B', C' (fig. 566) les points diamé-
+tralement opposés à A, B, C. Le fuseau<!-- skp data-txt="B'" --><!-- skp data-txt="A'" --><img class="fig" src="img/FIG. 566.OCR.png" alt="FIG. 566." /></p>
+<p  id="blk-410-24">. dont l'angle est l'angle A du triangle se compose du triangle ABC
+ajouté au triangle BCA: soit<!-- spr -->fus. A<!-- spr -->tr. ABC tr. BCA'<!-- skp data-txt='P' --></p>
+<p  id="blk-410-28">De même fus.<!-- skp data-txt='B' --></p>
+<p  id="blk-410-30">_<!-- spr -->tr. ABC + tr. ACB'<!-- spr -->fus. C</p>
+<p  id="blk-410-33">=<!-- spr -->tr. ABC + tr. ABC'.</p>
+<p  id="blk-410-35">Mais, dans cette dernière égalité, le triangle ABC' peut être rem-
+placé par son équivalent A'B'C (lemme précéd.). En ajoutant alors"
+ces trois égalités, et remarquant que la somme des triangles ABC,
+BCA', CAB', A'B'C n'est autre que l'un des deux hémisphères déter-<!-- spr -->même hémisphère que le triangle, sans quoi il suffirait de remplacer ce pôle par le pôle opposé.
+Mais un tel choix n'est nullement nécessaire: le raisonnement du texte conserve évidemment
+sa validité, quelle que soit la position du pôle par rapport au triangle.</p><div class="scan-inline"><img src="img/scan/srcpage-410.png"/></div></data><data data-scanhref="img/scan/srcpage-411.png"><p class="newpage"></p>
+<p  id="blk-411-01">AIRES DES POLYGONES SPHÉRIQUES.<!-- skp data-txt='391' --><!-- spr -->minés par le grand cercle AB et a, par conséquent, pour mesure 4,
+il vient<!-- spr -->fus. A fus. B + fus. C = 2 tr. ABC + 4,<!-- spr -->ou, puisque (693) fus. A =2A, fus. B=2B, fus. = 2C,</p>
+<p  id="blk-411-06">C=2C,</p>
+<p  id="blk-411-07">^<!-- spr -->tr. ABC<!-- skp data-txt='-' --></p>
+<p  id="blk-411-10">2.</p>
+<p  id="blk-411-11">A+B+C</p>
+<p  id="blk-411-12">Corollaire. Un polygone sphérique de n côtés a pour mesure
+l'excès de la somme de ses angles sur 2n</p>
+<p  id="blk-411-13">4 droits,
+comme on le voit (comparer Pl., 44 bis) en décom-
+posant ce polygone en triangles par des diagonales
+(fig. 567).</p>
+<p  id="blk-411-14">On donne le nom d'excès sphérique d'un poly-
+gone sphérique à l'excès de la somme des angles
+sur 2n 4 droits, de sorte qu'un polygone sphé-
+rique a pour mesure (par rapport au système d'unités adopté
+dans ce chapitre) son excès sphérique.<img class="fig" src="img/FIG. 567.OCR.png" alt="FIG. 567." /><!-- skp data-txt='-' --></p>
+<p  id="blk-411-17">:<!-- spr -->nous<!-- skp data-txt='-' --><!-- skp data-txt='R' --></p>
+<p class="article" id="blk-411-21"><strong class="article-num" id="article-696">696.</strong> Théorème. -Le troisième sommet d'un triangle sphérique dont
+les deux premiers sommets sont donnés, ainsi que la différence entre<!-- spr -->l'angle au sommet variable et la somme des angles
+aux sommets fixes, est sur l'un ou l'autre de deux
+arcs de cercles fixes.</p>
+<p  id="blk-411-23">Soient B, C les sommets donnés, A le sommet
+variable<!-- spr -->supposons donnée la quantité
+B+ C A. Soit encore O (fig. 568) l'un des pôles
+du cercle circonscrit au triangle : je vais démontrer<!-- spr -->que le point O est fixe.
+Pour présenter un raisonnement tout à fait général, nous consi-
+dérerons les angles comme positifs ou comme négatifs, suivant
+qu'ils seront de sens direct ou de sens rétrograde.</p>
+<p  id="blk-411-26">Le triangle OBC étant isoscèle, les arcs de grands cercles OB et OC
+feront avec BC des angles égaux, mais de signes contraires. Soit a le
+premier de ces deux angles: par conséquent<img class="fig" src="img/FIG. 568.OCR.png" alt="FIG. 568." /></p>
+<p  id="blk-411-28">α = CBO</p>
+<p  id="blk-411-29">BCO,</p><div class="scan-inline"><img src="img/scan/srcpage-411.png"/></div></data><data data-scanhref="img/scan/srcpage-412.png"><p class="newpage"><!-- skp data-txt='392' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->soient de même</p>
+<p  id="blk-412-04">ẞ =
+= ACO</p>
+<p  id="blk-412-05">_</p>
+<p  id="blk-412-06">CAO</p>
+<p  id="blk-412-07">_</p>
+<p  id="blk-412-08">BAO<!-- skp data-txt='Y' --><!-- skp data-txt='-' --></p>
+<p  id="blk-412-11">ABO.</p>
+<p  id="blk-412-12">Si la disposition du triangle est telle que l'angle BAC soit direct (¹),
+on a alors, à un multiple près de la circonférence (2),</p>
+<p  id="blk-412-13">ß + Y<!-- skp data-txt='B' --></p>
+<p  id="blk-412-15">I ta</p>
+<p  id="blk-412-16">C = a +ß<!-- spr -->et par conséquent</p>
+<p  id="blk-412-18">B+C</p>
+<p  id="blk-412-19">A =</p>
+<p  id="blk-412-20">2α</p>
+<p  id="blk-412-21">BC<!-- spr -->ou<!-- spr -->encore<!-- spr -->a<!-- skp data-txt='2' --></p>
+<p  id="blk-412-26">(l'égalité n'ayant lieu cette fois qu'à un multiple près de la demi-
+circonférence): ceci donne a et fait connaître, par conséquent, la
+position du point O. En donnant à a deux valeurs différant d'une
+demi-circonférence, on a, pour ce point, deux positions diamétrale-
+ment opposées, qui sont les deux pôles d'un même cercle.</p>
+<p  id="blk-412-27">On obtiendrait au contraire un cercle différent en faisant, sur la
+disposition du triangle, l'hypothèse inverse de celle que nous avons
+faite tout à l'heure; ou encore, en changeant le signe de la diffé-
+rence BC - A.<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-412-30"><strong class="article-num" id="article-697">697.</strong> Théorème de Lexell. Lorsqu'on donne l'aire d'un triangle
+sphérique et deux sommets, le lieu du troisième sommet se compose de
+deux petits cercles passant par les points diamétralement opposés aux<!-- spr -->sommets connus.</p>
+<p  id="blk-412-32">Soient encore (fig. 566) C le sommet variable; A, B, les sommets
+connus; A', B' les points diamétralement opposés à A, B. On connaît</p>
+<p  id="blk-412-33">ܕ</p>
+<p  id="blk-412-34">^<!-- spr -->la somme A + B + C des angles du triangle ABC. Mais les angles</p>
+<p  id="blk-412-36">(1) Moyennant cette supposition, l'angle A (essentiellement positif) est égal à l'angle</p>
+<p  id="blk-412-37">へ</p>
+<p  id="blk-412-38">(compté en grandeur et signe) BAC; dans l'hypothèse contraire, on aurait A = BAC=</p>
+<p  id="blk-412-39">^
+- (ẞ + y); B =- CBA - ( + α); C = - ACB = (% + 3).
+(2) Voir, dans les Leçons de trigonométrie de M. Bourlet, le ch. 1, particulièrement nº 23.</p><div class="scan-inline"><img src="img/scan/srcpage-412.png"/></div></data><data data-scanhref="img/scan/srcpage-413.png"><p class="newpage"></p>
+<p  id="blk-413-01">AIRES DES POLYGONES SPHÉRIQUES.<!-- skp data-txt='393' --></p>
+<p  id="blk-413-03">CA'B' et CB'A' du triangle AB'C' sont respectivement égaux à CAB',</p>
+<p  id="blk-413-04">へ</p>
+<p  id="blk-413-05">CBA', c'est-à-dire aux suppléments de A et de B. Donc, la somme
+A + B + C peut s'écrire C + 2 . CA'B' CB'A'. Par conséquent,<!-- skp data-txt='-' --><!-- spr -->on connaît la quantité CA'B' - CB'A' C et le lieu du point C se
+compose de deux petits cercles passant par A' et B'.</p>
+<p  id="blk-413-08">EXERCICES</p>
+<p class="article" id="blk-413-09"><strong class="article-num" id="article-989">989.</strong> Trouver (en mètres carrés) l'aire du triangle sphérique dont les angles sont
+1dr, 60° et 45°, ce triangle étant tracé sur la sphère de 10m de rayon.</p>
+<p class="article" id="blk-413-10"><strong class="article-num" id="article-990">990.</strong> L'unité de longueur étant choisie, quel doit être le rayon d'une sphère pour
+que la convention du nº 692 soit d'accord avec celle que nous avons formulée au
+n° 244?</p>
+<p class="article" id="blk-413-11"><strong class="article-num" id="article-991">991.</strong> Déduire le théorème de Lexell de l'exercice 706.</p>
+<p class="article" id="blk-413-12"><strong class="article-num" id="article-992">992.</strong> A, B, C étant trois points de la sphère, quel est le lieu des points M tels que
+les triangles sphériques MAB, MAC, supposés de même disposition, soient équiva-
+lents entre eux?</p>
+<p class="article" id="blk-413-13"><strong class="article-num" id="article-993">993.</strong> Partager un triangle en 2ª parties équivalentes par des grands cercles issus
+d'un sommet A, ou d'un point quelconque situé sur un côté.</p>
+<p  id="blk-413-14">Dans le premier cas, si l'on prend le point diamétralement opposé au sommet
+donné A pour centre d'une projection stéréographique, la projection du côté opposé
+à A est divisée par les projections des sommets des triangles partiels en arcs égaux.</p>
+<p class="article" id="blk-413-15"><strong class="article-num" id="article-994">994.</strong> Trouver, à l'intérieur d'un triangle sphérique, un point tel que les grands
+cercles qui le joignent aux trois sommets divisent l'aire du triangle en trois parties
+dont deux soient équivalentes, et la troisième double des premières.</p>
+<p class="article" id="blk-413-16"><strong class="article-num" id="article-995">995.</strong> Trouver sur un cercle donné, un point tel que les arcs de grands cercles qui
+le joignent à deux points donnés de ce cercle fassent entre eux un angle donné.</p>
+<p class="article" id="blk-413-17"><strong class="article-num" id="article-996">996.</strong> Si, l'unité d'aire étant l'aire du triangle sphérique trirectangle, on prend
+pour unité d'arc le quadrant de grand cercle, l'aire de tout polygone sphérique a
+pour mesure la différence entre 4 et le périmètre du polygone polaire du premier.</p>
+<p class="article" id="blk-413-18"><strong class="article-num" id="article-997">997.</strong> Construire un triangle sphérique :
+Connaissant un angle, une hauteur et l'aire;
+Connaissant un côté, une hauteur et l'aire.
+Maximum et minimum de l'aire d'un triangle dans lequel on connaît un côté ou
+un angle et la hauteur correspondante.</p><div class="scan-inline"><img src="img/scan/srcpage-413.png"/></div></data><data data-scanhref="img/scan/srcpage-414.png"><p class="newpage"><!-- skp data-txt='394' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-414-03"><strong class="article-num" id="article-998">998.</strong> Construire un triangle sphérique isoscèle dont on donne le côté et l'aire.</p>
+<p  id="blk-414-04">Construire un triangle sphérique isoscèle de côté donné ayant l'aire la plus grande
+possible.</p>
+<p class="article" id="blk-414-05"><strong class="article-num" id="article-999">999.</strong> Montrer que les arcs de grands cercles issus des sommets d'un triangle sphé-
+rique ABC et dont chacun partage l'aire du triangle en deux parties équivalentes,
+ne sont autre que les arcs Ap, Bq, Cr considérés à l'exercice 970 (les cercles donnés
+étant les côtés du triangle).</p>
+<p  id="blk-414-06">1000. Calculer l'aire d'une portion de sphère limitée par des cercles quelconques.</p>
+<p  id="blk-414-07">(On commencera par mesurer la partie d'un fuseau sphérique comprise dans une
+calotte quelconque ayant pour pôles les sommnets du fuseau. On en déduira la mesure
+de la portion de sphère comprise entre un arc de grand cercle et un arc de petit
+cercle ayant mêmes extrémités. Puis on raisonnera comme à Pl. 263).</p><div class="scan-inline"><img src="img/scan/srcpage-414.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

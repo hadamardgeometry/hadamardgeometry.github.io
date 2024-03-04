@@ -1,0 +1,478 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-061.png"><p class="newpage"></p>
+<p  id="blk-061-01">ANGLES POLYÈDRES.<!-- skp data-txt='41' --></p>
+<p  id="blk-061-03">CHAPITRE VI</p>
+<p  id="blk-061-04">ANGLES POLYÈDRES</p>
+<p class="article" id="blk-061-05"><strong class="article-num" id="article-369">369.</strong> On nomme angle polyèdre la figure formée par plusieurs
+plans passant par un même point (sommet de l'angle polyèdre) et
+limités à leurs intersections successives (lesquelles sont des demi-
+droites, appelées arêtes de l'angle polyèdre), de manière à enfermer
+une portion d'espace indéfinie dans un sens (fig. 272).</p>
+<p  id="blk-061-06">Dans un angle polyèdre, on a à considérer, d'une part, les angles
+compris entre les arêtes consécutives, et que l'on nomme les faces;</p>
+<p  id="blk-061-07">Л<!-- skp data-txt='B' --><img class="fig" src="img/FIG. 272.OCR.png" alt="FIG. 272." /><img class="fig" src="img/FIG. 273.OCR.png" alt="FIG. 273." /></p>
+<p  id="blk-061-11">FIG. 27.<!-- spr -->d'autre part, les dièdres compris entre deux faces consécutives et
+ayant pour arêtes les arêtes de l'angle polyèdre.</p>
+<p  id="blk-061-13">Les angles polyèdres les plus simples sont les trièdres (fig. 273)
+qui ont trois faces et trois arêtes.</p>
+<p  id="blk-061-14">Un angle polyèdre est dit convexe, s'il est tout entier d'un même
+côté par rapport au plan d'une quelconque de ses faces, prolongé
+indéfiniment, comme il arrive pour un angle polyèdre dont les arêtes
+passent par les sommets d'un polygone convexe (fig. 274); il est dit
+concave dans le cas contraire. Un angle trièdre est forcément convexe.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-061-16"><strong class="article-num" id="article-370">370.</strong> Trièdres symétriques.</p>
+<p  id="blk-061-17">Étant donné un trièdre quel-
+conque SABC (fig. 275), prolongeons les arêtes au delà du sommet</p><div class="scan-inline"><img src="img/scan/srcpage-061.png"/></div></data><data data-scanhref="img/scan/srcpage-062.png"><p class="newpage"><!-- skp data-txt='42' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt="B'" --><!-- skp data-txt="A'" --></p>
+<p  id="blk-062-05">S, suivant SA', SB', SC'. Nous formons ainsi un nouveau trièdre
+SA'B'C', qui a tous ses éléments respectivement égaux à ceux du<!-- spr -->premier les faces sont en effet égales chacune
+à chacune (par exemple A'SB' = ASB) comme
+angles opposés par le sommet, les dièdres (par
+ex.: SA = SA'),</p>
+<p  id="blk-062-07">SA'), comme opposés par l'arête.
+Mais, quoique ayant tous leurs éléments égaux,
+ces deux trièdres ne sont pas égaux: on ne peut<!-- spr -->ainsi que nous allons le démontrer les trans-
+porter l'un sur l'autre de manière à les superposer.</p>
+<p  id="blk-062-09">Remarquons d'abord qu'en général, si l'on fai-<!-- spr -->sait coïncider les deux trièdres, ce ne pourrait être
+qu'en faisant venir SA' sur SA, SB' sur SB, SC' sur SC : c'est
+ce qui arrivera, en effet, chaque fois que les trois faces du
+trièdre donné seront inégales, car alors la seule face du trièdre<!-- skp data-txt='X' --><!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- skp data-txt='C' --><!-- skp data-txt='A' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 275.OCR.png" alt="FIG. 275." /></p>
+<p  id="blk-062-18">SA'B'C' capable de coïncider<!-- spr -->avec</p>
+<p  id="blk-062-20">BSC est B'SC : de<!-- spr -->sorte<!-- spr -->que nécessairement, si les deux trièdres coïncidaient, B'SC'<!-- spr -->serait venu sur BSC et, par suite, l'arête SA' sur SA. D'ailleurs, en
+toute hypothèse, lorsque nous parlerons, dans le présent numéro,
+d'une superposition des deux trièdres, ce mot sera constamment
+entendu au sens dont nous venons de parler, c'est-à-dire avec coïn-
+cidence des éléments homologues: c'est une pareille superposition
+dont nous allons montrer l'impossibilité.</p>
+<p  id="blk-062-24">Notons, en second lieu, que, de quelque façon qu'on s'y prenne
+pour transporter le second trièdre de manière que SA' coïncide avec
+SA et SC avec SC, la position finale de ce trièdre est toujours la
+même. Nous pouvons dès lors opérer cette coïncidence en déplaçant
+la face A'SC', dans son plan, de manière à l'amener sur ASC (puisque,
+dans leur plan commun, ces deux angles ont le même sens de
+rotation).</p>
+<p  id="blk-062-25">Cela posé, prenons pour plan du tableau le plan ASC et supposons,
+pour fixer les idées, que l'arête SB vienne en avant de ce plan. Alors
+l'arête SB' sera en arrière du même plan (fig. 275); elle restera forcé-
+ment en arrière dans le mouvement que nous imprimons au trièdre
+SA'B'C', puisque la face A'SC' se déplace sans quitter le plan du
+tableau et que, par conséquent, l'arête SB' ne saurait à aucun</p><div class="scan-inline"><img src="img/scan/srcpage-062.png"/></div></data><data data-scanhref="img/scan/srcpage-063.png"><p class="newpage"></p>
+<p  id="blk-063-01">ANGLES POLYÈDRES.<!-- skp data-txt='43' --><!-- spr -->moment le traverser. Donc il est impossible que SB' coïncide<!-- spr -->avec SB.</p>
+<p  id="blk-063-05">C. Q. F. D.</p>
+<p class="article" id="blk-063-06"><strong class="article-num" id="article-371">371.</strong> Si les deux trièdres précédents ne sont pas superposables,
+quoique ayant leurs éléments égaux chacun à chacun, cela tient à
+ce que leur disposition n'est pas la même. La définition suivante
+indique ce qu'il faut entendre par là.</p>
+<p  id="blk-063-07">Définition. On nomme disposition d'un trièdre SABC le sens
+(349) du dièdre SA, lorsqu'on prend comme première face de ce
+dièdre la face SAB et que le sens choisi sur l'arête est le sens SA
+(fig. 275). Ainsi la disposition du trièdre SAB sera dite directe si un
+observateur placé suivant SA, les pieds du côté de S et regardant
+l'intérieur du trièdre, voit la face SAB à droite de la face SAC; rétro-
+grade, dans le cas contraire.</p>
+<p  id="blk-063-08">On voit que, d'après cette définition, la disposition d'un trièdre
+dépend de l'ordre dans lequel on nomme les arêtes.</p>
+<p  id="blk-063-09">D'une manière plus précise, la disposition d'un trièdre SABC
+change chaque fois qu'on permute entre elles deux des arêtes. Cela
+est évident, d'abord, si les deux arêtes permutées sont SB et SC
+(puisque cela revient à permuter entre elles les deux faces du dièdre
+SA); et, d'autre part, les deux dispositions SABC, SBAC, par exemple
+(résultant l'une de l'autre par permutation des arêtes SA, SB), sont
+bien inverses l'une de l'autre; car, dans leur plan commun, les
+angles ASB, BSA sont de sens contraires et, par conséquent (Pl., 20),
+deux observateurs placés l'un suivant SA, l'autre suivant SB et
+regardant tous deux l'intérieur de l'angle ASB, auront l'intérieur du
+trièdre, l'un à sa droite, l'autre à sa gauche.</p>
+<p  id="blk-063-10">Puisque les dispositions SABC, SBAC sont inverses, les disposi-
+tions SABC, SBCA sont les mêmes, de sorte que la disposition d'un
+trièdre ne change pas par permutation circulaire des arêtes (on donne
+en effet ce nom à l'opération qui consiste à remplacer l'ordre SA,
+SB, SC par SB, SC, SA ou SC, SA, SB).</p>
+<p  id="blk-063-11">La notion de disposition s'applique d'ailleurs à un angle polyèdre
+quelconque. Un angle polyèdre SABCDE sera dit direct si un observateur
+placé suivant SA, les pieds du côté de S et regardant l'intérieur de l'angle,
+voit la face SAB à droite de SAD; rétrograde, dans le cas contraire. D'après</p><div class="scan-inline"><img src="img/scan/srcpage-063.png"/></div></data><data data-scanhref="img/scan/srcpage-064.png"><p class="newpage"><!-- skp data-txt='44' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->le même raisonnement qui vient d'être fait pour les trièdres, la disposi-
+tion SABCDE est identique aux dispositions SBCDEA, SCDEAB,... mais
+inverse des dispositions SEDCBA, SDCBAE, etc.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-064-05"><strong class="article-num" id="article-372">372.</strong> Dans la démonstration du nº 370, il est clair que la disposi-
+tion du trièdre SA'B'C' est inverse de celle du trièdre SABC, - autre-
+ment dit, que les dièdres SA, SA' sont de sens contraires, puisque,
+quand l'arête SA' est venue sur SA et la face A'SC' sur ASC, les
+secondes faces A'S'B', ASB se sont trouvées de côtés différents du
+plan ASC.</p>
+<p  id="blk-064-06">Mais c'est aussi ce qui peut se voir directement; car, pour passer
+du dièdre SA au dièdre SA', il faut : 1° Remplacer le dièdre SA par
+son opposé par l'arête ce qui n'en change point le sens (358);
+2º remplacer, sur l'arête, le sens SA par le sens opposé SA'. Or nous
+savons que ce dernier changement intervertit le sens du dièdre.</p>
+<p  id="blk-064-07">Donc les deux trièdres ont bien une disposition inverse, et il n'est
+pas étonnant que l'on ne puisse pas arriver à les faire coïncider.</p>
+<p  id="blk-064-08">On nomme trièdres symétriques, deux trièdres qui ont, comme les
+précédents, tous leurs éléments correspondants égaux, mais avec
+une disposition inverse.<!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- skp data-txt='S' --></p>
+<p class="article" id="blk-064-12"><strong class="article-num" id="article-373">373.</strong> Théorème. Dans tout angle trièdre, une face quelconque<!-- spr -->est moindre que la somme des deux autres et
+plus grande que leur différence.</p>
+<p  id="blk-064-14">Il suffira de démontrer la seconde partie de
+l'énoncé; car, dans le trièdre SABC (fig. 276),
+l'inégalité ASC < ASB + BSC est évidente si</p>
+<p  id="blk-064-15">…………………</p>
+<p  id="blk-064-16">ASCASB et, dans le cas contraire, résulte<!-- skp data-txt='A' --><!-- spr -->de l'inégalité ASC-ASB< BSC.</p>
+<p  id="blk-064-19">Pour démontrer cette dernière, faisons, dans<img class="fig" src="img/FIG. 276.OCR.png" alt="FIG. 276." /><!-- spr -->le plan de la face ASC, l'angle ASB</p>
+<p  id="blk-064-22">_</p>
+<p  id="blk-064-23">ASB, de<!-- spr -->manière que B'SC représente la différence ASC</p>
+<p  id="blk-064-25">ASB. Nous avons<!-- skp data-txt='-' --></p>
+<p  id="blk-064-27">à faire voir que B'SC < BSC.</p>
+<p  id="blk-064-28">Prenons les deux segments SB, SB égaux entre eux; puis, par les
+points B, B', faisons passer un plan qui coupe les deux droites SA, SC
+(et non leurs prolongements) l'une en A, l'autre en C.</p>
+<p  id="blk-064-29">Les deux triangles SAB, SAB' sont égaux, comme ayant un angle</p><div class="scan-inline"><img src="img/scan/srcpage-064.png"/></div></data><data data-scanhref="img/scan/srcpage-065.png"><p class="newpage"></p>
+<p  id="blk-065-01">ANGLES POLYÈDRES.<!-- skp data-txt='45' --><!-- skp data-txt='-' --></p>
+<p  id="blk-065-04">_</p>
+<p  id="blk-065-05">égal (en S) compris entre côtés égaux chacun à chacun (SA com-
+mun,</p>
+<p  id="blk-065-06">SB</p>
+<p  id="blk-065-07">= SB' par construction) et donnent AB = AB donc B'C,
+égal à AC AB, est plus petit que BC. Dès lors, les triangles SBC,
+SB/C, qui ont deux côtés égaux et le troisième inégal, donnent
+BSC B'SC.</p>
+<p  id="blk-065-08">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p  id="blk-065-10">Corollaire. Dans tout angle polyèdre, une face quelconque est
+plus petite que la somme des autres.</p>
+<p  id="blk-065-11">Démonstration toute semblable à celle du théorème analogue
+(Pl., 26): pour un angle polyèdre à quatre faces SABCD (fig. 272) on
+aura successivement</p>
+<p  id="blk-065-12">ASD</p>
+<p  id="blk-065-13">ASB BSD < ASB + BSC + CSD,<!-- spr -->cas d'un angle<!-- spr -->et le même raisonnement servirait à passer au
+polyèdre à cinq, six, etc., faces.</p>
+<p class="article" id="blk-065-16"><strong class="article-num" id="article-373 bis">373 bis.</strong> En suivant la même marche qu'en géométrie plane
+(Pl., 27), on démontrera :<!-- skp data-txt='-' --></p>
+<p  id="blk-065-18">Théorème. Quand un angle polyèdre convexe est intérieur à un
+angle polyèdre quelconque de même sommet (une ou plusieurs arêtes
+ou faces pouvant être communes), la somme des faces de l'angle polyèdre
+enveloppé est plus petite que la somme des faces de l'angle polyèdre
+enveloppant.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-065-20"><strong class="article-num" id="article-374">374.</strong> Théorème. La somme des faces d'un angle polyèdre convexe
+est plus petite que quatre droits.</p>
+<p  id="blk-065-21">1° Supposons d'abord qu'il s'agisse d'un trièdre
+SABC (fig. 277). En prolongeant l'arête SA', nous
+formons un nouveau trièdre SA'BC, dans lequel
+on a (théor. préc.) :<!-- skp data-txt='S' --></p>
+<p  id="blk-065-23">BSCBSA' + A'SC, ou BSC < 4ª - ASB- -ASC<!-- spr -->ce qui donne bien<!-- skp data-txt='A' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 277.OCR.png" alt="FIG. 277." /></p>
+<p  id="blk-065-28">BSC ASB + ASC < 4dr ;</p>
+<p  id="blk-065-29">2° Soit maintenant l'angle polyèdre convexe</p>
+<p  id="blk-065-30">à quatre faces</p><div class="scan-inline"><img src="img/scan/srcpage-065.png"/></div></data><data data-scanhref="img/scan/srcpage-066.png"><p class="newpage"><!-- skp data-txt='46' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-066-03">SABCD (fig. 278). Prolongeons les deux faces ASB, CSD jusqu'à leur
+rencontre suivant la droite SI, laquelle est extérieure au trièdre</p>
+<p  id="blk-066-04">(puisque celui-ci est convexe). La somme
+des faces de l'angle polyèdre SABCD est
+plus petite que la somme des faces du
+trièdre SABI, puisqu'il y a une partie<!-- skp data-txt='S' --><!-- spr -->commune</p>
+<p  id="blk-066-07">BSA ASD + DSC et que<!-- skp data-txt='A' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 278.OCR.png" alt="FIG. 278." /></p>
+<p  id="blk-066-11">BSC BSI+ ISC%; cette somme est donc
+a fortiori plus petite que quatre droits.</p>
+<p  id="blk-066-12">On ramènera, de même, le cas de l'angle<!-- spr -->polyèdre à cinq faces à celui de l'angle
+polyèdre à quatre faces, en prolongeant, jusqu'à leur rencontre,
+deux faces contiguës à la même troisième; et ainsi de suite,
+jusqu'à un nombre quelconque de faces.<!-- skp data-txt='-' --></p>
+<p  id="blk-066-15">REMARQUE. Ce théorème peut être considéré comme un cas
+particulier du précédent (373 bis). La démonstration qui conduit à
+celui-ci s'applique, en effet, sans modification au cas où les faces de
+l'angle polyèdre enveloppant sont remplacées par des angles situés
+autour du sommet, dans un même plan et ayant, par conséquent,
+4 dr pour somme. Le raisonnement auquel on est ainsi conduit n'est
+d'ailleurs pas distinct de celui que nous venons de donner.</p>
+<p  id="blk-066-16">Comparer, au nº 472, le raisonnement correspondant relatif aux polygones
+sphériques.</p>
+<p class="article" id="blk-066-17"><strong class="article-num" id="article-375">375.</strong> Nous venons de constater que, pour que trois angles ~‚ß‚y puis-
+sent être les faces d'un trièdre, il faut : 1º que chacun d'eux soit inférieur
+à la somme des deux autres; 2° que la somme a + 3 + y soit inférieure
+à quatre droits.</p>
+<p  id="blk-066-18">Nous allons montrer que ces conditions nécessaires sont aussi suffi-
+santes trois angles a, ß, satisfaisant à ces conditions sont les faces
+d'un même trièdre.</p>
+<p  id="blk-066-19">Soit, pour fixer les idées, a le plus grand des trois angles donnés.</p>
+<p  id="blk-066-20">Construisons cet angle en BSC (fig. 280) dans le plan du tableau et, du
+point S comme centre, décrivons une circonférence de rayon quelconque,
+sur laquelle les côtés de l'angle interceptent l'arc BC.</p>
+<p  id="blk-066-21">Pour former un trièdre ayant les trois faces données, il nous suffira de
+trouver une droite SA faisant avec SB et SC respectivement les angles y et p.
+Plus spécialement, nous déterminerons le point A pris sur cette droite de
+manière que SA = SB = SC.</p><div class="scan-inline"><img src="img/scan/srcpage-066.png"/></div></data><data data-scanhref="img/scan/srcpage-067.png"><p class="newpage"></p>
+<p  id="blk-067-01">ANGLES POLYÈDRES.<!-- skp data-txt='47' --></p>
+<p  id="blk-067-03">=</p>
+<p  id="blk-067-04">===<!-- skp data-txt='M' --><!-- skp data-txt='B' --><!-- spr -->m<!-- skp data-txt='H' --><!-- skp data-txt='S' --><img class="fig" src="img/FIG. 279.OCR.png" alt="FIG. 279." /></p>
+<p  id="blk-067-11">A cet effet, considérons les demi-droites qui, menées par le point S dans
+les différents plans qui passent par SB, font avec cette dernière l'angle y
+et, sur chacune d'elles, le point M tel que SM SB. Si, de M, nous
+abaissons sur SB la perpendiculaire MH (fig. 279), tous les triangles
+rectangles tels que SMH sont égaux entre eux,
+comme ayant l'hypoténuse égale (SM SB) et
+un angle aigu égal (l'angle Y): de sorte que SH a
+toujours la même longueur et que le point H est
+unique. Le point M appartient constamment au
+plan P mené, perpendiculairement à SB, par le
+point H et qui est perpendiculaire au plan SBC:
+l'intersection des deux plans contient constamment
+(355) la projection m du point M sur le plan SBC.</p>
+<p  id="blk-067-12">Deux positions du point M sont situées dans le
+plan du tableau : ce sont les extrémités d'arcs
+correspondant à l'angle au centre 7, portés de part et d'autre du point B,
+sur la circonférence BC. Nous appellerons m' l'extrémité de l'arc porté dans
+le sens BC, m" l'extrémité de l'arc porté en sens inverse: la droite sur
+laquelle est constamment situé le point m est donc m'm" (fig. 280).</p>
+<p  id="blk-067-13">Inversement, si m est un point de m'm", intérieur à la circonférence BC
+(autrement dit, situé sur le segment m'm" et non sur ses prolongements),
+on peut (Pl., 58, 3º) - et cela de deux manières différentes trouver sur
+la perpendiculaire élevée par m au plan du tableau un point M tel que
+SM SB, puisque la distance Sm du point S à cette droite est inférieure</p>
+<p  id="blk-067-14">à SB. Le triangle SMH sera
+rectangle (puisque le point M
+appartient au plan P) et égal
+à m'SH, puisqu'il a l'hypoté-
+nuse égale et le côté de l'angle
+droit SH commun. Donc le
+point M est bien tel que<!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- spr -->m'<!-- skp data-txt='B' --><!-- skp data-txt='B' --></p>
+<p  id="blk-067-20">=</p>
+<p  id="blk-067-21">MSB</p>
+<p  id="blk-067-22">Y.
+De même, les projections,
+sur le plan du tableau, des
+points N tels que SN SB et<img class="fig" src="img/FIG. 280.OCR.png" alt="FIG. 280." /></p>
+<p  id="blk-067-24">=</p>
+<p  id="blk-067-25">=======<!-- spr -->que NSC</p>
+<p  id="blk-067-27">ẞ ont pour lieu
+géométrique la corde qui joint les extrémités des deux arcs Cn', Cn"
+égaux à ẞ et portés, le premier dans le sens CB, le second dans le sens
+opposé (fig. 280).</p>
+<p  id="blk-067-28">Tenons compte maintenant des hypothèses faites sur les angles a,,y.</p>
+<p  id="blk-067-29">Puisque a est supérieur à ß et à y, les arcs Bm', Cn' sont tous deux inté-
+rieurs à l'arc BC intercepté par l'angle a; puisque la somme ẞy est plus
+grande que a, ces deux arcs empiètent l'un sur l'autre.</p>
+<p  id="blk-067-30">D'autre part, le plus grand des deux arcs BC a pour mesure 4 dr</p>
+<p  id="blk-067-31">α :</p><div class="scan-inline"><img src="img/scan/srcpage-067.png"/></div></data><data data-scanhref="img/scan/srcpage-068.png"><p class="newpage"><!-- skp data-txt='48' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->comme cette quantité (en vertu de l'hypothèse a -- ß + y < 4 dr.) est supé-
+rieure à ß - y, les deux arcs Bm", Cn" n'empiètent pas l'un sur l'autre.</p>
+<p  id="blk-068-04">Donc enfin, en partant du point B, par exemple, les points que nous avons
+à considérer sur notre circonférence se succèdent dans l'ordre suivant: B,
+n', m', C, n'', m'', B.</p>
+<p  id="blk-068-05">Les points m', m" étant de part et d'autre de n'n", les deux cordes
+m'm', n'n' se coupent en un point a intérieur à la circonférence, de sorte
+qu'il existe deux points A₁, A, projetés en a et tels que SA₁ SA2 SB.
+D'après ce qui a été dit plus haut, les deux trièdres SA, BC, SA, BC
+répondent à la question.</p>
+<p  id="blk-068-06">=<!-- skp data-txt='-' --></p>
+<p  id="blk-068-08">Si a était égal à ß + y, ou si la somme x + ß -† y était égale à 4 droits,
+le point a serait sur la circonférence (les points m', n' coïncidant dans le
+premier cas, les points m", n" dans le second): il y aurait donc une
+droite SA, mais située dans un mème plan avec BSC.</p>
+<p class="article" id="blk-068-09"><strong class="article-num" id="article-376">376.</strong> Trièdres supplémentaires.</p>
+<p  id="blk-068-10">Lemme. Si, par un point d'un plan, on mène deux demi-droites,
+l'une perpendiculaire, l'autre oblique à ce plan, ces deux demi-droites<!-- skp data-txt='-' --></p>
+<p  id="blk-068-12">B.<!-- skp data-txt='B' --><!-- skp data-txt='-b' --><!-- skp data-txt='J' --><!-- spr -->b<!-- skp data-txt='A' --><img class="fig" src="img/FIG. 281.OCR.png" alt="FIG. 281." /><img class="fig" src="img/FIG. 282.OCR.png" alt="FIG. 282." /><!-- spr -->forment un angle aigu ou obtus, suivant qu'elles sont du même côté du
+plan (fig. 281) ou non (fig. 282).</p>
+<p  id="blk-068-21">Car la projection Ob, sur le plan considéré, de la demi-droite
+oblique donnée OB est dans un même plan avec celle-ci et la demi-
+droite perpendiculaire OA: l'angle AOB est plus petit que A06 si
+OB et OA sont du même côté de Ob (fig. 281), et plus grand que lui<!-- spr -->dans le cas contraire (fig. 282).<!-- skp data-txt='S' --><!-- skp data-txt='-' --></p>
+<p  id="blk-068-25">A-</p>
+<p class="article" id="blk-068-26"><strong class="article-num" id="article-377">377.</strong> Définition. Étant donné
+un trièdre SABC (fig. 283), élevons,
+par le sommet S, une demi-droite
+SA' perpendiculaire au plan SBC,
+du même côté de ce plan que l'arête
+SA; une demi-droite SB' perpendi-<!-- spr -->culaire au plan SCA, du même côté
+de ce plan que l'arête SB; une demi-droite SC' perpendicu-</p>
+<p  id="blk-068-28">本</p>
+<p  id="blk-068-29">A.<!-- skp data-txt='B' --></p>
+<p  id="blk-068-31">B'\<img class="fig" src="img/FIG. 283.OCR.png" alt="FIG. 283." /></p><div class="scan-inline"><img src="img/scan/srcpage-068.png"/></div></data><data data-scanhref="img/scan/srcpage-069.png"><p class="newpage"></p>
+<p  id="blk-069-01">ANGLES POLYÈDRES.<!-- skp data-txt='49' --><!-- spr -->laire au plan SAB, du même côté de ce plan que l'arête SC.</p>
+<p  id="blk-069-04">Le trièdre SA'B'C', qui a les trois demi-droites ainsi construites
+pour arêtes, est dit supplémentaire du premier.<!-- skp data-txt='--' --></p>
+<p  id="blk-069-06">Théorème. Si un trièdre est supplémentaire d'un autre, récipro-
+quement celui-ci est supplémentaire du premier.</p>
+<p  id="blk-069-07">Nous avons à montrer que, le trièdre SA'B'C' ayant été déduit du
+trièdre SABC comme il vient d'être dit, le trièdre SABC est aussi
+supplémentaire de SA'B'C', c'est-à-dire que chaque arête de SABC
+est perpendiculaire au plan de la face correspondante de SA'B'C' et.
+située du même côté de ce plan que l'arête opposée à cette face.</p>
+<p  id="blk-069-08">Or l'arête SB', étant perpendiculaire au plan ASC, est perpendi-
+culaire à SA; de même, SC' est perpendiculaire à SA, comme
+perpendiculaire au plan ASB. Donc SA est bien perpendiculaire au
+plan B'SC'.</p>
+<p  id="blk-069-09">D'ailleurs SA et SA', étant du même côté du plan BSC, forment un
+angle aigu (en vertu du lemme) et sont, par conséquent, du même
+côté du plan B'SC' (en vertu du même lemme). Le même raison-
+nement s'appliquant aux autres arêtes, le théorème est démontré.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-069-11"><strong class="article-num" id="article-378">378.</strong> Théorème. Quand deux trièdres sont supplémentaires, les
+faces de chacun d'eux sont les suppléments des dièdres de l'autre (¹).</p>
+<p  id="blk-069-12">Soit B-SA-C (fig. 284) un dièdre du premier
+trièdre l'arête SB' du second est perpendiculaire
+à la face ASC, du même côté de ce plan que la
+face ASB; l'arête SC', perpendiculaire à la face
+ASB et du même côté de cette face que ASC. Le
+plan B'SC', étant perpendiculaire à SA, contient
+le rectiligne bSc du dièdre B.SA.C. Les angles<!-- skp data-txt='S' --><!-- skp data-txt="'B'" --><img class="fig" src="img/FIG. 284.OCR.png" alt="FIG. 284." /></p>
+<p  id="blk-069-16">6SC, CSB', sont droits et, dans leur plan com-
+mun, de sens contraires (puisque l'un a le même
+sens que 6Sc, l'autre le même sens que cSb): done si nous prolon-
+geons SC' suivant SC'₁, les angles droits 6SC₁, CSB sont de même
+sens et l'angle CSB', résultant de 6Sc par rotation d'un angle droit
+dans son plan, est égal à 6Sc: donc B'SC est supplémentaire de 6Sc.</p>
+<p  id="blk-069-17">י<!-- skp data-txt='1' --></p>
+<p  id="blk-069-19">C. Q. F. D.</p>
+<p  id="blk-069-20">(1) C'est-à-dire des rectilignes de ces dièdres.<!-- skp data-txt='GÉOMÉTRIE. II.' --></p><div class="scan-inline"><img src="img/scan/srcpage-069.png"/></div></data><data data-scanhref="img/scan/srcpage-070.png"><p class="newpage"><!-- skp data-txt='50' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-070-03"><strong class="article-num" id="article-379">379.</strong> Le théorème précédent permet de passer de propriétés rela-
+tives aux faces d'un trièdre à des propriétés relatives aux dièdres,
+et inversement. Par exemple, les théorèmes des nos 373-374 nous
+donnent les conséquences suivantes :<!-- skp data-txt='-' --></p>
+<p  id="blk-070-05">Théorème. Dans tout trièdre,</p>
+<p  id="blk-070-06">1° Chaque dièdre, augmenté de deux droits, est plus grand que la
+somme des deux autres;</p>
+<p  id="blk-070-07">2º La somme des trois dièdres est plus grande que deux droits.</p>
+<p  id="blk-070-08">1° Soient A, B, C les dièdres du trièdre considéré. Les faces a, b,
+du trièdre supplémentaire seront</p>
+<p  id="blk-070-09">"</p>
+<p  id="blk-070-10">2dr<!-- spr -->a =</p>
+<p  id="blk-070-12">A,<!-- spr -->b =</p>
+<p  id="blk-070-14">2dr</p>
+<p  id="blk-070-15">B,</p>
+<p  id="blk-070-16">2dr
+C ===</p>
+<p  id="blk-070-17">C,<!-- spr -->et, puisque l'on a (373)<!-- spr -->a<b+c,<!-- spr -->il viendra</p>
+<p  id="blk-070-21">2dr<!-- skp data-txt='- A<2-B+2' --><!-- skp data-txt='C' --><!-- skp data-txt='--' --><!-- spr -->laquelle est bien (1) équivalente à</p>
+<p  id="blk-070-26">A+ 2 >B+C;</p>
+<p  id="blk-070-27">2° On a également (374)<!-- spr -->a+b+c<4,<!-- spr -->ce qui donne l'inégalité</p>
+<p  id="blk-070-30">2A+2B + 2 − C <4″<!-- skp data-txt='-' --></p>
+<p  id="blk-070-32">équivalente (¹) à<!-- spr -->dr</p>
+<p  id="blk-070-34">A + B + C > 2""</p>
+<p  id="blk-070-35">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p  id="blk-070-37">REMARQUE. La somme A + B + C est évidemment inférieure à
+", puisque chacune de ses parties est plus petite que</p>
+<p  id="blk-070-38">2dr</p>
+<p  id="blk-070-39">6ar</p>
+<p  id="blk-070-40">Réciproquement, si trois angles trièdres A,B,C satisfont aux conditions
+précédentes, ils appartiennent à un même trièdre. Car si a,b,c désignent</p>
+<p  id="blk-070-41">(1) Voir Leçons d'Algèbre de M. BOURLET, liv. II, chap. III, nº 62.</p><div class="scan-inline"><img src="img/scan/srcpage-070.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

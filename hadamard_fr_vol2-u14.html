@@ -1,0 +1,392 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-143.png"><p class="newpage"></p>
+<p  id="blk-143-01">CONE.<!-- skp data-txt='123' --></p>
+<p  id="blk-143-03">CHAPITRE II</p>
+<p  id="blk-143-04">CONE<!-- skp data-txt='-' --></p>
+<p  id="blk-143-06">TRONC DE CONE</p>
+<p class="article" id="blk-143-07"><strong class="article-num" id="article-442">442.</strong> Parmi les cônes, on distingue ceux qui ont pour bases des
+cercles.<!-- skp data-txt='S' --></p>
+<p  id="blk-143-09">En particulier, un cône dont la base est un cercle et dont le sommet
+est sur la perpendiculaire élevé au plan du cercle par son centre,<!-- spr -->a reçu le nom de cône droit à base circulaire ou cône
+de révolution.</p>
+<p  id="blk-143-11">Ce cône (fig. 342), considéré comme surface
+conique illimitée, est, en effet la surface de révo-
+lution qui a pour méridienne une droite sécante à
+l'axe; considéré comme solide limité, c'est la figure
+engendrée par un triangle rectangle qui tourne
+autour d'un de ses côtés.<!-- skp data-txt='A' --><img class="fig" src="img/FIG. 342.OCR.png" alt="FIG. 342." /></p>
+<p  id="blk-143-14">Un cône droit est évidemment déterminé lors-<!-- skp data-txt='B' --><!-- spr -->b<!-- spr -->qu'on donne son cercle de base et sa hauteur, avec le sens dans
+lequel celle-ci doit être portée. Deux cônes droits de même rayon
+de base et de même hauteur soit égaux.</p>
+<p  id="blk-143-18">La longueur commune des génératrices d'un
+cône droit a reçu le nom d'arête latérale ou d'apo-
+thème du cône. On donne le nom d'angle au sommet
+du cône à l'angle que forment entre elles deux
+génératrices situées dans un même plan méridien,
+angle évidemment double de l'angle compris entre
+l'une d'elles et l'axe.</p>
+<p  id="blk-143-19">Il est clair que le tronc de cône de révolution peut
+s'obtenir en faisant tourner un trapèze rectangle ABab (fig. 343)
+autour du côté perpendiculaire aux bases.<!-- skp data-txt='A' --><!-- spr -->a<img class="fig" src="img/FIG. 343.OCR.png" alt="FIG. 343." /><!-- skp data-txt='-' --></p>
+<p  id="blk-143-24">REMARQUE. Si la génératrice est perpendiculaire à l'axe,<!-- spr -->la
+surface dégénère en un plan.</p><div class="scan-inline"><img src="img/scan/srcpage-143.png"/></div></data><data data-scanhref="img/scan/srcpage-144.png"><p class="newpage"><!-- skp data-txt='124' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-144-03"><strong class="article-num" id="article-443">443.</strong> Aire latérale du cône de révolution.</p>
+<p  id="blk-144-04">Si, dans la base d'un cône quelconque, on inscrit un polygone
+quelconque, la pyramide qui a pour base ce polygone et dont le
+sommet est le même que celui du cône, est dite inscrite à celui-ci.</p>
+<p  id="blk-144-05">On nomme aire latérale du cône, la limite vers laquelle tend l'aire
+latérale d'une pyramide inscrite, lorsque le nombre des côtés du
+polygone de base augmente indéfiniment, de manière que chacun
+d'eux tende vers zéro.</p>
+<p  id="blk-144-06">Nous allons, dans le cas du cône de révolution, prouver l'existence
+de cette limite et en trouver la valeur.</p>
+<p  id="blk-144-07">Théorème.<!-- skp data-txt='-' --><!-- skp data-txt='S' --></p>
+<p  id="blk-144-10">L'aire latérale du cône droit est égale au demi-produit
+de la circonférence de base par l'arête latérale.</p>
+<p  id="blk-144-11">Dans le cône donné, de sommet S (fig. 344),
+inscrivons la pyramide SABCDE. L'aire latérale
+de cette pyramide est la somme des triangles SAB,
+SBC, SCD, autrement dit, la somme des
+demi-produits obtenus en multipliant chacune
+des bases AB, BC, CD ... de ces triangles par la
+hauteur correspondante. Elle est donc égale (¹) à</p>
+<p  id="blk-144-12">AB+BC+
+la demi-somme<!-- spr -->multipliée par
+2</p>
+<p  id="blk-144-14">....<!-- skp data-txt='A' --><!-- skp data-txt='D' --><!-- skp data-txt='H' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 344.OCR.png" alt="FIG. 344." /></p>
+<p  id="blk-144-20">...<!-- skp data-txt="'" --><!-- spr -->une quantité a intermédiaire entre la plus grande et la plus petite
+des hauteurs.</p>
+<p  id="blk-144-23">Lorsque le nombre des côtés du polygone de base augmente
+indéfiniment de manière que chacun d'eux tende vers zéro, la
+somme AB BC + ... tend vers la longueur de la circonférence de
+base. Quant aux hauteurs, si nous considérons, par exemple, la
+hauteur SH (fig. 344) du triangle SAB, laquelle tombe au milieu H
+de AB, nous voyons, dans le triangle SAH, qu'elle est comprise entre</p>
+<p  id="blk-144-24">AB
+SA et SA AH, lequel est égal à SA</p>
+<p  id="blk-144-25">Elle tend donc vers</p>
+<p  id="blk-144-26">2°
+SA lorsque AB tend vers zéro et, lorsque le plus grand des côtés
+AB, BC, tend vers zéro, la plus grande et la plus petite des
+hauteurs considérées précédemment tendent vers l'arête latérale du
+cône. Il en est donc de même de a et le théorème est démontré (²).<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-144-29">...</p>
+<p  id="blk-144-30">(1) TANNERY, Leçons d'Arithmétique, nº 212, page 180.
+(2) Contrairement à ce qui a été vu pour le cylindre, et à ce qu'on va voir plus loin pour<!-- spr -->le
+volume du cône, la démonstration relative à l'aire du cône de révolution n'est point valable</p><div class="scan-inline"><img src="img/scan/srcpage-144.png"/></div></data><data data-scanhref="img/scan/srcpage-145.png"><p class="newpage"></p>
+<p  id="blk-145-01">CONE.<!-- skp data-txt='125' --><!-- skp data-txt='-' --></p>
+<p  id="blk-145-04">Corollaire. Appelons maintenant a l'arête latérale du cône, et</p>
+<p  id="blk-145-05">1
+soit R le rayon de base. L'aire latérale sera</p>
+<p  id="blk-145-06">2Ra TRа.
+L'aire totale du cône s'obtiendra en ajoutant, à l'aire latérale, celle
+de la base, ce qui donnera лRα +лR² = πR (a + R).<!-- skp data-txt='-' --><!-- skp data-txt='S' --></p>
+<p  id="blk-145-09">REMARQUE. Si, au lieu de pyramides inscrites au cône, nous avions
+considéré des pyramides circonscrites, c'est-à-dire
+ayant pour bases des polygones circonscrits à la base
+du cône (le sommet restant le même), nous aurions
+constaté que les surfaces latérales de ces pyramides
+tendent vers la même limite que les surfaces laté-
+rales des pyramides inscrites. Le raisonnement pré-
+cédent peut en effet se répéter dans ces nouvelles
+conditions, avec cette seule modification que, dans
+une pyramide circonscrite SA'B'C'D',... (fig. 345), les
+hauteurs des triangles SA'B', SB'C',... sont constam-
+ment égales à l'apothème du cône, car elles tombent
+(364) aux points de contact des côtés A'B', B'C',... avec le cercle de base.<!-- skp data-txt="D'" --><!-- skp data-txt="B'" --><img class="fig" src="img/FIG. 345.OCR.png" alt="FIG. 345." /></p>
+<p class="article" id="blk-145-13"><strong class="article-num" id="article-444">444.</strong> Volume du cône.</p>
+<p  id="blk-145-14">On nomme volume d'un cône quelconque, la limite vers laquelle
+tend le volume d'une pyramide inscrite, lorsque le nombre des côtés
+du polygone de base augmente indéfiniment de manière que chacun
+d'eux tende vers zéro.</p>
+<p  id="blk-145-15">Dans le cas du cône à base circulaire, nous allons prouver
+l'existence de cette limite et en trouver la valeur.<!-- skp data-txt='-' --></p>
+<p  id="blk-145-17">Théorème. Le volume d'un cône à base circulaire est égal au tiers
+du produit de la surface de base par la hauteur.</p>
+<p  id="blk-145-18">Ce théorème se déduit immédiatement du théorème relatif au
+volume de la pyramide, en remarquant que l'aire du polygone qui
+sert de base à la pyramide tend, par définition, vers l'aire du cercle
+qui sert de base au cône, lorsqu'on augmente le nombre des côtés
+dans les conditions indiquées (¹).</p>
+<p  id="blk-145-19">Corollaire.<!-- skp data-txt='-' --></p>
+<p  id="blk-145-21">Soient R le rayon de base; h la hauteur. Le volume</p>
+<p  id="blk-145-22">1
+est R2h.<!-- skp data-txt='3' --><!-- spr -->en dehors de ce cas spécial. Pour les autres espèces de cône (et en particulier pour le cône
+oblique à base circulaire), on peut démontrer l'existence de la limite, mais non en donner
+d'évaluation élémentaire, du moins en général.</p>
+<p  id="blk-145-25">(1) Le raisonnement et sa conclusion s'étendent évidemment à un cône quelconque, pourvu
+que l'on puisse définir l'aire de la base.</p><div class="scan-inline"><img src="img/scan/srcpage-145.png"/></div></data><data data-scanhref="img/scan/srcpage-146.png"><p class="newpage"><!-- skp data-txt='126' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-146-03">REMARQUE. Il est clair qu'on serait arrivé au même résultat en sub-
+stituant, aux pyramides inscrites, des pyramides circonscrites.</p>
+<p class="article" id="blk-146-04"><strong class="article-num" id="article-445">445.</strong> Aire latérale du tronc de cône de révolution.</p>
+<p  id="blk-146-05">Si, dans le cône dont fait partie un tronc de cône donné on inscrit
+une pyramide, le plan de base supérieure du tronc détache de
+cette pyramide un tronc de pyramide, qui est dit inscrit au tronc
+de cône.</p>
+<p  id="blk-146-06">On nomme aire latérale du tronc de cône, la limite vers laquelle
+tend l'aire latérale d'un tronc de pyramide inscrit, lorsque le nombre
+des côtés des polygones augmente indéfiniment, de manière que
+chacun de ces côtés tende vers zéro.</p>
+<p  id="blk-146-07">Cette définition est manifestement équivalente à la suivante :
+L'aire latérale d'un tronc de cône est la différence des aires des
+deux cônes qui font partie de la même surface conique que le tronc
+et qui ont bases respectives les deux bases de ce tronc.</p>
+<p  id="blk-146-08">Théorème. L'aire latérale d'un tronc de cône de révolution est
+égale à la demi-somme des deux circonférences de bases, multipliée par
+l'arête latérale.</p>
+<p  id="blk-146-09">Soit le tronc de cône ABA'B' (fig. 346), dont l'arête latérale est
+AA' et qui fait partie d'un cône SAB de sommet S. L'aire latérale de<!-- spr -->ce cône est la différence des aires<!-- spr -->latérales du cône SAB et du cône</p>
+<p  id="blk-146-12">SA'B' qui a pour base la petite base
+du tronc.<!-- skp data-txt="B'" --><!-- skp data-txt="A'" --></p>
+<p  id="blk-146-15">B"<!-- skp data-txt='B' --></p>
+<p  id="blk-146-17">Par le point A, menons à SA une
+perpendiculaire. Ab égale à la lon-
+gueur de la circonférence de base
+AB, et joignons Sb. Si, par le point
+A', nous menons une parallèle A'b'
+à Ab, jusqu'à rencontre en b' avec</p>
+<p  id="blk-146-18">Sb, cette droite A'b' sera égale à la
+longueur de la seconde circonférence de base A'B'. Car le rapport
+des deux circonférences de bases A'B', AB, c'est-à-dire le rapport</p>
+<p  id="blk-146-19">SA'</p>
+<p  id="blk-146-20">A'b'
+de leurs rayons, est égal à<!-- spr -->et l'on a, d'autre part,<img class="fig" src="img/FIG. 346.OCR.png" alt="FIG. 346." /><!-- spr -->ou à
+SA</p>
+<p  id="blk-146-24">Ab<!-- spr -->circ. AB Ab.</p>
+<p  id="blk-146-26">Dès lors, l'aire latérale du cône SAB est égale (443) à celle du</p><div class="scan-inline"><img src="img/scan/srcpage-146.png"/></div></data><data data-scanhref="img/scan/srcpage-147.png"><p class="newpage"></p>
+<p  id="blk-147-01">CONE.<!-- skp data-txt='127' --><!-- spr -->triangle SAb et l'aire latérale du cône SA'B', à celle du triangle SA'b.
+L'aire du tronc de cône donné équivaut donc à celle trapèze rectangle
+AA'bb', laquelle a bien l'expression indiquée par l'énoncé.<!-- skp data-txt='-' --></p>
+<p  id="blk-147-05">Corollaires. I. Si R, R' sont les rayons des bases; a, l'arête,
+l'aire latérale est □ (R + R')a.</p>
+<p  id="blk-147-06">II. L'aire latérale d'un tronc de cône est égale au produit de
+l'arête</p>
+<p  id="blk-147-07">ραν<!-- spr -->la circonférence obtenue en coupant le solide par un plan
+parallèle aux bases et équidistant de ces bases.</p>
+<p  id="blk-147-09">Car un tel plan passe par le milieu A" (fig. 346) de AA': la lon-
+gueur de la circonférence de section est (d'après un raisonnement
+tout semblable à celui qui a été fait tout à l'heure) égale à la droite
+A"b" parallèle à Ab et limitée à Sb. Le produit de cette circonférence
+par l'arête AA'</p>
+<p  id="blk-147-10">équivaut donc (Pl., 252 bis) à l'aire du trapèze
+AA'bb'.</p>
+<p  id="blk-147-11">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p  id="blk-147-13">REMARQUE. On peut considérer le cylindre et le cône comme des
+cas limites du tronc de cône : le premier correspondant à l'hypo-
+thèse où le trapèze qui engendre le tronc de cône devient un
+rectangle (ses bases étant égales); le second, à l'hypothèse où ce
+trapèze se réduit à un triangle (une des bases étant nulle).</p>
+<p  id="blk-147-14">Les corollaires précédents continuent à s'appliquer et donnent
+bien pour R' = R, l'aire du cylindre (440); pour R′ : 0, l'aire du
+cône (443).</p>
+<p  id="blk-147-15">======</p>
+<p  id="blk-147-16">,</p>
+<p class="article" id="blk-147-17"><strong class="article-num" id="article-446">446.</strong> Volume du tronc de cône.</p>
+<p  id="blk-147-18">Le volume du tronc de cône est la limite vers laquelle tend le
+volume d'un tronc de pyramide inscrit, lorsque les côtés des poly-
+gones de bases tendent tous vers zéro. Il est évidemment égal
+à la différence des volumes de deux cônes, les mêmes dont il a
+été question dans le numéro précédent, à propos de l'aire latérale.<!-- skp data-txt='-' --></p>
+<p  id="blk-147-20">Théorème. Un tronc de cône à base circulaire est équivalent à
+la somme de trois cônes ayant pour hauteur commune la hauteur du
+tronc et, pour bases respectives, les deux bases de ce tronc et une
+moyenne proportionnelle entre ces deux bases.</p>
+<p  id="blk-147-21">Car le tronc de pyramide inscrit est, d'après le théorème du
+nº 408, équivalent à la somme de trois pyramides, qui tendent respec-
+tivement vers les trois cônes dont parle l'énoncé.</p><div class="scan-inline"><img src="img/scan/srcpage-147.png"/></div></data><data data-scanhref="img/scan/srcpage-148.png"><p class="newpage"><!-- skp data-txt='128' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-148-04">Corollaire. Si R et R' sont les rayons des bases, h la hauteur, le</p>
+<p  id="blk-148-05">1
+volume est πh (R² +R²² + RR').</p>
+<p  id="blk-148-06">3
+Car les bases du tronc sont respectivement mesurées par лR² et
+R2, dont la moyenne proportionnelle est √/R2 × πR'² = TRR'.<!-- skp data-txt='2' --></p>
+<p  id="blk-148-08">EXERCICES</p>
+<p class="article" id="blk-148-09"><strong class="article-num" id="article-640">640.</strong> Si une droite a plus de deux points communs avec une surface conique à base
+circulaire, elle est une génératrice de la surface.</p>
+<p class="article" id="blk-148-10"><strong class="article-num" id="article-641">641.</strong> Montrer que les seules surfaces de révolution qui soient en même temps des
+cônes sont les cônes de révolution définis au nº 442.</p>
+<p class="article" id="blk-148-11"><strong class="article-num" id="article-642">642.</strong> Mener, par un point donné, un plan tangent à un cône à base circulaire
+donné.</p>
+<p class="article" id="blk-148-12"><strong class="article-num" id="article-643">643.</strong> Si un cône de révolution est tangent aux deux faces d'un dièdre, les généra-
+trices de contact font des angles égaux avec l'arête. Le plan mené par l'axe du cône
+et l'arête du dièdre fait des angles égaux avec les faces, et fait aussi des angles égaux
+avec les plans méridiens des génératrices de contact.</p>
+<p class="article" id="blk-148-13"><strong class="article-num" id="article-644">644.</strong> Quel est le lieu des axes des cônes de révolution tangents à deux plans
+donnés ?</p>
+<p class="article" id="blk-148-14"><strong class="article-num" id="article-645">645.</strong> Quel est le lieu des axes des cônes de révolution qui passent par deux droites
+concourantes données?</p>
+<p class="article" id="blk-148-15"><strong class="article-num" id="article-646">646.</strong> Lieu des points tels que le rapport de leurs distances à un point et à un plan
+passant par ce point soit constant.</p>
+<p class="article" id="blk-148-16"><strong class="article-num" id="article-647">647.</strong> Démontrer qu'un cône à base circulaire, mais quelconque d'ailleurs (c'est-à-
+dire, en général, non de révolution), admet toujours un plan de symétrie et que la
+surface conique dont il fait partie admet un axe de symétrie.</p>
+<p class="article" id="blk-148-17"><strong class="article-num" id="article-648">648.</strong> Faire passer un cône de révolution par trois droites données concourantes,
+mais non situées dans un même plan. Quel est le nombre des solutions?</p>
+<p  id="blk-148-18">Montrer que deux quelconques de cônes de révolution qui passent par les trois
+droites données ont une quatrième droite commune (laquelle peut être confondue
+avec l'une des trois premières). Construire la position de cette quatrième droite.</p>
+<p class="article" id="blk-148-19"><strong class="article-num" id="article-649">649.</strong> La condition pour qu'un angle polyèdre convexe à quatre faces soit inscrip-
+tible à un cône de révolution est que la somme de deux dièdres opposés soit égale à
+la somme des deux autres, ou sinon, qu'il en soit lorsqu'on remplace une ou
+plusieurs arêtes par leurs prolongements.</p>
+<p class="article" id="blk-148-20"><strong class="article-num" id="article-650">650.</strong> Quelle est la condition pour qu'un angle polyèdre à quatre faces soit inscrip-
+tible à deux cônes de révolution? pour qu'il soit inscriptible à trois cônes de révo-
+lution? Dans ce dernier cas, les axes des trois cônes forment un trièdre trirectangle.</p>
+<p class="article" id="blk-148-21"><strong class="article-num" id="article-651">651.</strong> Trouver un cône (ou un cylindre) de révolution tangent à trois plans donnés.
+Quel est le nombre des solutions?</p>
+<p  id="blk-148-22">Deux cônes quelconques tangents aux trois plans donnés ont un quatrième plan
+tangent commun. Construire ce plan.</p>
+<p class="article" id="blk-148-23"><strong class="article-num" id="article-652">652.</strong> Quelles conditions doivent remplir les faces d'un angle polyèdre à quatre
+faces pour que cet angle soit circonscriptible à un cône de révolution? Dans quels
+cas l'angle polyèdre est-il conscriptible à plus d'un cône de révolution?</p>
+<p class="article" id="blk-148-24"><strong class="article-num" id="article-653">653.</strong> Parmi les génératrices d'un cône de révolution, quelle est celle qui fait le
+plus petit ou le plus grand angle avec une droite donnée ?</p><div class="scan-inline"><img src="img/scan/srcpage-148.png"/></div></data><data data-scanhref="img/scan/srcpage-149.png"><p class="newpage"></p>
+<p  id="blk-149-01">CONE.<!-- skp data-txt='129' --></p>
+<p class="article" id="blk-149-03"><strong class="article-num" id="article-654">654.</strong> L'angle au sommet d'un cône de révolution est plus grand que l'angle de deux
+génératrices non situées dans le même plan méridien.</p>
+<p class="article" id="blk-149-04"><strong class="article-num" id="article-655">655.</strong> On coupe un cône à base circulaire par un plan parallèle à la base, mais situé
+au delà du sommet et formant, par conséquent, avec la seconde nappe de la surface
+conique, un second cône homothétique, du premier. Évaluer le volume du solide
+(tronc de cône de seconde espèce) formé par l'ensemble des deux cônes, connaissant
+les rayons des deux cercles et la distance de leurs plans.</p>
+<p class="article" id="blk-149-05"><strong class="article-num" id="article-656">656.</strong> Inscrire, dans un cône de révolution donné, un cylindre de surface latérale
+donnée. Maximum de celle-ci.</p>
+<p class="article" id="blk-149-06"><strong class="article-num" id="article-657">657.</strong> On donne deux cônes de révolution égaux SAB, S'A'B', placés de façon que les
+plans des cercles de bases AB, A'B' sont parallèles et que le sommet de chacun des
+cônes est dans le plan du cercle de base de l'autre. On coupe ces deux cônes par un
+plan P parallèle aux plans des deux bases et situé entre ces plans; ce plan P coupe le
+premier cône suivant un cercle CD et le second cône suivant un cercle C'D'. On dési-
+gne par r, 1, h, le rayon de la base, l'arête, la hauteur de chacun des cônes, par x la
+distance du sommet S au point de rencontre du plan P et de l'arête SA et par y la
+distance du sommet S au plan P.</p>
+<p  id="blk-149-07">1º Déterminer x de façon que le rapport de la somme des surfaces latérales des
+deux troncs de cône ABCD, A'B'C'D' et de la surface latérale du cône SAB soit égal
+à un nombre donné λ. Discuter.</p>
+<p  id="blk-149-08">2° Déterminer y de façon que le rapport de la somme des volumes des troncs
+de cônes ABCD, A'B'C'D' au volume du cône SAB soit égal à un nombre donné p..
+Discuter.<!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='9' --></p><div class="scan-inline"><img src="img/scan/srcpage-149.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

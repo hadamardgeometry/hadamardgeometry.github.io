@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-583.png"><p class="newpage"></p>
+<p  id="blk-583-01">PROBLEMES DIVERS.<!-- skp data-txt='563' --></p>
+<p  id="blk-583-03">PROBLÈMES DIVERS</p>
+<p  id="blk-583-04">1203. Sur trois parallèles données, à partir de trois points A, B, C donnés respec-
+tivement sur ces droites, on prend trois longueurs Aa, Bb, Cc dont la somme est
+donnée.</p>
+<p  id="blk-583-05">Le plan abc passe par un point fixe G. Trouver le lieu de la projection d'un point
+donné H sur ce plan.</p>
+<p  id="blk-583-06">H'étant un second point donné, quel est le lieu de l'intersection de deux plans
+tels que abc, sachant que la projection du point H sur l'un coïncide avec celle du
+point H' sur l'autre?</p>
+<p  id="blk-583-07">Lieu du point G quand on fait varier la somme donnée. Trouver, sur ce lieu, la
+position du point G de manière que l'angle HGH' ait une valeur donnée, H et H/
+désignant deux points tels que la droite qui les joint soit perpendiculaire à la
+direction commune des parallèles.</p>
+<p  id="blk-583-08">1204. On coupe un trièdre par un plan variable suivant un triangle ABC. Lieu du
+point de rencontre des médianes de ce triangle:</p>
+<p  id="blk-583-09">1° Lorsque le point A reste fixe;
+2° Lorsque les points A et B restent fixes;
+3° Lorsque les différences OA - OB, OA-OC restent constantes.</p>
+<p  id="blk-583-10">1205. On donne, dans l'espace, trois droites (A), (B), (C). On mène un plan II
+perpendiculaire à (A); soient P, Q, R les points où ce plan rencontre respectivement
+les droites (A), (B), (C). Soient Q' le point où la droite (A) est rencontrée par le plan
+perpendiculaire à (C) mené par le point Q, et R' le point où la même droite (A) est
+rencontrée par le plan perpendiculaire à (B) mené par le point R.</p>
+<p  id="blk-583-11">Démontrer que la longueur du segment Q'R' reste la même quand le plan II se
+déplace parallèlement à lui-même.</p>
+<p  id="blk-583-12">Existe-t-il un plan coupant les droites (A), (B), (C), en trois points A, B, C, tels
+que les droites BC, CA, AB soient respectivement rectangulaires avec les droites (A),
+(B), (C)?</p>
+<p  id="blk-583-13">S'il existe un pareil plan, il en existe une infinité.</p>
+<p  id="blk-583-14">Existe-t-il un point M tel que, si on désigne par M' son symétrique par rapport à
+la droite (A) et par M" le symétrique de M' par rapport à la droite (B), les points
+Met M" soient symétriques par rapport à la droite (C)? – S'il existe un tel point,
+M, il en existe une infinité. Quel est alors leur lieu ? On examinera le cas parti-
+culier où les droites (A), (B), (C) ont un point commun et le cas plus particulier
+encore, où elles forment un trièdre trirectangle.</p>
+<p  id="blk-583-15">Dans le cas particulier où les droites (A), (B) ont un point commun O, et où C
+est perpendiculaire à leur plan sans passer par 0, on déterminera le lieu des pieds
+des hauteurs du triangle ABC (l'un de ces pieds est fixe) et le lieu du point de
+rencontre de ces hauteurs.</p>
+<p  id="blk-583-16">_</p>
+<p  id="blk-583-17">_</p><div class="scan-inline"><img src="img/scan/srcpage-583.png"/></div></data><data data-scanhref="img/scan/srcpage-584.png"><p class="newpage"><!-- skp data-txt='564' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-584-03">1206. Si, dans un triėdre, une face est égale au dièdre opposé ou à son supplément,
+chacune des deux autres faces est aussi égale au dièdre qui lui est opposé ou à son
+supplément.</p>
+<p  id="blk-584-04">1207. Décomposer un tétraèdre quelconque donné en tétraèdres partiels dont chacun
+possède un plan de symétrie (le centre de la sphère inscrite sert de sommet commun
+à douze tétraèdres répondant la question; le centre de la sphère circonscrite
+également, s'il est intérieur au tétraèdre).</p>
+<p  id="blk-584-05">Montrer que deux polyèdres symétriques peuvent être décomposés en parties
+superposables chacune à chacune.</p>
+<p  id="blk-584-06">1208. 1° Si deux faces d'un tétraèdre sont équivalentes, la droite qui projette, sur
+l'arête qui leur est commune, le milieu de l'arête opposée, est perpendiculaire à
+cette dernière;</p>
+<p  id="blk-584-07">2° Si trois faces sont équivalentes entre elles, la droite qui joint le centre de
+gravité au centre de la sphère inscrite passe par le sommet commun à ces trois
+faces;</p>
+<p  id="blk-584-08">3° Si les faces sont équivalentes deux à deux, le parallélépipède P, que l'on déduit
+du tétraèdre donné par la construction indiquée à l'exercice 550, est droit. Les faces
+équivalentes entre elles sont égales;</p>
+<p  id="blk-584-09">4° Si les quatre faces sont équivalentes, le parallélépipède de l'exercice 550 est
+rectangle. Les arêtes opposées sont égales deux à deux.<!-- skp data-txt='7' --></p>
+<p  id="blk-584-11">1209. Le volume du parallélépipède qui a ses arêtes suivant trois droites données
+de l'espace (ex. 521) est une troisième proportionnelle au parallélépipède rectangle
+qui a ses arêtes égales respectivement aux perpendiculaires communes que l'on
+peut mener aux droites données prises deux à deux, et au parallélépipède (généra-
+lement oblique) qui a ses arêtes respectivement égales et parallèles à ces mêmes
+perpendiculaires communes.</p>
+<p  id="blk-584-12">1210. Parmi tous les tétraèdres considérés à l'exercice 552 (D et D' étant deux
+droites données), quel est celui pour lequel la somme des aires des quatre faces est
+la plus petite?</p>
+<p  id="blk-584-13">1211. Construire un tétraèdre ABCD, connaissant l'arète AB en grandeur et posi-
+tion, les aires des faces ABC, ABD et deux droites, parallèles à AB, sur lesquelles
+doivent se trouver les points C, D.</p>
+<p  id="blk-584-14">(On remarquera que la connaissance de la différence à des carrés des aires don-
+nées fait connaître un point de l'arête CD).</p>
+<p  id="blk-584-15">La quantité à étant choisie une fois pour toutes, pour quelle position de CD les
+aires ABC, ABD sont-elles le plus grandes possibles?</p>
+<p  id="blk-584-16">1212. Parmi tous les tétraèdres dont les faces ont respectivement des aires
+données, celui qui a le plus grand volume est à arêtes orthogonales (1).</p>
+<p  id="blk-584-17">(Appliquer l'exercice précédent).</p>
+<p  id="blk-584-18">1213. Si on a donné toutes les arêtes d'un tétraèdre, moins deux opposées, le volume
+est le plus grand possible lorsque les dièdres suivant les arêtes inconnues sont
+droits.</p>
+<p  id="blk-584-19">1214. Dans un tétraèdre à arêtes orthogonales, les cercles des neuf points (Pl.,
+ex. 101) des quatre faces appartiennent à une même sphère.</p>
+<p  id="blk-584-20">(1) La construction de ce tétraèdre, lorsqu'on connaît les aires des quatre faces, ne peut
+s'effectuer, en général, par la règle et le compas.</p><div class="scan-inline"><img src="img/scan/srcpage-584.png"/></div></data><data data-scanhref="img/scan/srcpage-585.png"><p class="newpage"></p>
+<p  id="blk-585-01">PROBLEMES DIVERS.<!-- skp data-txt='565' --></p>
+<p  id="blk-585-03">Dans les mêmes conditions, les centres de gravité des quatre faces et les pieds des
+quatre hauteurs sont huit points d'une même sphère, laquelle coupe en outre chaque
+hauteur au tiers du segment qui joint le sommet correspondant au point de ren-
+contre (ex. 535) de ces hauteurs.</p>
+<p  id="blk-585-04">1214 bis. Si deux tétraèdres ABCD, A'B'C'D' sont tels que les perpendiculaires
+abaissées des sommets du premier sur les faces du second concourent en un point E
+et, par conséquent (ex. 559), que les perpendiculaires abaissées des sommets du
+second sur les faces du premier concourent en un point E', on peut décrire, en pre-
+nant pour centres A, B, C, D, E, d'une part; A', B', C', D', E' de l'autre, des
+sphères telles que chacune d'elles soit orthogonale à toutes celles de l'autre série
+qui ne lui correspondent pas.</p>
+<p  id="blk-585-05">1215. Trouver, dans un plan donné P, un point tel que la somme de ses distances
+à deux droites données D, D₁ soit minima.</p>
+<p  id="blk-585-06">Soient mm, la perpendiculaire commune à D et à D₁; m'm'₁, la perpendiculaire
+commune à D et à la symétrique D'₁ de D₁ par rapport au plan P. Si le point
+cherché n'est pas sur mm₁ ou sur m'm'₁, il est (utiliser ex. 471, 471 bis) le pied de D
+ou de D₁ savoir de D si mm₁ et m'm'₁ sont de part et d'autre du plan P; de D₁
+dans le cas contraire.</p>
+<p  id="blk-585-07">1216. Étant donné le carré ABCD, on considère le triangle équilatéral gef tel que
+gest en A et que e, f sont sur les deux côtés BC, CD qui n'aboutissent pas en A.
+Évaluer le volume du solide compris entre le carré ABCD, le triangle GEF (dont le
+plan est parallèle à celui du carré et qui se projette sur celui-ci suivant gef) et les
+plans AGB, GBE, BEC, ECF, FCD, FGD, GDA.<!-- spr -->plane,</p>
+<p  id="blk-585-09">1217. Montrer que la proposition qui fait l'objet de l'exercice 345 de la Géométrie<!-- spr -->savoir:
+« Si sur chaque côté d'un quadrilatère inscriptible, comme corde, on décrit un segment de
+« cercle quelconque, les quatre nouveaux points où chacune des circonférences ainsi tracées
+« rencontre la suivante forment également un quadrilatère inscriptible. »
+est également vraie en géométrie sphérique.</p>
+<p  id="blk-585-11">1218. Une sphère variable est tangente à deux plans fixes et passe par un point
+fixe. Trouver:</p>
+<p  id="blk-585-12">1º Le lieu du point de contact avec le plan fixe;</p>
+<p  id="blk-585-13">2º Le lieu décrit par la droite qui va du point donné au centre de la sphère. (On
+démontrera que<!-- spr -->le plan qui passe par le point donné et l'intersection de deux plans
+donnés coupe la sphère variable sous un angle constant.)</p>
+<p  id="blk-585-15">1219. Trouver le minimum de la somme des longueurs des tangentes menées
+d'un point à deux cercles qui n'ont aucun point commun.</p>
+<p  id="blk-585-16">1220. Si trois droites D₁, D2, D3 sont dans un même plan qui coupe trois sphères
+S1, S2, S3 sous le même angle, les plans menés par D, tangentiellement à S₁, par D 2
+tangentiellement à S₂, par D3 tangentiellement à S3, sont six plans tangents d'une
+même sphère, laquelle coupe le plan D₁DD sous le même angle que les premières.</p>
+<p  id="blk-585-17">1221. A, B, C, D, E étant cinq points de l'espace, on prend les inverses des points
+B, C, D, E par rapport au point A comme pôle, la puissance d'inversion étant</p>
+<p  id="blk-585-18">√ (AB. AC. AD. AE)²:<!-- spr -->ces points sont les sommets d'un certain tétraèdre. On forme de même un</p><div class="scan-inline"><img src="img/scan/srcpage-585.png"/></div></data><data data-scanhref="img/scan/srcpage-586.png"><p class="newpage"><!-- skp data-txt='566' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->tétraèdre avec les inverses des points C, D, E, A, le pôle d'inversion étant B et
+la puissance<!-- skp data-txt='3' --></p>
+<p  id="blk-586-05">(BC. BD. BE. BA)²;<!-- spr -->etc.</p>
+<p  id="blk-586-07">...</p>
+<p  id="blk-586-08">Montrer que tous ces tétraèdres ont même volume, lequel est égal à MA² (ABCDE)
++ MB² (CDEA) + MC² (DEAB) +. MD² (EABC)+ ME² (ABCD), quelle que soit la posi-
+tion de M; (BCDE), ... désignant respectivement les volumes des tétraèdres BCDE,
+affectés du signe + ou du signe suivant la disposition de ces tétraèdres.</p>
+<p  id="blk-586-09">(On opérera comme pour l'exercice 875).</p>
+<p  id="blk-586-10">Montrer directement que cette dernière quantité est nulle si les points A, B, C, D, E
+appartiennent à une même sphère. (On mettra le point M au centre de la sphère.)</p>
+<p  id="blk-586-11">1222. Si une droite invariable se meut de manière que trois de ses points A, A', A"
+décrivent trois sphères dont les centres O, O', 0" sont en ligne droite, chaque point
+de la droite se meut sur une sphère, à l'exception d'un qui se meut sur un plan.</p>
+<p  id="blk-586-12">Soient M le point dont on cherche le lieu; N, le point de la droite mobile situé à
+l'unité de distance de M. On mènera les parallèles NP, NP', NP" à OA, O'A', O'', A",
+jusqu'à rencontre en P, P', P" avec OM, O'M, O'M respectivement; et on appliquera
+aux points P, P', P", M, N, dont les quatre premiers sont situés dans un même
+plan, le premier théorème du n° 611, en exprimant les coordonnées barycen-
+triques à l'aide du théorème du n° 601, comme on a fait pour l'exercice 875).
+Le point qui décrit une droite est celui qui forme avec A, A', A" un rapport</p>
+<p  id="blk-586-13">0"0
+anharmonique égal à</p>
+<p  id="blk-586-14">0"0"
+D'une manière générale, le centre de la sphère décrite par le point M est déter-
+miné par la relation</p>
+<p  id="blk-586-15">(00'0"'w) (AA'A"M).<!-- skp data-txt='-' --></p>
+<p  id="blk-586-17">1223. Les deux cônes qui ont pour sommet commun un point limite (ex. 690) de
+deux sphères et pour bases respectives les sections des deux surfaces par un même
+plan ont même direction de sections antiparallèles.</p>
+<p  id="blk-586-18">1224. On considère, sur une sphère donnée, tous les cercles C qui, vus d'un point
+donné S de l'espace, se projettent sur un plan fixe P suivant des cercles, sans avoir
+eux-mêmes leurs plans parallèles à P.</p>
+<p  id="blk-586-19">1° Montrer que les plans de ces cercles passent par une droite fixe D;</p>
+<p  id="blk-586-20">2° Inversement, à une droite D donnée (le plan P étant fixe) correspondent une
+infinité de points S. Lieu de ces points;</p>
+<p  id="blk-586-21">3° Soit C₁ un cercle orthogonal à tous les cercles C. Lieu des sommets des cônes
+qui passent par C₁ et l'un quelconque des C.</p>
+<p  id="blk-586-22">On fait en même temps que le cercle C, varier le cercle C₁, de façon qu'il passe par
+ces deux cercles un cylindre. Lieu de la parallèle menée par un point donné à l'axe
+de ce cylindre.</p>
+<p  id="blk-586-23">1225. Une sphère variable Σ est orthogonale à une sphère fixe S et tangente à une
+autre sphère fixe S₁.</p>
+<p  id="blk-586-24">1° Lorsque est assujettie à la condition d'avoir son centre dans un plan fixe P,
+le lieu de son point de contact avec S₁ est un cercle.</p>
+<p  id="blk-586-25">Le lieu du centre de Σ est une conique. Si P est tangent à S, cette conique a pour
+foyer le point de contact de S et de P. Cas où P est tangent à S sur le cercle d'in-
+tersection de S et de S₁;</p><div class="scan-inline"><img src="img/scan/srcpage-586.png"/></div></data><data data-scanhref="img/scan/srcpage-587.png"><p class="newpage"></p>
+<p  id="blk-587-01">PROBLEMES DIVERS.<!-- skp data-txt='567' --></p>
+<p  id="blk-587-03">*</p>
+<p  id="blk-587-04">2º On peut déterminer, sur la ligne des centres de S et de S₁, un point f tel que la
+sphère Σ. concentrique à Σ et passant par f soit toujours tangente à une sphère fixe
+D, ayant même centre fi que la sphère S₁;</p>
+<p  id="blk-587-05">3° Si m est le centre de Σo, m' son point de contact avec D et que m' décrive un
+cercle de D, m reste dans un plan fixe et décrit une conique. Discuter cette dernière,
+en supposant que le plan du cercle se déplace parallèlement à lui-même ;</p>
+<p  id="blk-587-06">4° Si le plan T, mené perpendiculairement au milieu de fm', passe par un point
+fixe q, le lieu de m'est un cercle yq. Si q varie dans un plan fixe, yq reste orthogo-
+nal à un cercle fixe de D. Cas où q décrit une droite ;</p>
+<p  id="blk-587-07">5° Soit c le milieu de ffi. Le lieu du point d'intersection des droites cm et fm',
+lorsque la sphère Σ, varie, est un plan.</p>
+<p  id="blk-587-08">=</p>
+<p  id="blk-587-09">1226. O étant un point fixe du plan, M un point quelconque, on mène la bissectrice
+de l'angle formé par OM avec une demi-droite fixe passant par O et on fait corres-
+pondre au point M le point M' obtenu en portant sur cette bissectrice (dans un sens
+ou dans l'autre) une longueur OM' Va.OM (a étant une longueur donnée).</p>
+<p  id="blk-587-10">Prouver les propriétés suivantes :
+1° Si M' décrit une droite, M décrit une parabole de foyer O (se ramène, par une
+rotation et une homothétie, à l'ex. 802);</p>
+<p  id="blk-587-11">2° Si M décrit une droite, M' décrit une hyperbole équilatère de centre O;</p>
+<p  id="blk-587-12">3° Si M décrit successivement deux courbes qui se coupent, M' décrit deux courbes
+qui se coupent sous le même angle que les premières. Déduire de là l'exercice 1076.</p>
+<p  id="blk-587-13">1227. On mène, par un point fixe O d'une circonférence, des rayons parallèles à
+deux droites variables issues d'un point déterminé A du plan et conjuguées par
+rapport à la circonférence. La droite qui joint entre eux les points où ces rayons
+coupent à nouveau la circonférence passant (664) par un point fixe S, on demande
+le lieu de ce dernier lorsque A décrit une droite, et le lieu que doit décrire A pour
+que S décrive une droite (ex. précédent).</p>
+<p  id="blk-587-14">1228. Lorsqu'une figure plane invariable se meut de manière que deux de ses
+points décrivent des droites fixes, les ellipses décrites par les différents points sont
+telles que la différence de leurs axes soit constante.</p>
+<p  id="blk-587-15">Trouver, sur une position déterminée de la figure mobile, le lieu d'un point M tel
+que l'ellipse qu'il décrit soit semblable à une ellipse donnée, ou ait un axe parallèle
+à une droite donnée.</p>
+<p  id="blk-587-16">Trouver le lieu du point M tel qu'un foyer de l'ellipse décrite soit sur une droite
+donnée.</p>
+<p  id="blk-587-17">Trouver le lieu des foyers de l'ellipse décrite, lorsque M prend toutes les positions
+possibles sur une droite donnée (exercice 1226).</p>
+<p  id="blk-587-18">1229. Le mouvement d'une figure plane invariable considéré aux numéros 740-
+743 peut être considéré comme engendré par le roulement (voir page 254, note)
+d'un cercle lié à la figure mobile sur un cercle fixe de rayon double (lequel
+comprend constamment le premier à son intérieur).</p>
+<p  id="blk-587-19">1230. Dans le mouvement considéré aux numéros 740-743 et à l'exercice pré-
+cédent, on détermine l'homologue D. d'une droite fixe quelconque D dans une figure
+fixe égale à la figure mobile. Montrer que D. est tangente à un cercle fixe.</p>
+<p  id="blk-587-20">(On prendra d'abord le cas où D passe par le point. O (nº 743)).</p>
+<p  id="blk-587-21">Ce cercle est le lieu des points de la figure mobile tels que les ellipses qu'ils
+décrivent soient tangentes à D.</p><div class="scan-inline"><img src="img/scan/srcpage-587.png"/></div></data><data data-scanhref="img/scan/srcpage-588.png"><p class="newpage"><!-- skp data-txt='568' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-588-03">1231. La courbe L, projection d'une hélice circulaire sur un plan parallèle à l'axe
+du cylindre de révolution auquel elle appartient, étant enroulée sur un cylindre de
+révolution C dont le rayon est moitié de celui qu'il conviendrait de prendre (exer-
+cice 821) pour la transformer en une courbe plane, montrer que la nouvelle
+courbe ainsi obtenue est la section de C par un certain cône de révolution ayant
+pour axe une génératrice de C, ou encore par une certaine sphère dont le centre
+appartient à la perpendiculaire abaissée du sommet du cône sur l'axe du cylindre.</p>
+<p  id="blk-588-04">1232. Lieu des points de contact des tangentes menées, parallèlement à une
+direction donnée, à une série de cercles ayant même axe radical (se ramène à
+l'exercice 1074).</p>
+<p  id="blk-588-05">1233. Si deux des points d'intersection d'un cercle et d'une hyperbole équilatère
+sont diametralement opposés sur le cercle, les deux autres (s'ils existent) sont
+diametralement opposés sur l'hyperbole. La tangente en l'un d'eux est perpendicu-
+laire au diamètre du cercle qui joint les deux premiers. Réciproque.</p>
+<p  id="blk-588-06">1234. On prend la figure polaire réciproque d'un triangle ABC, par rapport à un
+cercle ayant son centre au point O' considéré à l'exercice 365 (Pl., page 298).</p>
+<p  id="blk-588-07">Montrer que le cercle circonscrit à ABC se transforme en une ellipse ayant son
+foyer en O' et qui touche les côtés du nouveau triangle A'B'C', polaire réciproque
+de ABC, en leurs milieux (ellipse maximum inscrite à A'B'C').</p>
+<p  id="blk-588-08">1235. On donne deux cercles, sécants en A et B, et on considère les coniques qui
+sont tangentes à ces cercles et les coupent, d'autre part, en A et B.</p>
+<p  id="blk-588-09">1º Ces coniques forment deux séries, la ligne qui joint les deux points de contact
+passant, dans chaque série, par un centre de similitude des cercles donnés;</p>
+<p  id="blk-588-10">2º Le lieu des centres des coniques de chaque série est un cercle par rapport
+auquel le centre de similitude correspondant a pour polaire AB;</p>
+<p  id="blk-588-11">3º Les coniques de l'une des séries sont des hyperboles dont les asymptotes pas-
+sent respectivement par deux points fixes (les milieux des tangentes communes aux
+cercles donnés). Les coniques de l'autre série sont des ellipses dont les diamètres
+conjugués égaux (exercice 1072) vont aussi passer par deux points fixes. Les axes des
+coniques de chaque série vont également passer par des points fixes. De plus, toutes
+les ellipses sont semblables entre elles, et de même les hyperboles (1). L'angle aigu
+des asymptotes d'une quelconque de ces dernières est le demi-supplément de l'angle
+des tangentes communes aux cercles donnés.</p>
+<p  id="blk-588-12">Le rapport de similitude de deux ellipses ou de deux hyperboles d'une série
+est la racine carrée du rapport des distances de leurs centres à AB;</p>
+<p  id="blk-588-13">4° Les coniques d'une même série coupent une hyperbole équilatère quelconque
+ayant A et B pour points diamétralement opposés en deux points C et D situés en
+ligne droite avec un centre de similitude des cercles donnés (exercices 1137, 1233).</p>
+<p  id="blk-588-14">1236. Étant donnés deux plans sécants P, Q, montrer qu'à chaque point M de
+l'espace correspond un point M' tel que toute figure tracée sur le plan P ait pour
+perspectives sur le plan Q, avec M et M' pris respectivement comme points de vue,
+deux figures égales, mais de sens contraires.</p>
+<p  id="blk-588-15">Les points M et M' dérivent l'un de l'autre par symétrie oblique (exercice 604).</p>
+<p  id="blk-588-16">1237. Lieu des centres des perspectives telles qu'une conique donnée se projette
+sur un plan donné suivant un cercle.</p>
+<p  id="blk-588-17">(1) Toutefois. cette partie de l'énoncé n'est entièrement vraie qu'à condition de considérer
+comme semblables entre elles deux hyperboles, dont l'une est semblable à la conjuguée de
+l'autre (730 bis).</p><div class="scan-inline"><img src="img/scan/srcpage-588.png"/></div></data><data data-scanhref="img/scan/srcpage-589.png"><p class="newpage"></p>
+<p  id="blk-589-01">PROBLEMES DIVERS.<!-- skp data-txt='569' --></p>
+<p  id="blk-589-03">1237 bis. Lieu des centres de perspective tels qu'une conique donnée se projette
+sur un plan donné suivant une parabole.</p>
+<p  id="blk-589-04">1238. Lieu des points de contact des tangentes menées parallèlement à une
+direction donnée, aux cercles bitangents à une conique donnée C et ayant leurs
+centres sur l'axe focal. (La conique C étant regardée comme la section plane d'un
+cône de révolution, le lieu cherché est la section d'un certain cône à base circulaire).</p>
+<p  id="blk-589-05">Même problème lorsque les cercles bitangents ont leurs centres sur l'axe non focal.
+(Se ramène, par une homographie convenable, à l'exercice 1232, en vertu de
+l'exercice 847,2°).</p>
+<p  id="blk-589-06">1239. On donne deux droites OA, OB et deux points A, B, respectivement situés
+sur ces droites, et on considère les sécantes D qui coupent les droites en deux
+points M, N tels que MN soit la somme ou la différence des segments AM, BN.</p>
+<p  id="blk-589-07">Trouver les droites D qui passent par un point donné P du plan. Distinguer (pour
+les diverses positions de ce point) si MN est égal à la somme de AM et de BN ou à
+leur différence.</p>
+<p  id="blk-589-08">Enveloppe du cercle circonscrit au triangle OMN. Lieu du centre de ce cercle.</p>
+<p  id="blk-589-09">1240. On donne un triangle T. Soit T' le triangle qui a pour sommet les pro-
+jections d'un point M du plan sur les côtés de T.</p>
+<p  id="blk-589-10">1° Si M décrit une droite A, les côtés du triangle T' enveloppent trois paraboles
+P1, P2, P3. Ces paraboles sont inscrites dans le même angle. On construira leurs
+foyers et leurs directrices;</p>
+<p  id="blk-589-11">Quelle position doit occuper A pour que ces paraboles soient tangentes entre elles
+en un même point?</p>
+<p  id="blk-589-12">2° Comment faut-il choisir A pour que les trois directrices soient concourantes ?
+Lieu de leur point de concours;</p>
+<p  id="blk-589-13">3° Si A tourne autour d'un point fixe K, les directrices des trois paraboles passent
+par trois points fixes 11, 12, 13 : Enveloppe de KI₁ lorsque K ou I décrit une droite ;</p>
+<p  id="blk-589-14">4° Pour quelles positions de K les trois points I₁, I, I sont-ils en ligne droite ?
+Montrer qu'alors cette droite passe par un point fixe.</p>
+<p  id="blk-589-15">1241. On prend les symétriques d'un point M du plan par rapport aux côtés d'un
+triangle T soit M' le centre du cercle qui passe par ces trois symétriques.</p>
+<p  id="blk-589-16">1º Lorsque M décrit une droite, M' décrit une conique S. Discuter le genre de S
+(ellipse, parabole ou hyperbole) lorsqu'on fait varier A. Positions de A pour les-
+quelles cette droite est tangente à S;</p>
+<p  id="blk-589-17">2° Lorsque A se déplace parallèlement à elle-même, la conique S a ses axes
+parallèles à deux directions fixes. Le lieu du centre de cette conique est une conique
+S₁. Lieu du centre de S₁ pour les différentes directions que peut prendre A. (On
+remarquera (Pl., exercice 197) que S passe par quatre points fixes);</p>
+<p  id="blk-589-18">3° Par un point P' de la conique S, on peut faire passer, outre la droite qui joint
+P'à son correspondant P, deux autres droites dont chacune passe par un point M
+de A et son correspondant M. Montrer que ces deux droites sont conjuguées harmo-
+niques par rapport à celles qui joignent P aux points de rencontre de A avec S.</p>
+<p  id="blk-589-19">Montrer que si l'on joint P un point variable M de A et que la droite PM ren-
+contre à nouveau S au point N, la droite qui joint ce point N au point M', corres-
+pondant de M, passe par un point fixe;</p>
+<p  id="blk-589-20">4° On suppose que A passe par le centre w d'un cercle inscrit à T. Trouver alors
+l'enveloppe de MM' lorsque M varie sur A. (On démontrera que cette droite déter-
+mine sur S deux divisions homographiques) ;]</p><div class="scan-inline"><img src="img/scan/srcpage-589.png"/></div></data><data data-scanhref="img/scan/srcpage-590.png"><p class="newpage"><!-- skp data-txt='570' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-590-03">Montrer (exercice 1126) que les centres des trois autres cercles inscrits à T et les
+points de rencontre des diagonales du quadrilatère complet qui a pour côtés T et A
+sont six points d'une même conique.</p>
+<p  id="blk-590-04">1242. Si une courbe convexe est telle qu'à toute direction correspond une droite
+(diamètre conjugué) qui divise en deux parties égales chacune des cordes paral-
+lèles à cette direction, elle est une conique.</p>
+<p  id="blk-590-05">On démontrera successivement :
+1° Que si un trapèze est inscrit à la courbe, les aires comprises entre chacun des
+côtés non parallèles et l'arc correspondant de courbe sont égales;</p>
+<p  id="blk-590-06">2° Qu'on peut inscrire à la courbe une infinité d'hexagones dont les côtés opposés
+soient parallèles;</p>
+<p  id="blk-590-07">3° Que les diamètres passent tous par un même point ou sont parallèles;</p>
+<p  id="blk-590-08">4º Dans le premier cas, que la direction de chaque diamètre et la direction conju-
+guée sont rayons homologues d'une même involution.</p>
+<p  id="blk-590-09">1243. Étant donnés une parabole P et un cercle qui a avec elle un double contact,
+réel ou imaginaire (autrement dit l'un des cercles considérés au nº 724 et à l'exer-
+cice 843) la corde de contact étant D (c'est la droite qui porte ce nom à l'exercice 843,
+ou la droite L"y" du nº 724), la parabole P' qui a un point f quelconque du cercle
+pour foyer et D pour directrice coupe la première en deux points situés sur la
+tangente au cercle en f.</p>
+<p  id="blk-590-10">Réciproque en partant d'une parabole P/ et prenant pour P une parabole quel-
+conque passant par les extrémités d'une corde focale.</p>
+<p  id="blk-590-11">1244. Si un polygone de n côtés (1) inscrit à l'ellipse a le périmètre le plus grand
+possible, ses côtés sont tangents à une même ellipse homofocale à la première.
+Pour n=</p>
+<p  id="blk-590-12">= 4, les sommets du polygone sont les points de contact de tangentes for-
+mant entre elles un rectangle. Réciproquement, les points de contact des côtés d'un
+rectangle circonscrit quelconque (2) sont les sommets d'un quadrilatère ayant le
+périmètre maximum, lequel est double du diamètre du cercle orthoptique.</p>
+<p  id="blk-590-13">1245. M est un point quelconque d'une ellipse donnée de centre O et d'axes 2a, 2b; R
+(nº 741, fig. 612), l'extrémité d'une longueur portée sur la normale en M et égale
+au diamètre conjugué de OM :</p>
+<p  id="blk-590-14">1° Montrer que le demi-diamètre de l'ellipse, dirigé suivant OR, correspond au
+rayon du cercle homographique parallèle à RM, et que ce demi-diamètre est<!-- spr -->ab
+égal à</p>
+<p  id="blk-590-16">RM
+2° En déduire que chaque point du cercle I' qui a pour centre O et pour rayon a+b
+(ou du cercle I' qui a pour centre 0 et pour rayon a- b) est le centre d'un cercle
+tangent à l'ellipse et admettant en outre, avec cette courbe, deux tangentes com-
+munes parallèles entre elles.</p>
+<p  id="blk-590-17">1246. Les notations étant les mêmes que dans l'exercice précédent :</p>
+<p  id="blk-590-18">1° Si R et R' sont deux points du cercle I, correspondant à deux points M et M'
+de l'ellipse, et que la tangente en M passe par R', réciproquement la tangente en M'
+passe par R;</p>
+<p  id="blk-590-19">(On montrera que les points M, M', R, R' sont sur une même circonférence ayant
+pour centre le centre w de rotation de deux positions de la droite mobile);</p>
+<p  id="blk-590-20">(1) Il s'agit de polygones proprement dits, délimitant une portion du plan.</p>
+<p  id="blk-590-21">(2) On voit qu'il y a une infinité de polygones ayant le périmètre maximum. C'est ce qui a
+lieu également pour n quelconque (comparer Pl., ex. 331, et voir plus loin exercice 1246, 9º).</p><div class="scan-inline"><img src="img/scan/srcpage-590.png"/></div></data><data data-scanhref="img/scan/srcpage-591.png"><p class="newpage"></p>
+<p  id="blk-591-01">PROBLEMES DIVERS.<!-- skp data-txt='571' --></p>
+<p  id="blk-591-03">2° Quelle relation y a-t-il entre l'angle des normales MR, M'R' en M et en M' d'une<!-- spr -->part, l'angle ROR' de l'autre ?</p>
+<p  id="blk-591-05">3° L'une des normales MR, M'R' et la symétrique de l'autre par rapport au
+centre O, se coupent sur le centre I' de centre O et de rayon a—b;</p>
+<p  id="blk-591-06">4° L'une des tangentes MR, M/R et la symétrique de l'autre par rapport au centre,
+se coupent sur le cercle F;</p>
+<p  id="blk-591-07">5º Du point R, soient menées à l'ellipse, les tangentes RM', RM'₁. Soient N le symé-
+trique de M' par rapport au centre, P le symétrique de M₁. Les tangentes en M, N, P
+forment un triangle circonscrit à l'ellipse, inscrit au cercle I, et dont les hauteurs
+sont normales à l'ellipse (le pied de chacune d'elles étant symétriques, par rapport
+au centre, du point de contact du côté correspondant); le lieu du point de rencontre
+de ces hauteurs est le cercle I';</p>
+<p  id="blk-591-08">6° Les droites RM', M'M, OR forment entre elles un triangle isoscèle. La bissectrice
+de l'angle ORM est la même que celle de l'angle des tangentes RM, RM'₁;</p>
+<p  id="blk-591-09">Il existe une parabole ayant son axe parallèle à OR, son foyer en M et bitangente
+à l'ellipse en M' et M'₁;</p>
+<p  id="blk-591-10">La circonférence orthogonale à I', menée par les points R et R', passe par le point
+d'intersection de MR, M'R;</p>
+<p  id="blk-591-11">L'angle MRR' est droit ;</p>
+<p  id="blk-591-12">7° La droite RR' enveloppe une ellipse E' homofocale la première (d'axes.
+2a2+2ab et 2√√b² +2ab). En menant, par le point R', une nouvelle tangente à E',
+laquelle coupe I en un nouveau point, menant de celui-ci une tangente à E', etc., le
+contour ainsi formé se ferme en un hexagone circonscrit à E'.</p>
+<p  id="blk-591-13">La somme des carrés des côtés de cet hexagone est constante. La calculer en
+fonction de a, b.</p>
+<p  id="blk-591-14">RR/2</p>
+<p  id="blk-591-15">•<!-- skp data-txt='-' --></p>
+<p  id="blk-591-17">8° On a MM'<!-- skp data-txt="'2 (a+b)\n9° La droite MM' enveloppe une nouvelle ellipse e' (figure homographique de l'el-\nlipse enveloppée par la droite qui joint entre eux les points du cercle homogra-\nphique correspondant à M et à M/). Cette ellipse est également homofocale à l'ellipse" --></p>
+<p  id="blk-591-19">2b
+donnée (ses axes sont</p>
+<p  id="blk-591-20">Va2+2ab et</p>
+<p  id="blk-591-21">√√2+2ab). Les points M, M', M'₁ et
+a+b<!-- spr -->a+b
+leurs symétriques par rapport au centre sont les sommets d'un hexagone (1) H cir-<!-- spr -->a² +ab+b²
+conscrit à e', dont le périmètre est constant et égal à 4</p>
+<p  id="blk-591-24">2a<!-- skp data-txt='1' --><!-- spr -->a+b</p>
+<p  id="blk-591-27">1247. Réciproquement:</p>
+<p  id="blk-591-28">1° Si une parabole est bitangente à une ellipse et a son foyer M sur cette ellipse,
+le pôle de contact est le point R considéré aux exercices précédents, ou le point ana-
+logue R₁ du cercle IV (se ramène par polaires réciproques à l'exercice 1243 et à l'exer-
+cice 845);</p>
+<p  id="blk-591-29">2° Si un cercle est tangent à une ellipse et admet avec elle deux tangentes
+communes parallèles entre elles (toutes deux distinctes de la tangente au point de
+contact), il existe une parabole ayant le point de contact pour foyer, et bitangente
+à l'ellipse avec le centre R du cercle comme pôle de contact. Le point R appartient
+dès lors au cercle I ou au cercle F' (se ramène à la réciproque proposée à l'exer-
+cice 1243);</p>
+<p  id="blk-591-30">3° Si un triangle est circonscrit à une ellipse et que chacune de ses hauteurs soit</p>
+<p  id="blk-591-31">(1) Cet hexagone H est l'hexagone de périmètre maximum dont il est question à l'exercice
+1244.</p><div class="scan-inline"><img src="img/scan/srcpage-591.png"/></div></data><data data-scanhref="img/scan/srcpage-592.png"><p class="newpage"><!-- skp data-txt='572' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->normale à l'ellipse (en un point M situé sur la tangente symétrique du côté corres-
+pondant), les sommets de ce triangle sont des points analogues à R. (On transformera
+encore par polaires réciproques, en plaçant le centre du cercle directeur en M et, se donnant la
+parabole transformée de l'ellipse, ainsi que la polaire p du sommet du triangle correspondant à M et
+celle du point à l'infini sur un des deux côtés qui passent en ce sommet, on constatera que le
+problème qui consiste à chercher le point M n'a qu'une solution, laquelle est nécessairement un
+point du cercle bitangent qui a p pour corde de contact).</p>
+<p  id="blk-592-04">Trouver une ellipse inscrite à un triangle donné et normale aux trois hauteurs,
+mais non pas en leurs pieds.</p>
+<p  id="blk-592-05">1247 bis. On donne une conique S et deux points a, b de son plan. Prouver que les
+coniques bitangentes à S, tangentes à ab et telles que les secondes tangentes menées
+par a et b à chacune d'elles se coupent sur S, forment deux séries distinctes, le lieu
+du pôle de contact étant, pour chacune des séries, une conique passant par a et b.
+(On trouvera la corde de contact en construisant deux positions du point i de l'exer-
+cice 919, lesquelles décrivent respectivement les polaires de a et de b.)</p>
+<p  id="blk-592-06">Lorsqu'on prend pour a et b des points imaginaires convenables (les points cycli-
+ques de l'exercice 1147), on retombe sur l'exercice précédent (1º.)</p>
+<p  id="blk-592-07">1248. La somme des inverses des carrés de deux diamètres rectangulaires d'une
+ellipse est constante (exercice 1245, 1º).</p>
+<p  id="blk-592-08">1249. Trouver, dans l'espace, un cercle coupant deux cercles donnés, C, C₁ chacun
+en deux points et à angle droit.</p>
+<p  id="blk-592-09">Montrer que le problème peut se ramener à l'un des suivants: faire passer, par le
+premier cercle, deux sphères orthogonales entre elles S, Σ et, par le second, deux
+sphères orthogonales entre elles S₁, ₁, telles que soit orthogonale à Σ, et S₁ à Σ
+ou encore (par une inversion qui transforme l'un des cercles donnés en une droite):
+trouver, sur une droite donnée, un segment qui soit vu d'un point donné sous un
+angle droit et d'une droite donnée sous un dièdre droit.</p>
+<p  id="blk-592-10">Le problème qui consiste à rechercher les sphères S, Σ, S₁, 2₁ n'admet qu'une
+solution, mais cette solution unique peut donner deux cercles répondant à la ques-
+tion. Ces cercles n'existent tous les deux qu'autant que le premier cercle donné coupe
+le plan du second en deux points situés, l'un à l'intérieur, l'autre à l'extérieur de
+celui-ci, c'est-à-dire qu'autant que le problème proposé à l'exercice 679 n'a pas de
+solution.</p>
+<p  id="blk-592-11">Si les cercles cherchés existent tous deux, ils divisent harmoniquement chacun
+des cercles donnés Σ, ₁. Leurs plans sont perpendiculaires entre eux et l'on peut
+faire passer par chacun d'eux une infinité de sphères orthogonales à l'autre.</p>
+<p  id="blk-592-12">1250. Parmi tous les cercles c qui rencontrent deux cercles donnés, celui pour
+lequel le rapport anharmonique (sur c) des quatre points d'intersection est le plus
+petit ou le plus grand possible, est une des solutions de l'exercice précédent.</p>
+<p  id="blk-592-13">1251. On peut trouver, d'une infinité de manières, un système de deux inversions
+successives (exercice 936) par lequel un cercle donné C se transforme en un autre
+cercle donné C₁. Parmi ces systèmes de deux inversions, il en existe pour lesquels
+les sphères d'inversions T, T₁ sont rectangulaires : le nombre de ces dernières est
+de deux ou de quatre (si l'on ne considère pas comme distincts deux couples d'in-
+versions équivalents l'un à l'autre, d'après l'exercice 936): les déduire des sphères
+S, S₁, Σ, Σ, de l'exercice 1249.</p>
+<p  id="blk-592-14">On peut toujours transformer les deux cercles donnés en deux cercles égaux, ayant
+chacun un diamètre suivant l'intersection de leurs plans.</p><div class="scan-inline"><img src="img/scan/srcpage-592.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

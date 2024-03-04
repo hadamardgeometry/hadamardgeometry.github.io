@@ -1,0 +1,544 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-550.png"><p class="newpage"><!-- skp data-txt='530' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->des pyramides soustractives (s'il en existe) est égale à la somme des tétraèdres
+en lesquels le polyèdre a été décomposé.</p>
+<p  id="blk-550-04">Corollaire. La quantité S est indépendante du choix du point O et la
+quantité, du mode de décomposition du polyèdre en tétraèdres.</p>
+<p  id="blk-550-05">Démonstrations calquées sur celles du n° 316.</p>
+<p  id="blk-550-06">La quantité ainsi définie sera dite le volume du polyèdre : elle possède
+les deux propriétés fondamentales énoncées tout à l'heure (comparer 317).</p>
+<p  id="blk-550-07">Les volumes ainsi définis coïncident avec ceux que nous avons mesurés<!-- skp data-txt='1' --></p>
+<p  id="blk-550-09">=<!-- spr -->dans le texte, lorsqu'on prend K : c'est la valeur que doit avoir cette</p>
+<p  id="blk-550-11">3
+constante pour que le cube d'arête 1 ait son volume égal à l'unité. Les
+raisonnements donnés dans le texte prouvent qu'il n'y a qu'une seule
+manière de déterminer les volumes de manière à satisfaire à cette condi-
+tion et à celles que nous avions imposées en commençant.</p>
+<p  id="blk-550-12">Il est impossible de décomposer un polyèdre en polyèdres partiels qui, autre-
+ment assemblés, forment un polyèdre intérieur au premier. Cette proposition
+résulte des raisonnements que nous venons de présenter et non de ceux
+du livre VI (comparer 318).</p>
+<p  id="blk-550-13">NOTE G</p>
+<p  id="blk-550-14">SUR LES NOTIONS DE LONGUEUR, D'AIRE ET DE VOLUME</p>
+<p  id="blk-550-15">RELATIVES A DES LIGNES
+ET A DES SURFACES QUELCONQUES</p>
+<p class="article" id="blk-550-16"><strong class="article-num" id="article-809">809.</strong> Longueur d'un arc de courbe gauche.</p>
+<p  id="blk-550-17">Un arc AB d'une courbe gauche (C) étant donné, projetons-le orthogo-
+nalement sur un plan quelconque, suivant un arc ab (fig. 643) d'une courbe
+(c). Supposons que la définition de la longueur d'une courbe plane donnée
+dans la note de la page 173 (Pl., liv. III) s'applique à la courbe (c): on
+pourra, en d'autres termes, mesurer la longueur d'un are quelconque de (c).
+Si les hypothèses énumérées dans la note en question sont vérifiées, le
+rapport d'un arc de (c) à sa corde tendra vers l'unité quand l'arc tendra
+vers zéro; et mème, 1+ a étant un nombre aussi peu supérieur qu'on
+le veut à 1, on pourra toujours (1) trouver un nombre tel que, pour tous</p>
+<p  id="blk-550-18">(1) En effet la longueur d'un arc pq faisant partie de ab est (la courbe ab étant supposée
+convexe le long de cet arc) plus petite que la somme des tangentes en p et en g, prolongées
+jusqu'à leur point d'intersection et les hypothèses faites à l'endroit cité de la Géométrie plane</p><div class="scan-inline"><img src="img/scan/srcpage-550.png"/></div></data><data data-scanhref="img/scan/srcpage-551.png"><p class="newpage"></p>
+<p  id="blk-551-01">SUR LES NOTIONS DE LONGUEUR, D'AIRE ET DE VOLUME.</p>
+<p  id="blk-551-02">53!</p>
+<p  id="blk-551-03">се<!-- spr -->les arcs faisant partie de l'arc ab et dont la corde est moindre que E,
+rapport soit plus petit que 1 + α. Nous pourrons développer sur un plan
+(538) le cylindre qui projette la courbe AB, celle-ci venant suivant une nou-
+velle courbe AВ₁ et sa projection ab suivant un segment de droite ab₁
+(fig. 647) égal à la longueur de l'arc ab. Supposons que la définition de la<!-- skp data-txt='B' --><!-- skp data-txt='N' --></p>
+<p  id="blk-551-07">N₁<!-- skp data-txt='M' --></p>
+<p  id="blk-551-09">M₁<!-- skp data-txt='1' --><!-- spr -->b<!-- spr -->a<!-- spr -->n.<!-- spr -->m</p>
+<p  id="blk-551-15">а,<!-- spr -->m₁<!-- spr -->n₂<img class="fig" src="img/FIG. 647.OCR.png" alt="FIG. 647." /><!-- skp data-txt='-' --></p>
+<p  id="blk-551-20">===<!-- spr -->longueur d'un arc de courbe plane s'applique également au développe-
+ment de (c) et soit / la longueur de l'arc AВ.</p>
+<p  id="blk-551-22">Dans ces conditions, je dis que le périmètre d'une ligne polygonale ins-
+crite à l'arc AB et ayant ses extrémités en A et B tend vers 1, lorsque le nombre
+des côtés de cette ligne brisée augmente indéfiniment de manière que chacun
+d'eux tende vers zéro.</p>
+<p  id="blk-551-23">Soient, en effet, M, N deux sommets consécutifs de la ligne polygonale;
+m, n leurs projections sur le plan de (c) ; M₁, N₁, m₁, n₁, les points corres-
+pondants à M, N, m, n dans le développement du cylindre. On a m₁M₁<!-- spr -->mM; n₁N₁ nN; mais mn, corde d'un arc de (c), est plus petit que m₁n₁
+(lequel est égal à la longueur de cet arc).</p>
+<p  id="blk-551-25">Portons le trapèze mMnN en m₁M₁n'N' sur le trapèze m₁M₁₁N₁ (fig.643 bis)
+de manière que mM vienne suivant m₁ M₁ et mn suivant la direction m₁n,
+On aura évidemment MN
+= M₁N' < M₁N₁; mais le rapport</p>
+<p  id="blk-551-26">N₁
+M₁N₁</p>
+<p  id="blk-551-27">M₁n₁
+sera plus petit que le rapport</p>
+<p  id="blk-551-28">(c'est-
+M₁N MN
+ፃን, 12
+M,N₁</p>
+<p  id="blk-551-29">M₁N₁ M₁N'
+1). Car<!-- spr -->est plus
+M,N'</p>
+<p  id="blk-551-31">M,N'
+N N'<!-- spr -->nn'
+petit que<!-- spr -->lequel est à son tour plus petit que
+M₁N'<!-- spr -->min'
+min₁
+c'est-à-dire que</p>
+<p  id="blk-551-35">1.
+m₁n'<!-- skp data-txt='1' --><!-- skp data-txt='1' --><!-- skp data-txt="N'" --></p>
+<p  id="blk-551-39">MIN</p>
+<p  id="blk-551-40">M₁<!-- spr -->m₁n'<!-- skp data-txt='-' --></p>
+<p  id="blk-551-43">à-dire que</p>
+<p  id="blk-551-44">1 ou<!-- skp data-txt='-' --><!-- spr -->mn</p>
+<p  id="blk-551-47">,</p>
+<p  id="blk-551-48">,<!-- spr -->m₁<!-- spr -->n n<img class="fig" src="img/FIG. 647 bis.OCR.png" alt="FIG. 647 bis." /></p>
+<p  id="blk-551-52">Mins<!-- spr -->plus petit que
+Or nous avons vu que l'on pouvait rendre le rapport<!-- spr -->mn</p>
+<p  id="blk-551-55">1a, quel que soit le nombre positif α, et qu'il suffisait, pour cela, de<!-- spr -->consistent précisément à admettre que le rapport de cette somme à la corde pq devient plus
+petit que ia, toutes les fois que l'arc pq, intérieur à ab, a une corde inférieure à une quantité
+convenablement choisie E.</p><div class="scan-inline"><img src="img/scan/srcpage-551.png"/></div></data><data data-scanhref="img/scan/srcpage-552.png"><p class="newpage"><!-- skp data-txt='532' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->prendre mn inférieur à une certaine quantité :. Si donc nous avons pris
+tous les côtés MN de la ligne polygonale (et par conséquent, a fortiori,</p>
+<p  id="blk-552-04">M₁N₁
+toutes les cordes mn) inférieures à ε, tous les rapports tels que</p>
+<p  id="blk-552-05">MN
+sont plus petits que 1 +α d'après une proposition souvent rappelée
+d'arithmétique, il en est de mème du rapport formé avec la longueur de la
+ligne brisée A₁... M₁N... B₁, somme de toutes les cordes M₁N₁, et la lon-
+gueur de la ligne polygonale A... MN... B, dont nous sommes partis et qui
+est la somme des cordes telles que MN.</p>
+<p  id="blk-552-06">Autrement dit (puisque a peut être pris aussi petit qu'on veut) le rapport</p>
+<p  id="blk-552-07">A₁... M₁N... B₁ tend vers 1, lorsque les côtés de la ligne polygonale A,..<!-- skp data-txt='M' --></p>
+<p  id="blk-552-09">A. M N... B</p>
+<p  id="blk-552-10">N... B tendent tous vers zéro.</p>
+<p  id="blk-552-11">Or le numérateur tend, par hypothèse, vers : il en est donc de même
+du dénominateur.</p>
+<p  id="blk-552-12">C. Q. F. D.</p>
+<p  id="blk-552-13">11 résulte de là, en particulier, qu'en projetant la courbe (c) sur un plan
+différent du premier et répétant les mêmes opérations dans ces nouvelles
+conditions, la longueur 1 trouvée ne pourrait avoir une valeur autre que la
+première.</p>
+<p  id="blk-552-14">La longueur 1, limite vers laquelle tend le périmètre d'un polygone ins-
+crit à l'arc AB et dont tous les côtés tendent vers zéro, est dite la lon-
+gueur de l'are de courbe AB. Il est clair, d'après ce qui précède, que, si on
+développe un cylindre sur un plan, toute ligne tracée sur la surface a même
+longueur que son développement.</p>
+<p  id="blk-552-15">La ligne droite est, dans l'espace, le plus court chemin d'un point A à un
+autre B. Car tout autre chemin est, soit une ligne brisée, plus longue que la
+ligne droite, soit une ligne courbe dont la longueur est la limite d'une
+ligne brisée (1).</p>
+<p  id="blk-552-16">Le rapport d'un arc de courbe gauche à sa corde tend vers l'unité lorsque
+l'arc tend vers zéro, car l'arc MN de la courbe AB (fig. 647) est égal à l'arc<!-- spr -->arc</p>
+<p  id="blk-552-18">M.N</p>
+<p  id="blk-552-19">M₁N₁ de la courbe AB₁; le rapport<!-- spr -->tend vers l'unité et nous
+corde M,N<!-- spr -->corde M₁N₁
+avons vu qu'il en est de mème pour le rapport<!-- spr -->corde MN</p>
+<p class="article" id="blk-552-23"><strong class="article-num" id="article-810">810.</strong> Plus court chemin d'un point à un autre sur la
+sphère.</p>
+<p  id="blk-552-24">Appliquons ce qui précède à une ligne sphérique AB. Inscrivons dans
+cette ligne le polygone A... MN... B, puis remplaçons chaque côté par l'arc
+de grand cercle qui a mêmes extrémités nous obtenons ainsi une ligne
+composée d'arc de grands cercles successifs, ou ligne brisée sphérique.</p>
+<p  id="blk-552-25">Lorsque les côtés du polygone tendent vers zéro, le rapport de chaque</p>
+<p  id="blk-552-26">(1) La longueur de la ligne courbe ne peut être égale à celle de la ligne droite, car, si C est
+un point extérieur à la droite, mais situé sur la courbe, celle-ci est au moins égale à AC + BC,
+lequel est plus grand que la droite AB.</p><div class="scan-inline"><img src="img/scan/srcpage-552.png"/></div></data><data data-scanhref="img/scan/srcpage-553.png"><p class="newpage"></p>
+<p  id="blk-553-01">SUR LES NOTIONS DE LONGUEUR, D'AIRE ET DE VOLUME.<!-- skp data-txt='533' --><!-- spr -->arc de grand cercle à la corde correspondante tend vers 1, et il en est de
+même, par conséquent, du rapport de la ligne brisée sphérique à la ligne
+brisée rectiligne, de sorte que ces deux quantités ont même limite. Ainsi
+la longueur d'une courbe sphérique est la limite vers laquelle tend la longueur
+d'une ligne brisée sphérique inscrite, dont tous les côtés tendent vers zéro.</p>
+<p  id="blk-553-04">L'arc de grand cercle qui joint A et B est plus court que toute ligne brisée
+sphérique joignant les mêmes points. Il est donc aussi plus court que toute
+courbe sphérique allant de A en B: l'arc de grand cercle est le plus court
+chemin entre deux points de la sphère.</p>
+<p class="article" id="blk-553-05"><strong class="article-num" id="article-811">811.</strong> Considérons un cône quelconque, ou la portion d'un cône comprise
+entre deux génératrices OA, OB (fig. 648). Une sphère quelconque décrite</p>
+<p  id="blk-553-06">M₁<!-- skp data-txt='A' --><!-- skp data-txt='M' --><!-- skp data-txt='B' --></p>
+<p  id="blk-553-10">Αν</p>
+<p  id="blk-553-11">B₁<!-- skp data-txt='1' --></p>
+<p  id="blk-553-13">0.<img class="fig" src="img/FIG. 648.OCR.png" alt="FIG. 648." /><!-- skp data-txt='1' --><!-- spr -->du sommet O comme centre coupera ce cône suivant une ligne sphérique
+AB. Ayant décrit dans un plan, d'un point quelconque O, comme centre, un
+cercle de même rayon que la sphère, et pris sur la circonférence un point
+arbitraire A₁, nous ferons correspondre, à un point quelconque M de la
+ligne sphérique, le point M₁ pris sur la circonférence de manière que l'arc
+de cercle AM₁ ait même longueur que l'arc AM de la ligne sphérique; puis
+à chaque point P de la surface conique, le point P₁ pris à une distance
+de O₁ égale à OP, sur un rayon tel que son extrémité M₁ corresponde (au sens
+que nous venons d'indiquer) au point M où la génératrice OP coupe la
+sphère.</p>
+<p  id="blk-553-17">La figure formée par les points tels que P₁ est dite le développement de la
+surface conique. Le lecteur démontrera aisément, par des procédés ana-
+logues à ceux que nous avons employés pour le cylindre: 1º que toute ligne
+tracée sur le cône a même longueur que son développement; 2° que deux lignes
+se coupent sous le même angle que leurs développements.<!-- skp data-txt='1' --></p>
+<p class="article" id="blk-553-19"><strong class="article-num" id="article-812">812.</strong> On dit qu'une surface est développable lorsqu'on peut faire corres-
+pondre ses points à ceux d'un plan de manière que les lignes qui se corres-
+pondent aient même longueur de part et d'autre. C'est ce qui a lieu pour
+le cylindre et le cône. Il existe une infinité d'autres surfaces développables.
+Mais il faut se garder de croire que cette propriété appartienne à une sur-
+face quelconque : pour une surface prise au hasard, au contraire, elle n'a,
+en général, pas lieu. La sphère, par exemple, ne la possède pas.</p>
+<p  id="blk-553-20">C'est ce dont on peut se rendre compte en considérant les angles que
+font entre elles les lignes tracées sur une surface développable.</p><div class="scan-inline"><img src="img/scan/srcpage-553.png"/></div></data><data data-scanhref="img/scan/srcpage-554.png"><p class="newpage"><!-- skp data-txt='534' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-554-03">Soient S une telle surface; Ax, Ay (fig. 649) deux lignes concourantes de S,
+auxquelles correspondent, lorsque cette surface est développée sur un plan
+(ce que nous supposons possible), les deux lignes A₁₁, A₁₁. Coupons Ax, Ay
+par une troisième ligne BC, ayant pour développement B,C, et supposons que
+les points B et C se rapprochent indéfiniment du point A. Dans ces condi-
+tions, les directions des lignes AB, AC; A₁B₁, A₁C₁ tendent respectivement</p>
+<p  id="blk-554-04">44 A<!-- skp data-txt='B' --><!-- spr -->a<img class="fig" src="img/FIG. 649.OCR.png" alt="FIG. 649." /><!-- spr -->vers celles des tangentes aux lignes Ax, Ay, A₁x₁, A₁₁ en A et en A₁.
+De plus, les rapports des arcs AB, AC, A₁B₁, A₁C₁ aux cordes correspon-
+dantes tendront vers l'unité.</p>
+<p  id="blk-554-09">Nous ne pouvons pas étendre cette conclusion aux arcs BC, B₁C₁, puisque
+les courbes BC et B₁C₁ sont variables. Mais on démontre que, moyennant
+certaines restrictions simples imposées à S, on peut choisir les courbes
+variables BC, B₁C₁, de manière que les rapports des arcs BC, B₁C, à leurs</p>
+<p  id="blk-554-10">AB
+cordes respectives tendent vers 1 et que, de plus, le rapport<!-- spr -->tende vers
+AC<!-- spr -->une limite.</p>
+<p  id="blk-554-13">En tout cas, si S était une sphère, un tel choix serait assurément pos-
+sible: il suffirait de prendre pour BC un arc de grand cercle(¹).</p>
+<p  id="blk-554-14">Mais d'après l'hypothèse, les arcs AB et A₁B₁ ont même longueur, de
+même que AC, A₁₁ еt BC, B₁C₁. Donc le rapport de la corde AB à la corde
+A₁B₁ tend vers l'unité, et il en est de même pour chacune des cordes AC,
+BC et sa correspondante.</p>
+<p  id="blk-554-15">Par conséquent, si, sur une droite fixe ab comme base, nous construisons
+un triangle abc semblable à ABC et un triangle abc semblable à A₁BС₁, lе</p>
+<p  id="blk-554-16">AC BC<!-- spr -->point c tendra vers une position limite (puisque les rapports</p>
+<p  id="blk-554-18">AB' AB<!-- spr -->admettent chacun une valeur limite) et le point c₁ tendra vers la mème</p>
+<p  id="blk-554-20">ас</p>
+<p  id="blk-554-21">AC</p>
+<p  id="blk-554-22">AB<!-- spr -->limite (puisque<!-- spr -->bc<!-- skp data-txt='-). Donc' --></p>
+<p  id="blk-554-26">:<!-- spr -->tend vers l'unité, et de mème</p>
+<p  id="blk-554-28">ас1</p>
+<p  id="blk-554-29">AC AB<!-- spr -->bc₁<!-- skp data-txt='-' --><!-- spr -->l'angle bac BAC tend vers la même limite que bac₁ = В₁A₁С₁: autrement
+dit, l'angle des deux courbes ₁₁, А₁₁ еst égal à celui des deux courbes
+Ax, Ay. Ainsi, il devra toujours arriver (comme nous l'avons trouvé dans</p>
+<p  id="blk-554-33">(1) On va voir, au numéro suivant que, dans ces conditions, B₁C₁ est un segment de droite.</p><div class="scan-inline"><img src="img/scan/srcpage-554.png"/></div></data><data data-scanhref="img/scan/srcpage-555.png"><p class="newpage"></p>
+<p  id="blk-555-01">SUR LES NOTIONS DE LONGUEUR, D'AIRE ET DE VOLUME.<!-- skp data-txt='535' --></p>
+<p  id="blk-555-03">....</p>
+<p  id="blk-555-04">....<!-- spr -->les cas du cône et du cylindre) que l'angle de deux courbes quelconques de
+la surface soit égal à celui de leurs développements.</p>
+<p class="article" id="blk-555-06"><strong class="article-num" id="article-813">813.</strong> Cela posé, admettons que la surface S soit une sphère. Alors la
+ligne la plus courte entre deux points de la sphère devra évidemment
+avoir pour image la ligne la plus courte entre deux points du plan:
+autrement dit, les grands cercles de la sphère auront pour images les
+droites du plan et un triangle sphérique aura pour image un triangle recti-
+ligne du plan. Or cela est absurde, puisque la somme des angles d'un triangle
+rectiligne est égale à deux droits et celle des angles d'un triangle sphé.
+rique, toujours plus grande que deux droits.</p>
+<p  id="blk-555-07">Donc la sphère, ou même n'importe quelle aire sphérique, si petite
+qu'elle soit (puisqu'on pourra toujours y trouver un triangle sphérique), ne
+pourra jamais être développée sur le plan (1).</p>
+<p class="article" id="blk-555-08"><strong class="article-num" id="article-814">814.</strong> Volumes limités par des surfaces courbes.
+Soit une portion d'espace S limitée par des surfaces quelconques.</p>
+<p  id="blk-555-09">Supposons que nous puissions trouver deux séries indéfinies de polyèdres
+P1, P2, Pn, Q1, Q2, Qn,... satisfaisant aux conditions suivantes :</p>
+<p  id="blk-555-10">1° Quel que soit n, le polyèdre (2) P₂ n'a aucun point extérieur à S
+(tout ou partie des sommets, ou des arêtes ou mème des faces de Pn pou-
+vant faire partie des surfaces limites de S);</p>
+<p  id="blk-555-11">2° Quel que soit n, l'espace S n'a aucun point extérieur à Qn (une partie
+quelconque de la surface limite de S pouvant être sur la surface de Qn);</p>
+<p  id="blk-555-12">3° La différence Qn - Pn des volumes des deux polyèdres de même
+indice tend vers zéro lorsque cet indice n augmente indéfiniment; ou</p>
+<p  id="blk-555-13">Q
+encore, le rapport tend vers l'unité dans les mêmes conditions.</p>
+<p  id="blk-555-14">Pn
+Alors je dis que les volumes Pn, Qn tendent vers une limite commune V.</p>
+<p  id="blk-555-15">Pour le démontrer, je remarque tout d'abord que tout polyèdre Qn de
+la seconde série renferme tout polyèdre Pn de la première à son intérieur
+et que, par conséquent, tout volume de la seconde série est plus grand
+que n'importe quel volume de la première.</p>
+<p  id="blk-555-16">Cela posé, supposons d'abord que, parmi les Pn, il y en ait un, Pa, plus
+grand que tous les suivants (ou au moins égal à l'un quelconque d'entre eux)</p>
+<p  id="blk-555-17">Alors, lorsque l'indice n est plus grand que a, les quantités Qn, Pn com-
+prennent entre elles Pa et comme leur différence tend vers zéro ou leur
+rapport vers 1, il est évident qu'elles tendent vers la limite commune Pa.</p>
+<p  id="blk-555-18">Supposons, en second lieu, que jamais une des quantités P„ ne soit plus
+grande que toutes les suivantes : autrement dit, si nous prenons une quel-
+conque d'entre elles, soit Pa, il en existera une suivante, P³, plus grande<!-- skp data-txt='-' --></p>
+<p  id="blk-555-20">(1) De même, deux sphères de rayons différents ne sont pas applicables l'une sur l'autre,
+c'est-à-dire qu'il est impossible de faire correspondre point par point une portion de l'une
+à une portion de l'autre, de manière que les lignes qui se correspondent aient même longueur.</p>
+<p  id="blk-555-21">(2) Nous ne supposerons pas que le polyèdre P soit nécessairement d'un seul tenant on
+pourra prendre, pour P, l'ensemble de plusieurs polyèdres non contigus, pourvu que ces
+polyèdres et leur volume total vérifient les conditions indiquées dans le texte. Nous aurons
+plus loin (815 bis) à utiliser cette remarque.</p>
+<p  id="blk-555-22">ገኒ</p><div class="scan-inline"><img src="img/scan/srcpage-555.png"/></div></data><data data-scanhref="img/scan/srcpage-556.png"><p class="newpage"><!-- skp data-txt='536' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-556-03">Pr<!-- skp data-txt='-' --></p>
+<p  id="blk-556-05">...<!-- spr -->que Pa; puis une autre, P., suivant P₂, et plus grande que P3; et ainsi de
+suite indéfiniment.</p>
+<p  id="blk-556-07">Puisque les quantités Pa., P3, Pr, ... vont en croissant et qu'elles restent
+inférieures à une quantité déterminée (à savoir l'une quelconque des Qn),
+elles tendent vers une limite V, et les quantités Qa, Q3, Q¾, ….. tendent
+également vers V (puisque les différences Qu Pα, Q3 - PB, Qr</p>
+<p  id="blk-556-08">Qa
+ont pour limite zéro ou que les rapports</p>
+<p  id="blk-556-09">Ра<!-- spr -->ont pour limite 1).
+V est au moins égal à chacun des Pn (puisqu'il est la limite de la suite
+Qa, Q3, Q, dont tous les termes sont supérieurs à Pn) et au plus égal
+à chacun des Qn (comme limite de la suite Pa, Ps, P., ...). Donc il est la
+limite commune de Pn et de Qn, puisqu'il est constamment compris entre
+ces deux quantités, dont la différence tend vers zéro ou le rapport vers 1.</p>
+<p  id="blk-556-11">"...</p>
+<p  id="blk-556-12">***</p>
+<p  id="blk-556-13">C. Q. F. D.</p>
+<p  id="blk-556-14">De plus, si on forme, d'une manière quelconque, deux autres séries de
+polyèdres, P'n et Q'n, satisfaisant (comme Pn et Qn) aux conditions précédem-
+ment indiquées par rapport à la même portion d'espace S, la limite commune
+de Pn et de Q'n aura la même valeur V que la limite commune de Pn et
+de Qn.</p>
+<p  id="blk-556-15">Cette proposition n'est pas distincte de la précédente : car on peut former
+une suite comprenant alternativement des polyèdres P et des polyèdres
+P'n, ainsi qu'une composée des polyèdres Qn et Q'n correspondants: ces
+deux suites mixtes satisferont aux mêmes conditions que les premières et
+auront, par conséquent, une limite commune, ce qui ne se peut que si
+Pn et P'n, Qn et Q'n ont la même limite.</p>
+<p  id="blk-556-16">La quantité V, limite des volumes P et des volumes Qn, et indépendante
+(d'après ce que nous venons de constater) de la manière dont on choisit
+ceux-ci (pourvu que les uns comprennent S, que les autres soient compris
+dans S et que la différence des uns et des autres tende vers zéro ou leur
+rapport vers 1) est dite le volume de l'espace S. Il est clair que la notion
+de volume, une fois définie, possédera les propriétés indiquées au livre VI
+(397); c'est-à-dire que deux espaces égaux ont le même volume et que l'es-
+pace formé par la réunion de deux espaces contigus aura un volume égal
+à la somme de leurs volumes (¹).</p>
+<p class="article" id="blk-556-17"><strong class="article-num" id="article-815">815.</strong> Il reste à savoir si, une portion d'espace S étant donnée, on peut
+trouver les polyèdres Pn et Qn satisfaisant aux conditions indiquées.</p>
+<p  id="blk-556-18">Supposons que, à l'intérieur de S, on puisse trouver un point O tel que
+la droite qui le joint à un point quelconque de la surface limite de S (cette
+droite n'étant pas prolongée au delà de O) ne perce cette surface limite en
+aucun point. Soit S' l'homothétique de S par rapport au point O, avec un
+rapport d'homothétie 1<!-- spr -->plus petit que l'unité; S", l'homothétique de
+S par rapport au centre O, avec le rapport de similitude 1+ : il est clair<!-- skp data-txt='-' --></p>
+<p  id="blk-556-21">(1) Sur ce dernier point, voir plus loin, 815 bis.</p><div class="scan-inline"><img src="img/scan/srcpage-556.png"/></div></data><data data-scanhref="img/scan/srcpage-557.png"><p class="newpage"></p>
+<p  id="blk-557-01">SUR LES NOTIONS DE LONGUEUR, D'AIRE ET DE VOLUME.<!-- skp data-txt='537' --><!-- spr -->que chacun des solides S', S, S" est entièrement intérieur au suivant. Soit
+alors R un polyèdre intérieur à S", mais comprenant S' à son intérieur.<!-- spr -->i</p>
+<p  id="blk-557-05">L'homothétique P de R par rapport à O avec le rapport d'homothétie</p>
+<p  id="blk-557-06">1ε<!-- spr -->sera intérieur à S (puisque R est intérieur à S); et l'homothétique Q de R<!-- skp data-txt='1' --><!-- spr -->par rapport à O, avec le rapport d'homothétie<!-- spr -->comprendra S à son</p>
+<p  id="blk-557-11">1
+― Є<!-- spr -->intérieur (puisque R comprend S"). D'ailleurs le rapport des volumes de P et<!-- skp data-txt='3' --><!-- spr -->de Q est (431) égal à</p>
+<p  id="blk-557-15">(+)³ et<!-- spr -->et tend vers 1 lorsque & tend vers zéro.</p>
+<p  id="blk-557-17">Dès lors, si on donne à une série de valeurs qui tendent vers zéro, et
+si, pour chacune de ces valeurs, on construit le polyèdre R et, par consé-
+quent, les polyèdres P et Q, on a une double série de polyèdres remplis-
+sant toutes les conditions demandées.</p>
+<p class="article" id="blk-557-18"><strong class="article-num" id="article-815 bis">815 bis.</strong> Si la forme de la région S est telle que le raisonnement
+précédent ne s'y applique pas, on pourra, en général, la décomposer en
+deux ou plusieurs régions partielles auxquelles il soit applicable. On
+formera alors chaque polyèdre P avec l'ensemble des polyèdres P relatifs
+à ces régions partielles (1) et le polyèdre Q avec l'ensemble des polyèdres
+Q relatifs à ces mêmes régions.</p>
+<p  id="blk-557-19">,</p>
+<p class="article" id="blk-557-20"><strong class="article-num" id="article-816">816.</strong> Soit à la distance minima de la surface limite de S à celle de S' et
+à celle de S", c'est-à-dire une quantité telle que tout point de la première
+soit au moins à la distance d de tout point de la seconde et au moins à la
+distance d de tout point de la troisième.</p>
+<p  id="blk-557-21">Inscrivons à la surface limite de S un polyèdre comprenant le point O à
+son intérieur et tel que la plus grande dimension de chaque face soit
+inférieure à d. Alors la surface de ce polyèdre ne pourra évidemment avoir
+aucun point commun avec la surface de S", ni avec la surface de S', ni
+même avec l'intérieur de S'. Donc ce polyèdre est compris dans S" et
+comprend S': on peut le prendre pour le polyèdre R du numéro précédent,
+et si l'on forme de pareils polyèdres pour des valeurs de plus en plus
+petites de e, leurs volumes tendent vers V.</p>
+<p  id="blk-557-22">Comme tend vers zéro avec d, on voit que, si l'on inscrit à la surface
+limite de S un polyèdre (comprenant toujours à son intérieur un point déter-
+miné intérieur à S) et tel que la plus grande dimension de chacune de ses faces
+tende vers zéro, le volume de ce polyèdre tendra vers le volume de S. On voit
+d'ailleurs immédiatement que cette conclusion s'étend au cas où l'on ne
+peut appliquer directement le raisonnement du n° 815 et où on est obligé
+de décomposer S en deux ou plusieurs parties comme il est expliqué au
+n° 815 bis.</p>
+<p  id="blk-557-23">Lorsqu'il s'agit de la sphère, on peut prendre pour le point O le centre
+et les solides S'S" seront des sphères concentriques à la première. La
+distance d sera la différence des rayons de S et de S' et on pourra prendre,</p>
+<p  id="blk-557-24">(1) Voir la note 2, page 535.</p><div class="scan-inline"><img src="img/scan/srcpage-557.png"/></div></data><data data-scanhref="img/scan/srcpage-558.png"><p class="newpage"><!-- skp data-txt='538' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->pour R, tout polyèdre inscrit dont les dimensions sont toutes plus petites
+que cette différence (¹).<!-- spr -->comme</p>
+<p class="article" id="blk-558-05"><strong class="article-num" id="article-817">817.</strong> Dans le cas du còne ou du cylindre, la définition précédente
+concorde avec celles que nous avons données au livre VIII. Prenant, par
+exemple, le cas du cylindre, il est clair que les prismes inscrits et circons-
+crits sont précisément des polyèdres Pn et Qn tels que nous les avons<!-- spr -->introduits au nº 815.</p>
+<p  id="blk-558-07">D'ailleurs, le prisme inscrit tel que les côtés de
+sa base tendent vers zéro, peut être considéré<!-- spr -->un polyèdre inscrit dans lequel la plus
+grande dimension de chaque face tend vers zéro. Il
+suffira, à cet effet, de diviser chaque arête latérale
+du prisme en un certain nombre de parties égales,
+lequel nombre ira en augmentant indéfiniment en
+même temps que le nombre des côtés de la base
+(fig. 631). Les points de division feront partie, comme
+les sommets extrêmes eux-mèmes, de la surface cylin-
+drique, et, par conséquent, les petits rectangles<!-- spr -->qu'ils forment (fig. 651) pourront être considérés
+comme faces d'un polyèdre inscrit, plusieurs de ces faces étant seule-
+ment en prolongement les unes des autres, ce qui ne change rien à la
+validité des raisonnements.</p>
+<p  id="blk-558-10">Des considérations toutes semblables s'appliquent évidemment au cône.<img class="fig" src="img/FIG. 651.OCR.png" alt="FIG. 651." /><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-558-13"><strong class="article-num" id="article-818">818.</strong> Considérons, de même, le volume V engendré par un polygone
+plan tournant autour d'un axe situé dans son plan et qui ne le traverse
+pas.</p>
+<p  id="blk-558-14">Considérons p positions du polygone, ABCD, A'B'C'D' (fig. 632) étant,<!-- skp data-txt='B' --><!-- spr -->b<!-- skp data-txt="B'" --><!-- skp data-txt='C' --><!-- skp data-txt='0' --><!-- skp data-txt='A' --><!-- skp data-txt='A' --><!-- skp data-txt='D' --><img class="fig" src="img/FIG. 652.OCR.png" alt="FIG. 652." /><img class="fig" src="img/FIG. 650.OCR.png" alt="FIG. 650." /></p>
+<p  id="blk-558-25">(1) Par exemple, on pourra diviser la sphère par des méridiens et des parallèles (fig. 630)
+dont les longitudes ou les latitudes diffèrent entre elles d'une quantité à telle que l'arc de
+grand cercle d'angle au centre à ait une longueur inférieure à d. Les points d'intersection de
+ces méridiens et de ces parallèles seront les sommets d'un polyèdre inscrit dont toutes les
+faces, qui seront des trapèzes ou des triangles, auront leurs dimensions plus petites que d.</p><div class="scan-inline"><img src="img/scan/srcpage-558.png"/></div></data><data data-scanhref="img/scan/srcpage-559.png"><p class="newpage"></p>
+<p  id="blk-559-01">SUR LES NOTIONS DE LONGUEUR, D'AIRE ET DE VOLUME.<!-- skp data-txt='539' --><!-- skp data-txt='B' --><!-- spr -->h<!-- skp data-txt='A' --><!-- skp data-txt='H' --><!-- spr -->par exemple, deux consécutives d'entre elles. Les polygones ABCD, A/B/C/D'
+sont symétriques l'un de l'autre par rapport à un plan, le plan bissecteur
+du dièdre dans les faces duquel ils sont respectivement contenus. Il existe
+donc un tronc de prisme qui a pour base ces deux polygones, les arêtes
+étant perpendiculaires à ce plan de symétrie. Considérons le polyèdre
+formé par l'ensemble des troncs de prismes qui ont ainsi pour bases les
+couples de positions consécutives du polygone. Si nous augmentons indéfi-
+niment le nombre de ces positions de manière que les dièdres successifs
+que forment entre elles leurs plans tendent vers zéro, le volume du
+polyèdre dont nous venons de parler tendra vers V, ainsi qu'il résultera de
+considérations toutes pareilles à celles que nous
+venons de présenter au nº précédent.</p>
+<p  id="blk-559-08">Cette remarque permet de démontrer très simple-
+ment certaines propositions importantes. Suppo-
+sons, par exemple, que le polygone considéré soit
+un triangle ABC ayant son sommet A sur l'axe,
+alors les troncs de prismes se réduiront à des pyra-
+mides telles que ABCB'C' (fig. 633).</p>
+<p  id="blk-559-09">Chacune de ces pyramides a pour mesure le tiers
+du produit de sa base BCB'C' par sa hauteur AH,
+de sorte que leur somme est égale au tiers de la
+somme des bases multipliée par une quantité inter-
+médiaire entre la plus petite et la plus grande des
+hauteurs. Or, lorsqu'on augmente indéfiniment le
+nombre des positions successives du triangle, la somme des trapèzes BCB'C'.
+tend vers la surface engendrée par BC dans sa révolution autour de l'axe,
+et quant à la hauteur AH, elle tend vers la hauteur Ah du triangle ABC, car
+la distance hH, qui est la distance du point H à la droite BC, tend vers
+zéro.</p>
+<p  id="blk-559-10">Nous avons donc immédiatement le théorème du nº 485 : le volume
+engendré par un triangle tournant autour d'un axe situé dans son plan,
+passant par son centre et ne le traversant pas, est égal à la surface engendrée
+par le côté opposé au sommet situé sur l'axe, multipliée par le tiers de la
+hauteur correspondante.<!-- skp data-txt='C' --><!-- skp data-txt="C'" --><img class="fig" src="img/FIG. 653.OCR.png" alt="FIG. 653." /></p>
+<p class="article" id="blk-559-14"><strong class="article-num" id="article-819">819.</strong> Revenons au cas où le polygone tournant est quelconque: la
+remarque précédente nous donne encore (du moins pour le cas d'un
+polygone) le théorème de Guldin.<!-- skp data-txt='-' --></p>
+<p  id="blk-559-16">Théorème. Le volume engendré par une aire plane qui tourne autour
+d'un axe situé dans son plan et ne le traversant pas, est égal au produit de
+cette aire par la circonférence que décrit son centre de gravité.</p>
+<p  id="blk-559-17">Soient, en effet, G le centre de gravité du polygone ABCD, G' le centre de
+gravité de la position suivante A'B'C'D' (fig. 652).</p>
+<p  id="blk-559-18">Le tronc de prisme ABCDA'B'C'D' a pour mesure (608) le produit de
+sa section droite par la distance GG'.</p><div class="scan-inline"><img src="img/scan/srcpage-559.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

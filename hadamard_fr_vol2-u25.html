@@ -1,0 +1,510 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-310.png"><p class="newpage"></p>
+<p  id="blk-310-01">COMPLÉMENTS DE GÉOMÉTRIE DANS L'ESPACE</p>
+<p  id="blk-310-02">CHAPITRE PREMIER</p>
+<p  id="blk-310-03">CENTRE DES DISTANCES PROPORTIONNELLES<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-310-05"><strong class="article-num" id="article-593">593.</strong> Problème. Étant données, en grandeur et signe, les
+abscisses IA et IB de deux points A, B d'une droite, rapportées à un
+point I de la même droite, trouver l'abscisse du point M qui divise le</p>
+<p  id="blk-310-06">MA
+segment AB dans un rapport donné (en grandeur et en signe)<!-- spr -->q</p>
+<p  id="blk-310-08">MB<!-- skp data-txt='P' --></p>
+<p  id="blk-310-10">On a</p>
+<p  id="blk-310-11">MA</p>
+<p  id="blk-310-12">_</p>
+<p  id="blk-310-13">ΙΑ</p>
+<p  id="blk-310-14">IM<!-- skp data-txt='-' --></p>
+<p  id="blk-310-16">MB<!-- skp data-txt='-' --></p>
+<p  id="blk-310-18">IB</p>
+<p  id="blk-310-19">IM<!-- skp data-txt='-' --><!-- spr -->et, par conséquent,</p>
+<p  id="blk-310-22">ΙΑ</p>
+<p  id="blk-310-23">IM<!-- skp data-txt='-' --><!-- spr -->q</p>
+<p  id="blk-310-26">IB<!-- skp data-txt='-' --></p>
+<p  id="blk-310-28">IM<!-- skp data-txt='P' --></p>
+<p  id="blk-310-30">Cette équation, où tout est connu, sauf OM, est du premier degré
+par rapport à cette quantité. Elle fait connaître l'abscisse cherchée</p>
+<p  id="blk-310-31">IM<!-- skp data-txt='-' --><!-- spr -->p. IA+q.IB</p>
+<p  id="blk-310-34">P+9</p>
+<p  id="blk-310-35">Comme nous devions nous y attendre (Pl., 110), cette expression
+est infinie pour q<!-- spr -->p, et dans ce cas seulement.<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-310-39">Corollaire. Par le point I, faisons passer une droite ou un plan
+quelconque (fig. 503) et soient AA₁ = a, BB₁ = b, MM₁ = m les
+distances des points A, B, M à cette droite ou à ce plan. Nous suppo-</p><div class="scan-inline"><img src="img/scan/srcpage-310.png"/></div></data><data data-scanhref="img/scan/srcpage-311.png"><p class="newpage"></p>
+<p  id="blk-311-01">CENTRE DES DISTANCES PROPORTIONNELLES.<!-- skp data-txt='291' --><!-- spr -->sons d'ailleurs ces distances comptées en grandeur et signe, un sens
+positif ayant été choisi sur leur direction com-
+mune. On aura alors<!-- skp data-txt='B' --></p>
+<p  id="blk-311-05">M.<!-- spr -->m ==<!-- spr -->pa + qb
+P+q</p>
+<p  id="blk-311-08">A, M,</p>
+<p  id="blk-311-09">B₁<img class="fig" src="img/FIG. 503.OCR.png" alt="FIG. 503." /></p>
+<p  id="blk-311-11">En effet, les grandeurs a, b, m sont, en gran-
+deur et signe (Pl., 190), proportionnelles à IA,
+IB, IM. L'équation précédente étant homogène par rapport à ces
+dernières quantités, on peut donc les y remplacer par a, b, m : ce
+qui donne le résultat annoncé.</p>
+<p  id="blk-311-12">REMARQUE I. Ce résultat ne serait d'ailleurs aucunement mis
+en défaut si les distances a, b, m, au lieu d'être comptées sur des
+perpendiculaires au plan considéré, étaient comptées suivant des
+parallèles à une même direction quelconque (non parallèle à ce
+plan).</p>
+<p  id="blk-311-13">M₁A₁
+REMARQUE II. Nous savons (Pl., 113) que le rapport<!-- spr -->a<!-- skp data-txt='-' --></p>
+<p  id="blk-311-16">M₁ B₁<!-- skp data-txt='1' --></p>
+<p  id="blk-311-18">également la même valeur</p>
+<p  id="blk-311-19">9.<!-- spr -->p</p>
+<p  id="blk-311-21">....</p>
+<p class="article" id="blk-311-22"><strong class="article-num" id="article-594">594.</strong> Soient donnés un certain nombre de points A, B, C, D, …….
+(fig. 504) et les nombres p, q, r, s, positifs ou négatifs, mais non<!-- spr -->tous nuls, correspondant respectivement
+à ces points. Soient M le point qui divise</p>
+<p  id="blk-311-24">ΜΑ<!-- spr -->q
+AB dans le rapport<!-- skp data-txt='B' --><!-- skp data-txt='M' --></p>
+<p  id="blk-311-28">M"<!-- skp data-txt='D' --><!-- skp data-txt='M' --><!-- skp data-txt='-2);' --><!-- skp data-txt='-' --><!-- skp data-txt='I' --></p>
+<p  id="blk-311-34">_</p>
+<p  id="blk-311-35">P\MB</p>
+<p  id="blk-311-36">с</p>
+<p  id="blk-311-37">M', le point qui divise MC dans le rap-</p>
+<p  id="blk-311-38">ԴՐ</p>
+<p  id="blk-311-39">2"<!-- skp data-txt='-' --></p>
+<p  id="blk-311-41">M",</p>
+<p  id="blk-311-42">M₁Mi<!-- spr -->p + q )<!-- skp data-txt="'D₁" --><!-- spr -->p+</p>
+<p  id="blk-311-46">M'M
+port</p>
+<p  id="blk-311-47">;
+p + q M'C
+le point qui divise M'D dans le rapport</p>
+<p  id="blk-311-48">M"M'<!-- skp data-txt='S' --><!-- skp data-txt='S' --><img class="fig" src="img/FIG. 504.OCR.png" alt="FIG. 504." /></p>
+<p  id="blk-311-52">; etc.</p>
+<p  id="blk-311-53">P+g+M"D<!-- spr -->p + q + r
+Si a, b, c, d, ... sont les distances des points A, B, C, D, ... à un
+plan quelconque P, la distance m du point M au même plan sera
+(nº précédent)<!-- spr -->pa +qb
+p + q<!-- spr -->m =</p><div class="scan-inline"><img src="img/scan/srcpage-311.png"/></div></data><data data-scanhref="img/scan/srcpage-312.png"><p class="newpage"><!-- skp data-txt='292' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-312-03">La distance m' du point M' à ce plan sera<!-- spr -->m'</p>
+<p  id="blk-312-05">(p + q) m +rc
+(p + q) + r<!-- spr -->pa + qb + rc
+P + 9 + r<!-- spr -->de même la distance du point M" sera<!-- spr -->m"</p>
+<p  id="blk-312-09">( p + q + r) m' + sd
+(p + 9 + 1 ) + s<!-- spr -->pa+qb+ rc + sd
+P + q + r + s</p>
+<p  id="blk-312-11">Continuons ainsi jusqu'à ce que nous ayons utilisé tous les points
+donnés et chacun d'eux une seule fois; nous obtiendrons un point
+O qu'on appelle le centre des distances proportionnelles des points
+A, B, C, D, ... affectés des coefficients p, q, r, s,</p>
+<p  id="blk-312-12">La distance de ce point au plan P est</p>
+<p  id="blk-312-13">....<!-- skp data-txt='O' --><!-- spr -->paqbrc + sd + ...
+·P+9+r+s+...</p>
+<p  id="blk-312-16">Nous avons dit que l'on devait utiliser chacun des points donnés
+une seule fois; mais nous n'avons pas spécifié l'ordre dans lequel
+on les faisait intervenir. Il semblerait, au premier abord, que<!-- spr -->la
+position du point final O dût dépendre de l'ordre en question. Le
+résultat qui précède montre qu'il n'en est rien. La valeur trouvée
+pour la distance du point 0 au plan P est, en effet, indépendante de
+cet ordre (pourvu, bien entendu, qu'à chacun des points donnés cor-
+responde toujours le même coefficient) et, par conséquent, si, en
+changeant l'ordre en question, on trouvait un point O' différent du
+premier, la droite 00' devrait être parallèle au plan P, et cela quel
+que soit le plan P, ce qui est absurde.</p>
+<p  id="blk-312-18">C₁, M</p>
+<p  id="blk-312-19">1"</p>
+<p  id="blk-312-20">REMARQUE.
+Soient A₁, B₁,</p>
+<p  id="blk-312-21">M₁,.., O₁ les projections sur
+le plan P, des points A, B, C... M, M... O (fig. 504). Le point M,
+divisera A,B, dans le rapport</p>
+<p  id="blk-312-22">1; le point M', divisera C,M, dans
+P<!-- skp data-txt='-' --></p>
+<p  id="blk-312-24">γ<!-- spr -->le rapport</p>
+<p  id="blk-312-26">; etc. En un mot, le point O₁ sera le centre des</p>
+<p  id="blk-312-27">P+9
+distances proportionnelles des points A, B, C,... affectés des mêmes
+coefficients que les points donnés A, B, C... et la même chose a lieu si
+les droites AA,, BB,,... au lieu d'être perpendiculaires au plan P,
+sont parallèles à une même direction quelconque.</p><div class="scan-inline"><img src="img/scan/srcpage-312.png"/></div></data><data data-scanhref="img/scan/srcpage-313.png"><p class="newpage"></p>
+<p  id="blk-313-01">CENTRE DES DISTANCES PROPORTIONNELLES.<!-- skp data-txt='293' --></p>
+<p class="article" id="blk-313-03"><strong class="article-num" id="article-595">595.</strong> Le centre des distances proportionnelles n'est évidemment.
+autre chose que ce que l'on nomme en statique le centre des forces.
+parallèles, les points donnés étant les points d'application des forces,
+et les intensités de celles-ci étant représentées par les coefficients
+P, q, r,... lesquels sont positifs ou négatifs suivant le sens des forces
+correspondantes.</p>
+<p class="article" id="blk-313-04"><strong class="article-num" id="article-596">596.</strong> Il y a une circonstance où la suite d'opérations que nous
+venons d'indiquer tomberait en défaut, c'est celle où l'on aurait à
+diviser une droite dans un rapport égal à +1, par exemple, où les
+deux premiers coefficients seraient égaux et de signes contraires. Il
+est aisé de voir qu'on peut toujours tourner la difficulté en inter-
+vertissant l'ordre des points donnés, sauf dans un cas, celui où la
+somme de tous les coefficients donnés est nulle. Dans le langage de
+la statique, ce cas correspond à celui où les forces données équi-
+valent à un couple'.</p>
+<p class="article" id="blk-313-05"><strong class="article-num" id="article-597">597.</strong> Lorsque tous les coefficients sont égaux à + 1, le centre des
+distances proportionnelles prend le nom de centre des moyennes dis-
+tances. Le centre des moyennes distances d'un système de points
+peut donc être considéré comme défini par cette propriété que sa
+distance à un plan quelconque est la moyenne arithmétique des
+distances des points donnés.<!-- skp data-txt='B' --><!-- skp data-txt='0' --><!-- skp data-txt='A' --></p>
+<p  id="blk-313-09">A₁</p>
+<p  id="blk-313-10">B₁</p>
+<p class="article" id="blk-313-11"><strong class="article-num" id="article-598">598.</strong> Nous allons considérer en particulier les cas où les points
+donnés sont au nombre de deux, trois ou
+quatre.</p>
+<p  id="blk-313-12">Supposons d'abord qu'il n'y ait que deux
+points A, B (fig. 505) affectés des coefficients
+p. g. Le centre des distances proportionnelles
+est alors un point de la droite AB. D'autre
+part, A et B étant donnés, ce centre peut coïn-
+cider avec un point quelconque O de la droite AB, pour un choix
+convenable de p et de q: il suffit évidemment de prendre<img class="fig" src="img/FIG. 505.OCR.png" alt="FIG. 505." /><!-- spr -->q</p>
+<p  id="blk-313-15">OA<!-- skp data-txt='-' --><!-- skp data-txt='P' --></p>
+<p  id="blk-313-18">OB</p>
+<p  id="blk-313-19">(1) Dans le cas où les forces données se font équilibre, le centre des distances proportion-
+nelles n'est plus rejeté à l'infini, mais indéterminé. Dans la suite d'opérations indiquées dans
+le texte, on arriverait encore finalement à deux points affectés de coefficients égaux et de
+signes contraires, mais ces deux points coïncideraient entre eux.</p><div class="scan-inline"><img src="img/scan/srcpage-313.png"/></div></data><data data-scanhref="img/scan/srcpage-314.png"><p class="newpage"><!-- skp data-txt='294' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-314-03">Introduisons le nombre t donné par la relation<!-- spr -->p+q+t=0;<!-- spr -->la relation précédemment obtenue</p>
+<p  id="blk-314-06">0 ==<!-- spr -->pa+qb
+p + q<!-- spr -->entre les distances des points A, B, O, devient</p>
+<p  id="blk-314-09">__<!-- spr -->pa+qb+to</p>
+<p  id="blk-314-11">: 0.</p>
+<p  id="blk-314-12">Ainsi, étant donnés trois points quelconques en ligne droite, on
+peut trouver trois nombres non tous nuls, mais dont la somme est nulle
+et qui donnent lieu à la relation précédente entre les distances des trois
+points donnés à un plan quelconque.</p>
+<p  id="blk-314-13">La condition précédente détermine d'ailleurs complètement, sinon
+les nombres p, q, t eux-mêmes, du moins leurs rapports mutuels:</p>
+<p  id="blk-314-14">Ρ</p>
+<p  id="blk-314-15">ΙΑ
+on a (puisque<!-- spr -->et que p+q + t = 0)
+q</p>
+<p  id="blk-314-17">IB</p>
+<p  id="blk-314-18">=<!-- spr -->t</p>
+<p  id="blk-314-20">Ρ
+BO<!-- spr -->q
+OA<!-- spr -->p + q
+BO + OA</p>
+<p  id="blk-314-23">BA</p>
+<p  id="blk-314-24">AB<!-- skp data-txt='A' --><!-- skp data-txt='N' --></p>
+<p  id="blk-314-27">ԴՐ</p>
+<p class="article" id="blk-314-28"><strong class="article-num" id="article-599">599.</strong> Soient à présent trois points A, B, C (fig. 506), que nous<!-- spr -->supposerons former un triangle; soient encore
+p, q, les coefficients correspondants.</p>
+<p  id="blk-314-30">Si nous divisons BC dans un rapport
+MB
+MC<!-- spr -->le centre des distances proportion-
+P<!-- spr -->q
+nelles cherché O est situé sur la droite AM.
+On voit que ce point est nécessairement dans le
+plan ABC.</p>
+<p  id="blk-314-33">NC</p>
+<p  id="blk-314-34">P
+En divisant de même CA dans un rapport<!-- spr -->et AB dans
+ΝΑ<!-- skp data-txt='C' --><!-- skp data-txt='B' --><!-- skp data-txt='M' --><img class="fig" src="img/FIG. 506.OCR.png" alt="FIG. 506." /></p>
+<p  id="blk-314-40">=1=<!-- skp data-txt='-' --></p>
+<p  id="blk-314-42">""</p>
+<p  id="blk-314-43">PA</p>
+<p  id="blk-314-44">9
+un rapport<!-- spr -->les droites BN, CP donnent deux nouveaux
+PB</p>
+<p  id="blk-314-46">Ρ
+lieux du point O.</p>
+<p  id="blk-314-47">Il résulte de là une nouvelle démonstration du théorème du<!-- spr -->n° 197 (Pl., Compl. du livre III).</p><div class="scan-inline"><img src="img/scan/srcpage-314.png"/></div></data><data data-scanhref="img/scan/srcpage-315.png"><p class="newpage"></p>
+<p  id="blk-315-01">CENTRE DES DISTANCES PROPORTIONNELLES.<!-- skp data-txt='295' --></p>
+<p  id="blk-315-03">Si, en effet, les côtés d'un triangle ABC sont divisés par les points</p>
+<p  id="blk-315-04">MB NC PA
+M, N, P (fig. 506), de manière que MC NA PB</p>
+<p  id="blk-315-05">1, on peut évi-<!-- spr -->demment poser</p>
+<p  id="blk-315-07">MB</p>
+<p  id="blk-315-08">↑</p>
+<p  id="blk-315-09">=</p>
+<p  id="blk-315-10">MC<!-- skp data-txt='1221' --></p>
+<p  id="blk-315-12">NC</p>
+<p  id="blk-315-13">_</p>
+<p  id="blk-315-14">ΝΑ</p>
+<p  id="blk-315-15">1°<!-- skp data-txt='-' --></p>
+<p  id="blk-315-17">MB NC PA
+et, en vertu de la relation</p>
+<p  id="blk-315-18">MC NA PB</p>
+<p  id="blk-315-19">1, l'on aura néces-</p>
+<p  id="blk-315-20">,<!-- spr -->sairement</p>
+<p  id="blk-315-22">РА<!-- spr -->q</p>
+<p  id="blk-315-24">PB</p>
+<p  id="blk-315-25">Ρ</p>
+<p  id="blk-315-26">Les remarques précédentes montrent dès lors que les trois droites
+AM, BN, CP concourent en un même point, à savoir le centre des
+distances proportionnelles des points A, B, C.</p>
+<p class="article" id="blk-315-27"><strong class="article-num" id="article-599 bis">599 bis.</strong> S'il s'agit du centre des moyennes distances des trois points
+A, B, C, les droites AM, BN, CP sont les médianes du triangle formé
+par ces points. Le centre des moyennes distances n'est donc autre
+chose que le point nommé précédemment centre de gravité du
+triangle ABC.</p>
+<p class="article" id="blk-315-28"><strong class="article-num" id="article-600">600.</strong> Coordonnées barycentriques planes.</p>
+<p  id="blk-315-29">Inversement, soient donnés le triangle ABC et le point O de son
+plan. Joignons OA, et soit M le point où cette droite coupe BC. Si
+nous prenons deux nombres q, r, satisfaisant à la relation</p>
+<p  id="blk-315-30">MB</p>
+<p  id="blk-315-31">"</p>
+<p  id="blk-315-32">MC<!-- spr -->q<!-- spr -->puis un nombre p déterminé par la proportion</p>
+<p  id="blk-315-35">OM<!-- skp data-txt='P' --><!-- skp data-txt='-' --></p>
+<p  id="blk-315-38">OA</p>
+<p  id="blk-315-39">9 +2<!-- spr -->le point O sera le centre des distances proportionnelles des points.
+A, B, C, affectés des coefficients p, q, r.</p>
+<p  id="blk-315-41">Ainsi, étant donnés quatre points dont les trois premiers ne sont pas</p>
+<p  id="blk-315-42">,</p><div class="scan-inline"><img src="img/scan/srcpage-315.png"/></div></data><data data-scanhref="img/scan/srcpage-316.png"><p class="newpage"><!-- skp data-txt='296' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->en ligne droite, on peut affecter ceux-ci de coefficients tels que leur
+centre des distances proportionnelles soit le quatrième point donné.</p>
+<p  id="blk-316-04">Le raisonnement semble en défaut lorsque la droite OA est paral-
+lèle à BC; mais on pourra alors le recommencer, soit en considérant
+la droite OB et le côté CA, soit en considérant la droite OC et le côté</p>
+<p  id="blk-316-05">AB (¹).</p>
+<p  id="blk-316-06">Les rapports mutuels des quantités p, q, r sont d'ailleurs déter-
+minés quand on donne le point 0 (puisque ce sont les rapports dans
+lesquels les droites OA, OB, OC divisent respectivement les côtés
+BC, CA, AB).</p>
+<p  id="blk-316-07">On donne le nom de coordonnées barycentriques du point 0, par
+rapport au triangle de référence ABC, aux coefficients p, q, r ainsi
+choisis. Les coordonnées barycentriques d'un point déterminé, par
+rapport à un triangle déterminé, sont déterminées à un facteur
+commun près.
+Inversement, à tout système de coordonnées p, q, r, tel<!-- spr -->que
+la somme p+9+r soit différente de zéro, correspond un point
+déterminé situé dans le plan du triangle.<!-- skp data-txt='-' --></p>
+<p  id="blk-316-10">1'</p>
+<p  id="blk-316-11">REMARQUE.- Si l'on mène, par les points A, B, C, O, des paral-
+lèles à une même direction quelconque, jusqu'à rencontre en
+A₁, B₁, C₁, O₁ avec un plan P, le point O, aura, en vertu de la défini-
+tion précédente et du nº 594 (Remarque), les mêmes coordonnées
+barycentriques, par rapport au triangle A, B, C₁, que le point O par
+rapport au triangle ABC.</p>
+<p class="article" id="blk-316-12"><strong class="article-num" id="article-601">601.</strong> La considération des aires permet de donner une interpré-
+tation simple des coordonnées barycentriques planes.</p>
+<p  id="blk-316-13">Considérons, en effet, les deux triangles ABM, ACM. Ces deux
+triangles, qui ont évidemment même hauteur, sont entre eux
+comme leurs bases MB, MC. Pour la même raison, ce même rap-</p>
+<p  id="blk-316-14">MB<!-- spr -->port<!-- spr -->est égal au rapport des triangles OMB, OMC. Il vient</p>
+<p  id="blk-316-17">MC<!-- spr -->donc, en vertu d'un théorème connu sur les proportions</p>
+<p  id="blk-316-19">MB</p>
+<p  id="blk-316-20">AMB</p>
+<p  id="blk-316-21">OMB</p>
+<p  id="blk-316-22">AOB</p>
+<p  id="blk-316-23">MC</p>
+<p  id="blk-316-24">AMC</p>
+<p  id="blk-316-25">OMC</p>
+<p  id="blk-316-26">AOC</p>
+<p  id="blk-316-27">(1) Il est évidemment impossible que les droites qui joignent le point O aux sommets du
+triangle ABC soient toutes trois parallèles aux côtés du même triangle, puisque les parallèles
+menées aux côtés d'un triangle par les sommets opposés ne passent pas par un même point.</p><div class="scan-inline"><img src="img/scan/srcpage-316.png"/></div></data><data data-scanhref="img/scan/srcpage-317.png"><p class="newpage"></p>
+<p  id="blk-317-01">CENTRE DES DISTANCES PROPORTIONNELLES.<!-- skp data-txt='297' --><!-- spr -->puisque le triangle AOB équivaut à la somme ou à la différence des
+triangles AMB et OMB, le triangle AOC étant en même temps équi-
+valent à la somme ou à la différence des triangles AMC et OMC.</p>
+<p  id="blk-317-04">AOB
+Le rapport est donc égal, en valeur absolue, au rapport
+AOC<!-- spr -->q
+Mais, de plus, nous pouvons remarquer que si la droite AO coupe le</p>
+<p  id="blk-317-06">""</p>
+<p  id="blk-317-07">2°<!-- spr -->côté BC lui-même (c'est-à-dire si est positif) les deux triangles<!-- spr -->q
+AOB, AOC sont tous deux additifs (voir Pl. ; Note D, 315, fig. 228-229)
+ou tous deux soustractifs (ibid., fig. 230), au lieu que si la droite
+AO coupe l'un des prolongements de BC, ces deux triangles sont</p>
+<p  id="blk-317-10">7"</p>
+<p  id="blk-317-11">T'un additif, l'autre soustractif, en même temps que le rapport<!-- spr -->q
+deviendra négatif. Si donc on fait précéder chacun des angles BOC,
+COA, AOB du signe + ou du signe - suivant qu'il est additif ou</p>
+<p  id="blk-317-13">2"<!-- spr -->soustractif, le rapport sera, en grandeur et signe, égal au rapport<!-- spr -->q
+des triangles AOB, AOC.</p>
+<p  id="blk-317-16">En faisant des raisonnements analogues relativement aux autres
+côtés du triangle ABC, on arrive évidemment à la conclusion sui-<!-- spr -->vante :</p>
+<p  id="blk-317-18">Les coordonnées barycentriques d'un point sont, en grandeur et
+signe (moyennant la convention qui vient d'être établie), propor-
+tionnelles aux aires des triangles qui ont pour sommet commun ce
+point et, pour bases respectives, les côtés du triangle de référence.</p>
+<p class="article" id="blk-317-19"><strong class="article-num" id="article-602">602.</strong> Introduisons le nombre t défini par la relation<!-- spr -->p+g+r+ t = 0</p>
+<p  id="blk-317-21">Alors la relation, précédemment trouvée, entre les distances
+a, b, c, o des points A, B, C, O à une droite quelconque du plan ABC
+ou à un plan quelconque</p>
+<p  id="blk-317-22">0 ==<!-- spr -->pa+qb+rc
+·P + q + r<!-- spr -->peut s'écrire<!-- spr -->paqb+c+ to 0.<!-- skp data-txt='- :' --></p>
+<p  id="blk-317-27">Ainsi, quatre points quelconques étant donnés dans un plan, on
+peut trouver quatre nombres p, q, r, t dont la somme est nulle et tels</p><div class="scan-inline"><img src="img/scan/srcpage-317.png"/></div></data><data data-scanhref="img/scan/srcpage-318.png"><p class="newpage"><!-- skp data-txt='298' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->que les distances des quatre points donnés à un plan quelconque, mul-
+tipliées respectivement par ces quatre nombres, donnent une somme
+nulle.</p>
+<p  id="blk-318-04">Le raisonnement précédent cesse d'être valable lorsque les trois
+points A, B, C sont en ligne droite. Mais alors nous savons (598)
+qu'on peut trouver les nombres p, q, r tels que l'on ait<!-- spr -->paqbrc = 0,<!-- spr -->ce qui est la relation précédente, t étant pris égal à zéro.</p>
+<p class="article" id="blk-318-07"><strong class="article-num" id="article-603">603.</strong> Coordonnées barycentriques dans l'espace.
+Considérons maintenant le cas où l'on part de quatre points A, B,
+C, D (fig. 507) non situés dans un même plan. p, q, r, s étant les<!-- spr -->coefficients affectés à ces points, on pourra com-
+mencer par prendre le centre des distances pro-
+portionnelles des points A, B, C affectés des coef-
+ficients p, q, 1',<!-- spr -->autrement dit, le point M du
+plan ABC qui a pour coordonnées barycentriques,
+par rapport à ce triangle, les nombres p, q, r,<!-- spr -->puis prendre sur DM le point O tel que<!-- skp data-txt='--' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 507.OCR.png" alt="FIG. 507." /></p>
+<p  id="blk-318-14">OM<!-- skp data-txt='S' --></p>
+<p  id="blk-318-16">OD</p>
+<p  id="blk-318-17">P + 9 + r</p>
+<p  id="blk-318-18">Par exemple, si les coefficients p, q, r, s sont tous égaux à +1,
+le point O appartiendra à la droite qui joint le point D au centre de
+gravité du triangle ABC, de sorte que cette droite et les trois autres
+droites joignant le point A au centre de gravité du triangle BCD, le
+point B au centre de gravité de CDA, le point C au centre de gravité
+de DAB, concourent en un même point.</p>
+<p  id="blk-318-19">Inversement, O (fig. 507) étant un point quelconque de l'espace,
+on pourra toujours déterminer les coefficients p, q, r, s de manière
+que le centre des distances proportionnelles obtenu soit le point O.
+Il suffira de prendre pour p, q, r les coordonnées barycentriques,
+par rapport au triangle ABC, du point M où la droite DO coupe le
+plan ABC, et pours le nombre défini par la relation écrite tout à
+l'heure.</p>
+<p  id="blk-318-20">Les coefficients p, q, r, s, qui sont ainsi déterminés à un facteur</p><div class="scan-inline"><img src="img/scan/srcpage-318.png"/></div></data><data data-scanhref="img/scan/srcpage-319.png"><p class="newpage"></p>
+<p  id="blk-319-01">CENTRE DES DISTANCES PROPORTIONNELLES.<!-- skp data-txt='299' --><!-- spr -->commun près, sont dits les coordonnées barycentriques du point O,
+par rapport au tétraèdre de référence ABCD.</p>
+<p  id="blk-319-04">Nous laissons au lecteur le soin de démontrer que ces coordonnées
+barycentriques sont proportionnelles aux quatre tétraèdres ayant
+pour sommet commun le point considéré et pour bases respectives
+les faces du tétraèdre de référence, et que cette proportionnalité a
+lieu en grandeur et signe, si l'on a soin d'affecter les tétraèdres en
+question du signe + ou du signe - suivant qu'ils sont additifs ou
+soustractifs (¹).<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-319-06"><strong class="article-num" id="article-604">604.</strong> Introduisons le nombre t défini par la relation<!-- spr -->p+q+r+s+ṭ=0.</p>
+<p  id="blk-319-08">La relation<!-- spr -->pa+qb+rc + sd</p>
+<p  id="blk-319-10">0 =<!-- skp data-txt="'" --></p>
+<p  id="blk-319-12">P+g+r+s<!-- spr -->qui a lieu entre les distances des cinq points A, B, C, D, O à un plan
+quelconque, pourra s'écrire<!-- spr -->pa + qb + rc+sd+to=0.</p>
+<p  id="blk-319-15">Donc, étant donnés cinq points de l'espace, on peut trouver les
+cinq coefficients p, q, r, s, t donnant lieu à la relation précédente. On
+prouvera d'ailleurs, comme tout à l'heure (602), que la conclusion
+n'est pas en défaut si les points A, B, C, D cessent de former un
+tétraèdre.</p>
+<p class="article" id="blk-319-16"><strong class="article-num" id="article-605">605.</strong> On définit en mécanique le centre de gravité d'une figure
+quelconque. Cette définition, dans le cas d'un polygone ou d'un
+polyèdre homogène (cette condition, absolument essentielle, est impli-
+citement supposée dans ce qui va suivre) conduit aux conclusions
+suivantes :</p>
+<p  id="blk-319-17">Le centre de gravité d'un triangle est le point de concours de ses
+médianes, conformément à la dénomination que nous avons adoptée
+depuis le n° 55 bis.</p>
+<p  id="blk-319-18">Le centre de gravité d'un polygone plan quelconque s'obtient en le
+décomposant en triangles, dont on prend les centres de gravité, et pre-
+nant le centre des distances proportionnelles des points ainsi obtenus,</p>
+<p  id="blk-319-19">(1) Voir note F à la fin du volume.</p><div class="scan-inline"><img src="img/scan/srcpage-319.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

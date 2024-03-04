@@ -1,0 +1,404 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-170.png"><p class="newpage"><!-- skp data-txt='150' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-170-03">CHAPITRE IV</p>
+<p  id="blk-170-04">GÉOMÉTRIE SPHÉRIQUE<!-- skp data-txt='-' --></p>
+<p  id="blk-170-06">TRIANGLES SPHÉRIQUES</p>
+<p class="article" id="blk-170-07"><strong class="article-num" id="article-465">465.</strong> Par deux points de la sphère, il passe un grand cercle; et un<!-- spr -->seul, sauf si ces deux points sont diamé-
+tralement opposés.</p>
+<p  id="blk-170-09">Car par deux points A, B (fig. 369)
+de la surface et le centre O passe un
+plan, lequel est unique si A et B ne
+sont pas en ligne droite avec le centre.<!-- skp data-txt='A' --></p>
+<p  id="blk-170-11">• 0<!-- spr -->ppp....Bec.com<!-- spr -->nous</p>
+<p  id="blk-170-14">REMARQUES I. La propriété que<!-- spr -->venons de constater établit une
+analogie entre les grands cercles de la<!-- spr -->sphère et les lignes droites en géomé-
+trie plane. Mais cette analogie n'est pas complète, puisqu'il y a
+exception pour les points diamétralement opposés.<img class="fig" src="img/FIG. 369.OCR.png" alt="FIG. 369." /></p>
+<p  id="blk-170-18">II. Les points A et B divisent le grand cercle qui les contient en
+deux arcs. Lorsqu'on parle de l'arc de grand cercle qui joint A et B,
+on a plus spécialement en vue celui des deux qui est plus petit
+qu'une demi-circonférence.</p>
+<p class="article" id="blk-170-19"><strong class="article-num" id="article-466">466.</strong> Le diamètre perpendiculaire au plan d'un cercle de la
+sphère coupe la surface en deux points, qu'on nomme les pôles de ce
+cercle (fig. 370).</p>
+<p  id="blk-170-20">Chacun d'eux est également distant de tous les points du cercle.
+Si celui-ci est un grand cercle, la distance d'un quelconque de ses
+points au pôle est égale à la corde d'un quadrant, ainsi qu'on le
+reconnaît immédiatement à l'inspection de la figure 371.</p>
+<p  id="blk-170-21">Inversement, le lieu des points d'une sphère situés à une distance.
+constante (moindre que le diamètre) d'un point de cette surface, est
+un cercle ayant ce point pour pôle.</p><div class="scan-inline"><img src="img/scan/srcpage-170.png"/></div></data><data data-scanhref="img/scan/srcpage-171.png"><p class="newpage"></p>
+<p  id="blk-171-01">GÉOMÉTRIE SPHÉRIQUE.<!-- skp data-txt='151' --></p>
+<p  id="blk-171-03">D'après cela, on voit qu'on peut décrire un cercle sur une sphère
+comme sur un plan, à l'aide d'un compas dont l'une des pointes est
+placée en l'un des deux pôles de ce cercle. Toutefois, il est nécessaire
+(surtout si l'ouverture est un peu grande) d'employer un compas
+(dit compas sphérique) à branches courbes et non droites.<!-- skp data-txt='P' --><!-- skp data-txt='M' --></p>
+<p  id="blk-171-06">○<!-- skp data-txt='0' --><!-- skp data-txt='A' --><img class="fig" src="img/FIG. 370.OCR.png" alt="FIG. 370." /><img class="fig" src="img/FIG. 371.OCR.png" alt="FIG. 371." /></p>
+<p  id="blk-171-11">L'arc de grand cercle qui joint le pôle d'un cercle de la sphère
+à un point quelconque de ce cercle a également la même grandeur,
+quel que soit ce point. On lui donne le nom de rayon sphérique du
+cercle. Le rayon sphérique d'un grand cercle est égal à un quadrant.</p>
+<p  id="blk-171-12">Un cercle quelconque divise la sphère en deux régions, dites ca-
+lottes sphériques, situées de part et d'autre du plan de ce cercle.
+Chacune de ces calottes comprend un des pôles et est formée par
+les points dont la distance à ce pôle est plus petite que la distance
+de ce même pôle aux points du cercle.</p>
+<p  id="blk-171-13">S'il s'agit d'un petit cercle, on donne souvent le nom de région
+intérieure à ce petit cercle, à la plus petite des deux calottes sphé-
+riques, celle dont le rayon sphérique est inférieur à un quadrant.
+Cette région intérieure est évidemment celle qui est située du côté
+du plan du cercle où n'est pas le centre de la sphère.</p>
+<p class="article" id="blk-171-14"><strong class="article-num" id="article-467">467.</strong> Angle de deux grands cercles.<!-- skp data-txt='-' --></p>
+<p  id="blk-171-16">Théorème. L'angle (Pl., 60 bis) de deux demi-grands cercles,
+terminés à leur diamètre commun, est égal à l'angle des demi-plans
+qui les contiennent. Il a pour mesure l'arc intercepté, entre eux, sur
+le grand cercle qui a pour pôles leurs points communs.</p><div class="scan-inline"><img src="img/scan/srcpage-171.png"/></div></data><data data-scanhref="img/scan/srcpage-172.png"><p class="newpage"><!-- skp data-txt='152' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->x</p>
+<p  id="blk-172-04">Soient les deux demi-grands cercles AMA', ANA' (fig. 372), qui se
+coupent en A, A'.
+Soient Ax, Ay les tangentes à ces courbes au point A. Ces tan-<!-- spr -->gentes, étant toutes deux perpendicu-
+laires à AA', déterminent l'angle plan du
+dièdre M.AA'-N.</p>
+<p  id="blk-172-06">D'autre part, le grand cercle qui a
+pour pôles A, A', a son plan perpendi-
+culaire à AA'. Ce plan coupe les demi-
+plans AA'M, AA'N suivant deux droites
+OM, ON qui forment également entre
+elles l'angle plan du dièdre M.AAN.
+Mais cet angle est précisément l'angle<!-- spr -->au centre correspondant à l'arc de
+grand cercle MN: ce qui démontre la seconde partie du théorème.<!-- skp data-txt='M' --><!-- skp data-txt='N' --><!-- skp data-txt="A'" --><img class="fig" src="img/FIG. 372.OCR.png" alt="FIG. 372." /></p>
+<p class="article" id="blk-172-12"><strong class="article-num" id="article-468">468.</strong> Une autre expression de l'angle de deux grands cercles
+est encore donnée par le théorème suivant:<!-- skp data-txt='A' --><!-- skp data-txt='M' --></p>
+<p  id="blk-172-15">Théorème. L'angle de deux demi-grands cercles est mesuré par<!-- spr -->l'arc de grand cercle qui joint leurs pôles,
+ou par son supplément.</p>
+<p  id="blk-172-17">Soient, comme tout à l'heure, AMA',
+ANA' (fig. 373) deux demi-grands cercles
+qui coupent en M, N le grand cercle
+dont le plan est perpendiculaire à AA'.
+Ce dernier grand cercle contient les
+pôles P, P', Q, Q' des deux premiers :<!-- spr -->car les diamètres PP', QQ', respective-
+A'<!-- spr -->ment perpendiculaires à AMA', ANA',<!-- spr -->sont tous deux perpendiculaires à AA'.
+De plus PP', QQ' sont respectivement perpendiculaires aux rayons.<!-- skp data-txt='N' --><img class="fig" src="img/FIG. 373.OCR.png" alt="FIG. 373." /></p>
+<p  id="blk-172-23">OM, ON de la sphère leur angle est donc égal à MON ou à son
+supplément.<!-- skp data-txt='--' --></p>
+<p  id="blk-172-25">REMARQUE. Chacun des deux grands cercles considérés ayant
+deux pôles, l'arc de grand cercle qui joint un pôle de l'un à un pôle
+de l'autre peut être choisi de quatre façons différentes.</p>
+<p  id="blk-172-26">Supposons que les pôles P, Q (fig. 373) soient tels que les</p><div class="scan-inline"><img src="img/scan/srcpage-172.png"/></div></data><data data-scanhref="img/scan/srcpage-173.png"><p class="newpage"></p>
+<p  id="blk-173-01">GÉOMÉTRIE SPHÉRIQUE.<!-- skp data-txt='153' --><!-- spr -->trièdres O.AMP, O.ANQ aient même disposition. Alors ces deux
+trièdres, étant trirectangles, sont égaux et, comme ils ont l'arête OA
+commune, ils se déduisent l'un de l'autre par rotation autour de
+cette droite. Ceci revient à dire que les angles MON (angle des deux
+demi-grands cercles) et POQ sont égaux.</p>
+<p  id="blk-173-04">D'ailleurs, si l'on remplace le pôle P par son opposé P' (fig. 373),
+la disposition du trièdre O-AMP change évidemment. Comme
+l'angle MOP' est supplémentaire de MOP, on voit que l'arc de grand
+cercle qui joint les deux pôles a même mesure que l'angle des deux
+demi-grands cercles<!-- spr -->que son supplément, suivant que les
+trièdres O.AMP, O.ANQ ont ou non même disposition.</p>
+<p  id="blk-173-06">La disposition du trièdre O.AMP dépend d'ailleurs du sens de
+rotation de l'angle AOM, vu du point P. Donc l'angle de deux demi-
+grands cercles, en un de leurs points communs, est égal à l'arc de
+grand cercle qui joint leurs pôles, si l'on choisit ceux-ci de telle
+manière que chacun des deux demi-grands cercles, vu de son pôle,
+paraisse tourner dans le sens direct, quand on le suit à partir du
+point commun considéré.<!-- spr -->ou<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-173-09"><strong class="article-num" id="article-469">469.</strong> Théorème. Le lieu des points d'une sphère également
+distants de deux points donnés sur cette surface, est le grand cercle
+perpendiculaire au milieu de celui qui joint les deux points donnés.</p>
+<p  id="blk-173-10">Soient A, B, les deux points donnés (fig. 374). Le plan perpendi-
+culaire au milieu de AB passe par le centre O de la sphère (puisque
+OA</p>
+<p  id="blk-173-11">OB) et coupe, par conséquent, la surface suivant un grand
+cercle, qui est le lieu cherché (340). Celui-ci passe d'ailleurs par le
+milieu de l'arc de grand cercle AB (point équidistant de A et de B);
+de plus, en vertu du n° 467, il est perpendiculaire à cet arc; car
+leurs deux plans sont évidemment perpendiculaires entre eux.</p>
+<p  id="blk-173-12">_<!-- skp data-txt='-' --></p>
+<p  id="blk-173-14">REMARQUE. Le lieu précédent divise la surface en deux hémi-
+sphères qui contiennent (340, REMARQUE) l'un les points plus rap-
+prochés de A que de B, l'autre les points plus rapprochés de B que
+de A.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-173-16"><strong class="article-num" id="article-470">470.</strong> Problème. Trouver le rayon d'une sphère solide, à l'aide de
+constructions effectuées sur la surface et de constructions planes.</p>
+<p  id="blk-173-17">Première solution.</p>
+<p  id="blk-173-18">Prenant deux points quelconques A. B sur<!-- skp data-txt='-' --></p><div class="scan-inline"><img src="img/scan/srcpage-173.png"/></div></data><data data-scanhref="img/scan/srcpage-174.png"><p class="newpage"><!-- skp data-txt='154' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->la surface (fig. 374), traçons, avec une même ouverture de compas,
+deux cercles ayant ces deux points comme pôles respectifs. Un point
+M, commun à ces deux cercles, étant également distant de A et de B,
+appartiendra au grand cercle obtenu au nº précédent. En répétant la</p>
+<p  id="blk-174-04">M:</p>
+<p  id="blk-174-05">A.<!-- skp data-txt='M' --><!-- skp data-txt='N' --><!-- spr -->z<!-- skp data-txt='N' --><img class="fig" src="img/FIG. 374.OCR.png" alt="FIG. 374." /><img class="fig" src="img/FIG. 375.OCR.png" alt="FIG. 375." /><!-- spr -->un<!-- spr -->même construction avec d'autres ouvertures de compas, on aura deux
+autres points N, P du même grand cercle. Relevant alors au
+compas les distances MN, NP, PM, on pourra construire, sur
+plan (fig. 375), un triangle égal à MNP, et le cercle circonscrit à ce
+triangle aura, pour rayon, le rayon cherché.</p>
+<p  id="blk-174-14">Deuxième solution. D'un point quelconque C de la sphère
+comme pôle, avec une ouverture de compas déterminée, décrivons
+un cercle, sur lequel nous prendrons trois points M, N, P. Nous
+pourrons, comme il vient d'être expliqué, déterminer le rayon de
+ce cercle en construisant un triangle égal à MNP.</p>
+<p  id="blk-174-15">Or la connaissance de ce rayon et de celle de la distance CM (égale<!-- skp data-txt='-' --><!-- skp data-txt='C' --><!-- skp data-txt='M' --><!-- skp data-txt='M' --><!-- skp data-txt='P' --><!-- skp data-txt='N' --><!-- skp data-txt='0' --><img class="fig" src="img/FIG. 376.OCR.png" alt="FIG. 376." /><img class="fig" src="img/FIG. 376 bis.OCR.png" alt="FIG. 376 bis." /></p>
+<p  id="blk-174-25">à l'ouverture de compas initiale) permettent de trouver le rayon de</p><div class="scan-inline"><img src="img/scan/srcpage-174.png"/></div></data><data data-scanhref="img/scan/srcpage-175.png"><p class="newpage"></p>
+<p  id="blk-175-01">GÉOMÉTRIE SPHÉRIQUE.<!-- skp data-txt='155' --><!-- spr -->la sphère; car, si I est le centre du cercle MNP (fig. 376), le triangle
+CIM est rectangle et peut être construit sur un plan (puisqu'on en
+connaît l'hypoténuse CM et un côté MI) prolongeant alors
+(fig. 376 bis) le côté CI et menant, en M, la perpendiculaire à CM
+jusqu'à rencontre en C'avec CI prolongé, la longueur CC' sera le
+diamètre de la sphère.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-175-05"><strong class="article-num" id="article-470 bis">470 bis.</strong> Problème. — Joindre deux points donnés d'une sphère solide
+par un arc de grand cercle.</p>
+<p  id="blk-175-06">De chacun des points donnés comme pôle, décrivons un grand
+cercle (ce que nous savons faire après la résolution du problème
+précédent). Ces deux grands cercles se coupent en deux points, qui
+sont manifestement les pôles du grand cercle cherché.<!-- skp data-txt='-' --></p>
+<p  id="blk-175-08">REMARQUE. Il est clair que la solution de ce problème,
+combinée avec la deuxième solution du problème précédent, permet
+de tracer le grand cercle perpendiculaire au milieu de l'arc de grand
+cercle qui joint deux points donnés (462).</p>
+<p class="article" id="blk-175-09"><strong class="article-num" id="article-471">471.</strong> Polygones sphériques.</p>
+<p  id="blk-175-10">On donne le nom de polygone sphérique à toute portion de sphère
+limitée par des arcs de grands cercles (appelés côtés du polygone),
+plus petits qu'une demi-conférence, limités à leurs intersections
+successives.</p>
+<p  id="blk-175-11">Un polygone sphérique est dit convexe (fig. 377) lorsqu'il est<!-- skp data-txt='C' --><!-- skp data-txt='0' --><!-- skp data-txt='E' --><img class="fig" src="img/FIG. 377.OCR.png" alt="FIG. 377." /><img class="fig" src="img/FIG. 378.OCR.png" alt="FIG. 378." /><!-- spr -->situé d'un seul côté par rapport à chacun des grands cercles dont
+font partie ses côtés; concave (fig. 378), dans le cas contraire.</p>
+<p  id="blk-175-18">Les polygones sphériques se classent, comme les polygones plans,</p><div class="scan-inline"><img src="img/scan/srcpage-175.png"/></div></data><data data-scanhref="img/scan/srcpage-176.png"><p class="newpage"><!-- skp data-txt='156' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->d'après le nombre de leurs côtés, le plus simple (1) étant le triangle
+sphérique (fig. 379).</p>
+<p  id="blk-176-04">Un triangle sphérique est toujours un polygone convexe. Car, dans
+le triangle ABC (fig. 379), si l'arc de grand cercle AC n'était pas tout<!-- skp data-txt='A' --><!-- skp data-txt='A' --><!-- skp data-txt='B' --><!-- skp data-txt='0' --><!-- skp data-txt='C' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 379.OCR.png" alt="FIG. 379." /><img class="fig" src="img/FIG. 380.OCR.png" alt="FIG. 380." /><!-- spr -->entier du même côté par rapport au grand cercle AB, il couperait ce
+dernier en un point (autre que A) situé entre A et C et serait, par
+conséquent, plus grand qu'une demi-circonférence, contrairement à
+la définition.<!-- skp data-txt='D' --></p>
+<p  id="blk-176-15">се</p>
+<p  id="blk-176-16">Relations entre les polygones sphériques et les<!-- spr -->angles polyèdres.</p>
+<p  id="blk-176-18">A tout polygone sphérique corres-
+pond un angle polyèdre, ayant pour
+sommet le centre de la sphère et
+pour arêtes les droites qui joignent
+centre aux<!-- spr -->différents sommets
+(fig. 381).</p>
+<p  id="blk-176-20">Les faces AOB, BOC, etc. (fig. 381)
+de cet angle polyèdre sont les angles
+au centre correspondant aux côtés</p>
+<p  id="blk-176-21">AB, BC, etc., du polygone.
+Les dièdres de l'angle polyèdre ont, d'après le théorème du nº 469,
+leurs rectilignes égaux aux angles du polygone.</p>
+<p  id="blk-176-22">Inversement, tout angle polyèdre ayant pour sommet le centre<img class="fig" src="img/FIG. 381.OCR.png" alt="FIG. 381." /></p>
+<p  id="blk-176-24">(1) Deux demi-grands cercles terminės au même diamètre comprennent entre eux une
+figure (fig. 380), dite fuseau sphérique (Compléments, nº 693), qui peut évidemment être consi-
+dérée comme un biangle. Seulement les côtés de cette sorte de polygone sont égaux et non
+inférieurs à une demi-circonférence.</p><div class="scan-inline"><img src="img/scan/srcpage-176.png"/></div></data><data data-scanhref="img/scan/srcpage-177.png"><p class="newpage"></p>
+<p  id="blk-177-01">GÉOMÉTRIE SPHÉRIQUE.<!-- skp data-txt='157' --><!-- spr -->d'une sphère coupe celle-ci suivant un polygone sphérique ayant,
+avec l'angle polyèdre, les relations que nous venons d'indiquer.<!-- skp data-txt='B' --></p>
+<p class="article" id="blk-177-05"><strong class="article-num" id="article-471 bis">471 bis.</strong> D'après cela, on voit que, de toute propriété relative aux
+faces et aux dièdres d'un angle polyèdre, on peut déduire une
+propriété relative aux côtés et aux angles du polygone sphérique
+correspondant, et inversement.</p>
+<p  id="blk-177-06">Par exemple, le théorème du n° 373 nous donnera le suivant :
+Un côté quelconque d'un polygone sphérique
+est plus petit que la somme des autres (d'où
+résulte : un côté quelconque d'un triangle
+sphérique est plus grand que la différence des
+deux autres).</p>
+<p  id="blk-177-07">On voit dès lors, comme en géométrie
+plane (Pl., 26), que l'arc de grand cercle (moindre qu'une demi-
+circonférence) qui joint deux points est plus court que toute ligne
+polygonale sphérique terminée aux mêmes extrémités (fig. 382) (¹).</p>
+<p  id="blk-177-08">Cet arc de grand cercle est dit mesurer la distance sphérique des
+deux points donnés.<!-- skp data-txt='A' --><!-- skp data-txt='C' --><img class="fig" src="img/FIG. 382.OCR.png" alt="FIG. 382." /></p>
+<p  id="blk-177-12">En nous bornant au cas d'un triangle sphérique, le théorème du n° 375
+nous montre qu'inversement, trois arcs de grands cercles, moindres
+qu'une demi-circonférence et dont chacun est moindre que la somme des
+deux autres, tandis que la somme des trois est inférieure à une circon-
+férence entière, sont égaux aux côtés d'un même triangle sphérique.</p>
+<p class="article" id="blk-177-13"><strong class="article-num" id="article-472">472.</strong> Quand un polygone sphérique convexe est intérieur à un
+polygone sphérique quelconque (un ou plusieurs sommets</p>
+<p  id="blk-177-14">ои<!-- skp data-txt='D' --><!-- skp data-txt='M' --><!-- skp data-txt='A' --><!-- skp data-txt='E' --><!-- skp data-txt='H' --><!-- skp data-txt='N' --><!-- skp data-txt='B' --><!-- skp data-txt='00' --><!-- skp data-txt='E' --><!-- skp data-txt='4' --><!-- skp data-txt='B' --><!-- skp data-txt='A' --><!-- skp data-txt="'G'" --><img class="fig" src="img/FIG. 383.OCR.png" alt="FIG. 383." /><img class="fig" src="img/FIG. 383 bis.OCR.png" alt="FIG. 383 bis." /><!-- spr -->côtés pouvant être communs) (fig. 383, 383 bis), le périmètre du</p>
+<p  id="blk-177-31">(1). La figure montre la construction à effectuer.</p><div class="scan-inline"><img src="img/scan/srcpage-177.png"/></div></data><data data-scanhref="img/scan/srcpage-178.png"><p class="newpage"><!-- skp data-txt='158' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='D' --><!-- spr -->polygone enveloppé est inférieur à celui du polygone enveloppant.
+Cet énoncé est, d'après ce que nous venons de dire, identique à<!-- spr -->celui du n°º 373 bis, un polygone
+sphérique étant manifestement con-
+vexe ou concave en même temps que
+l'angle polyèdre correspondant. Mais
+on peut refaire le raisonnement sur
+la figure sphérique : c'est ce que
+montrent les figures 383, 383 bis,
+où, pour plus de facilité, les notations
+ont été prises conformes à celles de
+la Géométrie plane (Pl., 27).</p>
+<p  id="blk-178-06">La démonstration continue à s'ap-
+pliquer quand le polygone enveloppant est remplacé par une cir-
+conférence de grand cercle (voir fig. 384). Donc :</p>
+<p  id="blk-178-07">Le périmètre d'un polygone sphérique convexe est inférieur à la
+circonférence d'un grand cercle, énoncé qui équivaut à celui du
+n° 374.<!-- skp data-txt='A' --><!-- skp data-txt='E' --></p>
+<p  id="blk-178-10">FIG. 38.</p>
+<p class="article" id="blk-178-11"><strong class="article-num" id="article-473">473.</strong> La disposition d'un triangle sphérique ABC est le sens de
+l'angle BAC de ce triangle, vu de l'extérieur de la sphère. Il est
+clair que cette disposition est la même que celle du trièdre corres-
+pondant.</p>
+<p  id="blk-178-12">Deux triangles sphériques sont dits symétriques, lorsqu'ils ont tous
+leurs éléments égaux chacun à chacun, mais diffèrent par la dispo-
+sition.</p>
+<p  id="blk-178-13">C'est ce qui arrive, en particulier, pour deux triangles symétriques
+l'un de l'autre par rapport au centre de la sphère, c'est-à-dire tels
+que les sommets de l'un soient diamétralement opposés aux som-
+mets de l'autre.<!-- skp data-txt='A' --><!-- skp data-txt='A' --></p>
+<p class="article" id="blk-178-16"><strong class="article-num" id="article-474">474.</strong> Triangles sphériques polaires.</p>
+<p  id="blk-178-17">Soit ABC un triangle sphérique (fig. 385).
+Soient A', celui des deux pôles du grand cercle
+BC qui est situé (par rapport à ce grand cercle) в
+dans le même hémisphère que A; B', celui des
+deux pôles du grand cercle CA qui est (par
+rapport au grand cercle CA), dans le même
+hémisphère que B; C', celui des pôles du grand cercle AB qui<!-- skp data-txt='C' --><!-- skp data-txt="B'" --><img class="fig" src="img/FIG. 385.OCR.png" alt="FIG. 385." /></p><div class="scan-inline"><img src="img/scan/srcpage-178.png"/></div></data><data data-scanhref="img/scan/srcpage-179.png"><p class="newpage"></p>
+<p  id="blk-179-01">GÉOMÉTRIE SPHÉRIQUE.<!-- skp data-txt='159' --><!-- spr -->est dans le même hémisphère que C. Le triangle sphérique A'B'C'
+est dit le triangle polaire de ABC.</p>
+<p  id="blk-179-04">Si l'on se reporte à la définition des trièdres supplémentaires
+(377), on voit que le trièdre qui correspond au triangle A'B'C' est le
+supplémentaire du trièdre qui correspond au triangle ABC.</p>
+<p  id="blk-179-05">Dès lors, les théorèmes des nos 377, 378 donnent immédiatement
+les conclusions suivantes :</p>
+<p  id="blk-179-06">Si un triangle sphérique est polaire d'un autre : réciproquement,
+celui-ci est polaire du premier.</p>
+<p  id="blk-179-07">Si deux triangles sphériques sont polaires l'un de l'autre, chaque
+côté de l'un est supplémentaire de l'angle correspondant de l'autre.</p>
+<p class="article" id="blk-179-08"><strong class="article-num" id="article-474 bis">474 bis.</strong> Nous venons de déduire les propriétés des triangles
+polaires de celles des trièdres supplémentaires. Mais on peut éga-
+lement démontrer directement les mêmes propositions, en suivant,
+relativement aux triangles sphériques, la marche correspondante
+à celle qui a été suivie pour les trièdres.</p>
+<p  id="blk-179-09">On démontrera d'abord les lemmes suivants :<!-- skp data-txt='-' --></p>
+<p  id="blk-179-11">Lemmes. I. L'arc de grand cercle qui joint un point quelconque B
+de la sphère à l'un des pôles A d'un grand cercle donné, est plus petit
+ou plus grand qu'un quadrant, suivant que le pôle A est ou non, par
+rapport au grand cercle donné, dans le même hémisphère que le
+point B.</p>
+<p  id="blk-179-12">Car le grand cercle AB et le grand cercle donné se coupent en un
+point I (fig. 386, 386 bis), tel que l'arc AI soit égal à un quadrant.
+Cet arc AI est d'ailleurs évidemment supérieur ou inférieur à AB,<!-- skp data-txt='A' --><!-- skp data-txt='A' --><!-- skp data-txt='B' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 386.OCR.png" alt="FIG. 386." /><img class="fig" src="img/FIG. 386 bis.OCR.png" alt="FIG. 386 bis." /><!-- spr -->suivant que les points A et B sont du même côté (fig. 386) ou de
+côtés différents (fig. 386 bis) du point I.</p><div class="scan-inline"><img src="img/scan/srcpage-179.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

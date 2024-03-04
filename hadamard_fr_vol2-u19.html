@@ -1,0 +1,485 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-225.png"><p class="newpage"></p>
+<p  id="blk-225-01">HYPERBOLE.<!-- skp data-txt='205' --></p>
+<p  id="blk-225-03">CHAPITRE II</p>
+<p  id="blk-225-04">HYPERBOLE<!-- spr -->en<!-- skp data-txt='1' --><!-- skp data-txt='M' --><!-- skp data-txt='3' --><!-- skp data-txt='2' --></p>
+<p  id="blk-225-10">¡A'<!-- skp data-txt='F' --><!-- skp data-txt='A' --><!-- skp data-txt='0' --></p>
+<p class="article" id="blk-225-14"><strong class="article-num" id="article-506">506.</strong> Définition. On nomme hyperbole, le lieu des points M d'un
+plan tels que la différence de leurs distances à deux points fixes
+F, F de ce plan, appelés foyers, soit égale à une longueur donnée.</p>
+<p  id="blk-225-15">Il n'est pas fait de distinction relativement au sens dans lequel
+doit être prise cette différence: on considérera comme appartenant
+à la même hyperbole les points pour lesquels la différence donnée
+est obtenue<!-- spr -->retranchant le
+rayon vecteur MF de MF' et ceux
+pour lesquels elle est obtenue en
+retranchant MF' de MF.</p>
+<p  id="blk-225-17">On voit par là que l'hyperbole
+se compose de deux parties ou
+branches, lesquelles sont entière-
+ment séparées l'une de l'autre :
+car on ne peut aller d'un point de
+l'une (pour lequel MF est inférieur
+à MF) à un point de l'autre (pour
+lequel MF est supérieur à MF')
+sans passer par une série de points
+tels que la différence de leurs dis-
+tances à F et à F' soit moindre que
+la longueur donnée, et qui ne font
+pas partie de l'hyperbole. On voit,
+en particulier, que les deux bran-
+ches sont séparées l'une de l'autre par la perpendiculaire au milieu
+de FF' (fig. 418), lieu des points également distants de F et de F'.</p>
+<p  id="blk-225-18">Pour que la courbe existe, il faut que la différence donnée soit
+moindre que FF'. Si cette différence devenait égale à FF', le lieu se<img class="fig" src="img/FIG. 418.OCR.png" alt="FIG. 418." /><!-- skp data-txt='F' --><img class="fig" src="img/FIG. 419.OCR.png" alt="FIG. 419." /></p><div class="scan-inline"><img src="img/scan/srcpage-225.png"/></div></data><data data-scanhref="img/scan/srcpage-226.png"><p class="newpage"><!-- skp data-txt='206' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->composerait évidemment des deux prolongements de cette droite,
+auxquelles viendraient respectivement se réduire les deux branches
+de l'hyperbole (fig. 419) (¹).</p>
+<p  id="blk-226-04">Si, au contraire, la différence donnée devient nulle, le lieu se
+réduit (²) à la perpendiculaire au milieu de FF'.</p>
+<p  id="blk-226-05">REMARQUE.</p>
+<p  id="blk-226-06">Toute courbe semblable à une hyperbole est une<!-- skp data-txt='-' --><!-- spr -->hyperbole.</p>
+<p  id="blk-226-09">Pour construire la courbe par points, il suffit de tracer, des points
+F, F' comme centres, deux cercles tels que la différence de leurs
+rayons soit égale à la longueur 2a. L'intersection de ces deux
+cercles fournira deux points de l'une des branches de la courbe, et
+en permutant les rayons, on aura deux points de l'autre branche.</p>
+<p  id="blk-226-10">Pour qu'il y ait intersection (la différence 2a étant supposée infé-
+rieure à la distance 2c des foyers), il faut et il suffit que la somme
+des deux rayons soit supérieure à 2c. On voit que rien n'empêche
+de prendre ces rayons aussi grands qu'on le veut par conséquent
+les deux branches de l'hyperbole s'étendent indéfiniment (fig. 418).</p>
+<p  id="blk-226-11">La valeur minima de la somme des rayons correspond à deux
+cercles tangents extérieurement. On obtient ainsi deux points A, A'
+situés sur le segment FF', et dont les distances aux foyers sont<!-- spr -->respectivement égales à c+a,</p>
+<p  id="blk-226-13">On verra, comme pour
+l'ellipse, que la distance AA' est
+égale à la longueur donnée 2a.<!-- skp data-txt='C' --><!-- spr -->a.</p>
+<p  id="blk-226-16">о<!-- skp data-txt='P' --><!-- skp data-txt='M' --><!-- skp data-txt='F' --></p>
+<p  id="blk-226-20">On pourrait imaginer une construc-
+tion permettant de tracer la courbe
+(ou, plus exactement, une portion de la
+courbe) d'un mouvement continu. On
+emploierait, à cet effet, une règle
+(fig. 418 bis) dont une extrémité serait
+fixée au point F et un fil dont une extré-
+mité serait fixée au point F', l'autre en<!-- spr -->un point P du bord de la règle. Si,
+faisant pivoter la règle autour de F, on tend le fil par une pointe, en
+un point M tel que la portion MP soit appliquée le long de la règle,<img class="fig" src="img/FIG. 418 bis.OCR.png" alt="FIG. 418 bis." /></p>
+<p  id="blk-226-23">(1) La figure montre, en outre, la forme que prend une hyperbole dans laquelle la différence
+donnée est très voisine de FF.</p>
+<p  id="blk-226-24">(2) Les deux branches viennent chacune s'appliquer sur la perpendiculaire en question.</p><div class="scan-inline"><img src="img/scan/srcpage-226.png"/></div></data><data data-scanhref="img/scan/srcpage-227.png"><p class="newpage"></p>
+<p  id="blk-227-01">HYPERBOLE.<!-- skp data-txt='207' --><!-- spr -->le point M décrira une portion d'hyperbole (la différence entre MF et MF'
+étant égale à la différence entre la longueur FP et la longueur du fil).</p>
+<p class="article" id="blk-227-04"><strong class="article-num" id="article-507">507.</strong> Axes et centre de symétrie.</p>
+<p  id="blk-227-05">On verra, comme pour l'ellipse, que l'hyperbole a un centre de
+symétrie, le milieu de FF', et deux axes de symétrie, la droite FF' et
+la perpendiculaire en son milieu. Le premier coupe l'hyperbole en
+deux points, ainsi que nous l'avons vu on lui donne le nom d'axe
+transverse et les points d'intersection sont dits les sommets. Le
+second, au contraire, n'a évidemment aucun point commun avec la
+courbe. Toutefois, par analogie avec ce qui a lieu pour l'ellipse
+(494), on désigne sous le nom de longueur de l'axe non transverse,
+une longueur dont la moitié b
+est donnée par la relation (¹)<!-- spr -->b2</p>
+<p  id="blk-227-07">C²<!-- spr -->a².</p>
+<p  id="blk-227-09">_</p>
+<p  id="blk-227-10">On ne doit d'ailleurs pas per-
+dre de vue que cette analogie
+n'est pas complète. Alors que
+la relation b² a²<!-- spr -->ob-
+tenue pour l'ellipse, donnait
+a² c2b2, la relation actuelle</p>
+<p  id="blk-227-12">॰ ༡</p>
+<p  id="blk-227-13">_<!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- spr -->donne<!-- spr -->a² = c²<!-- spr -->b²,<!-- skp data-txt='-' --><!-- skp data-txt='-' --><img class="fig" src="img/FIG. 420.OCR.png" alt="FIG. 420." /><!-- spr -->qui diffère de la première en ce
+que b² est changé en · b².</p>
+<p  id="blk-227-23">Une hyperbole pour laquelle
+best égal à a (autrement dit
+c² à 2a2) est dite équilatère.</p>
+<p  id="blk-227-24">Deux hyperboles sont dites conjuguées lorsque l'une a pour axe
+transverse, en grandeur et direction, l'axe non transverse de l'autre,
+et réciproquement (fig. 420).</p>
+<p class="article" id="blk-227-25"><strong class="article-num" id="article-508">508.</strong> Cercles directeurs.<!-- skp data-txt='-' --></p>
+<p  id="blk-227-27">Théorème. Le lieu des centres des cercles tangents à un cercle
+donné et passant par un point donné extérieur à ce cercle, est une
+hyperbole.</p>
+<p  id="blk-227-28">(1) Rappelons que, dans l'hyperbole, c est nécessairement plus grand que a.</p><div class="scan-inline"><img src="img/scan/srcpage-227.png"/></div></data><data data-scanhref="img/scan/srcpage-228.png"><p class="newpage"><!-- skp data-txt='208' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-228-03">M,<img class="fig" src="img/FIG. 421.OCR.png" alt="FIG. 421." /></p>
+<p  id="blk-228-05">Soient F le point donné, F' le centre du cercle donné, R son
+rayon. Il existera deux sortes de cercles passant par F et tangents
+au cercle donné; le contact peut, en effet, être extérieur ou<!-- spr -->intérieur.</p>
+<p  id="blk-228-07">Soit M₁ le centre d'un
+cercle passant par F et
+tangent extérieurement
+au cercle donné (fig. 421).
+La somme R + M₁F étant
+égale à M₁F', la diffé-
+rence M₁F' M₁F sera
+égale à R, et réciproque-
+ment, cette condition est
+suffisante pour le contact<!-- spr -->extérieur.
+Soit M2 le centre d'un cercle passant par F et auquel le cercle
+donné est tangent intérieurement : ce sera la différence MF M₂F'
+qui sera égale à R, et réciproquement cette condition est suffisante
+pour le contact intérieur.</p>
+<p  id="blk-228-09">Les points M₁, M₂ font donc bien partie, ainsi que nous voulions
+le démontrer, d'une même hyperbole de foyers F, F'. On voit même
+que le lieu du point M₁ est la branche voisine du point F, le lieu du
+point M₂, la branche voisine du point F'.</p>
+<p  id="blk-228-10">Le passage entre les cercles à contact extérieur et les cercles à
+contact intérieur se fait par l'intermédiaire des deux droites FT,
+FT (fig. 421) menées par le point
+F tangentiellement au cercle.
+donné et que l'on doit considé-<!-- spr -->comme des cercles ayant
+leurs centres rejetés à l'infini
+(Pl., 90) sur l'hyperbole.<!-- skp data-txt='-' --><!-- spr -->rer</p>
+<p  id="blk-228-14">(1) Sit₁, 2 sont deux points du cercle donné,
+voisins du point T, mais l'un plus rapproché
+de FF', l'autre plus éloigné (fig. 422), l'angle</p>
+<p  id="blk-228-15">Ft, Fest obtus, l'angle Ft, Faigu, ainsi qu'il<img class="fig" src="img/FIG. 422.
+est aisé de s'en assurer: de sorte que la perpen-
+diculaire au milieu de Ft, coupe le rayon F't
+prolongé au delà du point t₁, tandis que la perpendiculaire au milieu de Ft, coupe le
+rayon F't, prolongé au delà du point F. Les points t₁, t₁ sont donc les points de contact deOCR.png" alt="FIG. 422.
+est aisé de s'en assurer: de sorte que la perpen-
+diculaire au milieu de Ft, coupe le rayon F't
+prolongé au delà du point t₁, tandis que la perpendiculaire au milieu de Ft, coupe le
+rayon F't, prolongé au delà du point F. Les points t₁, t₁ sont donc les points de contact de" /></p><div class="scan-inline"><img src="img/scan/srcpage-228.png"/></div></data><data data-scanhref="img/scan/srcpage-229.png"><p class="newpage"></p>
+<p  id="blk-229-01">HYPERBOLE.<!-- skp data-txt='200' --></p>
+<p  id="blk-229-03">Réciproquement, toute hyperbole peut être considérée comme le
+lieu du centre d'un cercle tangent à un cercle fixe et passant par un
+point fixe extérieur à ce cercle. Le point fixe sera l'un des foyers, le
+cercle fixe aura pour centre l'autre foyer et pour rayon l'axe
+transverse.</p>
+<p  id="blk-229-04">Un tel cercle est dit cercle directeur de l'hyperbole. Celle-ci a donc
+deux cercles directeurs.</p>
+<p class="article" id="blk-229-05"><strong class="article-num" id="article-509">509.</strong> Points intérieurs et points extérieurs.</p>
+<p  id="blk-229-06">Un point est dit extérieur à l'hyperbole si la différence de ses
+distances aux deux foyers est moindre que l'axe transverse.</p>
+<p  id="blk-229-07">Un point est dit, au contraire, intérieur à la courbe si la différence
+de ses distances aux foyers est plus grande que l'axe transverse.</p>
+<p  id="blk-229-08">Il est clair qu'il y a deux sortes de points intérieurs ceux qui
+sont plus près de F que de F' (qu'on peut appeler intérieurs à la
+branche de courbe voisine de F) et ceux qui sont plus près de F' que
+de F (intérieurs à la branche de courbe voisine de F'). Ces deux sortes
+de points forment évidemment deux régions (numérotées 2 et 3 sur
+la fig. 418) entièrement séparées l'une de l'autre et entre lesquelles
+on ne peut tracer de chemin continu sans traverser: 1° les deux
+branches de la courbe;
+2º entre ces deux bran-
+ches, la région des
+points extérieurs.</p>
+<p  id="blk-229-09">Au contraire, on cons-
+tate (Voir exercices 772,
+775)<!-- spr -->que les trois ré-
+gions que nous venons de
+définir sont chacune d'un
+seul tenant (496) et que
+les deux intérieures sont</p>
+<p  id="blk-229-11">• P₁</p>
+<p  id="blk-229-12">.P3<!-- skp data-txt="'F'" --><!-- spr -->même convexes.<img class="fig" src="img/FIG. 423.OCR.png" alt="FIG. 423." /></p>
+<p class="article" id="blk-229-16"><strong class="article-num" id="article-510">510.</strong> Soit P un point
+du plan (fig. 423). Pour
+que le cercle de centre P et de rayon PF coupe le cercle direc-<!-- spr -->cercles passant par F et tangents au cercle donné, mais l'un extérieurement, l'autre inté-
+rieurement. Les centres de ces cercles sont situés sur des branches différentes de l'hyperbole
+et très éloignés sur ces branches (puisque les droites F't,, F't, sont presque perpendiculaires
+à Ft₁, Ft₂).<!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='14' --></p><div class="scan-inline"><img src="img/scan/srcpage-229.png"/></div></data><data data-scanhref="img/scan/srcpage-230.png"><p class="newpage"><!-- skp data-txt='210' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->teur de centre F', il faut et il suffit que l'on puisse former un
+triangle ayant pour côtés PF', PF, 2a, autrement dit :</p>
+<p  id="blk-230-04">1° Que la somme PF + PF' soit supérieure à 2a. Cette condition
+est toujours remplie, car la somme PF + PF' est au moins égale à
+FF', lequel est plus grand que 2a;</p>
+<p  id="blk-230-05">2° Que la différence entre PF et PF soit inférieure à 2a: condition
+qui exprime que le point P est extérieur à l'hyperbole.</p>
+<p  id="blk-230-06">Ainsi les points extérieurs à la courbe sont centres de cercles
+passant par le foyer F et sécants au cercle directeur de centre F'.
+Les points intérieurs sont centres de cercles passant par F et sans
+point commun avec le cercle directeur de centre F'.</p>
+<p  id="blk-230-07">Si le point P est intérieur à la branche voisine de F, on a
+PF' PF > 2a ou PF' > PF + 2a: le cercle de centre P et de rayon
+PF et le cercle directeur sont extérieurs l'un à l'autre.</p>
+<p  id="blk-230-08">Si le point P est intérieur à la branche voisine de F',
+PF PF 2a ou PF' < PF 2a le cercle de centre P et de
+rayon PF comprend le cercle directeur à son intérieur.<!-- skp data-txt='-' --><!-- spr -->on<!-- spr -->a<!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-230-14"><strong class="article-num" id="article-511">511.</strong> Intersection d'une droite et d'une hyperbole.<!-- skp data-txt='-' --><!-- skp data-txt='M' --><!-- skp data-txt='F' --><!-- spr -->une<!-- skp data-txt='D' --></p>
+<p  id="blk-230-20">Problème. Trouver les points de rencontre d'une droite avec une<!-- spr -->hyperbole (celle-ci n'étant pas tracée,
+mais donnée par ses foyers et son axe
+transverse).</p>
+<p  id="blk-230-22">Même solution que dans le cas de
+l'ellipse (497), le problème revenant
+encore à faire passer, par le foyer F et
+par son symétrique f relatif à la droite
+donnée D,<!-- spr -->circonférence tan-
+gente au cercle directeur de centre F'</p>
+<p  id="blk-230-24">(fig. 424).
+Discussion. Le point F étant ici extérieur au cercle directeur,
+il devra en être de même du point f.</p>
+<p  id="blk-230-25">Ainsi, si le symétrique f du foyer F par rapport à une droite D est
+intérieur au cercle directeur de centre F', la droite n'a aucun point
+commun avec l'hyperbole.
+· Si, au contraire, le point f est extérieur au cercle directeur, il<!-- spr -->y
+aura deux circonférences C, C' tangentes à ce dernier et passant par
+F et f.<img class="fig" src="img/FIG. 424.OCR.png" alt="FIG. 424." /><!-- skp data-txt='-' --></p><div class="scan-inline"><img src="img/scan/srcpage-230.png"/></div></data><data data-scanhref="img/scan/srcpage-231.png"><p class="newpage"></p>
+<p  id="blk-231-01">HYPERBOLE.<!-- skp data-txt='211' --></p>
+<p  id="blk-231-03">Si aucune de ces circonférences ne se réduit à une droite, leurs
+centres donneront deux points de rencontre de la droite et de l'hy-
+perbole.</p>
+<p  id="blk-231-04">Enfin, si le point f est situé sur le cercle directeur, il y aura une
+seule circonférence tangente, et par conséquent (si cette circonférence
+ne se réduit pas à une droite) un point commun (représentant deux
+points communs confondus).</p>
+<p  id="blk-231-05">On dit alors que la droite D est tangente à l'hyperbole.<!-- spr -->avec<!-- skp data-txt='H' --><img class="fig" src="img/FIG. 425.OCR.png" alt="FIG. 425." /></p>
+<p class="article" id="blk-231-09"><strong class="article-num" id="article-512">512.</strong> L'une des circonférences C, C' se réduira à une droite, si le
+point appartient à l'une des tangentes FT, FT', menées de F au
+cercle directeur de centre F' (fig. 425),
+c'est-à-dire si la droite D (perpendi-
+culaire à F/) est parallèle à l'un des
+rayons FT, F'T'. Dans ce cas, la droite
+n'a plus qu'un point commun
+l'hyperbole, l'autre point commun de-
+vant être considéré (d'après ce que
+nous avons vu) comme rejeté à l'infini
+(et non comme confondu avec le pre-
+mier, ainsi qu'il arrivait dans le cas où
+la droite était tangente) (¹).</p>
+<p  id="blk-231-10">Les directions FT, F'T' sont dites directions asymptotiques de
+l'hyperbole.</p>
+<p  id="blk-231-11">Les deux circonférences C, C' se réduiront à la droite FT lorsque
+le point viendra coïncider avec T, et alors seulement (puisque C et
+C' ne peuvent se confondre l'une avec l'autre que si le point f est
+sur le cercle directeur). Alors les deux points communs de la droite D
+avec l'hyperbole sont rejetés à l'infini (²).</p>
+<p  id="blk-231-12">Une telle droite, perpendiculaire au milieu H de FT ou
+milieu H' de FT' (fig. 425) passe manifestement par le centre de
+l'hyperbole.</p>
+<p  id="blk-231-13">On donne le nom d'asymptotes à ces droites menées par le centre
+de l'hyperbole perpendiculairement à FT, FT' et, par conséquent,<!-- spr -->au</p>
+<p  id="blk-231-15">(1) On remarquera qu'une droite parallèle à une direction asymptotique n'est pas dite
+tangente, quoiqu'elle n'ait qu'un point commun avec la courbe.</p>
+<p  id="blk-231-16">(2) On pourrait être tenté d'étendre cette conclusion au cas où le point f coïnciderait avec
+le point F, intersection de FT et de FT'. Il est clair qu'une telle manière de raisonner serait
+inexacte, en raison de la modification que doit subir le raisonnement général, lorsque la
+droite D passe en F (497).</p><div class="scan-inline"><img src="img/scan/srcpage-231.png"/></div></data><data data-scanhref="img/scan/srcpage-232.png"><p class="newpage"><!-- skp data-txt='212' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->telles que les deux points de rencontre de chacune d'elles avec la
+courbe soient rejetés à l'infini.</p>
+<p class="article" id="blk-232-04"><strong class="article-num" id="article-513">513.</strong> Dans le triangle rectangle FOH, l'hypoténuse est égale à
+c et un côté de l'angle droit, OH, à a l'autre côté de l'angle droit
+est, dès lors, égal à la longueur 6 du demi-axe non transverse, défini<!-- spr -->au nº 507.</p>
+<p  id="blk-232-06">Si donc, par le point A, extrémité de l'axe transverse (fig. 426),
+nous menons une perpendiculaire à cet axe, sur laquelle nous pren-
+drons une longueur AC égale à l'autre demi-axe b (ou, ce qui revient
+au même, si nous définissons le point C par la rencontre de cette
+perpendiculaire avec une perpendiculaire menée à l'extrémité d'un
+segment OB ayant la longueur et la direction du demi-axe non trans-
+verse), le triangle OAC sera égal à OHF, de sorte que l'angle COA
+sera égal à HOF, et que la droite OC aura la direction de l'asymptote</p>
+<p  id="blk-232-07">OH.</p>
+<p  id="blk-232-08">Par conséquent, les asymptotes de l'hy-
+perbole sont les diagonales du rectangle
+CCC, C₁ (fig. 426) construit sur les axes.</p>
+<p  id="blk-232-09">Il en résulte que deux hyperboles con-
+juguées (507) ont les mêmes asymptotes
+(fig. 420).</p>
+<p  id="blk-232-10">Si l'hyperbole est équilatère, et dans ce
+cas seulement, le rectangle CC/CC', est un
+carré et les asymptotes sont rectangulaires.</p>
+<p  id="blk-232-11">A:<!-- skp data-txt='O' --><!-- skp data-txt="A'" --><!-- skp data-txt='1' --><img class="fig" src="img/FIG. 426.OCR.png" alt="FIG. 426." /><!-- skp data-txt='-' --></p>
+<p  id="blk-232-17">REMARQUE. Il est clair qu'on aurait encore pu construire le
+point C par l'intersection de la perpendiculaire AC avec une circon-
+férence ayant O comme centre et OF comme rayon (fig. 426).</p>
+<p class="article" id="blk-232-18"><strong class="article-num" id="article-514">514.</strong> On démontrera, comme pour l'ellipse (499), que la définition
+donnée plus haut (511) de la tangente à l'hyperbole concorde avec
+la définition générale des tangentes, et que l'on a les théorèmes
+suivants :<!-- skp data-txt='-' --></p>
+<p  id="blk-232-20">Théorème. La tangente à l'hyperbole est bissectrice de l'angle des
+deux rayons vecteurs qui aboutissent au point de contact (¹).</p>
+<p  id="blk-232-21">Corollaire.<!-- skp data-txt='-' --></p>
+<p  id="blk-232-23">La normale à l'hyperbole en un de ses points est</p>
+<p  id="blk-232-24">(1) Les figures 427, 428, où les notations sont conformes à celles que nous avons employées
+au nº 499, représentent les constructions effectuées pour démontrer ce théorème.</p><div class="scan-inline"><img src="img/scan/srcpage-232.png"/></div></data><data data-scanhref="img/scan/srcpage-233.png"><p class="newpage"></p>
+<p  id="blk-233-01">HYPERBOLE.<!-- skp data-txt='213' --><!-- spr -->bissectrice de l'angle formé par un des rayons vecteurs qui aboutissent
+en ce point et par le prolongement de l'autre.</p>
+<p  id="blk-233-04">Théorème. Le lieu des symétriques d'un foyer d'une hyperbole</p>
+<p  id="blk-233-05">_<!-- skp data-txt='M' --><!-- skp data-txt='M' --><!-- skp data-txt='P' --><!-- skp data-txt='P' --></p>
+<p  id="blk-233-10">"</p>
+<p  id="blk-233-11">✓<!-- skp data-txt='S' --><!-- skp data-txt='N' --><img class="fig" src="img/FIG. 427.OCR.png" alt="FIG. 427." /><img class="fig" src="img/FIG. 428.OCR.png" alt="FIG. 428." /><!-- spr -->par rapport aux tangentes est le cercle directeur qui a pour centre
+l'autre foyer.</p>
+<p  id="blk-233-17">Toutefois, pour l'exactitude complète de cette dernière proposi-
+tion, il est nécessaire de considérer les asymptotes de la courbe
+comme des tangentes (puisque les symétriques du foyer F par
+rapport à ces droites sont les points T, T' (fig. 429), situés sur le
+cercle directeur de centre F'); et, de fait, une asymptote est la
+limite d'une tangente dont le point de contact s'éloigne indéfiniment
+sur la courbe. En effet, un point M très éloigné sur l'hyperbole est le
+centre d'un cercle passant en F et qui touche le cercle directeur de
+centre F en un point P (fig. 429) très rapproché, soit de T, soit de
+T'. La perpendiculaire au milieu de FP sera la tangente à la courbe
+en M, et, lorsque P tendra vers
+T, cette tangente tendra vers la
+perpendiculaire au milieu de
+FT, c'est-à-dire vers l'asymp-
+tote.<!-- skp data-txt='M' --><!-- skp data-txt="F'" --><!-- skp data-txt='S' --><!-- skp data-txt="T'" --><img class="fig" src="img/FIG. 429.OCR.png" alt="FIG. 429." /></p>
+<p  id="blk-233-23">D'ailleurs, un grand nombre de
+raisonnements relatifs aux tan-
+gentes s'appliquent aux asymp-
+totes. C'est, par exemple, le cas
+du raisonnement donné au nº 499, relativement à la tangente à l'ellipse.</p>
+<p  id="blk-233-24">Autrement dit (1), soit encore P le point de contact du cercle directeur</p>
+<p  id="blk-233-25">(1) On s'assurera que le raisonnement présenté ici correspond bien à celui du n° 499,
+l'un des cercles S, S, considérés en ce dernier endroit étant simplement réduit à la droite FT.</p><div class="scan-inline"><img src="img/scan/srcpage-233.png"/></div></data><data data-scanhref="img/scan/srcpage-234.png"><p class="newpage"><!-- skp data-txt='214' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->qui a pour centre F' avec un cercle S (fig. 429) ayant pour centre un point M
+très éloigné sur l'hyperbole. Le point de rencontre I de la tangente FT avec
+la tangente commune aux deux cercles en P tend vers T en même temps
+que P et l'on démontrera, exactement comme au n° 499, qu'il en est de
+même du point f (autre que F) où la circonférence S rencontre FT. Or la
+perpendiculaire au milieu h de Ff passe en M, de sorte que la distance hH
+(H désignant, comme précédemment, le milieu de FT) représente la
+distance du point M à l'asymptote. Donc cette distance tend vers zéro lorsque
+le point M s'éloigne indéfiniment, puisque le point f tend vers T et, par
+conséquent, le point h vers H.<!-- skp data-txt='H' --><!-- skp data-txt='H' --><img class="fig" src="img/FIG. 430.OCR.png" alt="FIG. 430." /></p>
+<p class="article" id="blk-234-07"><strong class="article-num" id="article-515">515.</strong> Dans le cas de l'ellipse, le centre était intérieur à la courbe<!-- spr -->et, par conséquent, toute droite
+menée par ce point était sécante.
+Il n'en est pas de même ici. En
+effet, lorsque la droite D tourne
+autour du centre 0 (fig. 430), le
+point f, symétrique de F par rap-
+port à cette droite, décrit le cercle
+qui a FF pour diamètre (puisque
+l'on a constamment Of = OF). Or,<!-- spr -->ce cercle est divisé par les points
+T, T'en deux arcs, l'un (celui qui contient le foyer F) extérieur.
+au cercle directeur de centre F', l'autre intérieur à ce cercle.</p>
+<p  id="blk-234-10">La droite D ne coupera l'hyperbole que si le point f est sur l'arc
+extérieur, c'est-à-dire si elle passe dans l'angle HOH' et dans son
+opposé par le sommet.</p>
+<p  id="blk-234-11">Donc, des quatre angles que forment entre elles les asymptotes, deux
+(opposés par le sommet l'un à l'autre) contiennent à eux seuls toute la
+courbe ce sont ceux qui contiennent les foyers.</p>
+<p class="article" id="blk-234-12"><strong class="article-num" id="article-516">516.</strong> Les deux théorèmes suivants se démontrent exactement
+comme pour l'ellipse :<!-- skp data-txt='-' --></p>
+<p  id="blk-234-14">Théorème. - Le lieu des projections des foyers d'une hyperbole sur
+ses tangentes est le cercle (dit cercle principal) décrit sur l'axe trans-
+verse comme diamètre.</p>
+<p  id="blk-234-15">Réciproquement, si le sommet d'un angle droit décrit un cercle,
+pendant qu'un des côtés passe par un point fixe extérieur à ce cercle,
+l'autre côté reste tangent à une hyperbole fixe.</p><div class="scan-inline"><img src="img/scan/srcpage-234.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

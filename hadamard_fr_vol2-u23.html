@@ -1,0 +1,446 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-296.png"><p class="newpage"><!-- skp data-txt='276' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-296-03">CHAPITRE II</p>
+<p  id="blk-296-04">NIVELLEMENT</p>
+<p  id="blk-296-05">0°</p>
+<p  id="blk-296-06">• CEDO O</p>
+<p  id="blk-296-07">с<!-- skp data-txt='B' --><!-- skp data-txt='A' --><img class="fig" src="img/FIG. 488.OCR.png" alt="FIG. 488." /></p>
+<p  id="blk-296-11">―</p>
+<p  id="blk-296-12">Niveau d'eau.</p>
+<p class="article" id="blk-296-13"><strong class="article-num" id="article-574">574.</strong> Nivellement direct.
+On mesure la différence des cotes de deux points à l'aide du niveau<!-- spr -->d'eau.</p>
+<p  id="blk-296-15">Cet appareil se compose
+(fig. 488) de deux fioles en
+verre F, F', communiquant
+entre elles par un tube TT
+perpendiculaire à leur direc-
+tion, qui aboutit au fond de
+chacune d'elles, et que l'on
+remplit incomplètement d'eau
+colorée. Le tout est porté sur<!-- spr -->un axe A que l'on installe ver-
+ticalement. En vertu du principe des vases communiquants, établi
+en hydrostatique, les surfaces libres du liquide dans les deux fioles
+font partie d'un seul et même plan horizontal.</p>
+<p  id="blk-296-17">Le principe des vases communiquants n'est toutefois
+pas applicable sans modification, à cause de l'action de
+la capillarité, action dont l'effet est: 1° de relever toute
+la surface libre de l'eau dans chaque fiole, d'une petite
+quantité dépendant du diamètre de cette fiole; 2° de
+relever les bords de cette surface, de manière que celle-
+ci cesse d'être horizontale dans le voisinage de la paroi
+et prend la forme indiquée (fig. 489).</p>
+<p  id="blk-296-18">Mais, si les fioles sont exactement de même calibre, les actions
+capillaires sont identiques de part et d'autre. On a soin, en construi-
+sant l'appareil, que cette condition soit remplie. Lorsqu'il en est<img class="fig" src="img/FIG. 489.OCR.png" alt="FIG. 489." /></p><div class="scan-inline"><img src="img/scan/srcpage-296.png"/></div></data><data data-scanhref="img/scan/srcpage-297.png"><p class="newpage"></p>
+<p  id="blk-297-01">NIVELLEMENT.<!-- skp data-txt='277' --><!-- spr -->ainsi, les bords ab, a'b' des deux surfaces libres font partie d'un
+seul et même plan horizontal.</p>
+<p  id="blk-297-04">En plaçant l'œil suivant une tangente commune intérieure aux
+deux circonférences ab, a'b' et s'assurant qu'on voit bien ces deux
+lignes sous l'aspect de deux petites droites en prolongement l'une de
+l'autre (fig. 490), on vise une droite hori-
+zontale bien déterminée.<!-- spr -->ba'<img class="fig" src="img/FIG. 490.OCR.png" alt="FIG. 490." /></p>
+<p class="article" id="blk-297-07"><strong class="article-num" id="article-575">575.</strong> Pour pouvoir viser successivement
+toutes les directions d'un même plan hori-
+zontal, il suffit évidemment de faire tour-
+ner l'appareil autour de l'axe A, si celui-
+ci est bien vertical. La hauteur de l'eau
+dans les fioles reste alors invariable et la
+droite considérée tout à l'heure engendre
+un plan horizontal, dit plan de visée de
+l'appareil.</p>
+<p  id="blk-297-08">Lorsque l'axe A autour duquel tourne
+le niveau n'est pas exactement vertical, la conclusion précédente
+n'est pas applicable en général. Toutefois, on peut encore admettre,
+même dans ces conditions, que le niveau du liquide reste inva-
+riable dans la rotation, si l'on a constaté: 1° que les deux fioles
+sont de même diamètre intérieur (c'est ce que nous avons déjà
+supposé); 2° que l'axe aboutit au milieu du tube.
+En effet, en toute hypothèse, le volume du liquide compris dans<!-- spr -->l'appareil demeure constant. Or, ce
+12'<!-- spr -->volume comprend : 1° le volume du
+tube horizontal, lequel est toujours
+le même; 2° les volumes compris
+dans les fioles. Ceux-ci, puisque les
+fioles sont cylindriques et de même<!-- spr -->calibre, sont proportionnels aux hau-
+teurs (1) PQ, P'Q' (fig. 491) occupées par le liquide dans chacune
+d'elles, de sorte que leur somme est proportionnelle à la somme
+PQ+ P'Q'.</p>
+<p  id="blk-297-12">Le volume total étant constant, nous voyons que, lors d'une<!-- skp data-txt="P'" --><!-- skp data-txt='P' --><!-- skp data-txt='A' --><img class="fig" src="img/FIG. 491.OCR.png" alt="FIG. 491." /></p>
+<p  id="blk-297-17">•</p>
+<p  id="blk-297-18">(1) Nous raisonnons comme si les fioles restaient verticales, ce qui n'est évidemment pas
+exact; mais, lorsque les inclinaisons sont petites, l'erreur provenant de ce fait est tout à fait
+négligeable.</p><div class="scan-inline"><img src="img/scan/srcpage-297.png"/></div></data><data data-scanhref="img/scan/srcpage-298.png"><p class="newpage"><!-- skp data-txt='278' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->rotation autour d'un axe non vertical, la hauteur occupée par le
+liquide dans l'une des fioles augmentera pendant qu'elle diminuera.
+dans l'autre, mais que la somme de ces hauteurs ne changera pas.</p>
+<p  id="blk-298-04">Or, le trapèze (¹) PQ P'Q' montre que cette somme est double de
+la distance verticale qui existe entre le milieu du tube et le niveau
+supérieur du liquide. Ce dernier devra donc rester invariable si le
+milieu du tube est sur l'axe. Il est même aisé de voir (exercice 855)
+que si la distance du milieu du tube à l'axe est petite, en même temps
+que l'angle de cet axe avec la verticale, la variation du plan de
+visée sera négligeable. On peut donc toujours, dans la pratique,
+considérer ce plan de visée comme fixe.</p>
+<p class="article" id="blk-298-05"><strong class="article-num" id="article-576">576.</strong> L'opération fondamentale exécutable avec le niveau d'eau
+est la suivante :</p>
+<p  id="blk-298-06">Étant donné un point M (fig. 492) situé plus bas
+que le plan de visée de l'appareil, déterminer la cote
+de ce point au-dessous de ce plan.</p>
+<p  id="blk-298-07">Il suffira à cet effet, de trouver, sur la verticale
+du point M, le point M' qui est situé dans le plan de
+visée de l'appareil, et de noter la distance MM'.</p>
+<p  id="blk-298-08">C'est ce qu'on réalise à l'aide de la mire, c'est-à-
+dire d'une règle graduée portant une plaque carrée
+mobile, appelée voyant, laquelle est partagée en</p>
+<p  id="blk-298-09">☑M'<!-- skp data-txt='M' --><img class="fig" src="img/FIG. 492.OCR.png" alt="FIG. 492." /><img class="fig" src="img/FIG. 493.OCR.png" alt="FIG. 493." /><!-- spr -->quatre parties peintes alternativement en blanc et en couleur
+(fig. 493) de manière que le centre en soit très nettement visible de
+loin.</p>
+<p  id="blk-298-14">Un aide place cette règle bien verticalement au point M, puis,
+sur les indications de l'opérateur, fait monter ou descendre le</p>
+<p  id="blk-298-15">(1) Nous réduisons, pour simplifier, le tube et les fioles à des droites.</p><div class="scan-inline"><img src="img/scan/srcpage-298.png"/></div></data><data data-scanhref="img/scan/srcpage-299.png"><p class="newpage"></p>
+<p  id="blk-299-01">NIVELLEMENT.<!-- skp data-txt='279' --><!-- spr -->voyant le long de la règle jusqu'à ce que son centre soit en M', dans
+le plan de visée du niveau. Il ne reste plus qu'à lire sur la gradua-
+tion de la règle, la longueur MM'.</p>
+<p  id="blk-299-04">Il faut supposer toutefois : 1° que le point M, ou tout au moins
+le point M' peut être aperçu de l'endroit où est placé le niveau ;
+2° que la distance horizontale des deux appareils ne soit pas trop
+grande, car la petite erreur commise par l'opérateur sur la direc-
+tion de la visée a évidemment une influence croissante avec la
+distance en question; 3° que la différence de cote cherchée ne
+soit pas supérieure à 2 mètres si la mire est simple, et à 4 mètres si
+la mire est à coulisse, c'est-à-dire se compose de deux règles pouvant
+glisser l'une sur l'autre, de manière à pouvoir s'allonger jusqu'au
+double de la longueur primitive. Cette dernière ne peut d'ailleurs
+dépasser 2 mètres, afin que l'extrémité de la première règle puisse
+être atteinte sans difficulté.</p>
+<p class="article" id="blk-299-05"><strong class="article-num" id="article-577">577.</strong> Nivellement simple.
+Soit à déterminer la différence de cote de deux points M, N.</p>
+<p  id="blk-299-06">On installe le niveau d'eau de manière que son plan de visée soit
+supérieur aux deux points donnés et l'on mesure (nº précéd.) la
+cote de chacun de ces points au-dessous de ce plan de visée. Il ne
+reste plus qu'à soustraire l'une de l'autre les cotes ainsi mesurées.</p>
+<p  id="blk-299-07">On pourra faire les deux lectures sans aucun dérangement du
+niveau, si celui-ci est dans l'alignement MN. Sinon, on fera tourner
+l'appareil autour de son axe. On pourra, en employant ce dernier
+procédé, déterminer avec une seule mise en station du niveau, les
+différences existant entre les cotes d'une série de points visibles
+d'un même poste d'observation.</p>
+<p  id="blk-299-08">Pour que la méthode précédente soit applicable, il faut (n° précéd.):
+1° que l'on ait pu placer le niveau de manière à apercevoir en
+même temps les points donnés; 2° que la distance horizontale de
+ces points au niveau d'eau ne soit pas trop grande; 3º que les
+différences de cote cherchées soient assez petites.</p>
+<p class="article" id="blk-299-09"><strong class="article-num" id="article-578">578.</strong> Nivellement composé.</p>
+<p  id="blk-299-10">Si l'une ou l'autre des conditions que nous venons d'énumérer
+n'est pas remplie, il faut recourir au nivellement composé, c'est-
+à-dire faire choix d'un certain nombre de points auxiliaires P, Q,... S,
+tels que l'on puisse mesurer, par nivellement simple, les différences</p><div class="scan-inline"><img src="img/scan/srcpage-299.png"/></div></data><data data-scanhref="img/scan/srcpage-300.png"><p class="newpage"><!-- skp data-txt='280' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-300-03">.....<!-- spr -->de cote qui existent entre M et P, entre P et Q, entre S et N.
+La somme algébrique des quantités trouvées donne évidemment
+le résultat cherché.<img class="fig" src="img/FIG. 494.OCR.png" alt="FIG. 494." /></p>
+<p class="article" id="blk-300-06"><strong class="article-num" id="article-579">579.</strong> Nivellement indirect.
+De même que la mesure des angles et des longueurs horizontales,<!-- spr -->le nivellement peut s'effectuer indirectement.</p>
+<p  id="blk-300-08">Soit, en effet, à mesurer la différence de cote
+entre un point m où l'on peut placer l'œil et un
+point N quelconque.</p>
+<p  id="blk-300-09">Soit H (fig. 494) la projection du point m
+sur la verticale du point N. Le triangle rec-<!-- spr -->tangle mNH sera complètement déterminé et,
+par conséquent, la différence de cote cherchée NH connue, si
+l'on a pu mesurer: 1° Le côté mH; 2° l'angle en m, lequel n'est
+autre que l'angle de la direction mN avec le plan horizontal, ou la
+hauteur (1) de cette direction.</p>
+<p  id="blk-300-11">La première mesure est du ressort de la planimétrie : elle
+s'effectue, directement ou indirectement suivant les cas, а
+l'aide des méthodes exposées au chapitre précédent.</p>
+<p  id="blk-300-12">Pour mesurer la hauteur de la direction mN, on peut se servir du
+graphomètre, dont on installe le limbe verticalement de manière
+que le plan de visée de l'alidade fixe soit horizontal, en faisant
+ensuite passer le plan de visée de l'alidade mobile par la droite<!-- skp data-txt='-' --><!-- spr -->mN.</p>
+<p  id="blk-300-15">Mais, ainsi que nous venons de le voir, le nivellement indirect
+comporte une opération de planimétrie de sorte que, la plupart du
+temps, lorsqu'on emploie cette méthode, on effectue concurrem-
+ment le levé et le nivellement. Il y a, dans ces conditions, tout avan-
+tage à employer le théodolite, qui permet de mesurer, à la fois et
+pour une même position de l'instrument, l'azimuth et la hauteur d'une
+direction.</p>
+<p class="article" id="blk-300-16"><strong class="article-num" id="article-580">580.</strong> Pour obtenir effectivement la mesure de NH, on pourra,
+ainsi que nous l'avons dit plus haut :</p>
+<p  id="blk-300-17">1° Soit employer la trigonométrie (2) : c'est ce que l'on fait
+toujours lorsqu'on vise à une grande exactitude;</p>
+<p  id="blk-300-18">(1) TISSERAND et ANDOYER, Leçons de Cosmographie, nº 4, page 3.
+(2) Leçons de trigonométrie rectiligne de M. BOURLET, liv. III, ch. I et aussi nº 173-174.</p><div class="scan-inline"><img src="img/scan/srcpage-300.png"/></div></data><data data-scanhref="img/scan/srcpage-301.png"><p class="newpage"></p>
+<p  id="blk-301-01">NIVELLEMENT.<!-- skp data-txt='281' --></p>
+<p  id="blk-301-03">2° Soit construire sur le papier un triangle semblable à mNH ;</p>
+<p  id="blk-301-04">3° Soit construire un tel triangle sur le terrain. Ceci conduit à un
+procédé de mesure très simple, en ce qu'il
+n'exige l'emploi d'aucun instrument angu-
+laire. On plante, bien verticalement, dans
+l'alignement mN, une tige H'N' (fig. 495), sur
+laquelle on marque le point H' qui est situé
+dans le même plan horizontal que m et le
+point N qui est situé sur le rayon visuel mN.
+On a ainsi réalisé le triangle mH'N' sembla-
+ble à mHN et la mesure de la distance horizontale mH, ainsi que
+des longueurs mH', H'N' fait connaître la cote cherchée par une
+simple proportion.<img class="fig" src="img/FIG. 495.OCR.png" alt="FIG. 495." /></p>
+<p class="article" id="blk-301-06"><strong class="article-num" id="article-581">581.</strong> Si maintenant on veut la différence de cote existant entre<!-- spr -->deux points M, N du terrain, on pourra, suivant les cas :</p>
+<p  id="blk-301-08">Soit placer l'œil en m, au-dessus du point M, et ajouter (ou retran-
+cher) à la différence de cote NH la distance verticale des points m, M,
+évaluée directement. C'est, par exemple, ainsi qu'on procède lors-
+qu'on emploie la méthode indiquée en 3º au numéro précédent;</p>
+<p  id="blk-301-09">Soit opérer par différence, absolument comme avec le niveau<!-- spr -->d'eau.</p>
+<p  id="blk-301-11">Le nivellement indirect peut ainsi être considéré comme une
+opération tout à fait analogue au nivellement direct, le plan hori-
+zontal mené par le point m considéré aux deux numéros précédents
+remplaçant le plan de visée du niveau d'eau.</p>
+<p  id="blk-301-12">Seulement, au lieu que ce dernier devait toujours être au-dessus
+des points visés, la différence de cote ne dépassant d'ailleurs pas
+4 mètres, on peut mesurer, par nivellement indirect, des déni-
+vellations de sens et de grandeurs quelconques. Le nivellement
+indirect pourra donc être simple dans des circonstances où le nivel-
+lement direct serait forcément composé.</p>
+<p  id="blk-301-13">Mais il est, de plus, une série de circonstances (mesure de la
+hauteur d'un clocher, d'une montagne inaccessible, etc., etc.) où
+le nivellement direct est impraticable, au lieu que le nivellement
+indirect s'applique à tout point visible.</p>
+<p class="article" id="blk-301-14"><strong class="article-num" id="article-582">582.</strong> Ayant ainsi déterminé les différences mutuelles des cotes, il
+suffit, pour connaître ces cotes elles-mêmes, de se donner l'une</p><div class="scan-inline"><img src="img/scan/srcpage-301.png"/></div></data><data data-scanhref="img/scan/srcpage-302.png"><p class="newpage"></p>
+<p  id="blk-302-01">28:2<!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->d'entre elles. Cette dernière inconnue dépend d'ailleurs évidemment
+du choix du plan horizontal de comparaison, de sorte qu'on peut la
+considérer comme arbitraire. Par exemple, on pourra faire passer le
+plan de comparaison par le point le plus bas du terrain donné et,
+par conséquent, prendre pour ce point la cote zéro.</p>
+<p  id="blk-302-04">Pour changer de plan de comparaison, il suffit d'ailleurs d'aug-
+menter ou de diminuer toutes les cotes d'une même quantité, égale
+à la distance de l'ancien plan au nouveau. C'est ce qu'on devra faire,
+par exemple, lorsqu'on aura nivelé, indépendamment l'un de l'autre.
+et avec des plans de comparaison différents, deux terrains voisins
+et qu'on voudra réunir en un seul les deux nivellements.</p>
+<p  id="blk-302-05">Si enfin on veut comparer entre eux des nivellements portant sur
+des régions très différentes, il importe d'avoir un niveau (¹) de
+comparaison commun pour toutes ces opérations. On compte alors
+les cotes au-dessus du niveau de la mer : les cotes ainsi estimées
+prennent le nom d'altitudes des points correspondants.</p>
+<p  id="blk-302-06">On a effectué, par des opérations de précision, un nivellement
+général du territoire français, de manière à faire connaître les alti-
+tudes d'un très grand nombre de points. Pour rapporter un nivelle-
+ment quelconque au niveau de la mer, il suffira donc d'y rattacher
+un point qui ait fait partie du nivellement général.</p>
+<p class="article" id="blk-302-07"><strong class="article-num" id="article-583">583.</strong> Représentation des cotes. Courbes de niveau.</p>
+<p  id="blk-302-08">Un plan étant rapporté sur le papier, il faut encore arriver à
+donner une idée nette du relief du terrain ainsi figuré. On arrive à
+ce résultat à l'aide des courbes de niveau.</p>
+<p  id="blk-302-09">On appelle courbe de niveau (fig. 496, 501) le lieu des points qui
+ont une même cote donnée, autrement dit la section de la surface
+du terrain par un plan horizontal.</p>
+<p  id="blk-302-10">On détermine une telle courbe en plantant (à l'aide du niveau
+d'eau) des piquets en des points suffisamment rapprochés les uns
+des autres et ayant la cote donnée, puis relevant, par intersections
+ou par toute autre méthode de planimétrie, les positions de ces
+piquets.</p>
+<p  id="blk-302-11">On représente le relief d'un terrain en figurant les courbes de
+niveau dont les cotes diffèrent les unes des autres d'une même</p>
+<p  id="blk-302-12">(1) Nous disons niveau de comparaison et non plan de comparaison, puisque, pour des points
+très éloignés les uns des autres, il n'est plus possible d'admettre le parallélisme des plans
+horizontaux.</p><div class="scan-inline"><img src="img/scan/srcpage-302.png"/></div></data><data data-scanhref="img/scan/srcpage-303.png"><p class="newpage"></p>
+<p  id="blk-303-01">NIVELLEMENT.<!-- skp data-txt='283' --><!-- spr -->quantité ou équidistance (dépendant, bien entendu, de la nature du
+terrain et de l'échelle du plan).</p>
+<p  id="blk-303-04">Si l'équidistance a été convenablement choisie, la forme et la
+disposition des courbes de niveau permettront de se rendre compte
+de toutes les particularités du relief. En particulier, le terrain sera
+d'autant plus incliné que les courbes de niveau, pour une même
+équidistance, seront plus rapprochées les unes des autres.</p>
+<p  id="blk-303-05">Sur beaucoup de cartes topographiques, le relief est figuré par
+des hachures tracées entre les courbes de niveau successives, norma-
+lement à ces courbes, par conséquent d'autant plus courtes que ces
+dernières sont plus voisines les unes des autres ou que la pente est
+plus forte, les hachures étant d'ailleurs d'autant plus rapprochées
+et plus grosses qu'elles sont plus courtes. Ce mode de figuration a
+toutefois l'inconvénient de surcharger la carte sans donner aucun
+renseignement que ne fournisse le tracé des courbes de niveau.</p>
+<p  id="blk-303-06">Indépendamment du figuré général du terrain, la carte porte
+indication des cotes d'un certain nombre de points importants.</p>
+<p class="article" id="blk-303-07"><strong class="article-num" id="article-584">584.</strong> Lorsqu'on veut représenter les ondulations du terrain le</p>
+<p  id="blk-303-08">AKE<!-- skp data-txt='P' --><!-- spr -->n<!-- spr -->m<img class="fig" src="img/FIG. 496.OCR.png" alt="FIG. 496." /><!-- spr -->long d'une ligne donnée dont la projection est figurée en L (fig. 496)
+sur le plan, on a recours aux profils.</p>
+<p  id="blk-303-14">On nomme profil la figure obtenue en développant (538) le
+cylindre qui projette horizontalement la ligne considérée. Il est clair
+que si L est une ligne droite, le profil n'est autre que la section
+même du terrain par le plan vertical qui projette cette droite.</p>
+<p  id="blk-303-15">Puisque le tracé des courbes de niveau donne, à lui seul, la forme</p><div class="scan-inline"><img src="img/scan/srcpage-303.png"/></div></data><data data-scanhref="img/scan/srcpage-304.png"><p class="newpage"><!-- skp data-txt='284' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->du terrain, il doit permettre de construire le profil suivant une ligne
+quelconque L.</p>
+<p  id="blk-304-04">On remarquera, à cet effet, qu'on connaît les ordonnées ou
+cotes d'un certain nombre de points m, n, p, (fig. 496) de la
+ligne L, à savoir, des points où cette ligne coupe les courbes de
+niveau. On relèvera, sur le plan, les abscisses curvilignes des mêmes</p>
+<p  id="blk-304-05">...</p>
+<p  id="blk-304-06">M₁</p>
+<p  id="blk-304-07">N.<!-- spr -->m</p>
+<p  id="blk-304-09">P₁<img class="fig" src="img/FIG. 496 bis.OCR.png" alt="FIG. 496 bis." /></p>
+<p  id="blk-304-11">...<!-- skp data-txt='1' --><!-- spr -->points, que l'on reportera en Оm₁, О, Op (fig. 496 bis), et
+l'on aura ainsi, aux extrémités des ordonnées m₁M₁, n₁N₁,
+série de points du profil cherché.<!-- spr -->une</p>
+<p  id="blk-304-15">...</p>
+<p class="article" id="blk-304-16"><strong class="article-num" id="article-585">585.</strong> Pour terminer ce qui concerne la planimétrie et le nivelle-
+ment, nous dirons un mot de quelques simplifications qui peuvent
+être apportées dans ces deux opérations.</p>
+<p  id="blk-304-17">Les méthodes photographiques, qui présentent l'avantage impor-
+tant de réduire à la plus courte durée possible les opérations à
+effectuer sur place, sont fréquemment appliquées à la topographie.
+La place occupée par l'image d'un objet sur l'épreuve photogra-
+phique dépend, en effet, de la direction du rayon lumineux joignant
+ce point au centre optique de la lentille objective. On peut dès lors<!-- spr -->déduire, moyennant certaines précautions dans le détail
+desquelles nous n'entrerons pas, l'azimuth et la hauteur de cette
+direction. Il suffira donc d'avoir deux photographies, prises de
+deux points séparés l'un de l'autre par une distance connue, pour
+en déduire, par intersections, le levé et le nivellement du terrain
+ainsi doublement reproduit.<!-- spr -->en</p>
+<p class="article" id="blk-304-20"><strong class="article-num" id="article-586">586.</strong> Nous avons, d'autre part, remarqué, à propos de la méthode
+par intersections, que nous ne pouvions pas obtenir la position</p><div class="scan-inline"><img src="img/scan/srcpage-304.png"/></div></data><data data-scanhref="img/scan/srcpage-305.png"><p class="newpage"></p>
+<p  id="blk-305-01">NIVELLEMENT.<!-- skp data-txt='285' --><!-- skp data-txt='B' --><!-- spr -->relalive de deux points A, B en visant simplement le point B du
+point A et qu'il était nécessaire de compléter cette visée, soit en
+chaînant l'alignement AB, soit en rattachant le point B à un troisième
+point C, non en ligne droite avec les deux premiers.'</p>
+<p  id="blk-305-05">Il existe cependant un moyen d'échapper à cette nécessité. C'est
+de se servir d'un principe emprunté au Cours de Cosmographie (') :</p>
+<p  id="blk-305-06">Les diamètres apparents d'un même objet, vu à différentes distances,
+sont inversement proportionnels à ces distances.</p>
+<p  id="blk-305-07">D'après cela, si un aide se transporte au point B avec un voyant
+de dimensions connues, l'observation du diamètre
+apparent sous lequel ce voyant apparaît du point A
+fera connaître la distance AB.</p>
+<p  id="blk-305-08">Il faut observer que c'est la distance AB elle-même
+qui est ainsi mesurée et non pas (comme lorsqu'on
+opère à la chaîne) sa projection horizontale AH
+(fig. 497). Mais on pourra évaluer cette dernière si on lit la hauteur
+du rayon visuel AB, puisque, dans le triangle rectangle ABH,
+connaîtra l'hypoténuse et un angle aigu.</p>
+<p  id="blk-305-09">On peut, en se fondant sur ce principe, lire et noter sur le papier,
+en même temps, l'azimuth, la hauteur et la longueur de la droite
+qui joint un point quelconque M à un point O choisi une fois pour
+toutes, et, par conséquent, obtenir par rayonnement le levé et le
+nivellement d'un terrain, avec une seule visée pour chaque point.<!-- skp data-txt='H' --><img class="fig" src="img/FIG. 497.OCR.png" alt="FIG. 497." /><!-- spr -->on</p>
+<p  id="blk-305-13">(1) TISSERAND et ANDOYER, Leçons de Cosmographie, page 88.</p><div class="scan-inline"><img src="img/scan/srcpage-305.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

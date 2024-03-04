@@ -1,0 +1,445 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-415.png"><p class="newpage"></p>
+<p  id="blk-415-01">POLYÈDRES RÉGULIERS.<!-- skp data-txt='395' --></p>
+<p  id="blk-415-03">CHAPITRE V</p>
+<p  id="blk-415-04">THÉORÈME D'EULER. POLYÈDRES RÉGULIERS</p>
+<p class="article" id="blk-415-05"><strong class="article-num" id="article-698">698.</strong> Nous considérerons exclusivement, dans ce chapitre, des
+polyèdres satisfaisant aux conditions indiquées page 60, notes 1 et 2,
+à savoir:</p>
+<p  id="blk-415-06">Leur surface-limite sera d'un seul morceau.</p>
+<p  id="blk-415-07">Il n'arrivera jamais qu'une arête soit commune à plus de deux
+faces, ni qu'un sommet soit commun à plusieurs angles polyèdres
+formés avec les faces du solide.</p>
+<p  id="blk-415-08">De plus, chaque face aura elle-même son contour d'un seul tenant,
+comme il a été expliqué au nº 21 (Pl., liv. I). Cette condition est
+distincte de celle que nous avons donnée en premier lieu. Par
+exemple, si l'on considère l'aire plane ombrée sur la fig. 569 comme<!-- skp data-txt='E' --><!-- skp data-txt='A' --><!-- skp data-txt='A' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 569.OCR.png" alt="FIG. 569." /><img class="fig" src="img/FIG. 570.OCR.png" alt="FIG. 570." /><!-- spr -->la base d'un prisme, ce prisme sera un polyèdre satisfaisant à l'une
+des deux conditions et ne satisfaisant pas à l'autre.</p>
+<p  id="blk-415-16">Il n'arrivera jamais non plus, nous le supposons, qu'un sommet
+soit l'extrémité commune de plus de deux arêtes appartenant à la
+même face. Par exemple, une face ne pourra jamais avoir la forme
+du polygone représenté figure 570.</p>
+<p class="article" id="blk-415-17"><strong class="article-num" id="article-699">699.</strong> Lorsqu'on supprime une ou plusieurs faces d'un polyèdre, la
+surface restante, que nous supposerons être encore d'un seul tenant,
+n'est plus fermée; elle possède (outre des arêtes dont chacune est</p><div class="scan-inline"><img src="img/scan/srcpage-415.png"/></div></data><data data-scanhref="img/scan/srcpage-416.png"><p class="newpage"><!-- skp data-txt='396' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='A' --><!-- spr -->commune à deux faces), des arêtes libres, c'est-à-dire qui n'appar-
+tiennent plus qu'à une seule face. Ces dernières forment le contour
+ou bord de la surface polyédrale ouverte considérée.</p>
+<p  id="blk-416-05">Joignons entre eux deux points du bord d'une surface ouverte
+(polyédrale ou non) par un chemin situé sur la surface et qui ne se<!-- spr -->coupera lui-même en aucun point. Si nous fen-
+dons la surface suivant la ligne ainsi considérée,
+nous aurons pratiqué une section de la surface.
+Si, par exemple, la surface est polyédrale, et
+le chemin formé d'arêtes du polyèdre, il est bien
+entendu qu'à partir du moment où la section sera
+pratiquée, deux faces (F, F', fig. 571) séparées par<!-- spr -->une arête appartenant à la section ne devront plus
+être considérées comme contiguës; l'arête en question (AB, fig. 571)
+devra être considérée comme faisant partie désormais du bord de
+la surface, et cela à double titre, à savoir comme côté de F, et<!-- skp data-txt='F' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 571.OCR.png" alt="FIG. 571." /><!-- spr -->comme côté de F'.<!-- skp data-txt="'" --></p>
+<p class="article" id="blk-416-13"><strong class="article-num" id="article-700">700.</strong> Deux surfaces A, A' sont dites avoir la même connexion si on
+peut les faire correspondre point par point, le contour de l'une cor-
+respondant au contour de l'autre, de manière : 1° qu'à chaque point
+de A corresponde un point et un seul de A' et inversement; 2° qu'à
+une figure (ligne ou région) d'un seul tenant prise sur A corresponde
+toujours une figure d'un seul tenant sur A', et inversement.</p>
+<p  id="blk-416-14">C'est, en particulier, ce qui arrive si l'une des surfaces résulte de
+l'autre par une déformation continue dans laquelle il n'y a, à aucun
+moment, ni déchirure, ni soudage de parties séparées aupara-
+vant (1).</p>
+<p  id="blk-416-15">Si une aire A a pour perspective sur un plan une aire A' limitée
+en tout sens (de sorte qu'aucun point de A n'ait sa perspective à
+l'infini) et si chaque projetante n'a qu'un point commun avec A, les
+aires A et A' ont même connexion; bien entendu, il n'en serait plus
+nécessairement de même si les projetantes avaient plus d'un point<!-- spr -->commun avec A.</p>
+<p  id="blk-416-17">Au contraire, un triangle quelconque et l'aire représentée fig. 569
+n'ont assurément pas la même connexion puisque, sans cela, les</p>
+<p  id="blk-416-18">(1) Inversement, on démontre que deux surfaces qui ont la même connexion peuvent tou-
+jours être considérées comme dérivant l'une de l'autre par une telle déformation.</p><div class="scan-inline"><img src="img/scan/srcpage-416.png"/></div></data><data data-scanhref="img/scan/srcpage-417.png"><p class="newpage"></p>
+<p  id="blk-417-01">POLYÈDRES RÉGULIERS.<!-- skp data-txt='397' --><!-- spr -->deux bords devraient se correspondre, au lieu que l'un est d'un seul
+tenant, l'autre non.</p>
+<p class="article" id="blk-417-04"><strong class="article-num" id="article-701">701.</strong> Deux aires A et A', de même connexion, étant considérées,
+si l'on pratique dans A une sections qui la morcèle, c'est-à-dire la
+divise en deux parties séparées A1, A2, il est clair que la section s'
+qui, dans A', correspond à s, divisera A' en deux parties A½₁, A½₂
+(celles qui correspondent respectivement à A₁, A₂).</p>
+<p class="article" id="blk-417-05"><strong class="article-num" id="article-702">702.</strong> Nous nommerons aire simplement connexe toute portion de
+plan dont le contour est d'un seul tenant (et telle que deux portions non
+consécutives de ce contour n'aient jamais de point commun (¹), ou toute
+aire ayant même connexion qu'une telle portion de plan (2).</p>
+<p  id="blk-417-06">Une aire plane simplement connexe (A. fig. 572) est évidemment
+divisée par une section quelconque en deux aires planes A₁, A₂ de
+même nature. Donc (701) toute aire simplement connexe est morcelée (³)
+par une section quelconque et les deux morceaux sont eux-mêmes
+simplement connexes.<!-- spr -->d<!-- skp data-txt="M'" --><!-- skp data-txt='11' --><!-- skp data-txt="'f'" --><!-- skp data-txt='97' --><!-- skp data-txt='6' --></p>
+<p  id="blk-417-13">Az<!-- spr -->h<!-- spr -->g<img class="fig" src="img/FIG. 572.OCR.png" alt="FIG. 572." /><img class="fig" src="img/FIG. 573.OCR.png" alt="FIG. 573." /></p>
+<p class="article" id="blk-417-18"><strong class="article-num" id="article-703">703.</strong> En enlevant une face F d'un polyèdre convexe P, on obtient
+toujours une aire A simplement connexe.</p>
+<p  id="blk-417-19">Soit, en effet, O un point situé, par rapport à F, du côté où n'est
+pas le polyèdre, mais situé, au contraire, du même côté que P, par
+rapport à chacune des faces qui composent l'aire A (ce qui arrivera
+nécessairement si O est suffisamment voisin de la face F). La per-
+spective de A sur le plan de F (fig. 573) n'est autre que F elle-même</p>
+<p  id="blk-417-20">(1) Par exemple, nous exclurons des aires telle que celle de la figure 570 dans laquelle les
+portions consécutives DEF et GEA du contour ont le point commun E; c'est évidemment une
+restriction de même espèce que celles du nº 698.</p>
+<p  id="blk-417-21">(2) Toutes les portions de plan dont le contour satisfait aux conditions qui viennent d'ètre
+indiquées ont même connexion les unes que les autres (voir exercice 1001); mais la démons-
+tration de ce fait n'est point indispensable pour notre objet.</p>
+<p  id="blk-417-22">(3) Au contraire, une aire plane à plusieurs contours, c'est-à-dire dont le contour se compose
+de plusieurs parties séparées (par exemple, l'aire polygonale de la figure 569) admet des
+sections qui ne la morcèlent point (AB, fig. 569).</p><div class="scan-inline"><img src="img/scan/srcpage-417.png"/></div></data><data data-scanhref="img/scan/srcpage-418.png"><p class="newpage"><!-- skp data-txt='398' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->et un point M' intérieur à celle-ci est la projection d'un point unique (1)
+M de A. Le théorème est donc démontré (700).</p>
+<p class="article" id="blk-418-04"><strong class="article-num" id="article-704">704.</strong> Lorsqu'un polyèdre est tel qu'en en supprimant une face (2)
+on obtienne une aire simplement connexe, ce polyèdre est dit de
+genre zéro. Un polyèdre convexe est donc nécessairement de genre
+zéro. Cette propriété appartient d'ailleurs à beaucoup d'espèces de
+polyèdres concaves (exemple: les prismes à base concave), mais non<!-- spr -->pas à tous.</p>
+<p  id="blk-418-06">Prenons, par exemple, trois surfaces prismatiques P, P', P" à arêtes
+horizontales (mais n'ayant aucune face latérale horizontale) se déduisant
+l'une de l'autre par des rotations de 47 P de droit autour d'un axe vertical qui<!-- skp data-txt='3' --><!-- spr -->leur est extérieur. En limitant ces prismes à leurs intersections mutuelles,
+leur ensemble forme un solide S qui est représenté par ses projections sur
+la figure 574, et par le dessin de la figure 574 bis. Si de ce solide on
+enlève une face, par exemple abde, a'b'd'e' (fig. 574, ou ABDE, fig. 574 bis)<!-- spr -->c'f'<!-- spr -->g<!-- spr -->a'd'<!-- skp data-txt='6' --></p>
+<p  id="blk-418-13">11
+☐ 1<!-- skp data-txt='0' --><!-- skp data-txt='C' --><!-- skp data-txt='E' --><!-- skp data-txt='F' --><!-- spr -->e<!-- skp data-txt='B' --><img class="fig" src="img/FIG. 574.OCR.png" alt="FIG. 574." /><img class="fig" src="img/FIG. 574 bis.OCR.png" alt="FIG. 574 bis." /><!-- spr -->il reste une aire polyédrale qui n'est pas simplement connexe, car en
+opérant la section ACB (fig. 574 bis) ou toute section par un demi-plan passant</p>
+<p  id="blk-418-23">(1) Le point O et un point M de A étant de part et d'autre de F, la droite qui les joint ren-
+contre le plan de F en un point M' situé entre eux ; ce point est d'ailleurs sur F lui-même,
+comme étant du même côté que O et que M (par conséquent, que le polyèdre) par rapport au
+plan de toute face autre que F. Enfin, inversement, M' étant un point pris sur F, la droite
+OM', prolongée au delà de M', pénètre dans le polyèdre et doit en ressortir en perçant sa sur-
+face. Ce second point d'intersection est d'ailleurs unique, puisque P est convexe (386).</p>
+<p  id="blk-418-24">(2) Nous supposons essentiellement ici que les conditions du nº 698 soient remplies.</p><div class="scan-inline"><img src="img/scan/srcpage-418.png"/></div></data><data data-scanhref="img/scan/srcpage-419.png"><p class="newpage"></p>
+<p  id="blk-419-01">POLYÈDRES RÉGULIERS.<!-- skp data-txt='399' --><!-- spr -->par l'axe et rencontrant le bord, on ne morcèle pas là surface : il en est
+de même pour la section AGD (fig. 574 bis). Tout polyèdre ayant une forme<!-- spr -->c'f'<!-- spr -->a'd'<!-- skp data-txt='9' --><!-- spr -->b7<!-- spr -->m<!-- skp data-txt='K' --><!-- spr -->d<!-- skp data-txt='L' --><!-- skp data-txt='N' --><!-- spr -->fi<!-- skp data-txt='C' --><!-- spr -->g<!-- spr -->m<!-- skp data-txt='1' --><!-- skp data-txt='A' --><!-- spr -->a<img class="fig" src="img/FIG. 575.OCR.png" alt="FIG. 575." /><img class="fig" src="img/FIG. 575 bis.OCR.png" alt="FIG. 575 bis." /><!-- spr -->annulaire analogue à celle de S présenterait une propriété semblable.</p>
+<p  id="blk-419-23">Si, enfin, on adjoint au polyèdre S son symétrique par rapport à une de
+ses faces les plus éloignées de l'axe, on obtient un solide Σ (fig. 575,
+575 bis), dans lequel on peut faire à la fois (après l'enlèvement d'une des
+faces) quatre sections différentes sans morceler la surface.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-419-25"><strong class="article-num" id="article-705">705.</strong> Théorème d'Euler. Dans tout polyèdre du genre zéro (et,
+par conséquent, dans tout polyèdre convexe), le nombre des faces,
+augmenté de celui des sommets, donne le nombre des arêtes plus deux.</p>
+<p  id="blk-419-26">Si, d'un polyèdre quelconque, nous enlevons une face, il reste une
+surface polyédrale ouverte qui a autant de sommets et d'arêtes que
+le polyèdre primitif, mais une face de moins.</p>
+<p  id="blk-419-27">Tout revient donc à démontrer que si une surface polyédrale
+ouverte et simplement connexe a F faces, S sommets, et A arêtes,<!-- spr -->on a</p>
+<p  id="blk-419-29">F+SA+1.<!-- skp data-txt='-' --></p>
+<p  id="blk-419-31">Le théorème est évident pour F 1, car alors la surface se réduit
+à un polygone plan, pour lequel on a S=A. Nous allons, dès lors,
+supposer la démonstration faite pour toutes les surfaces polyédrales</p><div class="scan-inline"><img src="img/scan/srcpage-419.png"/></div></data><data data-scanhref="img/scan/srcpage-420.png"><p class="newpage"><!-- skp data-txt='400' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->de moins de F faces et nous nous proposerons de la donner pour<!-- spr -->une surface à F faces.</p>
+<p  id="blk-420-05">A cet effet, joignons deux points du bord de cette surface par
+un chemin distinct du bord, composé d'arêtes de la surface et ne
+se coupant lui-même en aucun point (¹), et sectionnons suivant ce
+chemin. La surface sera (nº précéd.) divisée en deux morceaux simple-
+ment connexes, ayant l'un F₁ faces, S₁ sommets et A, arêtes, l'autre
+F₂ faces, S₂ sommets et A2 arêtes. Les nombres F₁, F2 étant inférieurs
+à F, nous avons le droit d'écrire<!-- skp data-txt='2' --></p>
+<p  id="blk-420-07">"</p>
+<p  id="blk-420-08">(13)</p>
+<p  id="blk-420-09">( F₁ + S₁ = A₁ + 1,
+? F₁₂ + S₂ = A₂ +1.<!-- skp data-txt='-' --><!-- skp data-txt='2' --><!-- skp data-txt='2' --></p>
+<p  id="blk-420-13">Mais, si est le nombre des côtés de la section et, par conséquent,
+21 le nombre de ses sommets, on a</p>
+<p  id="blk-420-14">A, A A+ 2
++ A₂</p>
+<p  id="blk-420-15">+2
+S,+SS+2+1,<!-- spr -->car, lorsqu'on compte le nombre des arêtes ou des sommets de
+chaque morceau et que l'on fait la somme, chaque arête ou sommet
+n'appartenant pas à la section figure une fois; chaque arête ou
+sommet appartenant à la section, deux fois. Comme on a d'ailleurs
+F, F, F, il vient, en ajoutant les deux équations (13),</p>
+<p  id="blk-420-17">+ =<!-- skp data-txt='-' --></p>
+<p  id="blk-420-19">F + S + 2 + 1 = A + λ +2,<!-- spr -->relation équivalente à celle qu'il s'agissait d'obtenir.</p>
+<p class="article" id="blk-420-21"><strong class="article-num" id="article-706">706.</strong> Soit une surface polyédrale ouverte Σ qui n'est pas simplement<!-- spr -->connexe (2) et soit pratiquée une section (que nous sup-
+poserons, pour simplifier, composée d'arètes) ne mor-
+celant pas la surface. Si celle-ci n'est pas devenue sim-
+plement connexe, sectionnons-ia à son tour: la section
+pourra d'ailleurs avoir ses extrémités soit sur le bord
+primitif, soit sur le nouveau bord (c'est-à-dire sur la<!-- skp data-txt='A' --></p>
+<p  id="blk-420-24">Р<!-- skp data-txt='C' --><!-- skp data-txt='B' --></p>
+<p  id="blk-420-27">(1) On est assuré de trouver un pareil chemin en considérant une
+face P (fig. 576) attenante au bord. Comme telle, la face P aura des<!-- spr -->arêtes libres. Elle en aura aussi d'intérieures (sans quoi elle serait
+FIG. 576.<!-- spr -->unique, cas où nous venons de voir que le théorème est démontré). Le<!-- spr -->contour de cette face comprendra donc des parties libres et des parties
+intérieures à la surface. L'une quelconque de ces dernières (ABC, fig. 576) donnera un
+chemin répondant aux conditions demandées.</p>
+<p  id="blk-420-31">(2) On sous-entend toujours les restrictions du nº 698.</p><div class="scan-inline"><img src="img/scan/srcpage-420.png"/></div></data><data data-scanhref="img/scan/srcpage-421.png"><p class="newpage"></p>
+<p  id="blk-421-01">POLYEDRES RÉGULIERS.<!-- skp data-txt='401' --><!-- spr -->section opérée en premier): nous supposerons encore qu'elle est composée
+d'arètes et que la surface n'est pas morcelée. Continuant de même,
+admettons qu'au bout de n sections successives, la surface soit rendue
+simplement connexe sans être morcelée. Alors le nombre n+1 (lequel
+peut, jusqu'à preuve du contraire, dépendre de la manière dont on a opéré
+les sections) est dit l'ordre de connexion de la surface primitive Σ.</p>
+<p  id="blk-421-04">Je dis que si F, S, A désignent encore le nombre des faces, le nombre
+des sommets et le nombre des arêtes de Σ, on a</p>
+<p  id="blk-421-05">(14)</p>
+<p  id="blk-421-06">F+SA+1-</p>
+<p  id="blk-421-07">No<!-- skp data-txt='-' --></p>
+<p  id="blk-421-09">En effet, soit à le nombre des côtés de la première section. Une fois
+celle-ci pratiquée, chacun de ces côtés compte deux fois comme arêtes de
+la surface, et il en est de même pour les sommets de la section ; de sorte
+que, comme tout à l'heure, le nombre A augmente de 2 unités, le nombre
+S, de 1. Donc la quantité F + S A augmente d'une unité. Les
+mêmes circonstances se produisent à chaque section nouvelle, le nombre
+FSA augmente de n unités en tout. Or il devient finalement égal
+à 1, puisque l'on arrive à une aire d'un seul tenant et simplement connexe.
+Donc, ce nombre était tout d'abord égal à 1</p>
+<p  id="blk-421-10">EXEMPLES. En enlevant une face du polyèdre S (n° 704) on a une sur-
+face triplement connexe (n = 2), laquelle a 8 faces, 18 arêtes et 9 sommets.</p>
+<p  id="blk-421-11">En opérant de même avec le polyèdre Σ du même numéro, on
+surface pour laquelle n = 4, F = 15, A32, S = 14.</p>
+<p  id="blk-421-12">On voit que le théorème d'Euler ne s'applique pas à des polyèdres tels
+que S et 2.<!-- skp data-txt='-' --><!-- spr -->n.<!-- spr -->a une</p>
+<p  id="blk-421-16">=======</p>
+<p  id="blk-421-17">_</p>
+<p  id="blk-421-18">Corollaire. Le nombre n est (contrairement à ce que l'on pouvait penser
+au premier abord) indépendant de la marche
+suivie dans le sectionnement. Car il est donné
+par l'égalité (14), dans laquelle F, S, A ne
+dépendent que de la surface donnée.<!-- skp data-txt='S' --><!-- skp data-txt='B' --></p>
+<p class="article" id="blk-421-21"><strong class="article-num" id="article-707">707.</strong> Angles polyèdres réguliers.</p>
+<p  id="blk-421-22">On nomme angle polyèdre régulier
+un angle polyèdre convexe (1), S. ABCDE
+(fig. 577), dont toutes les faces sont égales
+et tous les dièdres sont égaux.</p>
+<p  id="blk-421-23">On nomme polygone sphérique régulier un
+polygone sphérique convexe dont tous les
+côtés sont égaux et tous les angles égaux.
+Il est clair (471) qu'à un angle polyèdre régulier dont le sommet est
+au centre d'une sphère correspond sur celle-ci un polygone sphé-
+rique régulier, et inversement.<img class="fig" src="img/FIG. 577.OCR.png" alt="FIG. 577." /></p>
+<p  id="blk-421-25">(1) Il existe des angles polyères réguliers étoilés analogues aux polygones réguliers étoilés.
+GÉOMÉTRIE. II.<!-- skp data-txt='26' --></p><div class="scan-inline"><img src="img/scan/srcpage-421.png"/></div></data><data data-scanhref="img/scan/srcpage-422.png"><p class="newpage"><!-- skp data-txt='402' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-422-03">Dans un angle polyèdre régulier SABCDE, les trièdres SABC, SBCD,
+SCDE... sont égaux, comme ayant un dièdre égal compris faces égales ·
+chacune à chacune, avec la même disposition (371).</p>
+<p  id="blk-422-04">Or il existe une rotation qui amène l'arête SA sur SB et l'arête SB sur</p>
+<p  id="blk-422-05">SC (puisque ASB = BSC). Le trièdre SABC prend alors la position SBCD
+(380, Rem.): donc, SC vient sur SD. De même SD vient sur SE; etc.
+Donc, il existe une rotation qui transforme l'angle polyèdre régulier en
+lui-même, chaque face prenant la place de la suivante. Plus générale-
+ment, il existe une rotation transformant l'angle polyèdre régulier en
+lui-même, chaque face prenant la place de celle qui lui est postérieure de
+p rangs: il suffit évidemment de répéter p fois la rotation précé-
+dente.</p>
+<p  id="blk-422-06">L'axe de cette rotation fait évidemment des angles égaux avec
+toutes les arêtes: il est l'axe d'un cône de révolution circonscrit à
+l'angle polyèdre.</p>
+<p  id="blk-422-07">Par conséquent, aussi, un polygone sphérique régulier est inscrip-
+tible à un cercle, que ses sommets divisent évidemment en parties
+égales (1): à savoir le parallèle décrit par l'un de ces sommets dans
+sa révolution autour de Sx. Autrement dit, si sur les arêtes de l'angle
+polyèdre régulier SABCDE, on prend les longueurs égales SA =</p>
+<p  id="blk-422-08">SB =</p>
+<p  id="blk-422-09">= SC = SD = SE, les extrémités de ces lon-
+gueurs sont les sommets d'un polygone régulier
+dont le plan est perpendiculaire à Sx et le centre o
+sur Sx on a donc formé ainsi une pyramide régu-<!-- spr -->lière.<!-- skp data-txt='S' --><img class="fig" src="img/FIG. 577 bis.OCR.png" alt="FIG. 577 bis." /></p>
+<p  id="blk-422-13">La droite So est évidemment intérieure à l'angle
+polyèdre prolongée au delà de o, elle coupe donc
+la sphère de centre S et de rayon SA en un point</p>
+<p  id="blk-422-14">O (fig. 577 bis) intérieur au polygone sphérique
+ABCDE, et que nous appellerons le pôle de ce polygone. C'est en effet
+l'un des pôles du cercle qui lui est circonscrit, à savoir, celui qui
+est intérieur à ce cercle (puisque l'angle ASo est aigu).</p>
+<p  id="blk-422-15">Inversement, l'angle polyèdre au sommet d'une pyramide régu-
+lière admet des rotations, c'est-à-dire qu'il existe des rotations qui le
+transforment en lui-même, à savoir, celles qui transforment en elle-</p>
+<p  id="blk-422-16">(1) On démontrerait de même qu'un polygone sphérique régulier est circonscriptible à un
+cercle.</p><div class="scan-inline"><img src="img/scan/srcpage-422.png"/></div></data><data data-scanhref="img/scan/srcpage-423.png"><p class="newpage"></p>
+<p  id="blk-423-01">POLYÈDRES RÉGULIERS.<!-- skp data-txt='403' --><!-- spr -->même la base de la pyramide (Pl., 162, Rem.). D'autre part, si un angle
+polyèdre admet une rotation dans laquelle chaque face prenne la
+place de la suivante, il peut être considéré comme l'angle au som-
+met d'une pyramidė régulière et il est régulier, puisque chaque face
+est égale à la suivante et chaque dièdre égal au suivant (¹).</p>
+<p  id="blk-423-04">Enfin, puisque tout polygone régulier admet des axes de symétrie,
+toute pyramide régulière et, par suite, tout angle polyèdre régulier
+admettent des plans de symétrie passant par l'axe So des rotations
+dont nous venons de parler.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-423-06"><strong class="article-num" id="article-708">708.</strong> Polyèdres réguliers. Nous nommerons polyèdre régu-
+lier un polyèdre convexe (2) dont toutes les faces sont des polygones
+réguliers égaux et dont tous les angles polyèdres sont réguliers et
+égaux (cette dernière condition pouvant évidemment être remplacée par celle-ci,<!-- spr -->que tous les dièdres sont égaux).<!-- skp data-txt='-' --><!-- skp data-txt='1' --><!-- skp data-txt='1' --></p>
+<p  id="blk-423-11">Théorème. - Un polyèdre régulier admet (au sens du nº précédent) tout
+déplacement dans lequel une face f vient sur une face (³) f', l'intérieur
+du polyèdre transporté étant du même côté de f' que l'intérieur du
+polyèdre primitif. Soient, en effet, f, une face contiguë à f suivant
+l'arête AB; ƒ'₁‚A', B' les positions occupées par f₁, A, B après le dépla-
+cement. Le dièdre f'f₁₁ est égal au dièdre du polyèdre donné sui-
+vant A'B' (ces deux dièdres étant tous deux égaux à ff₁) et de même sens
+(à cause de l'hypothèse faite sur la position du polyèdre relativement à la face f').
+Donc le plan de f½, coïncidera avec celui de la face f" qui est contiguë
+à f' suivant A'B', et comme les deux polygones f₁, f'" sont égaux et
+situés du même côté par rapport au côté A'B' commun, ils coïncident.</p>
+<p  id="blk-423-12">Le raisonnement s'étendrait de même à toute face contiguë à f, et,
+de proche en proche, à chaque face du polyèdre le théorème est
+donc démontré.</p>
+<p  id="blk-423-13">Parmi les déplacements dont il est question dans l'énoncé, on peut
+évidemment en trouver un qui fasse venir une face donnée quel-
+conque sur une face donnée quelconque f', et une arête quelconque
+AB de sur une arête donnée quelconque A'B' de f' (sans qu'on puisse
+toutefois choisir arbitrairement celui des deux points A et B qui viendra sur A').</p>
+<p  id="blk-423-14">(1) L'angle polyèdre au sommet d'une pyramide régulière est toujours convexe, puisqu'il est
+coupé par un plan suivant un polygone convexe.</p>
+<p  id="blk-423-15">(2) Voir plus loin, page 408, note.
+(3) La face f' peut ne pas être distincte de f, le déplacement en question étant un de ceux
+qui (Pl. 162, Rem.) transforment en elle-même.</p><div class="scan-inline"><img src="img/scan/srcpage-423.png"/></div></data><data data-scanhref="img/scan/srcpage-424.png"><p class="newpage"><!-- skp data-txt='404' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-424-03">Réciproquement, si un polyèdre convexe admet un déplacement à
+l'aide duquel on puisse transporter une face quelconque f sur une face
+donnée quelconque f', une arête donnée quelconque AB de f venant sur
+une arête donnée quelconque A'B' de F', il est régulier.</p>
+<p  id="blk-424-04">Car il a ses arêtes égales, les angles de ses faces égaux, et ses
+dièdres égaux.</p>
+<p  id="blk-424-05">Enfin il est aisé de voir que tout polyèdre régulier admet des plans
+de symétrie.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-424-07"><strong class="article-num" id="article-709">709.</strong> Théorème. 1° Tout polyèdre régulier est inscriptible à une
+sphère ;</p>
+<p  id="blk-424-08">2° Les angles polyèdres qui ont pour sommet commun le centre de
+cette sphère et pour sections respectives les différentes faces du polyèdre,
+divisent la sphère en polygones sphériques réguliers et égaux ;
+3º Le polyèdre est circonscriptible à une sphère, concentrique à la<!-- spr -->première.</p>
+<p  id="blk-424-10">1° Considérons deux faces f, fi
+(fig. 578) du polyèdre contiguës
+suivant l'arête AB: les cercles C, C₁
+circonscrits à<!-- spr -->deux faces,
+ayant deux points communs A, B,
+appartiennent à une même sphère.
+dont le centre S est à l'intersection<!-- spr -->f<!-- spr -->ces<!-- spr -->des axes de ces cercles.<img class="fig" src="img/FIG. 578.OCR.png" alt="FIG. 578." /></p>
+<p  id="blk-424-16">La face fet, par suite, le polyè-<!-- spr -->dre entier admettent une rotation,
+d'axe CS (fig. 578), transformant AB en un autre côté quelconque de
+f et par suite f₁ en une quelconque f₁ des faces contiguës à f. Cette
+rotation laisse inaltérée la sphère S, puisque l'axe CS est un dia-
+mètre de cette sphère: donc S est aussi circonscrite à f'. On démon-
+trerait de même que S est circonscrite à toute face voisine de f₁ ou
+de f₁, et ainsi de suite: la conclusion demandée est donc établie.</p>
+<p  id="blk-424-18">1'</p>
+<p  id="blk-424-19">On remarquera que les déplacements qu'admet le polyèdre sont
+tous des rotations, car ils laissent évidemment immobile le centre S.</p>
+<p  id="blk-424-20">Ces rotations peuvent d'ailleurs être de trois espèces différentes :
+1º Rotations admises par une face déterminée quelconque;</p>
+<p  id="blk-424-21">2º Rotations admises par l'angle polyèdre en un sommet déterminé
+quelconque ;</p><div class="scan-inline"><img src="img/scan/srcpage-424.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

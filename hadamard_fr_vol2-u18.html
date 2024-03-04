@@ -1,0 +1,502 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-206.png"><p class="newpage"></p>
+<p  id="blk-206-01">LIVRE IX</p>
+<p  id="blk-206-02">COURBES</p>
+<p  id="blk-206-03">USUELLES</p>
+<p  id="blk-206-04">CHAPITRE PREMIER</p>
+<p  id="blk-206-05">ELLIPSE<!-- skp data-txt='-' --></p>
+<p  id="blk-206-07">ᎦᏁ<!-- skp data-txt='F' --></p>
+<p class="article" id="blk-206-09"><strong class="article-num" id="article-490">490.</strong> Définition. On nomme ellipse, la courbe (fig. 405) lieu (1)
+des points M d'un plan tels, que la somme de leurs distances à deux<!-- spr -->points fixes F, F' de ce plan, appelés
+foyers, soit égale à une longueur donnée.</p>
+<p  id="blk-206-11">Le triangle MFF' montre évidemment
+que cette longueur MF + MF' doit être
+supérieure (2) à la distance FF'.</p>
+<p  id="blk-206-12">Les droites MF, MF' sont dites les
+rayons vecteurs aboutissant au point M.</p>
+<p  id="blk-206-13">Si les points F, F' sont confondus, les<!-- spr -->distances MF, MF' étant forcément égales
+entre elles, la définition précédente conduit évidemment à une cir-
+conférence ayant pour rayon la moitié de la longueur donnée. Ainsi
+la circonférence est une forme-limite d'ellipse.<img class="fig" src="img/FIG. 405.OCR.png" alt="FIG. 405." /><!-- skp data-txt='-' --></p>
+<p  id="blk-206-17">REMARQUE. Toute courbe homothétique à une ellipse est une
+ellipse, car si f, f', m sont les homologues de F, F', M dans une ho-
+mothétie déterminée (de rapport de similitude k) on a (Pl., 141)</p>
+<p  id="blk-206-18">(1) Il apparaîtra par la suite (497) que ce lieu n'est pas, en général, une droite.</p>
+<p  id="blk-206-19">(2) Le lieu des points M tels que la somme MF + MF/ soit égale à FF/ est évidemment le
+segment de droite FF/. Celui-ci est donc une forme-limite d'ellipse de foyers F et F'.</p><div class="scan-inline"><img src="img/scan/srcpage-206.png"/></div></data><data data-scanhref="img/scan/srcpage-207.png"><p class="newpage"></p>
+<p  id="blk-207-01">ELLIPSE.<!-- skp data-txt='187' --><!-- skp data-txt='M' --><!-- spr -->fm+f'm k (FM FM), de sorte que si FM | F'M est constant, il
+en est de même de fm + f'm.</p>
+<p  id="blk-207-05">Dès lors, toute courbe semblable à une ellipse est une ellipse.</p>
+<p class="article" id="blk-207-06"><strong class="article-num" id="article-491">491.</strong> Tracé de la courbe par points.</p>
+<p  id="blk-207-07">D'après la définition que nous venons de donner, on voit que l'on
+obtiendra autant de points de l'ellipse qu'on voudra par la construc-
+tion suivante :</p>
+<p  id="blk-207-08">Désignons par 2a la somme donnée des rayons vecteurs, et divi-
+sons cette longueur 2a en deux segments quelconques, qui serviront
+de rayons respectifs à deux circonférences de centres F, F' (fig. 406).
+Si ces circonférences se coupent, leurs points communs M, M' appar-
+tiendront à l'ellipse; et il est clair que tout point de l'ellipse peut
+être obtenu par ce moyen.</p>
+<p  id="blk-207-09">En permutant les deux rayons c'est-à-dire en traçant une
+circonférence de centre F' et de rayon MF, ainsi qu'une circonfé-
+rence de centre F et de rayon MF' on aura deux nouveaux points
+M₁, M de la courbe.</p>
+<p  id="blk-207-10">Pour que les deux circonférences
+se coupent, la longueur 2a, somme
+de leurs rayons étant supposée supé-
+rieure à FF' (sans quoi nous savons
+qu'il n'y aurait pas de courbe), il suffit
+que la différence de<!-- spr -->ces mêmes
+rayons soit inférieure à FF'.</p>
+<p  id="blk-207-12">En particulier, les circonférences
+seront tangentes intérieurement lors-
+que la différence des rayons sera FF'.
+On aura ainsi un point A de la courbe situé sur FF' prolongé au
+delà du point F si l'on suppose que le plus petit rayon soit celui
+de la circonférence ayant pour centre F, et un point A' situé sur FF'
+prolongé au delà de F' si l'on fait la supposition inverse (fig. 406).</p>
+<p  id="blk-207-13">Soit 2c la distance FF', on aura:<!-- skp data-txt='B' --><!-- skp data-txt='M' --><!-- skp data-txt='A' --><!-- skp data-txt='F' --><!-- skp data-txt='P' --><!-- skp data-txt='A' --><!-- skp data-txt="'M;" --><!-- skp data-txt="B'" --></p>
+<p  id="blk-207-22">F.G. 406.</p>
+<p  id="blk-207-23">ܙ</p>
+<p  id="blk-207-24">_</p>
+<p  id="blk-207-25">FA'F'A' 2a</p>
+<p  id="blk-207-26">FA + F'A
+F'A FA<!-- skp data-txt='-' --></p>
+<p  id="blk-207-28">FA' F'A' = 2c<!-- skp data-txt='-' --><!-- spr -->ce qui donne</p>
+<p  id="blk-207-31">FAF'A':</p>
+<p  id="blk-207-32">= a―</p>
+<p  id="blk-207-33">с</p>
+<p  id="blk-207-34">F'AFA' =</p>
+<p  id="blk-207-35">= a + c</p><div class="scan-inline"><img src="img/scan/srcpage-207.png"/></div></data><data data-scanhref="img/scan/srcpage-208.png"><p class="newpage"><!-- skp data-txt='188' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-208-03">_</p>
+<p  id="blk-208-04">L'on remarquera que la distance AA' est égale à
+et représente, par conséquent, la longueur donnée 2a.</p>
+<p  id="blk-208-05">Puisque la longueur AA' est égale à la somme donnée des rayons
+vecteurs, on peut représenter les rayons des deux circonférences qui
+viennent d'être considérées par PA, PA' respectivement, P étant un
+point du segment AA' (fig. 406).</p>
+<p  id="blk-208-06">On voit sans difficulté que les circonférences se coupent ou ne se
+coupent pas, suivant que le point P fait ou non partie du segment FF'.</p>
+<p class="article" id="blk-208-07"><strong class="article-num" id="article-492">492.</strong> Tracé de la courbe d'un mouvement continu.
+Il est encore manifeste que si, fixant en F, F' les deux extrémités<!-- spr -->d'un fil qui a la longueur 2a, on tend ce
+fil par une pointe (fig. 407), cette der-
+nière décrira d'un mouvement continu
+l'ellipse, ou plus exactement la partie
+de l'ellipse située d'un côté déterminé
+de FF'.</p>
+<p  id="blk-208-09">Cette construction est d'un usage très
+commode et très fréquent sur le terrain :
+elle a fait donner à l'ellipse le
+d'ovale des jardiniers.</p>
+<p  id="blk-208-10">Dans les tracés sur le papier, au con-
+traire, on n'emploie ni cette construction, ni la précédente : les
+méthodes véritablement usitées sont fondées sur des propriétés
+toutes différentes de l'ellipse (voir Compl., nº 740).<!-- spr -->nom<img class="fig" src="img/FIG. 407.OCR.png" alt="FIG. 407." /></p>
+<p class="article" id="blk-208-13"><strong class="article-num" id="article-493">493.</strong> Axes et centre de symétrie.</p>
+<p  id="blk-208-14">Si nous reprenons la construction par points du n° 491, nous
+voyons que les points M, M' sont symétriques l'un de l'autre par
+rapport à FF. Chaque point de la courbe ayant ainsi son symétrique,
+l'ellipse admet la droite FF' comme axe de symétrie.</p>
+<p  id="blk-208-15">D'autre part, les points F, F' sont symétriques l'un de l'autre par
+rapport à une droite, à savoir la perpendiculaire au milieu O de FF'.
+Dès lors, à tout point M situé sur l'ellipse, correspond, dans la
+symétrie par rapport à cette droite, un point M₁ qui appartient
+aussi à la courbe, puisqu'on a FM₁ = F'M, F'M₁ = FM (il est clair
+que les points M et M₁ ne sont autres que ceux qui sont désignés
+par ces lettres sur la figure 406). Donc la perpendiculaire au milieu
+de FF' est encore un axe de symétrie de l'ellipse.</p><div class="scan-inline"><img src="img/scan/srcpage-208.png"/></div></data><data data-scanhref="img/scan/srcpage-209.png"><p class="newpage"></p>
+<p  id="blk-209-01">ELLIPSE.<!-- skp data-txt='189' --></p>
+<p  id="blk-209-03">Enfin, les deux points F, F' sont symétriques l'un de l'autre par
+rapport à un point, à savoir le point O. On voit évidemment par un
+raisonnement tout analogue à celui qui vient d'être présenté, que le
+point ○ est centre de symétrie de l'ellipse. (Les points M, M₁ de la
+figure 406 sont symétriques l'un de l'autre par rapport au point 0.)</p>
+<p class="article" id="blk-209-04"><strong class="article-num" id="article-494">494.</strong> Nous avons trouvé plus haut que l'axe FF' coupait l'ellipse en
+deux points A, A' dont la distancé était égale à la longueur donnée 2a
+(fig. 406); il est d'ailleurs clair que ces points sont symétriques l'un
+de l'autre par rapport au point O, de sorte qu'on a OA =OA' -</p>
+<p  id="blk-209-05">Pour trouver les points où la courbe est coupée par la perpendi-
+culaire au milieu de FF', il suffit de remarquer que ces points sont
+équidistants de F et de F' et que, par conséquent, și B est l'un</p>
+<p  id="blk-209-06">== a.<!-- spr -->d'entre eux, on a BF</p>
+<p  id="blk-209-08">2a</p>
+<p  id="blk-209-09">= a.
+2<!-- skp data-txt='-' --></p>
+<p  id="blk-209-11">= BF'</p>
+<p  id="blk-209-12">Il existe évidemment deux points B, B' satisfaisant à cette double
+condition. On désigne par b la valeur commune des distances OB,
+OB'. Cette longueur best inférieure à a : dans le triangle rectangle</p>
+<p  id="blk-209-13">OBF, on a</p>
+<p  id="blk-209-14">OB262 BF2 — OF2<!-- spr -->a² — c²,.<!-- skp data-txt='-' --></p>
+<p  id="blk-209-17">_<!-- spr -->en désignant par c, comme précédemment, la distance OF, moitié
+de FF'.</p>
+<p  id="blk-209-19">En raison de l'inégalité b<a, l'axe AA' est dit grand axe, et l'axe
+BB', le petit axe de l'ellipse.</p>
+<p  id="blk-209-20">Les quatre points A, A', B, B' sont les
+sommets de la courbe.<!-- skp data-txt='C' --><!-- skp data-txt='M' --></p>
+<p class="article" id="blk-209-23"><strong class="article-num" id="article-495">495.</strong> Cercles directeurs.<!-- skp data-txt='-' --></p>
+<p  id="blk-209-25">Théorème. Le lieu des centres des
+cercles tangents à un cercle donné et pas-
+sant par un point donné intérieur à ce
+cercle, est une ellipse.</p>
+<p  id="blk-209-26">Soient en effet F' le centre du cercle
+donné (fig. 408), R son rayon, F le point
+donné. Si le cercle de centre M et de rayon MF est tangent au
+cercle donné, le contact étant forcément intérieur, on a (Pl., 66)<img class="fig" src="img/FIG. 408.OCR.png" alt="FIG. 408." /><!-- skp data-txt='R' --><!-- skp data-txt='- MF' --></p>
+<p  id="blk-209-30">MF'<!-- skp data-txt='-' --></p>
+<p  id="blk-209-32">_<!-- spr -->ou</p>
+<p  id="blk-209-34">MFMF':</p>
+<p  id="blk-209-35">R.</p>
+<p  id="blk-209-36">_</p><div class="scan-inline"><img src="img/scan/srcpage-209.png"/></div></data><data data-scanhref="img/scan/srcpage-210.png"><p class="newpage"><!-- skp data-txt='190' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-210-03">Réciproquement, cette condition entraîne le contact des deux
+cercles.</p>
+<p  id="blk-210-04">C. Q. F. D.</p>
+<p  id="blk-210-05">D'ailleurs, toute ellipse peut être considérée comme le lieu du centre
+d'un cercle tangent à un cercle fixe et passant par un point fixe
+intérieur à ce cercle. Il suffit, pour cela, de prendre, comme cercle
+donné, le cercle qui a pour centre un des foyers et pour rayon le
+grand axe.</p>
+<p  id="blk-210-06">Un tel cercle est dit cercle directeur de l'ellipse. Il est clair qu'il y
+a deux cercles directeurs, puisqu'il y a deux foyers.</p>
+<p class="article" id="blk-210-07"><strong class="article-num" id="article-496">496.</strong> Forme de la courbe. Points intérieurs et points<!-- spr -->extérieurs.</p>
+<p  id="blk-210-09">L'ellipse ne s'étend pas indéfiniment, puisqu'elle est tout entière
+intérieure à l'un de ses cercles directeurs.</p>
+<p  id="blk-210-10">L'ellipse sépare l'une de l'autre deux régions du plan : à savoir,
+celle qui contient les points M tels que MF +MF' <2a, et celle qui
+contient les points M tels que MF + MF' 2a.</p>
+<p  id="blk-210-11">La première est dite intérieure à l'ellipse : elle est évidemment
+limitée en tous sens, étant intérieure à chacun des cercles directeurs;
+la seconde est dite extérieure à la courbe.</p>
+<p  id="blk-210-12">On ne peut évidemment passer de l'une de ces régions à l'autre,
+par un chemin continu, sans traverser la courbe. Au contraire, chacune
+des régions intérieure et extérieure est d'un seul tenant, c'est-à-dire
+qu'on peut passer de n'importe quel de ses points à n'importe quel
+autre sans traverser la courbe. Ce fait, que nous retrouverons
+d'ailleurs plus loin, devient évident, si l'on part d'une autre défini-
+tion de l'ellipse, définition dont l'équivalence avec la première
+sera démontrée aux compléments (733) :</p>
+<p  id="blk-210-13">Toute ellipse est la projection d'un cercle sur un plan.</p>
+<p  id="blk-210-14">On voit sans difficulté (voir plus loin, nº 503) que les points exté-
+rieurs sont les centres de cercles passant par l'un des foyers et
+coupant le cercle directeur qui a pour centre l'autre foyer, pendant
+que les points intérieurs sont les centres de cercles passant par l'un
+des foyers et sans point commun avec le cercle directeur qui a pour
+centre l'autre foyer.</p>
+<p class="article" id="blk-210-15"><strong class="article-num" id="article-497">497.</strong> Intersection d'une droite et d'une ellipse.</p>
+<p  id="blk-210-16">Problème.<!-- skp data-txt='-' --></p>
+<p  id="blk-210-18">Trouver les points de rencontre d'une droite avec une</p><div class="scan-inline"><img src="img/scan/srcpage-210.png"/></div></data><data data-scanhref="img/scan/srcpage-211.png"><p class="newpage"></p>
+<p  id="blk-211-01">ELLIPSE.<!-- skp data-txt='191' --><!-- spr -->ellipse (celle-ci n'étant pas tracée, mais donnée par ses foyers et
+son grand axe).</p>
+<p  id="blk-211-04">Soient F, F' les foyers donnés, C le cercle directeur qui a pour
+centre F', D la droite donnée. Le problème posé revient (495) au<!-- spr -->suivant:</p>
+<p  id="blk-211-06">Tracer un cercle tangent à C, passant par F, et ayant son centre<!-- spr -->sur D.<!-- skp data-txt='M' --><!-- skp data-txt='S' --></p>
+<p  id="blk-211-10">Mais cette troisième condition peut, si la droite D ne passe pas
+par le foyer F, se remplacer par une autre, celle de passer par le
+point f, symétrique de F par rapport à D: car tout cercle passant
+par F et ayant son centre sur D
+passe par fet, inversement, tout
+cercle passant par F et f a son
+centre (1) sur D. La question est
+donc celle-ci :</p>
+<p  id="blk-211-11">Tracer, par les points F et f, un
+cercle tangent au cercle C.</p>
+<p  id="blk-211-12">Cette question a été résolue pré-
+cédemment (Pl., 159, Constr. 15).</p>
+<p  id="blk-211-13">D'après ce qui a été dit en cet
+endroit, on devra (fig. 409) :</p>
+<p  id="blk-211-14">Faire passer par les points F, f
+un cercle qui coupe le cercle C;</p>
+<p  id="blk-211-15">Mener la corde commune aux deux cercles jusqu'à rencontre en I
+avec la droite Ff;</p>
+<p  id="blk-211-16">Mener, du point I, les tangentes au cercle C.</p>
+<p  id="blk-211-17">En joignant les points de contact de ces tangentes (si elles
+existent) au point F', on aura deux droites qui couperont la droite D
+aux centres des deux cercles cherchés, c'est-à-dire aux deux points
+d'intersection de la droite D avec l'ellipse (2).</p>
+<p  id="blk-211-18">Si la droite D passait par le point F, le point ƒ coïnciderait avec
+F, et la condition, imposée à la circonférence cherchée, d'avoir son
+centre sur D, ne pourrait plus être remplacée par celle de passer</p>
+<p  id="blk-211-19">с<img class="fig" src="img/FIG. 409.OCR.png" alt="FIG. 409." /></p>
+<p  id="blk-211-21">(1) Le centre cesserait d'exister si le cercle se réduisait à une droite. Cette circonstance
+ne peut évidemment se présenter ici; mais il n'en est pas de même dans l'étude de
+l'hyperbole.</p>
+<p  id="blk-211-22">(2) Cette dernière partie de la construction serait en défaut si la droite D passait par le
+point F; la construction devrait alors être achevée comme il est expliqué ci-dessous (cas
+où D passe par F).</p><div class="scan-inline"><img src="img/scan/srcpage-211.png"/></div></data><data data-scanhref="img/scan/srcpage-212.png"><p class="newpage"><!-- skp data-txt='192' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->par F et f, mais par celle d'être tangente en F à la droite Fx (fig. 410)
+menée par ce point perpendiculairement à D. On serait donc ramené
+au problème suivant :</p>
+<p  id="blk-212-04">Tracer un cercle tangent à C, passant par F et tangent en ce point
+à la droite Fx.
+Ce problème est susceptible d'une solution toute semblable à la<!-- spr -->précédente. Les raisonnements
+sur lesquels celle-ci repose
+subsistent, en effet, lorsqu'on
+y remplace les mots: circon-
+férence passant par F et f par:
+circonférence tangente en F à<!-- skp data-txt='D' --><!-- skp data-txt="C'" --><!-- skp data-txt='M' --></p>
+<p  id="blk-212-09">Fx.<!-- skp data-txt='N' --></p>
+<p  id="blk-212-11">Mais il est plus simple, ici,
+d'intervertir les foyers et de
+chercher un cercle ayant son
+centre sur D, passant par F' et
+tangent au cercle directeur C'
+qui a pour centre F (fig. 410).</p>
+<p  id="blk-212-12">Le point de contact est alors
+immédiatement connu : c'est l'une des extrémités du diamètre
+situé sur D; après quoi, on est ramené à la construction 13 du livre II
+(Pl., 90).<img class="fig" src="img/FIG. 410.OCR.png" alt="FIG. 410." /><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-212-15"><strong class="article-num" id="article-497 bis">497 bis.</strong> Discussion.</p>
+<p  id="blk-212-16">D'après les résultats obtenus au nº 159, la
+condition nécessaire et suffisante de possibilité est que les points F, f
+soient du même côté du cercle C.</p>
+<p  id="blk-212-17">Le point Fest, par hypothèse, intérieur à C. Donc :</p>
+<p  id="blk-212-18">Si le symétrique f de l'un des foyers, par rapport à la droite D, est
+intérieur au cercle directeur C qui a pour centre l'autre foyer, cette
+droite coupe l'ellipse en deux points.</p>
+<p  id="blk-212-19">Si le point f est extérieur au cercle directeur C, la droite D n'a
+aucun point commun avec l'ellipse.</p>
+<p  id="blk-212-20">Enfin, si le point f est sur le cercle C, il y a un point commun unique,
+que l'on doit regarder comme représentant deux points communs
+confondus. Car les tangentes menées du point I (fig. 409) au cercle C
+sont alors confondues l'une avec l'autre.</p>
+<p  id="blk-212-21">On dit, dans ce dernier cas, que la droite D est tangente à l'ellipse.</p><div class="scan-inline"><img src="img/scan/srcpage-212.png"/></div></data><data data-scanhref="img/scan/srcpage-213.png"><p class="newpage"></p>
+<p  id="blk-213-01">ELLIPSE.<!-- skp data-txt='193' --></p>
+<p class="article" id="blk-213-03"><strong class="article-num" id="article-498">498.</strong> La droite D a nécessairement certains de ses points extérieurs
+à l'ellipse à savoir, ceux qui sont extérieurs à un cercle directeur.</p>
+<p  id="blk-213-04">Si donc cette droite ne coupe pas l'ellipse, elle lui est entièrement
+extérieure, puisqu'on ne peut passer d'un point extérieur à un point
+intérieur sans traverser la courbe.</p>
+<p  id="blk-213-05">Si, au contraire, la droite et l'ellipse se coupent en deux points
+M, N (fig. 411), les deux prolongements de M N sont, pour la même
+raison, extérieurs à l'ellipse.</p>
+<p  id="blk-213-06">Il résulte de là que le segment de droite, qui a pour extrémités deux
+points intérieurs à une ellipse, est tout entier intérieur à cette courbe,
+car celle-ci coupe la droite sur laquelle est situé le segment en deux
+points situés sur les prolongements de ce segment.</p>
+<p  id="blk-213-07">On exprime ce fait en disant que la région intérieure à l'ellipse
+est convexe (¹).</p>
+<p  id="blk-213-08">On voit, en particulier, que la région intérieure à l'ellipse est d'un seul
+tenant, ainsi que nous l'avons annoncé plus haut.<!-- skp data-txt='M' --></p>
+<p  id="blk-213-10">M.<!-- skp data-txt='1' --></p>
+<p  id="blk-213-12">Le segment de droite qui joint deux points M, N (fig. 411) situés sur
+l'ellipse est également intérieur à la courbe. Car on peut prendre, dans
+le voisinage des points M, N, respective-
+ment, deux points M₁, N₁ qui soient
+intérieurs à l'ellipse (il suffit de joindre M
+et N à un point intérieur p et de prendre M₁, N₁
+sur les segments de droites Mp, Np). Tous les
+points du segment de droite M₁ N₁ pos-
+sèdent alors (d'après ce que nous venons
+de voir) la même propriété. Mais, lorsque
+les points M₁, N₁ se déplacent conti-
+nument pour venir coïncider respec-
+tivement avec M, N, les points du
+segment M, N₁ viennent sur ceux du segment MN. Ces derniers
+ne peuvent donc être extérieurs à l'ellipse: ils lui sont intérieurs
+ou sont situés sur elle, cette dernière hypothèse ne se réalisant
+(d'après ce qui précède) que pour deux d'entre eux, les points M
+et N.<img class="fig" src="img/FIG. 411.OCR.png" alt="FIG. 411." /></p>
+<p  id="blk-213-14">(1) Un polygone tel que la droite qui joint deux points quelconques pris dans son
+intérieur y est contenue tout entière, est, effectivement, un polygone convexe; et, récipro-
+quement, tout polygone convexe possède cette propriété.
+GÉOMÉTRIE. II.<!-- skp data-txt='13' --></p><div class="scan-inline"><img src="img/scan/srcpage-213.png"/></div></data><data data-scanhref="img/scan/srcpage-214.png"><p class="newpage"><!-- skp data-txt='194' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-214-03">Ainsi, si une droite est sans point commun avec une ellipse, elle lui
+est entièrement extérieure;</p>
+<p  id="blk-214-04">Si elle la coupe en deux points, le segment compris entre ces
+deux points est à l'intérieur de l'ellipse; ses prolongements, à l'exté-
+rieur.</p>
+<p  id="blk-214-05">Enfin (toujours pour des raisons analogues), si la droite est tangente
+à l'ellipse, tous ses points sont extérieurs à la courbe, sauf le point de
+contact.</p>
+<p  id="blk-214-06">L'ellipse et la région intérieure à cette courbe sont tout entières d'un
+même côté par rapport à une tangente, puisque le segment de droite
+qui joint deux points situés sur la courbe ou intérieurs à elle ne
+peut couper la tangente.</p>
+<p class="article" id="blk-214-07"><strong class="article-num" id="article-499">499.</strong> Nous allons faire voir que la définition qui vient d'être donnée
+(497 bis) de la tangente à l'ellipse concorde avec la définition géné-
+rale des tangentes (Pl., 59); autrement dit, que, si M est un point
+fixe d'une ellipse, N, un point qui se déplace sur la courbe en se
+rapprochant indéfiniment du premier, la droite MN tend vers une
+position-limite, qui est tangente à l'ellipse, au sens du n° 497 bis.</p>
+<p  id="blk-214-08">C'est ce qui résulte tout d'abord du raisonnement qui a été fait
+plus haut. Soient, en effet, comme précédemment (fig. 409), C, le
+cercle directeur qui a le foyer F' pour centre; P, Q, les points de
+contact de ce cercle avec les circonférences S, S₁, qui passent par F
+et qui ont pour centres respectifs M, N; f, le second point d'inter-
+section de ces deux circonférences (symétrique de F par rapport à
+MN); I, le point de concours des tangentes en P, Q.</p>
+<p  id="blk-214-09">Lorsque le point N s'approche du point M, le point Q s'approche
+du point P et il en est de même du point I; mais, comme on a</p>
+<p  id="blk-214-10">IP²=IF. If<!-- spr -->et que IF tend vers une limite différente de zéro, la distance If tend
+également vers zéro et le point / se rapproche indéfiniment du
+point P.</p>
+<p  id="blk-214-12">Donc la droite MN tend vers la perpendiculaire au milieu de IP,
+laquelle est bien tangente au sens du nº 497 bis.</p>
+<p class="article" id="blk-214-13"><strong class="article-num" id="article-499 bis">499 bis.</strong> Nous allons établir le même fait directement : nous pren-
+drons à cet effet le résultat à démontrer sous la forme suivante :</p><div class="scan-inline"><img src="img/scan/srcpage-214.png"/></div></data><data data-scanhref="img/scan/srcpage-215.png"><p class="newpage"></p>
+<p  id="blk-215-01">ELLIPSE.<!-- skp data-txt='195' --></p>
+<p  id="blk-215-03">――<!-- skp data-txt='P' --><!-- skp data-txt='M' --></p>
+<p  id="blk-215-06">==<img class="fig" src="img/FIG. 412.OCR.png" alt="FIG. 412." /><!-- skp data-txt='-' --></p>
+<p  id="blk-215-09">Théorème. La tangente à l'ellipse est bissectrice de l'angle formé
+par
+l'un des<!-- spr -->rayons vecteurs du point de contact et le prolongement de
+l'autre.</p>
+<p  id="blk-215-11">Soient M un point d'une ellipse qui a
+pour foyers F, F' (fig. 412); N, un autre
+point de la courbe, voisin du premier. Si
+(comme nous le supposons pour fixer les
+idées) le rayon vecteur FN est plus grand
+que le rayon vecteur FM, le<!-- spr -->rayon vecteur
+F'N devra être inférieur, de la même
+quantité, au rayon vecteur F'M: de sorte
+que, si on décrit, du point F comme cen-
+tre, une circonférence de rayon FN, jusqu'à rencontre en P avec FM
+prolongé et, du point F' comme centre, une circonférence de
+rayon F'N jusqu'à rencontre en P' avec F'M, on aura MP MP'.</p>
+<p  id="blk-215-13">Sur le prolongement de MP, prenons arbitrairement un point p;
+menons, par ce point, la parallèle pn à la droite PN, jusqu'à
+rencontre en n avec MN prolongé ; puis, par le point n, la paral-
+lèle np à la droite NP', jusqu'à rencontre en p' avec MF'. Les
+segments Mp, Mn, Mp' étant évidemment proportionnels à MP, MN,
+MP', on aura Mp' Mp.</p>
+<p  id="blk-215-14">Supposons maintenant que le point N se déplace sur la courbe en
+se rapprochant indéfiniment de M, les points Pet P' tendront égale-
+ment vers M. Par contre, nous conserverons au point p une position
+fixe sur le prolongement de FM alors p' restera également fixe.
+D'autre part, la droite pn, parallèle à PN, sera perpendiculaire à la
+bissectrice de l'angle PFN (puisque le triangle FPN est isoscèle), et
+tendra, par suite, vers une perpendiculaire à FM lorsque N tendra
+vers M. Un raisonnement analogue s'appliquant à p'n, on voit que
+le point n tend vers une position-limite, t, obtenue par la rencontre
+des perpendiculaires élevées à FM, F'M par les points p, p' respecti-
+vement. La droite Mn tend donc vers Mt.</p>
+<p  id="blk-215-15">_</p>
+<p  id="blk-215-16">Mais cette droite Mt est bien bissectrice de l'angle p'Mp: car les
+deux triangles rectangles pMt, p'Mt sont égaux, comme ayant
+l'hypotenuse commune et un côté de l'angle droit égal (Mp = Mp').</p>
+<p  id="blk-215-17">C. Q. F. D.</p>
+<p  id="blk-215-18">L'énoncé que nous venons de démontrer équivaut bien, d'ailleurs</p><div class="scan-inline"><img src="img/scan/srcpage-215.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

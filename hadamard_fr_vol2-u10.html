@@ -1,0 +1,514 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-111.png"><p class="newpage"></p>
+<p  id="blk-111-01">LIVRE VII<!-- skp data-txt='-' --></p>
+<p  id="blk-111-03">DÉPLACEMENTS SYMÉTRIES</p>
+<p  id="blk-111-04">SIMILITUDE</p>
+<p  id="blk-111-05">CHAPITRE PREMIER</p>
+<p  id="blk-111-06">DÉPLACEMENTS</p>
+<p class="article" id="blk-111-07"><strong class="article-num" id="article-410">410.</strong> Deux figures F, F' sont égales, si l'on peut trouver trois points
+non en ligne droite A, B, C de l'une, auxquels correspondent les points
+A', B', C' de l'autre, de manière que, si M est un point quelconque de Fet
+M' son homologue dans F, la figure ABCM soit égale à la figure
+A'B'C'M'.</p>
+<p  id="blk-111-08">Supposons, en effet, qu'il en soit ainsi et transportons la figure F'
+de manière que le triangle A'B'C' vienne sur le triangle ABC (qui lui
+est manifestement égal dans ces conditions).</p>
+<p  id="blk-111-09">Soient alors M et M' deux points correspondants des deux
+figures. En général, le point M' n'est pas dans le plan A'B'C' et les
+droites A'B', A'C', A'M' forment un trièdre égal, par hypothèse, à
+A.BCM. Lorsque A'B'C' est superposé à ABC, ces deux trièdres
+coïncident (380, Rem.) et A'M' prend la direction AM. Comme
+A'M': AM, le point M' vient sur M.</p>
+<p  id="blk-111-10">La même conclusion subsiste si M'est dans le plan A'B'C', en vertu
+de ce que nous savons (Pl., 50, Rem. II) sur les figures planes égales.</p>
+<p  id="blk-111-11">Les figures F, F' ont donc été ainsi complètement superposées.</p>
+<p  id="blk-111-12">Le raisonnement montre en outre que deux figures égales qui ont
+trois points homologues communs, non en ligne droite, coïncident.</p>
+<p  id="blk-111-13">Il en résulte que deux déplacements qui produisent le même effet
+sur trois points A, B, C non en ligne droite, sont identiques entre eux.</p>
+<p  id="blk-111-14">ܙ</p>
+<p  id="blk-111-15">,<!-- skp data-txt='-' --></p>
+<p  id="blk-111-17">C. Q. F. D.</p><div class="scan-inline"><img src="img/scan/srcpage-111.png"/></div></data><data data-scanhref="img/scan/srcpage-112.png"><p class="newpage"><!-- skp data-txt='92' --><!-- skp data-txt='23' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-112-04">Car les deux figures F', F qui résultent d'une même figure quel-
+conque F par ces deux déplacements, coïncident, comme ayant trois
+points homologues communs.</p>
+<p class="article" id="blk-112-05"><strong class="article-num" id="article-411">411.</strong> Rotations.</p>
+<p  id="blk-112-06">Considérons deux figures égales ayant deux points homologues
+communs A, B.</p>
+<p  id="blk-112-07">D'après la définition de la ligne droite. (Pl., 5), la droite AB a
+la même position dans les deux figures, et il en est de même
+d'un point quelconque m de cette droite, puisque le segment</p>
+<p  id="blk-112-08">Am doit avoir la même gran-
+deur et le même sens de part<!-- skp data-txt='A' --><!-- spr -->et d'autre.<!-- spr -->m.<!-- skp data-txt="M'" --><!-- skp data-txt='P' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 316.OCR.png" alt="FIG. 316." /></p>
+<p  id="blk-112-16">Ainsi les deux figures ont en
+commun tous les points d'une
+droite.</p>
+<p  id="blk-112-17">Considérons la portion de la
+figure située dans un plan quel-
+conque perpendiculaire à AB,
+par exemple dans le plan P qui
+est perpendiculaire à AB au
+point m (fig. 316), et composée,<!-- spr -->par conséquent, de points M
+tels que Mm soit perpendiculaire à AB. A ces points correspon-
+dront, dans la seconde figure donnée, des points jouissant de la
+même propriété (le point m restant le même) et, par conséquent,
+situés dans le même plan P.</p>
+<p  id="blk-112-19">Nous avons donc, dans ce plan, deux figures égales et de même
+sens (¹), qui ont un point commun m et, par suite, se déduisent
+l'une de l'autre par une rotation autour de ce point (Pl., 100).
+L'angle de cette rotation est l'angle plan du dièdre que forme un
+plan quelconque passant par AB dans la première figure avec le
+plan homologue de la seconde. Cet angle de rotation est donc le même
+dans tous les plans P.<!-- skp data-txt='-' --></p>
+<p  id="blk-112-21">Définition. On donne, en géométrie de l'espace, le nom de
+rotation à l'opération par laquelle on déduit l'une de l'autre les deux</p>
+<p  id="blk-112-22">(1) Parce que deux droites issues de m forment, avec l'axe, un trièdre dont la disposition
+doit être la même dans les deux figures données.</p><div class="scan-inline"><img src="img/scan/srcpage-112.png"/></div></data><data data-scanhref="img/scan/srcpage-113.png"><p class="newpage"></p>
+<p  id="blk-113-01">DÉPLACEMENTS.<!-- skp data-txt='93' --><!-- spr -->figures dont il vient d'être parlé; autrement dit, à l'opération qui
+consiste, étant donnée une droite AB (dite axe de rotation), et un
+angle (dit angle de rotation), à faire tourner chaque point de la
+figure primitive, dans le plan mené par ce point perpendiculaire-
+ment à l'axe et autour du point de rencontre du plan en question
+avec l'axe, d'un angle égal à l'angle de rotation (fig. 316).</p>
+<p  id="blk-113-04">On doit avoir choisi un sens sur l'axe et indiqué, une fois pour
+toutes, si les rotations effectuées sont directes ou rétrogrades par
+rapport au sens ainsi choisi (349).</p>
+<p  id="blk-113-05">Si l'on est libre de choisir à sa volonté le sens de l'axe, on peut
+évidemment toujours le prendre tel que la rotation soit directe.</p>
+<p  id="blk-113-06">Réciproquement, deux figures déduites l'une de l'autre par une
+rotation, sont égales.</p>
+<p  id="blk-113-07">Car, si M, M'en sont deux points correspondants, m leur projection
+(commune, en vertu de l'hypothèse) sur l'axe AB, on peut déplacer
+la première figure de manière à amener l'angle droit MmA sur son
+égal M'mA. Ce déplacement, n'ayant pas changé les positions des
+points de AB, est, d'après ce qui précède, une rotation dont l'axe
+est AB et l'angle évidemment égal à MmM'. Cette rotation qui, par
+hypothèse, change la première figure en une figure égale, coïncide
+donc avec la rotation donnée, puisqu'elle a même axe et même angle.<!-- skp data-txt='D' --><!-- spr -->m<!-- skp data-txt="M'" --><!-- skp data-txt='M' --></p>
+<p class="article" id="blk-113-12"><strong class="article-num" id="article-412">412.</strong> Symétrie par rapport à une droite.</p>
+<p  id="blk-113-13">L'angle de rotation peut être de 180° alors le point M' cor-
+respondant à un point quelconque M de la
+première figure sera le symétrique (Pl., 99)
+de M par rapport à sa projection m<!-- spr -->sur l'axe
+(fig. 317).</p>
+<p  id="blk-113-15">On donne à la rotation de 180° autour d'une
+droite le nom de symétrie ou encore de transpo-
+sition par rapport à cette droite.</p>
+<p  id="blk-113-16">Dans ce cas, il est inutile d'indiquer le sens
+de la rotation. La symétrie est réciproque,
+c'est-à-dire qu'en appliquant la même cons-
+truction au point trouvé M', on retomberait sur le point M.</p>
+<p  id="blk-113-17">Il résulte de ce qui précède que deux figures symétriques l'une de
+l'autre par rapport à une droite, sont égales entre elles.<img class="fig" src="img/FIG. 317.OCR.png" alt="FIG. 317." /></p><div class="scan-inline"><img src="img/scan/srcpage-113.png"/></div></data><data data-scanhref="img/scan/srcpage-114.png"><p class="newpage"><!-- skp data-txt='91' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-114-03"><strong class="article-num" id="article-413">413.</strong> Translations.<!-- skp data-txt='-' --></p>
+<p  id="blk-114-05">...</p>
+<p  id="blk-114-06">...</p>
+<p  id="blk-114-07">Définition. Si, par les différents points A, B, C,<!-- spr -->d'une figure F,
+on mène des droites AA', BB', CC', toutes parallèles entre elles,
+de même sens et égales, les points A', B', C', ... forment une figure F/<!-- spr -->qui est dite (voir Pl., 51) déduite de la pre-
+mière par la translation AA' (fig. 318).</p>
+<p  id="blk-114-10">Cette nouvelle figure est égale à F.</p>
+<p  id="blk-114-11">En effet, si A et B sont deux points de F,
+il leur correspondra, dans F', deux points A'
+et B', tels que A'B' soit égal et parallèle à
+AB, avec le même sens.</p>
+<p  id="blk-114-12">A trois points A, B, C de F, correspondront
+trois points A', B', C', tels que le triangle A'B'C'<!-- skp data-txt='A' --></p>
+<p  id="blk-114-14">,<img class="fig" src="img/FIG. 318.OCR.png" alt="FIG. 318." /><!-- spr -->soit égal à ABC. En particulier, l'angle B'A'C', par exemple, est
+égal à BAC. De plus, le plan A'B'C' est parallèle à ABC.</p>
+<p  id="blk-114-17">Soient alors A, B, C, M quatre points de F. Si ces points sont dans
+un même plan, la figure ABCM est (Pl., 50) égale à celle que
+forment les points homologues A', B', C', M'.</p>
+<p  id="blk-114-18">Si, au contraire, les quatre points A, B, C, M ne sont pas dans
+un même plan, le trièdre ABCM est égal au trièdre homologue
+A'B'C'M' (382 bis). Si l'on fait coïncider ces deux trièdres, comme
+A'B', A'C', A'M' sont respectivement égaux à AB, AC, AM, les deux
+figures ABCM, A'B'C'M' coïncident: d'où (410) l'égalité des figures F, F'.</p>
+<p  id="blk-114-19">Par exemple, les projections d'une même figure sur deux plans
+parallèles sont deux figures égales. Car elles se déduisent l'une de
+l'autre par une translation égale à la distance des deux plans et
+perpendiculaire à leur direction.</p>
+<p class="article" id="blk-114-20"><strong class="article-num" id="article-414">414.</strong> Déplacements hélicoïdaux.<!-- skp data-txt='-' --></p>
+<p  id="blk-114-22">Définition. - On nomme déplacement hélicoïdal (1) le déplacement résul-
+tant (2) d'une rotation R et d'une translation T, cette dernière étant
+parallèle à l'axe de la première.</p>
+<p  id="blk-114-23">L'ordre des deux opérations est indifférent (ce qui n'arriverait pas si la
+translation n'était pas parallèle à l'axe de rotation (3)). Autrement dit, si
+M'est la nouvelle position que vient occuper le point M, après une rota-</p>
+<p  id="blk-114-24">(1) La raison de cette dénomination sera donnée plus loin, (547).
+(2) Voir, pour le sens de ce mot, Pl., 103, liv. II.
+(3) Voir exercice 622.</p><div class="scan-inline"><img src="img/scan/srcpage-114.png"/></div></data><data data-scanhref="img/scan/srcpage-115.png"><p class="newpage"></p>
+<p  id="blk-115-01">DÉPLACEMENTS.<!-- skp data-txt='95' --></p>
+<p  id="blk-115-03">Mi<!-- spr -->m₁<!-- skp data-txt='1' --><!-- skp data-txt="M'" --><!-- skp data-txt='1' --><!-- skp data-txt='M' --><!-- spr -->tion R d'un angle donné autour de l'axe D (fig. 319); M/₁, la nouvelle posi-
+tion que vient occuper le point M' par une translation déterminée T paral-
+lèle à D, on retomberait sur le même point M₁ en
+faisant subir au point M la translation T, de manière
+à obtenir un point M₁, et faisant ensuite tourner ce
+point M₁ de l'angle donné autour de D.</p>
+<p  id="blk-115-10">Si, en effet, m est la projection commune des points
+M,M sur l'axe; m₁, la projection du point M₁, la
+figure M₁m₁M₁ se déduit évidemment de la figure
+MmM' par la translation MM₁. Elle est donc, comme
+celle-ci, un triangle isoscèle dont le plan est perpen-
+diculaire à D et dont l'angle est celui de la rotation R :
+ce qui démontre l'exactitude de notre affirmation.</p>
+<p  id="blk-115-11">Le déplacement hélicoïdal comprend évidemment,
+comme cas particuliers, la rotation (lorsque la translation T est nulle) et
+la translation (lorsque la rotation R est nulle.)</p>
+<p  id="blk-115-12">REMARQUE. Lorsqu'on se donne un déplacement hélicoïdal, un sens
+déterminé est par là même donné sur l'axe, à savoir le sens de la transla-
+tion. On dira donc qu'un déplacement hélicoïdal est direct (ou encore sinis-
+trorsum), ou bien au contraire qu'il est rétrograde (ou dextrorsum) suivant que
+la rotation est directe ou rétrograde par rapport au sens de la translation.<!-- skp data-txt='D' --><img class="fig" src="img/FIG. 319.OCR.png" alt="FIG. 319." /><!-- skp data-txt='-' --></p>
+<p class="article" id="blk-115-16"><strong class="article-num" id="article-415">415.</strong> Nous avons vu que deux figures égales qui ont deux points com-
+muns (1) peuvent être amenées à coïncider par une rotation.</p>
+<p  id="blk-115-17">Deux figures égales qui ont un point commun peuvent être amenées à coïncider
+par deux rotations successives.</p>
+<p  id="blk-115-18">Soient, en effet, A le point commun; B,B' deux points homologues. On
+a AB AB' et, par conséquent, le point B' viendra coïncider avec B si l'on
+fait tourner la seconde figure autour d'une perpendiculaire au plan BAB',<!-- spr -->d'un angle égal à B'AB. Les deux figures ayant alors deux points communs,
+une seconde rotation amènera la coïncidence complète.</p>
+<p  id="blk-115-20">Deux figures égales quelconques peuvent être amenées à coïncider par une
+translation suivie de deux rotations. Car, si A,A' sont deux points homo-
+logues quelconques, la translation A'A imprimée à la seconde figure amène
+le point A sur le point A, après quoi on est ramené au cas précédent.</p>
+<p  id="blk-115-21">Mais ces combinaisons de translations et de rotations peuvent être
+simplifiées et remplacées par un seul déplacement hélicoïdal.</p>
+<p  id="blk-115-22">A cet effet, nous procéderons comme en géométrie plane (Pl., 102-103),
+en étudiant d'abord la composition des transpositions.</p>
+<p class="article" id="blk-115-23"><strong class="article-num" id="article-416">416.</strong> Deux symétries par rapport à la même droite se détruisent: nous
+savons (412) que, si M' est le symétrique du point M par rapport à la droite
+D,M" le symétrique de M' par rapport à cette même droite, le point M"
+coïncide avec le point M.</p>
+<p  id="blk-115-24">(1) C'est-à-dire telles que deux points coïncident avec leurs homologues.</p><div class="scan-inline"><img src="img/scan/srcpage-115.png"/></div></data><data data-scanhref="img/scan/srcpage-116.png"><p class="newpage"><!-- skp data-txt='96' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-116-04">1D₂<!-- skp data-txt="M'" --></p>
+<p  id="blk-116-06">៣.<!-- skp data-txt='M' --></p>
+<p  id="blk-116-08">M"</p>
+<p  id="blk-116-09">Théorème. · Deux transpositions successives, par rapport à deux axes
+différents, équivalent :</p>
+<p  id="blk-116-10">1° Si les deux axes sont parallèles, à une translation parallèle à la perpen-
+diculaire commune aux deux axes et double de celle qui amènerait le premier
+axe sur le second;</p>
+<p  id="blk-116-11">2 Si les deux axes sont concourants, à une rotation autour de leur perpen-
+diculaire commune, double de celle qui amènerait le premier axe sur le second;</p>
+<p  id="blk-116-12">3° Si les deux axes ne sont pas dans un même<!-- spr -->plan, à un déplacement hélicoïdal, ayant pour
+D₁<!-- spr -->axe leur perpendiculaire commune et double de
+celui qui amènerait le premier axe sur le second.</p>
+<p  id="blk-116-15">1° Soient les axes parallèles D₁, D2 (fig. 320),
+M un point quelconque de la figure primitive,
+projeté en m₁ sur D₁; M', son symétrique par
+rapport à D₁ (m₁M' Mm₁), projeté en m₂ sur
+D2; M", le symétrique de M' par rapport à D₂
+(m₂M" M'm2). Le plan mené par M perpen-<!-- spr -->diculairement aux droites D₁, D₂ contient MM'
+(qui est perpendiculaire à D₁) et M/M" (qui est perpendiculaire à D₂).
+Donc mm² est une perpendiculaire commune aux deux axes et il est clair
+(Pl., 55) que M se déduit de M par une translation parallèle à cette
+perpendiculaire commune et double de cette perpendiculaire commune.</p>
+<p  id="blk-116-17">2° Soient les deux axes D₁, D2 (fig. 321) concourants en 0 ; P, leur plan;
+Ox, la perpendiculaire à ce plan menée par le point O; et, comme tout à
+l'heure, M,M', M" trois points dont les deux premiers sont symétriques l'un
+de l'autre par rapport à D₁ (la droite qui les joint coupant D₁ en m₁), les
+deux derniers par rapport à D₁ (la droite qui les joint coupant D₂ en m₂).<!-- skp data-txt='-' --><img class="fig" src="img/FIG. 320.OCR.png" alt="FIG. 320." /></p>
+<p  id="blk-116-20">===</p>
+<p  id="blk-116-21">D₂</p>
+<p  id="blk-116-22">MR.</p>
+<p  id="blk-116-23">JAK</p>
+<p  id="blk-116-24">D₁<!-- skp data-txt='P' --><!-- skp data-txt="M'" --></p>
+<p  id="blk-116-27">0,<img class="fig" src="img/FIG. 321.OCR.png" alt="FIG. 321." /><img class="fig" src="img/FIG. 322.OCR.png" alt="FIG. 322." /></p>
+<p  id="blk-116-30">Le plan P étant son propre symétrique tant par rapport à D₁ que par
+rapport à D₂, si nous projetons les points M, M', M" en N,N',N" sur ce plan,
+les points N et N/ seront symétriques de N' par rapport à D₁ et D₂ respec-
+tivement. N" se déduira donc de N (Pl., 102) par une rotation autour de Ox,
+d'angle égal au double de celui des deux axes.</p>
+<p  id="blk-116-31">Mais les droites NM, N"M" sont égales, parallèles toutes deux à Ox et de</p><div class="scan-inline"><img src="img/scan/srcpage-116.png"/></div></data><data data-scanhref="img/scan/srcpage-117.png"><p class="newpage"></p>
+<p  id="blk-117-01">DÉPLACEMENTS.<!-- skp data-txt='97' --><!-- spr -->même sens (contraire à celui de N/M/): il est, dès lors, clair que la même
+rotation d'axe Ox qui amène N sur N/ amène aussi M sur M".</p>
+<p  id="blk-117-04">3° Soient les deux axes D₁, D₂ (fig. 322), non situés dans un même plan;
+0,02, leur perpendiculaire commune. Par le point 02, menons la parallèle
+D₁ à D₁. Entre les deux rotations de 180° que nous avons à composer,<!-- spr -->inter-
+calons deux rotations successives de 180° autour de D₁: ce qui est indif-
+férent puisque ces deux rotations se détruisent.</p>
+<p  id="blk-117-06">Les deux symétries successives par rapport à D₁, D½₁, se composent en
+une translation parallèle à O₁0, et double de 0,02%; les deux symétries
+relatives à D1, D2, en une rotation autour de 0,02, double de celle qui
+amènerait D'₁ sur D₂ : le théorème est donc démontré.<!-- skp data-txt='-' --></p>
+<p  id="blk-117-08">Réciproque. Tout déplacement peut être décomposé en deux symétries
+par rapport à deux droites différentes.</p>
+<p  id="blk-117-09">Ces deux droites doivent :
+S'il s'agit d'une translation, étre perpendiculaires à cette translation;</p>
+<p  id="blk-117-10">S'il s'agit d'une rotation ou d'un déplacement hélicoïdal, être perpendiculaires
+à l'axe et le rencontrer.</p>
+<p  id="blk-117-11">A ces conditions près, on peut choisir arbitrairement l'une des droites,
+l'autre étant alors déterminée.</p>
+<p  id="blk-117-12">Si, par exemple, c'est l'axe de la première symétrie qui est pris arbitrai-
+rement sous les conditions indiquées, le second<!-- spr -->se déduira du
+premier par une translation égale à la moitié de la translation et une
+rotation égale à la moitié de la rotation données. Ce second axe étant ainsi
+déterminé, les deux symétries produisent bien, en vertu du théorème
+précédent, un déplacement résultant identique au déplacement donné.</p>
+<p  id="blk-117-14">ахе<!-- skp data-txt='-' --></p>
+<p  id="blk-117-16">A₂</p>
+<p  id="blk-117-17">D.</p>
+<p class="article" id="blk-117-18"><strong class="article-num" id="article-417">417.</strong> Théorème. Un nombre quelconque de déplacements hélicoïdaux ont
+pour déplacement résultant un dé-
+placement hélicoïdal unique.
+S'il s'agit de rotations concou-</p>
+<p  id="blk-117-19">D2
+rantes, le déplacement résultant est
+une rotation qui concourt avec les
+premières.</p>
+<p  id="blk-117-20">S'il s'agit de translations, le dé-
+placement résultant est une trans-
+lation.</p>
+<p  id="blk-117-21">Il suffit évidemment (1) de dé-
+montrer le théorème pour deux
+déplacements: car pour en composer trois, on pourra composer les deux
+premiers, puis le déplacement résultant avec le troisième ; et ainsi de suite.</p>
+<p  id="blk-117-22">Soient donc deux déplacements hélicoïdaux (2) d'axes A1, A2 (fig. 323).<!-- skp data-txt='A' --></p>
+<p  id="blk-117-24">D₁<img class="fig" src="img/FIG. 323.OCR.png" alt="FIG. 323." /></p>
+<p  id="blk-117-26">(1) Comparer Pl., 103.</p>
+<p  id="blk-117-27">(2) Si l'un des déplacements donnés, le premier par exemple, est une translation, on prendra
+pour l'axe A, dans le raisonnement qui va suivre, une droite quelconque parallèle à cette
+translation.<!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='7' --></p><div class="scan-inline"><img src="img/scan/srcpage-117.png"/></div></data><data data-scanhref="img/scan/srcpage-118.png"><p class="newpage"><!-- skp data-txt='98' --><!-- skp data-txt='80' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-118-04">Nous pourrons remplacer le premier par deux symétries d'axes D₁, D'₁, et
+cela, en prenant arbitrairement la seconde droite D½₁ parmi celles qui cou-
+pent à angle droit l'axe A₁. Nous pourrons de même remplacer le second
+déplacement par deux symétries d'axes D2, D'2, et cela, en prenant arbitrai-
+rement le premier axe D2 parmi ceux qui coupent à angle droit A.</p>
+<p  id="blk-118-05">Nous ferons en sorte que D', et D₂ coïncident: il suffira, pour cela de les
+faire coïncider toutes deux avec la perpendiculaire commune à A₁, A₁.
+Alors les symétries par rapport à ces deux axes se détruisent, et il reste les
+symétries par rapport à D₁, D'2, lesquelles donnent bien un déplacement<!-- spr -->hélicoidal unique.</p>
+<p  id="blk-118-07">Si les déplacements donnés sont des rotations
+et que les axes A₁, A, concourent en un point 0,
+la droite D₁ passera par ce même point et il
+en sera de mème de D₁ et de D. Le déplace-
+ment résultant sera donc une rotation d'axe
+passant par 0.</p>
+<p  id="blk-118-08">Si les déplacements donnés sont des transla-<!-- spr -->tions, les droites D'₁, D₁, D'₂ sont parallèles entre
+elles et le déplacement résultant est une translation.
+Ce dernier fait est, d'ailleurs, évident à priori, et il est clair que<!-- spr -->la
+translation résultante est la diagonale d'un parallélogramme qui a pour
+côtés les deux composantes (fig. 323 bis).<!-- skp data-txt="A'" --></p>
+<p  id="blk-118-12">。<img class="fig" src="img/FIG. 323 bis.OCR.png" alt="FIG. 323 bis." /></p>
+<p  id="blk-118-14">C. Q. F. D.</p>
+<p class="article" id="blk-118-15"><strong class="article-num" id="article-418">418.</strong> Il suffit évidemment de combiner le théorème précédent avec les
+remarques du n° 415 pour arriver à l'énoncé que nous avions en vue :<!-- skp data-txt='-' --></p>
+<p  id="blk-118-17">Théorème. Deux figures égales peuvent toujours étre amenées à coin-
+cider:</p>
+<p  id="blk-118-18">S'il y a un point commun, par une rotation; dans le cas général, par un
+déplacement hélicoïdal.</p>
+<p  id="blk-118-19">EXERCICES</p>
+<p class="article" id="blk-118-20"><strong class="article-num" id="article-577">577.</strong> On fait tourner une figure invariable S autour d'un axe fixe D, l'angle de
+rotation étant quelconque; après quoi, on fait tourner une partie S' de la figure S
+autour d'un axe D' qui fait partie de S (le reste de la figure S restant fixe), l'angle
+de rotation étant également quelconque.</p>
+<p  id="blk-118-21">Montrer qu'on peut, en général, disposer des deux angles de rotation de manière
+à rendre une droite donnée de S' parallèle à une droite donnée arbitraire de l'espace
+(ou, ce qui revient au même, un plan arbitraire de S' parallèle à un plan donné
+arbitraire de l'espace). Quels sont les cas d'exception ?</p><div class="scan-inline"><img src="img/scan/srcpage-118.png"/></div></data><data data-scanhref="img/scan/srcpage-119.png"><p class="newpage"></p>
+<p  id="blk-119-01">DÉPLACEMENTS.<!-- skp data-txt='99' --></p>
+<p class="article" id="blk-119-03"><strong class="article-num" id="article-578">578.</strong> On fait tourner une figure invariable S autour d'un axe fixe D, l'angle de
+rotation étant quelconque; après quoi, on fait tourner une partie S' de la figure S
+autour d'un axe D' qui fait partie de S, puis une partie S" de S' autour d'un axe D"
+qui fait partie de S', les deux angles de rotation étant également quelconques.</p>
+<p  id="blk-119-04">Montrer qu'on peut disposer des angles des trois rotations de manière que toutes
+les droites de la figure S" deviennent parallèles aux droites correspondantes d'une
+figure donnée S", égale à S".</p>
+<p class="article" id="blk-119-05"><strong class="article-num" id="article-579">579.</strong> Trouver une rotation transformant respectivement deux points donnés en
+deux autres points donnés (la distance des deux premiers points étant, bien entendu,
+supposée égale à celle des deux autres).</p>
+<p  id="blk-119-06">Dans quels cas le problème est-il indéterminé ?</p>
+<p class="article" id="blk-119-07"><strong class="article-num" id="article-580">580.</strong> Construire l'axe de la rotation qui transforme deux demi-droites concourantes
+données OA, OB en deux demi droites OA', OB' concourantes avec les premières</p>
+<p  id="blk-119-08">(l'angle A'OB étant égal à AOB).</p>
+<p class="article" id="blk-119-09"><strong class="article-num" id="article-581">581.</strong> Étant admis que deux figures égales F, F' qui ont un point commun, dérivent
+l'une de l'autre par une rotation, en déduire que deux figures égales quelconques
+dérivent l'une de l'autre par un déplacement hélicoïdal.</p>
+<p  id="blk-119-10">(On montrera qu'il y a des droites de F qui sont parallèles à leurs homologues
+de F'. Soient alors P un plan de F perpendiculaire aux droites en question; P', son
+homologue; f, la partie de F située dans P; f', la partie correspondante de F'. On
+appliquera à fet à la projection de f' sur P le théorème du nº 102. (Pl., liv. II.))</p>
+<p class="article" id="blk-119-11"><strong class="article-num" id="article-582">582.</strong> Quels sont les différents déplacements qui laissent inaltérée une droite
+donnée ?</p>
+<p class="article" id="blk-119-12"><strong class="article-num" id="article-583">583.</strong> Il y a une infinité de rotations qui transforment l'une dans l'autre deux
+droites données D, D'. Les axes de ces rotations ne sont autres que les droites
+appelées G1, G2 dans l'exercice 454.</p>
+<p  id="blk-119-13">Parmi ces rotations, il y en a deux dont l'angle est de 180º.</p>
+<p class="article" id="blk-119-14"><strong class="article-num" id="article-584">584.</strong> Tout déplacement hélicoïdal qui transforme l'une dans l'autre les deux
+droites données D, D' a son axe A parallèle à celui d'une des rotations considérées
+dans l'exercice précédent.</p>
+<p  id="blk-119-15">Quel est le lieu de l'axe A, lorsqu'en donne la direction de cet axe ?</p>
+<p  id="blk-119-16">Trouver ce lieu: 1° directement; 2° en utilisant la composition des déplacements
+et les deux exercices précédents. On prouvera que l'axe A rencontre toujours, à
+angle droit, l'une ou l'autre de deux droites fixes (suivant qu'il est parallèle à une
+droite G₁ ou à une droite G₂).</p>
+<p class="article" id="blk-119-17"><strong class="article-num" id="article-585">585.</strong> Trouver le lieu de l'axe d'un déplacement hélicoïdal, connaissant la direction
+de cet axe et deux points homologues.</p>
+<p class="article" id="blk-119-18"><strong class="article-num" id="article-586">586.</strong> Construire l'axe d'un déplacement hélicoïdal, connaissant un point de cet
+axe, la grandeur de la translation et deux points homologues.</p>
+<p class="article" id="blk-119-19"><strong class="article-num" id="article-587">587.</strong> Un déplacement donné quelconque peut, en général, être décomposé en
+deux rotations, dont une suivant une droite donnée quelconque. Quels sont les cas
+d'exception ?</p>
+<p class="article" id="blk-119-20"><strong class="article-num" id="article-588">588.</strong> On compose un déplacement hélicoïdal donné avec une quelconque des trans-
+lations T parallèles à une direction donnée. Lieu de l'axe du nouveau déplacement
+ainsi obtenu, lorsqu'on fait varier la grandeur de la translation T. Montrer qu'en
+général il y a un et un seul de ces déplacements qui se réduit une rotation.</p><div class="scan-inline"><img src="img/scan/srcpage-119.png"/></div></data><data data-scanhref="img/scan/srcpage-120.png"><p class="newpage"><!-- skp data-txt='100' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-120-03"><strong class="article-num" id="article-589">589.</strong> On compose une rotation donnée avec une rotation donc l'axe est fixe et ren-
+contre le premier, mais dont l'angle est variable. Lieu de l'axe de la rotation résul-
+tante.</p>
+<p class="article" id="blk-120-04"><strong class="article-num" id="article-590">590.</strong> Composer une rotation donnée avec une rotation d'axe donné rencontrant le
+premier mais d'angle inconnu, de manière que le déplacement résultant soit une
+transposition (ou plus généralement, une rotation d'angle donné).</p>
+<p class="article" id="blk-120-05"><strong class="article-num" id="article-591">591.</strong> Composer un déplacement hélicoïdal donné avec un déplacement inconnu,
+mais d'axe donné, de manière que le déplacement résultant soit une transposition.</p>
+<p class="article" id="blk-120-06"><strong class="article-num" id="article-592">592.</strong> Deux rotations (d'angles non nuls) dont les axes ne sont pas dans un même
+plan, ne se composent jamais suivant une rotation.</p>
+<p class="article" id="blk-120-07"><strong class="article-num" id="article-593">593.</strong> Lorsqu'un déplacement hélicoïdal ne se réduit ni à une translation, ni à une
+rotation, il n'existe aucun plan qui reste inaltéré par ce déplacement.</p>
+<p class="article" id="blk-120-08"><strong class="article-num" id="article-594">594.</strong> Mener, par un point donné, deux droites qu'un déplacement donné trans-
+forme l'une dans l'autre.</p>
+<p class="article" id="blk-120-09"><strong class="article-num" id="article-595">595.</strong> Étant donné un déplacement, trouver deux droites homologues entre elles,
+qui soient situées dans un même plan donné.</p>
+<p class="article" id="blk-120-10"><strong class="article-num" id="article-596">596.</strong> Construire un angle polyèdre, connaissant les bissectrices des faces.
+Le problème peut-il être indéterminé ?</p>
+<p  id="blk-120-11">Connaissant toutes les bissectrices, moins deux, trouver le lieu de ces dernières,
+de manière que l'indétermination ait lieu.</p>
+<p class="article" id="blk-120-12"><strong class="article-num" id="article-597">597.</strong> Déduire de la composition des rotations le lieu des symétriques d'un point
+donné, par rapport à toutes les droites qui passent par un point fixe et sont situées
+dans un plan fixe.</p>
+<p class="article" id="blk-120-13"><strong class="article-num" id="article-598">598.</strong> Décomposer une rotation R en deux rotations S, S' dont les angles soient entre
+eux, l'axe de la rotation S étant, d'autre part donné et concourant avec celui de R.
+Quel est le lieu décrit par l'axe de la rotation S' lorsque l'axe de la rotation S décrit
+un plan?</p>
+<p class="article" id="blk-120-14"><strong class="article-num" id="article-598 bis">598 bis.</strong> Décomposer un déplacement hélicoïdal en deux déplacements hélicoïdaux
+S, S' composés de translations égales entre elles et de rotations égales entre elles,
+tous deux dextrorsum ou tous deux sinistrorsum, l'axe du déplacement S étant
+donné.</p>
+<p class="article" id="blk-120-15"><strong class="article-num" id="article-599">599.</strong> Trouver deux déplacements hélicoïdaux d'axes donnés qui se composent
+suivant un déplacement d'axe également donné.</p><div class="scan-inline"><img src="img/scan/srcpage-120.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

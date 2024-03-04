@@ -1,0 +1,486 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-458.png"><p class="newpage"><!-- skp data-txt='438' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-458-03">CHAPITRE VII</p>
+<p  id="blk-458-04">ELLIPSE CONSIDÉRÉE COMME PROJECTION D'UN CERCLE</p>
+<p  id="blk-458-05">HYPERBOLE RAPPORTÉE A SES ASYMPTOTES<!-- skp data-txt='--' --></p>
+<p class="article" id="blk-458-07"><strong class="article-num" id="article-731">731.</strong> Théorème. Un cercle étant rapporté à deux diamètres per-
+pendiculaires entre eux, le lieu du point qu'on déduit d'un point quel-
+conque de la circonférence en augmentant l'ordonnée dans un rapport
+constant, sans changer l'abscisse, est une ellipse.</p>
+<p  id="blk-458-08">Soient O le cercle donné (fig. 603); OA, Ob, les deux diamètres
+rectangulaires; m, un point de la circonférence, ayant pour abscisse</p>
+<p  id="blk-458-09">Ou et pour ordonnée μm; M, un point<!-- spr -->p.M</p>
+<p  id="blk-458-11">Mo<!-- spr -->pris sur um prolongé de manière que</p>
+<p  id="blk-458-13">ит
+soit égal à un nombre constant k plus grand
+que 1. Je dis que le lieu de M est une ellipse.</p>
+<p  id="blk-458-14">C'est ce qui résulte de ce fait que la sec-
+tion du cylindre droit qui a pour base le
+cercle donné par un plan passant par OA
+est une ellipse. Nous savons, en effet,
+(360, 364), que si M. est un point de
+cette section; m, le point du cercle don-<!-- spr -->né, projection de M. sur le plan de
+cercle, les points Mo, ont même projection . sur OA et</p>
+<p  id="blk-458-16">→M<!-- skp data-txt='A' --><img class="fig" src="img/FIG. 603.OCR.png" alt="FIG. 603." /><!-- spr -->ce<!-- spr -->m</p>
+<p  id="blk-458-21">.M.<!-- spr -->que le rapport<!-- spr -->est constant (il est inverse du cosinus de l'angle Moμm,<!-- spr -->u.m<!-- spr -->c'est-à-dire du cosinus de l'angle que fait le plan de section avec le plan de
+base). μM。 sera donc constamment égal à p.M et, par conséquent,
+l'ellipse de section sera égale au lieu cherché (que l'on obtiendra en
+rabattant cette ellipse sur le plan de base, c'est-à-dire en la faisant tourner autour
+de OA, d'un angle égal à α), si ce rapport constant est égal à k. On arri-
+vera évidemment à ce résultat en faisant passer le plan de section</p><div class="scan-inline"><img src="img/scan/srcpage-458.png"/></div></data><data data-scanhref="img/scan/srcpage-459.png"><p class="newpage"></p>
+<p  id="blk-459-01">ELLIPSE CONSIDÉRÉE COMME PROJECTION D'UN CERCLE.<!-- skp data-txt='439' --><!-- spr -->par un point B pris sur la génératrice issue du point 6, de manière
+que OB soit égal à k. Ob (autrement dit, en déterminant l'angle des<!-- spr -->deux plans de manière que son cosinus soit égal à</p>
+<p  id="blk-459-05">1)<!-- spr -->ce qui est possible,<!-- spr -->puisque est supérieur à 1.</p>
+<p  id="blk-459-08">L'ellipse obtenue a d'ailleurs pour petit axe le diamètre OA
+commun aux deux plans.<!-- skp data-txt='-' --><!-- spr -->m
+M</p>
+<p class="article" id="blk-459-11"><strong class="article-num" id="article-732">732.</strong> Théorème. Un cercle étant rapporté à deux diamètres rec-
+tangulaires, le lieu du point qu'on déduit d'un
+point quelconque de la circonférence en dimi-
+nuant l'ordonnée dans un rapport constant, sans
+changer l'abscisse, est une ellipse ayant le cer-
+cle donné pour cercle principal.</p>
+<p  id="blk-459-12">Soient encore OA, Ob les deux diamètres
+rectangulaires auxquels est rapporté le cercle
+donné; m un point de ce cercle projeté en µ
+sur OA; M un point pris sur um de manière<!-- skp data-txt='0' --></p>
+<p  id="blk-459-14">PA<img class="fig" src="img/FIG. 604.OCR.png" alt="FIG. 604." /><!-- spr -->p.M<!-- spr -->que soit égal à une constante k plus petite que 1 (fig. 604).</p>
+<p  id="blk-459-18">ит
+Projetons le point M en p. sur Ob et soit m' le point où Mụ ren-
+contre le rayon Om. Les parallèles Mm', .O et les parallèles mM,</p>
+<p  id="blk-459-19">Om' p.M
+Ou montrent: 1º que<!-- spr -->k, de sorte que Om' est cons-
+От</p>
+<p  id="blk-459-21">ит
+p.'M Om 1
+tant; 2° que</p>
+<p  id="blk-459-22">Nous voyons donc que le point m'
+Om'<!-- spr -->k"
+décrit une circonférence de centre O et que, si 06 est pris pour axe
+des abscisses, le point M se déduit du point m' en augmentant l'or-</p>
+<p  id="blk-459-24">1
+donnée dans le rapport constant (lequel est plus grand que 1) sans<!-- spr -->k<!-- spr -->y'm'<!-- spr -->changer l'abscisse. Donc le point M décrit une ellipse.</p>
+<p class="article" id="blk-459-28"><strong class="article-num" id="article-733">733.</strong> Projection orthogonale du cercle.<!-- skp data-txt='-' --></p>
+<p  id="blk-459-30">Théorème. La projection orthogonale d'un cercle sur un plan
+est une ellipse.</p>
+<p  id="blk-459-31">On peut toujours (413) supposer que le plan de projection passe
+par le centre du cercle (fig. 605). Alors, si l'on prend le diamètre OA
+situé dans ce plan pour axe des abscisses tant du cercle que de sa</p><div class="scan-inline"><img src="img/scan/srcpage-459.png"/></div></data><data data-scanhref="img/scan/srcpage-460.png"><p class="newpage"><!-- skp data-txt='440' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-460-03">.M<!-- spr -->projection, le rapport des ordonnées correspondant à une même<!-- spr -->p.mo
+abscisse Op. est une constante plus petite que 1. Donc, (théorème précé-
+dent) la projection est bien une ellipse ayant pour cercle principal
+un cercle égal au cercle donné. Le point m du cercle principal situé
+sur l'ordonnée μM prolongée est celui que l'on obtient en rabattant
+le point m. du cercle donné qui a pour projection M, c'est-à-dire en le
+faisant tourner, autour de OA, d'un angle égal à l'angle & des deux
+plans.</p>
+<p  id="blk-460-06">On peut d'ailleurs faire le rabattement de deux manières diffé-
+rentes, à savoir: de façon que les segments μM, μm soient toujours<!-- spr -->m<!-- skp data-txt='B' --></p>
+<p  id="blk-460-09">•m<!-- skp data-txt='M' --><!-- spr -->m<img class="fig" src="img/FIG. 605.OCR.png" alt="FIG. 605." /><img class="fig" src="img/FIG. 605 bis.OCR.png" alt="FIG. 605 bis." /><!-- spr -->de même sens (fig. 605), ou de façon que ces segments soient
+toujours de sens contraires (fig. 605 bis).</p>
+<p  id="blk-460-15">REMARQUE.<!-- skp data-txt='--' --></p>
+<p  id="blk-460-17">L'angle a a pour cosinus le nombre k, lequel est,<!-- spr -->b<!-- spr -->d'ailleurs égal au rapport<!-- spr -->en désignant par 2a et 2b les axes de l'ellipse):<!-- spr -->a<!-- spr -->on</p>
+<p  id="blk-460-23">Ob</p>
+<p  id="blk-460-24">_<!-- spr -->car lorsque le point μ est en 0, a manifestement um</p>
+<p  id="blk-460-26">(fig. 605) a; μM OB (fig. 605) = b.</p>
+<p  id="blk-460-27">=<!-- skp data-txt='M' --><!-- skp data-txt='-' --><!-- spr -->m</p>
+<p  id="blk-460-31">Corollaire I. Le lieu des points M d'un
+plan, projetés en µ à l'intérieur d'un segment AA'
+(fig. 606) et tels que M soit dans un rapport
+constant avec la moyenne proportionnelle de µA et
+de A', est une ellipse.</p>
+<p  id="blk-460-32">Car la moyenne proportionnelle de μA et de
+μA' n'est autre (Pl., 125, Coroll.) que l'ordonnée μm du cercle
+qui a AA' pour diamètre. L'énoncé précédent résulte donc des deux
+premiers théorèmes du numéro précédent.<img class="fig" src="img/FIG. 606.OCR.png" alt="FIG. 606." /></p><div class="scan-inline"><img src="img/scan/srcpage-460.png"/></div></data><data data-scanhref="img/scan/srcpage-461.png"><p class="newpage"></p>
+<p  id="blk-461-01">ELLIPSE CONSIDÉRÉE COMME PROJECTION D'UN CERCLE.<!-- skp data-txt='441' --><!-- skp data-txt='-' --></p>
+<p  id="blk-461-04">II. Équation de l'ellipse. Soient a, b les deux demi-axes; x, y, l'abscisse
+Ou et l'ordonnée μM du point M. L'ordonnée μm du cercle principal est
+évidemment donnée par<!-- spr -->pm² + x2:<!-- skp data-txt='-' --><!-- spr -->a².<!-- skp data-txt='-.' --><!-- spr -->b
+Par conséquent, y qui est égal à k. pm ou (Rem. précéd. à<!-- spr -->pm sera<!-- spr -->a
+donné par la relation<!-- skp data-txt='62' --><!-- spr -->b2<!-- skp data-txt='32' --></p>
+<p  id="blk-461-15">ит?</p>
+<p  id="blk-461-16">(a².<!-- skp data-txt='-' --></p>
+<p  id="blk-461-18">№³).</p>
+<p  id="blk-461-19">(12<!-- spr -->a²</p>
+<p  id="blk-461-21">№2<!-- spr -->ou</p>
+<p  id="blk-461-23">ཀྵུ |°</p>
+<p  id="blk-461-24">+.<!-- spr -->y2
+b2<!-- skp data-txt='-' --></p>
+<p  id="blk-461-27">1,<!-- spr -->a<!-- spr -->laquelle représente l'équation de l'ellipse, rapportée aux deux axes de
+symétrie de la courbe.</p>
+<p class="article" id="blk-461-30"><strong class="article-num" id="article-734">734.</strong> L'ellipse et le cercle principal sont (630-633) deux figures
+homographiques, dans lesquelles les points à l'infini se correspondent.
+Les points du grand axe sont également communs aux deux
+figures.</p>
+<p  id="blk-461-31">Un point P étant donné dans la figure F dont fait partie l'ellipse,
+on construira son homologue p dans la figure / dont fait partie le<!-- spr -->a
+cercle en augmentant l'ordonnée de P dans le rapport sans chan-<!-- spr -->b<!-- spr -->ger l'abscisse. On trouvera d'ailleurs l'homologue d'une droite de la
+figure F en construisant les homologues de deux de ses points ou,
+plus simplement, en construisant l'homologue d'un de ses points
+que l'on joindra au point de rencontre de la droite avec l'axe (ce
+dernier point se correspondant à lui-même).</p>
+<p  id="blk-461-35">L'ellipse et le cercle du n° 731 sont également deux figures homo-
+graphiques et on peut leur appliquer des considérations toutes
+semblables aux précédentes : ce sont, cette fois, les points du petit
+axe qui sont communs aux deux figures.<!-- skp data-txt='-' --></p>
+<p  id="blk-461-37">On peut tirer de ce que nous venons de dire des solutions nouvelles pour
+les problèmes déjà traités au livre IX, chap. 1, tels que:</p>
+<p  id="blk-461-38">Intersection d'une droite et d'une ellipse. On déterminera l'homologue
+de la droite donnée dans la figure . Les points cherchés sont les homo-
+logues (dans la figure F) des points de rencontre de la droite ainsi déter-
+minée avec le cercle principal (fig. 607).</p><div class="scan-inline"><img src="img/scan/srcpage-461.png"/></div></data><data data-scanhref="img/scan/srcpage-462.png"><p class="newpage"><!-- skp data-txt='442' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-462-04">Tangentes à une ellipse par un point de son plan. On déterminera
+l'homologue p de ce point dans la figure f (fig. 608): les tangentes cher-
+chées correspondront aux tangentes menées par p au cercle principal.</p>
+<p  id="blk-462-05">P!<!-- skp data-txt='A' --><img class="fig" src="img/FIG. 607.OCR.png" alt="FIG. 607." /><img class="fig" src="img/FIG. 608.OCR.png" alt="FIG. 608." /></p>
+<p  id="blk-462-09">On mènera d'une manière analogue les tangentes à l'ellipse parallèles à
+une direction donnée.</p>
+<p class="article" id="blk-462-10"><strong class="article-num" id="article-735">735.</strong> Diamètres de l'ellipse.<!-- skp data-txt='-' --><!-- spr -->m'<!-- spr -->m<!-- skp data-txt="'M'" --></p>
+<p  id="blk-462-15">Théorème. Le lieu des milieux des cordes parallèles à une direc-<!-- spr -->tion donnée est une droite passant par le
+centre (ou, du moins, la portion de cette droite
+intérieure à la courbe).
+En effet, dans le<!-- spr -->cercle qui a pour
+projection l'ellipse (fig. 609), les cordes.
+qui sont correspondantes à celles dont il
+est question dans l'énoncé, sont elles-
+mêmes parallèles à une direction fixe. Le<!-- spr -->lieu de leurs milieux est donc un diamètre
+(perpendiculaire à leur direction) dont la projection sera le lieu cherché.</p>
+<p  id="blk-462-19">Ce lieu est nommé le diamètre de l'ellipse, conjugué de la direction
+considérée.<!-- skp data-txt='M' --><img class="fig" src="img/FIG. 609.OCR.png" alt="FIG. 609." /></p>
+<p class="article" id="blk-462-22"><strong class="article-num" id="article-736">736.</strong> Le diamètre conjugué d'une direction passe par les points de
+contact des tangentes parallèles à cette direction. Il passe également par
+le point de rencontre des tangentes aux extrémités d'une corde quelconque
+ayant la direction considérée.</p>
+<p  id="blk-462-23">Car ces propriétés, qui appartiennent au cercle, se conservent
+dans la projection parallèle (1).</p>
+<p class="article" id="blk-462-24"><strong class="article-num" id="article-737">737.</strong> Diamètres conjugués.</p>
+<p  id="blk-462-25">Théorème.</p>
+<p  id="blk-462-26">Si deux diamètres d'une ellipse sont tels que l'un est</p>
+<p  id="blk-462-27">(1) Ces deux théorèmes peuvent d'ailleurs se démontrer directement, comme nous le ferons
+dans le cas de l'hyperbole (nºs 746-747).</p><div class="scan-inline"><img src="img/scan/srcpage-462.png"/></div></data><data data-scanhref="img/scan/srcpage-463.png"><p class="newpage"></p>
+<p  id="blk-463-01">ELLIPSE CONSIDÉRÉE COMME PROJECTION D'UN CERCLE.<!-- skp data-txt='443' --><!-- spr -->parallèle aux cordes conjuguées de l'autre, réciproquement celui-ci est
+parallèle aux cordes conjuguées du premier.</p>
+<p  id="blk-463-04">Car, la condition nécessaire et suffisante pour qu'un diamètre D
+d'une ellipse soit parallèle aux cordes conjuguées d'un autre dia-
+mètre D' est (735) que D, D' correspondent à deux diamètres
+rectangulaires du cercle qui a pour projection l'ellipse considérée:
+et il est clair que cette condition est réciproque, c'est-à-dire ne
+change pas lorsqu'on permute l'un avec l'autre les deux diamètres
+considérés.<!-- skp data-txt='-' --></p>
+<p  id="blk-463-06">REMARQUES. I. Les diamètres conjugués (c'est-à-dire tels que
+chacun d'eux divise en deux parties égales les cordes parallèles à
+l'autre) sont les rayons correspondants d'une involution, projection de
+celle qui est formée par les rayons rectangulaires du cercle.</p>
+<p  id="blk-463-07">II. Les seuls diamètres conjugués qui soient rectangulaires sont les
+axes (363).</p>
+<p class="article" id="blk-463-08"><strong class="article-num" id="article-738">738.</strong> Théorème. Les cordes qui joignent un point d'une ellipse à
+deux points diametralement opposés de cette courbe sont parallèles à
+deux diamètres conjugués.</p>
+<p  id="blk-463-09">On donne souvent le nom de cordes supplémentaires à deux cordes
+ayant une extrémité commune et leurs secondes extrémités diamé-
+tralement opposées, de sorte que le théorème peut encore s'énoncer:
+Deux cordes supplémentaires sont parallèles à deux diamètres conjugués.</p>
+<p  id="blk-463-10">Car deux cordes supplémentaires d'un cercle sont rectangulaires,
+comme formant un angle inscrit dans une demi-circonférence (¹).<!-- skp data-txt='-' --><!-- skp data-txt='C' --></p>
+<p  id="blk-463-13">Ni</p>
+<p class="article" id="blk-463-14"><strong class="article-num" id="article-739">739.</strong> Théorème d'Apollonius. Dans une ellipse: 1° La somme
+des carrés de deux demi-diamètres conjugués quelconques est constante,
+et égale à la somme des carrés des deux demi-
+axes;</p>
+<p  id="blk-463-15">2° L'aire du parallelogramme construit sur
+deux demi-diamètres conjugués est constante
+et égale à l'aire du rectangle construit sur les
+deux demi-axes.</p>
+<p  id="blk-463-16">1° Soient une ellipse, projection d'un
+cercle C (fig. 610); deux diamètres conju-
+gués OM, ON, projections de deux diamètres rectangulaires
+Om。, On。 du cercle C. Soient µ la projection commune de m。</p>
+<p  id="blk-463-17">"<!-- skp data-txt='V' --><img class="fig" src="img/FIG. 610.OCR.png" alt="FIG. 610." /></p>
+<p  id="blk-463-20">(1) Le théorème peut aussi se démontrer directement: voir le cas de l'hyperbole (nº 748).</p><div class="scan-inline"><img src="img/scan/srcpage-463.png"/></div></data><data data-scanhref="img/scan/srcpage-464.png"><p class="newpage"><!-- skp data-txt='444' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->et de M sur OA; v, la projection de n。, N sur la même droite. Les
+deux triangles rectangles m。MO, NO montrent que la somme des
+carrés de OM et de ON est égale à la somme des carrés des deux
+hypoténuses (soit 2 a2) diminuée de m,M² +n,N2. Mais cette dernière
+somme est dans un rapport constant avec mou² + nov²<!-- skp data-txt='2' --><!-- skp data-txt='2' --><!-- spr -->car on a :</p>
+<p  id="blk-464-07">,<!-- skp data-txt='2' --><!-- skp data-txt='2' --><!-- skp data-txt='2' --><!-- skp data-txt='2' --></p>
+<p  id="blk-464-12">том<!-- skp data-txt='-' --><!-- spr -->moM²<!-- spr -->no№2<!-- skp data-txt='2' --><!-- skp data-txt='2' --><!-- skp data-txt='2' --></p>
+<p  id="blk-464-19">том</p>
+<p  id="blk-464-20">Nov<!-- skp data-txt='2' --></p>
+<p  id="blk-464-22">2
+=<!-- spr -->a² 62</p>
+<p  id="blk-464-24">Mu
+(21)<!-- spr -->m₁M² + N²
+a²
+moy.²<!-- spr -->mou² + nov²
+Enfin, on a mov² + nov<!-- spr -->a², car les triangles rectangles Omo,
+Ony, ayant même hypoténuse et étant équiangles (puisqu'ils ont leurs
+côtés perpendiculaires), sont égaux, de sorte qu'on a nov</p>
+<p  id="blk-464-28">Op, d'où
+mou² + nov²<!-- spr -->mou² + Op² Omo².</p>
+<p  id="blk-464-30">_<!-- skp data-txt='2' --><!-- skp data-txt='2' --><!-- skp data-txt='2' --></p>
+<p  id="blk-464-34">2
+-<!-- skp data-txt='-' --><!-- skp data-txt='2' --><!-- skp data-txt='-' --><!-- skp data-txt='2' --><!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- skp data-txt='-' --></p>
+<p  id="blk-464-42">:</p>
+<p  id="blk-464-43">Dès lors, m,Mn,N², est égal, d'après l'équation (21), à a² 62.
+Donc, OM² + ON² est constant il a d'ailleurs bien la valeur
+2 a² — (m。M² + n‚¸Ñ²) = 2 a² — (a² — b³) = a² + b² ce qui, au</p>
+<p  id="blk-464-44">6²)
+reste, est évident, car les axes forment évidemment un système de
+diamètres conjugués.</p>
+<p  id="blk-464-45">2º Le parallélogramme construit sur deux demi-diamètres conju-
+gués est la projection du carré construit sur deux rayons rectan-
+gulaires du cercle C. Son aire est donc égale à a² (aire du carré)<!-- spr -->b</p>
+<p  id="blk-464-47">_<!-- skp data-txt='-' --><!-- spr -->ab.<!-- spr -->multiplié par le cosinus de l'angle des deux plans; soit a².<!-- spr -->a<!-- skp data-txt='-' --><!-- spr -->se<!-- spr -->axes<!-- skp data-txt='M' --></p>
+<p  id="blk-464-56">Pe</p>
+<p class="article" id="blk-464-57"><strong class="article-num" id="article-740">740.</strong> Théorème. Lorsqu'une droite de longueur constante
+déplace de manière que ses deux extrémités décrivent deux droites<!-- spr -->fixes rectangulaires, un point quelconque de la
+droite mobile décrit une ellipse ayant ses
+suivant les droites fixes.</p>
+<p  id="blk-464-59">Soient PQ la droite mobile, les points P et Q
+décrivant respectivement les droites perpen-
+diculaires Ox, Oy (fig. 611); M, un point de
+cette droite, tel que MP b, MQ<!-- spr -->a. Ache-
+vons le parallélogramme OQMm, dont le côté</p>
+<p  id="blk-464-61">Mm, parallèle à OQ, coupe Ox en p. Le point m
+décrit évidemment une circonférence de centre 0 et de rayon</p>
+<p  id="blk-464-62">PM
+От MQ a. Mais, d'autre part, le rapport est égal à</p>
+<p  id="blk-464-63">ит</p>
+<p  id="blk-464-64">Om<!-- skp data-txt='12' --></p>
+<p  id="blk-464-66">_<!-- skp data-txt='-' --><img class="fig" src="img/FIG. 611.OCR.png" alt="FIG. 611." /><!-- spr -->p.M</p>
+<p  id="blk-464-70">_</p>
+<p  id="blk-464-71">_</p><div class="scan-inline"><img src="img/scan/srcpage-464.png"/></div></data><data data-scanhref="img/scan/srcpage-465.png"><p class="newpage"></p>
+<p  id="blk-465-01">ELLIPSE CONSIDÉRÉE COMME PROJECTION D'UN CERCLE.<!-- skp data-txt='445' --><!-- spr -->b
+il a donc la valeur constante - Le lieu de M est donc bien une ellipse,<!-- skp data-txt='-' --><!-- spr -->a<!-- spr -->dont les axes ont pour directrices Ox, Oy, et pour longueurs<!-- spr -->b
+a et a<!-- spr -->a</p>
+<p  id="blk-465-09">1 a // =</p>
+<p  id="blk-465-10">_<!-- spr -->b.<!-- skp data-txt='-' --></p>
+<p  id="blk-465-13">REMARQUES. I. On voit que le rayon du cercle homographique
+correspondant à chaque position du point M est parallèle à la sécante
+mobile.</p>
+<p  id="blk-465-14">II. Le raisonnement est le même, que le point M soit sur PQ lui-
+même (fig. 611) ou sur un de ses
+prolongements (fig. 611 bis). Une
+même ellipse admet donc deux
+modes de génération, les deux
+sécantes qui donnent un même point
+de la courbe étant également incli-
+nées par rapport aux axes (PQ,
+PQ, fig. 611 bis).<!-- spr -->m<!-- skp data-txt='M' --></p>
+<p  id="blk-465-17">ιμ<img class="fig" src="img/FIG. 611 bis.OCR.png" alt="FIG. 611 bis." /></p>
+<p  id="blk-465-19">Ce théorème donne un moyen très
+simple de construire par points une
+ellipse il n'est pas, pour cela, be-
+soin d'autre instrument qu'une bande de papier sur laquelle sont
+reportées, à partir d'un même point (dans le même sens ou en sens
+contraires) deux longueurs égales aux demi-axes.</p>
+<p  id="blk-465-20">On a fondé sur le même principe un compas elliptique permettant
+de tracer la courbe d'un mouvement continu.</p>
+<p class="article" id="blk-465-21"><strong class="article-num" id="article-741">741.</strong> Normale à l'ellipse.</p>
+<p  id="blk-465-22">On peut déduire du théorème qui précède une nouvelle construc-
+tion de la tangente à l'ellipse :<!-- skp data-txt='-' --></p>
+<p  id="blk-465-24">Théorème. La normale à l'ellipse décrite par un point lié
+à une droite de longueur constante qui glisse entre deux droites
+rectangulaires fixes, passe par le quatrième sommet du rectangle qui
+a deux côtés suivant ces deux droites et une diagonale suivant la droite
+mobile:</p>
+<p  id="blk-465-25">Ceci n'est autre chose que la proposition démontrée au nº 104
+(Pl., liv. II). Car la normale au lieu du point P est la perpendi-
+culaire à OP, la normale au lieu du point Q, la perpendiculaire</p><div class="scan-inline"><img src="img/scan/srcpage-465.png"/></div></data><data data-scanhref="img/scan/srcpage-466.png"><p class="newpage"><!-- skp data-txt='446' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-466-03">à OQ, et par conséquent le centre instantané de rotation est le qua-
+trième sommet R du rectangle qui a trois sommets en O, P, Q.</p>
+<p  id="blk-466-04">Le même théorème peut se démontrer directement. On remar-
+quera, pour cela, que la tangente en M est (736) parallèle au dia-
+mètre conjugué de OM. Or, deux diamètres conjugués correspondent
+à deux rayons rectangulaires du cercle homographique, donc.
+(n° précéd.) à deux positions rectangulaires de la droite mobile. On
+obtiendra, par conséquent, le diamètre O'M' conjugué de OM en<!-- spr -->amenant le rectangle OPQR,
+par une rotation d'un angle
+droit autour du point O,à la po-
+sition OP'Q'R' (fig. 612) telle</p>
+<p  id="blk-466-06">OQ, OQ
+puis prenant sur la nouvelle
+diagonale PQ', la longueur<!-- skp data-txt='R' --><!-- skp data-txt="R'" --><!-- spr -->que OP' =</p>
+<p  id="blk-466-10">OP,<!-- skp data-txt='-' --><!-- skp data-txt='N' --><!-- skp data-txt='M' --><!-- skp data-txt="M'" --><!-- skp data-txt='P' --></p>
+<p  id="blk-466-16">P'M' PM.<!-- skp data-txt="P'" --><!-- skp data-txt='14' --><!-- skp data-txt='P' --><img class="fig" src="img/FIG. 612.OCR.png" alt="FIG. 612." /><!-- spr -->sera</p>
+<p  id="blk-466-22">Mais si nous prenons, sur
+cette même diagonale, la lon-
+gueur Q'N égale à la précé-
+dente, la droite R'N<!-- spr -->parallèle à OM' (car ces deux
+droites sont symétriques l'une de l'autre, par rapport au centre C' du rectangle
+OP'Q'R'). Or R'N est la nouvelle position prise par RM dans la rota-
+tion d'un angle droit qui amène OPQR sur OP'Q'R'. Donc RM est
+bien perpendiculaire à OM', c'est-à-dire normal en M.</p>
+<p  id="blk-466-24">REMARQUES. Dans la figure précédente, la droite RM est égale au
+demi-diamètre conjugué de OM: on a bien, en effet, RM. R'N : OM'.</p>
+<p  id="blk-466-25">Si l'on prolonge cette même droite RM d'une longueur MR, égale
+à elle-même, le point R₁ est sur la droite symétrique de OR par rapport
+aux axes, à une distance du centre O égale à a b ou à a + b, suivant
+que le point M est intérieur ou extérieur au segment PQ (c'est-à-dire
+suivant que OR = PQ est lui-même égal à a + b ou à a b).</p>
+<p  id="blk-466-26">Car, C étant le centre du rectangle OPQR, la droite CM qui joint
+les milieux de OR et de RR₁, a une direction symétrique de celle de<!-- spr -->b
+OR par rapport aux axes et une longueur égale à<!-- spr -->dans le cas
+2</p>
+<p  id="blk-466-29">_</p>
+<p  id="blk-466-30">_<!-- skp data-txt='-' --><!-- skp data-txt='-' --><!-- spr -->a<!-- spr -->a+b.</p>
+<p  id="blk-466-35">ой СР</p>
+<p  id="blk-466-36">_</p>
+<p  id="blk-466-37">CQ<!-- skp data-txt='-' --><!-- skp data-txt='2' --></p><div class="scan-inline"><img src="img/scan/srcpage-466.png"/></div></data><data data-scanhref="img/scan/srcpage-467.png"><p class="newpage"></p>
+<p  id="blk-467-01">HYPERBOLE RAPPORTÉE A SES ASYMPTOTES.<!-- skp data-txt='117' --><!-- skp data-txt='-' --></p>
+<p  id="blk-467-04">:</p>
+<p  id="blk-467-05">D'ailleurs on peut voir directement que le point R est le quatrième sommet du
+rectangle (OPQ₁R₁, fig. 612) qu'on obtient en considérant le point M comme
+construit par le second mode de génération mentionné au nº 740 (Rem. II),
+c'est-à-dire comme situé sur une droite P₁Q₁, de longueur constante a b
+mobile entre les axes, à la distance b du point P₁ et à la distance a du
+point Q₁ il suffit de remarquer que la projection du point R₁ sur Ox est
+symétrique de P par rapport à la projection . du point M sur la même
+droite, de sorte que cette projection coïncide avec le point P₁ (un raisonne-
+ment analogue s'appliquant à la projection de R₁ sur Oy).</p>
+<p  id="blk-467-06">Le point m₁ du cercle homographique que l'on obtient (740) en ache-
+vant le parallelogramme OQ, Mm₁, n'est évidemment autre que l'intersection
+de Mu avec OR.</p>
+<p class="article" id="blk-467-07"><strong class="article-num" id="article-742">742.</strong> Les considérations précédentes donnent immédiatement la
+solution du problème suivant:<!-- skp data-txt='--' --></p>
+<p  id="blk-467-09">Problème. Construire les axes d'une ellipse, connaissant deux demi-
+diamètres conjugués en grandeur et position.</p>
+<p  id="blk-467-10">OM, OM' étant ces deux demi-diamètres (fig. 612) on mènera par
+M deux droites MR, MR, égales à OM' et perpendiculaires à cette
+droite. Les axes seront dirigés suivant les bissectrices des angles
+formés par OR, OR, et leurs longueurs seront données par les rela-
+tions OR =a+b, OR₁</p>
+<p  id="blk-467-11">– b.</p>
+<p  id="blk-467-12">=A-</p>
+<p class="article" id="blk-467-13"><strong class="article-num" id="article-743">743.</strong> Le théorème du n° 740 n'est qu'un cas particulier du sui-<!-- spr -->vant:</p>
+<p  id="blk-467-15">Théorème de la Hire.<!-- skp data-txt='-' --></p>
+<p  id="blk-467-17">Lorsqu'une droite de longueur constante se</p>
+<p  id="blk-467-18">3'<!-- skp data-txt='0' --><!-- spr -->a<!-- spr -->x</p>
+<p  id="blk-467-22">Qo<img class="fig" src="img/FIG. 613.OCR.png" alt="FIG. 613." /><!-- spr -->déplace entre deux droites fixes quelconques, un point quelconque inva-
+riablement lié à la droite mobile décrit une ellipse.</p>
+<p  id="blk-467-25">Soient aẞ (fig. 613) une droite, constamment égale à une droite fixe</p><div class="scan-inline"><img src="img/scan/srcpage-467.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

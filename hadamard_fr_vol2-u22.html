@@ -1,0 +1,488 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-279.png"><p class="newpage"></p>
+<p  id="blk-279-01">LIVRE X</p>
+<p  id="blk-279-02">NOTIONS SUR</p>
+<p  id="blk-279-03">LA TOPOGRAPHIE</p>
+<p  id="blk-279-04">CHAPITRE PREMIER</p>
+<p  id="blk-279-05">GÉNÉRALITÉS. PLANIMÉTRIE<!-- spr -->ne</p>
+<p class="article" id="blk-279-07"><strong class="article-num" id="article-551">551.</strong> La topographie est l'art de déterminer la forme d'un terrain.
+Nous nous proposons uniquement, ici, d'exposer les principes
+géométriques sur lesquels repose la topographie, en renvoyant,
+pour les indications pratiques et les détails de toute espèce, aux
+traités spéciaux. Il est, d'ailleurs, à peine utile d'ajouter que la
+lecture de ceux-ci ne saurait être poursuivie utilement si on
+la complète en effectuant soi-même, sur le terrain, les opérations
+étudiées.</p>
+<p  id="blk-279-08">Nous nous bornons aux méthodes approximatives qui suffisent
+dans la pratique courante. Les opérations de grande précision
+nécessitent une série de précautions auxquelles nous ferons allu-
+sion, chemin faisant, mais dont nous ne saurions donner même une
+idée sans dépasser le cadre de cet ouvrage.</p>
+<p class="article" id="blk-279-09"><strong class="article-num" id="article-552">552.</strong> On appelle verticale en un point la direction de la pesanteur
+en ce point.</p>
+<p  id="blk-279-10">On détermine pratiquement cette direction comme position
+d'équilibre du fil à plomb, c'est-à-dire d'un fil auquel est suspendu
+un corps pesant. Lorsqu'on voudra, par exemple, s'assurer qu'une
+tige est verticale, il faudra constater qu'elle est parallèle à la
+direction du fil à plomb.</p><div class="scan-inline"><img src="img/scan/srcpage-279.png"/></div></data><data data-scanhref="img/scan/srcpage-280.png"><p class="newpage"><!-- skp data-txt='260' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-280-03">Cette direction n'est pas la même en des points différents de la
+surface du globe, puisque la terre a sensiblement la forme d'une
+sphère (1) et que les verticales vont concourir au centre de cette
+sphère. Mais elle change très lentement (2) et l'on peut admettre,
+dans la topographie usuelle (mais non, bien entendu, dans les
+opérations de précision), que les verticales menées par les différents
+points du terrain que l'on veut étudier sont parallèles entre
+elles.</p>
+<p  id="blk-280-04">Un plan est dit vertical lorsqu'il est parallèle à la verticale.<!-- skp data-txt='D' --><!-- skp data-txt='A' --><!-- skp data-txt='B' --></p>
+<p class="article" id="blk-280-08"><strong class="article-num" id="article-553">553.</strong> Un plan horizontal est celui qui est perpendiculaire à la
+verticale.</p>
+<p  id="blk-280-09">Une droite est également dite horizontale quand elle est perpen-
+diculaire à la verticale.</p>
+<p  id="blk-280-10">Lorsqu'un liquide est en équilibre, sa surface libre (considérée
+sur une étendue telle qu'on puisse y admettre le parallélisme des
+verticales) a la forme d'un plan horizontal (3).
+On utilise cette propriété pour s'assurer qu'une direction est<!-- spr -->horizontale. L'instrument employé à cet effet est
+connu sous le nom de niveau à bulle d'air. C'est
+un tube de verre légèrement convexe, enchâssé
+dans une monture métallique AB (fig. 466) et
+dans lequel on a versé un liquide qui le remplit<!-- spr -->incomplètement de manière à y laisser une bulle
+d'air. On reconnaît que l'axe du tube est horizontal lorsque la
+surface libre du liquide affleure entre deux traits C, D (fig. 466),
+marqués à l'avance sur le verre.</p>
+<p  id="blk-280-13">On voit que le niveau à bulle d'air sert à reconnaître l'horizon-
+talité d'une droite.</p>
+<p  id="blk-280-14">Pour constater l'horizontalité d'un plan, on constate l'horizon-
+talité de deux droites de ce plan.<!-- spr -->deux droites ne soient pas parallèles, et<img class="fig" src="img/FIG. 466.
+Niveau à bulle d'air.OCR.png" alt="FIG. 466.
+Niveau à bulle d'air." /></p>
+<p  id="blk-280-17">Il faut que<!-- spr -->ces</p>
+<p  id="blk-280-19">(1) TISSERAND et ANDOYER, Leçons de Cosmographie, livre II.</p>
+<p  id="blk-280-20">(2) Il résulte de la manière même dont a été obtenu le mètre que les verticales en deux
+points du globe font entre elles un angle de 90° lorsque ces points sont distants d'environ
+10 000 kilomètres. Dès lors, pour une altération de 1º dans la direction de la verticale, il faut</p>
+<p  id="blk-280-21">10 000
+un déplacement de</p>
+<p  id="blk-280-22">= 111 km. Une altération d'une minute correspond encore, comme<!-- skp data-txt='90' --><!-- spr -->on le voit, à un déplacement d'environ 2 kilomètres.</p>
+<p  id="blk-280-25">(3) Le fait cesse d'être exact aux bords de la surface, la direction de celle-ci étant alors
+altérée<!-- spr -->par<!-- spr -->l'effet d'une action due aux parois et nommée capillarité (voir ci-après, nº 574).</p><div class="scan-inline"><img src="img/scan/srcpage-280.png"/></div></data><data data-scanhref="img/scan/srcpage-281.png"><p class="newpage"></p>
+<p  id="blk-281-01">GÉNÉRALITÉS.<!-- skp data-txt='261' --><!-- spr -->on doit même les choisir à peu près perpendiculaires l'une à
+l'autre (¹).<img class="fig" src="img/FIG. 468.OCR.png" alt="FIG. 468." /></p>
+<p class="article" id="blk-281-05"><strong class="article-num" id="article-554">554.</strong> Pour rendre un plan matériel (par exemple une planche ou
+un plateau métallique) horizontal,
+on opère par tâtonnements, en mo-
+difiant progressivement la direction
+de ce plan, jusqu'à ce que, par
+l'emploi du niveau à bulle d'air,
+on constate l'horizontalité parfaite.</p>
+<p  id="blk-281-06">Pour pouvoir déplacer le plan de
+manière à modifier arbitrairement sa direction, on emploie plu-<!-- spr -->sieurs dispositifs.</p>
+<p  id="blk-281-08">1° On peut faire supporter le
+plan en question par trois vis
+(fig. 468) dont l'action permet d'éle-
+ver ou d'abaisser à volonté trois
+points du plan. Cette disposition,
+permettant d'opérer les déplace-
+ments par degrés insensibles, est
+adoptée, à l'exclusion de toute
+autre, toutes les fois qu'une cer-
+taine précision est nécessaire.</p>
+<p  id="blk-281-09">2° On obtient le même résultat,
+mais beaucoup plus grossièrement, à l'aide du genou à coquilles
+(fig. 469). Dans ce mode de suspension, le plan mobile porte une
+sphère pleine qui vient remplir exactement une sphère creuse fixée
+au support (2), la première sphère pouvant tourner arbitrairement
+à l'intérieur de la seconde.</p>
+<p  id="blk-281-10">3º Dans un autre système de genou, le plan mo-
+bile n'est pas lié à son support directement, mais
+par l'intermédiaire d'un cylindre intermédiaire C
+(fig. 470), de manière que le plan peut tourner
+autour de l'axe AA' du cylindre, ce dernier pouvant,</p>
+<p  id="blk-281-11">$8<img class="fig" src="img/FIG. 169.OCR.png" alt="FIG. 169." /></p>
+<p  id="blk-281-13">Coupe.</p>
+<p  id="blk-281-14">Plan.</p>
+<p  id="blk-281-15">(1) Dans certains appareils, on emploie des niveaux à bulle d'air de<img class="fig" src="img/FIG. 467.
+forme arrondie (fig. 467): lorsqu'il y a horizontalité, la bulle d'air vient
+se placer dans un cercle tracé sur la face supérieure de l'instrument;
+on n'a alors besoin que d'une seule opération pour reconnaître l'horizontalité d'un plan.OCR.png" alt="FIG. 467.
+forme arrondie (fig. 467): lorsqu'il y a horizontalité, la bulle d'air vient
+se placer dans un cercle tracé sur la face supérieure de l'instrument;
+on n'a alors besoin que d'une seule opération pour reconnaître l'horizontalité d'un plan." /></p>
+<p  id="blk-281-17">(2) La sphère creuse est formée de deux parties ou coquilles, d'où le nom de l'instrument.</p><div class="scan-inline"><img src="img/scan/srcpage-281.png"/></div></data><data data-scanhref="img/scan/srcpage-282.png"><p class="newpage"><!-- skp data-txt='262' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->d'autre part, tourner autour d'un axe B (fig. 470) perpendicu-
+laire au premier et fixé au support. Cette disposition permet bien
+(ex. 577, 578) de donner au plan une direction arbitraire.</p>
+<p  id="blk-282-04">Dans l'un comme dans l'autre des deux appareils précédents, il
+existe des vis permettant de supprimer toute mobilité, une fois
+l'horizontalité obtenue.<!-- skp data-txt='M' --></p>
+<p  id="blk-282-06">+m<!-- skp data-txt='H' --><img class="fig" src="img/FIG. 470.OCR.png" alt="FIG. 470." /><img class="fig" src="img/FIG. 471.OCR.png" alt="FIG. 471." /></p>
+<p class="article" id="blk-282-10"><strong class="article-num" id="article-555">555.</strong> Soit choisi une fois pour toutes un plan horizontal déter-
+miné H (fig. 471), dit plan de comparaison. Un point quelconque M
+sera déterminé si l'on se donne sa projection horizontale m (fig. 471)
+(projection sur le plan H) et sa cote (1) mM. Il serait, toutefois, d'une
+manière générale, nécessaire d'indiquer le sens dans lequel cette
+cote doit être portée; mais cette nécessité disparaît si l'on a pris,
+ainsi qu'on le fait généralement en topographie, le plan de compa-
+raison au-dessous de tous les points de la figure étudiée (2).</p>
+<p  id="blk-282-11">D'après cela, on voit qu'on connaîtra entièrement la forme d'une
+figure, en particulier d'un terrain, si l'on a déterminé :</p>
+<p  id="blk-282-12">1° Sa projection horizontale, qui en est encore dite le plan;
+2º Les cotes des différents points,<!-- spr -->d'où deux sortes d'opérations en topographie: la planimétrie et
+le nivellement.</p>
+<p class="article" id="blk-282-14"><strong class="article-num" id="article-556">556.</strong> Levé du plan.</p>
+<p  id="blk-282-15">Lever le plan d'un terrain, c'est noter tous les éléments qui
+déterminent la forme et les dimensions de ce plan.</p>
+<p  id="blk-282-16">Lorsqu'on a levé le plan d'un terrain, on est à même de
+construire, sur le papier, une figure semblable à la projection hori-
+zontale de ce terrain, avec un rapport de similitude donné. C'est ce
+qu'on nomme rapporter le plan sur le papier, et le rapport de
+similitude en question se nomme l'échelle du plan ainsi tracé.</p>
+<p  id="blk-282-17">(1) Voir le cours de Géométrie descriptive.</p>
+<p  id="blk-282-18">(2) Il est d'ailleurs clair qu'au besoin on pourrait indiquer le sens de la longueur mM par
+le signe donné à la cote.</p><div class="scan-inline"><img src="img/scan/srcpage-282.png"/></div></data><data data-scanhref="img/scan/srcpage-283.png"><p class="newpage"></p>
+<p  id="blk-283-01">PLANIMÉTRIE.<!-- skp data-txt='263' --></p>
+<p  id="blk-283-03">Les opérations fondamentales de la planimétrie sont 1° la
+détermination d'une droite; 2° la mesure d'une longueur; 3° la
+mesure d'un angle.</p>
+<p class="article" id="blk-283-04"><strong class="article-num" id="article-557">557.</strong> Détermination d'un alignement.</p>
+<p  id="blk-283-05">Au point de vue de la planimétrie, un point du terrain peut être
+évidemment considéré comme déterminé si l'on connaît sa pro-
+jetante, c'est-à-dire la verticale qui passe par ce point. On représente
+sur le terrain cette projetante par un jalon, c'est-à-dire par une
+tige, munie d'une marque destinée à la faire reconnaître de loin, et
+que l'on plante dans le sol bien verticalement (à l'aide du fil à
+plomb).</p>
+<p  id="blk-283-06">De même la direction d'une droite n'est intéressante à connaître
+en planimétrie que par le plan vertical ou alignement qui la
+contient.</p>
+<p  id="blk-283-07">L'alignement est déterminé par les deux extrémités de la droite.
+Si ces extrémités sont assez éloignées l'une de l'autre, les jalons
+qui les représentent peuvent, dans les opérations usuelles, être
+assimilés à des droites géométriques, sans que l'incertitude due à
+leur épaisseur dépasse la grandeur des erreurs admises.</p>
+<p  id="blk-283-08">Pour des raisons diverses, on peut avoir besoin de jalonner un
+alignement, c'est-à-dire de placer des jalons intermédiaires sur cet
+alignement, ou encore de le prolonger au delà de l'extrémité
+primitive.</p>
+<p  id="blk-283-09">On reconnaît que trois jalons font partie du même alignement si
+l'on peut placer l'œil de manière à ce que le premier jalon masque
+en même temps les deux autres.</p>
+<p  id="blk-283-10">Le jalonnement d'un alignement nécessite comme d'ailleurs les
+opérations de topographie en général la présence de deux opéra-
+teurs. L'un d'eux vérifie l'alignement, comme il vient d'être dit;
+l'autre se déplace sur les indications du premier, en transportant le
+jalon à poser, jusqu'à ce que l'alignement soit réalisé.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-283-12"><strong class="article-num" id="article-558">558.</strong> On a besoin, ainsi qu'on le verra plus loin, de pouvoir
+déterminer un alignement par deux verticales dont la distance ne
+dépasse pas les dimensions des instruments que nous décrirons aux
+nos 560-561.</p>
+<p  id="blk-283-13">On arrive à ce résultat par l'emploi de l'alidade à pinnules.</p><div class="scan-inline"><img src="img/scan/srcpage-283.png"/></div></data><data data-scanhref="img/scan/srcpage-284.png"><p class="newpage"><!-- skp data-txt='264' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-284-03">Une pinnule est une plaque allongée (fig. 472) percée, sur une
+moitié de sa longueur, d'une fente rectiligne étroite ab, et sur<!-- spr -->l'autre d'une fenêtre rectangulaire que traverse un fil
+fin cd. Le fil étant dans le prolongement de la fente,
+une droite est ainsi déterminée.</p>
+<p  id="blk-284-05">Une alidade est une règle munie à ses deux extré-
+mités, de pinnules perpendiculaires à son plan (voir
+fig. 476). Ces pinnules sont disposées
+de manière que le fil de l'une soit en
+face de la fente de l'autre et inverse-
+ment. En plaçant l'œil de manière que<!-- spr -->le premier fil masque la seconde fente
+et que la première fente laisse apercevoir le second
+fil, on vise un plan déterminé avec l'exactitude
+voulue.</p>
+<p  id="blk-284-07">Une précision plus grande est obtenue par l'em-
+ploi des lunettes. Si une lunette est mobile autour d'une droite AB
+(fig. 473) perpendiculaire à son axe, ce dernier se meut dans un
+plan, lequel est vertical si la droite AB est horizontale.<!-- spr -->a<img class="fig" src="img/FIG. 472.OCR.png" alt="FIG. 472." /><img class="fig" src="img/FIG. 473.OCR.png" alt="FIG. 473." /></p>
+<p class="article" id="blk-284-11"><strong class="article-num" id="article-559">559.</strong> Mesure directe d'une longueur.</p>
+<p  id="blk-284-12">On mesure les longueurs sur le terrain à l'aide de la chaîne
+d'arpenteur, qui est un décamètre divisé en chainons de 20 centimètres
+chacun.</p>
+<p  id="blk-284-13">Si la droite à mesurer est parfaitement horizontale, on portera la
+chaîne sur cette droite autant de fois qu'on pourra le faire; il restera,
+en général, un dernier segment moindre qu'un décamètre, et qu'on
+évaluera en comptant les chaînons et mesurant la fraction de
+chaînon qu'il comprend. On devra prendre soin:</p>
+<p  id="blk-284-14">1° Que, dans chacune de ses positions successives, la chaîne soit
+bien tendue ;</p>
+<p  id="blk-284-15">2° Qu'elle soit bien dans l'alignement donné (nº précéd.);</p>
+<p  id="blk-284-16">3º Que dans chaque position, l'extrémité postérieure de la chaîne
+soit à la place exacte où était l'extrémité antérieure dans la position
+précédente.</p>
+<p  id="blk-284-17">On marque, à cet effet, à l'aide d'une petite tige de fer, appelée
+fiche, que l'on plante dans le sol, l'endroit où arrive l'extrémité
+antérieure de la chaîne avant de relever celle-ci.</p><div class="scan-inline"><img src="img/scan/srcpage-284.png"/></div></data><data data-scanhref="img/scan/srcpage-285.png"><p class="newpage"></p>
+<p  id="blk-285-01">PLANIMÉTRIE.<!-- skp data-txt='265' --></p>
+<p  id="blk-285-03">10%
+No</p>
+<p  id="blk-285-04">B₁<!-- skp data-txt='4' --></p>
+<p  id="blk-285-06">AL<img class="fig" src="img/FIG. 474.OCR.png" alt="FIG. 474." /></p>
+<p  id="blk-285-08">Mais dans la pratique, la droite à lever n'est jamais horizontale.
+C'est alors (d'après ce qui précède) sa projection horizontale qu'il
+s'agit de mesurer.</p>
+<p  id="blk-285-09">On y arrive en tendant la chaîne horizontalement, dans cha-
+cune de<!-- spr -->de ses positions successives, et plaçant chaque fiche (à
+l'aide du fil à plomb) dans la verticale qui passe par l'extrémité
+antérieure de la chaîne (1). Par exemple, la figure 474 représente un
+alignement AB sur lequel la
+chaîne a été reportée trois
+fois en AB₁, AB₂, A,B, un
+dernier segment A,B, étant
+plus petit que la longueur
+de la chaîne. Si tous ces seg-
+ments sont dans un même
+plan et horizontaux, que les
+points A2, A3, A4, B soient
+bien sur les verticales menées respectivement par B₁, B2, B3, B,
+la somme des quatre segments A₁B₁, AB, AB, AB (soit trois fois
+la longueur de la chaîne, plus le segment A,B) représentera bien
+la projection horizontale de AB.</p>
+<p  id="blk-285-11">L'horizontalité de la chaîne, sa parfaite tension, etc., ne peuvent
+être obtenues qu'assez approximativement dans la pratique : néan-
+moins, avec des opérateurs exercés, on arrive à ne pas dépasser une</p>
+<p  id="blk-285-12">1
+erreur de</p>
+<p  id="blk-285-13">Dans les opérations très précises, on est obligé,</p>
+<p  id="blk-285-14">1000˚
+pour éviter les causes d'erreur dont nous venons de parler et
+d'autres sur lesquelles nous n'insisterons pas, à une série de pré-
+cautions délicates et compliquées. Aussi, dans ces derniers levés et
+même dans les levés usuels, réduit-on les mesures directes de
+longueur au moindre nombre possible, toutes les autres longueurs
+étant évaluées indirectement, comme il est expliqué ci-après
+(n° 563) (2).</p>
+<p  id="blk-285-15">(1) Nous nous plaçons dans l'hypothèse où la droite à lever est descendante, ce qui revient
+à dire que l'on part de l'extrémité la plus élevée de cette droite. C'est d'ailleurs ainsi que l'on
+procède généralement.</p>
+<p  id="blk-285-16">(2) Il ressort avec évidence de ce qui est dit au nº 563, que l'on ne peut se dispenser de
+mesurer directement au moins une longueur.</p>
+<p  id="blk-285-17">Dans les opérations de précision, on mesure deux droites ou bases, situées aussi loin que
+possible l'une de l'autre. Si les opérations ont été bien conduites, la valeur de la seconde
+base, calculée à l'aide de la première, doit coïncider avec la valeur mesurée directement.</p><div class="scan-inline"><img src="img/scan/srcpage-285.png"/></div></data><data data-scanhref="img/scan/srcpage-286.png"><p class="newpage"><!-- skp data-txt='266' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-286-03"><strong class="article-num" id="article-560">560.</strong> Mesure directe d'un angle.</p>
+<p  id="blk-286-04">La projection horizontale de l'angle de deux droites AB, AC n'est
+évidemment autre que l'angle plan du dièdre formé par les aligne-
+ments qui les contiennent : c'est
+ce que montre la simple inspec-
+tion de la fig. 475.</p>
+<p  id="blk-286-05">L'instrument le plus géné-
+ralement usité pour la mesure
+des angles sur le terrain est le
+graphomètre (fig. 476).</p>
+<p  id="blk-286-06">GYETTETTY</p>
+<p  id="blk-286-07">↑<!-- skp data-txt='B' --><!-- skp data-txt='C' --><img class="fig" src="img/FIG. 473.OCR.png" alt="FIG. 473." /><img class="fig" src="img/FIG. 176. - Graphomètre.OCR.png" alt="FIG. 176. - Graphomètre." /></p>
+<p  id="blk-286-12">Il se compose d'un demi-cercle métallique ou limbe, monté sur
+genou (554) et, de plus, mobile dans son plan. Ce limbe, sur lequel
+est tracée une division en degrés et minutes (1), porte en outre deux
+alidades l'une est fixe et a l'un de ses bords le long de la ligne
+0º 180º de la graduation; l'autre alidade est mobile autour du
+centre du limbe.</p>
+<p  id="blk-286-13">Pour mesurer l'angle de deux alignements, on installe le grapho-
+mètre de manière que son centre soit dans la verticale du sommet
+de l'angle. On rend le limbe horizontal en faisant mouvoir le genou,
+puis on fait tourner ce limbe dans son plan de manière à amener
+l'alidade fixe dans le premier des deux alignements donnés. Plaçant
+ensuite la seconde alidade dans le second de ces deux alignements,
+il ne reste plus qu'à lire l'angle cherché.</p>
+<p  id="blk-286-14">Dans des instruments plus exacts, on substitue aux alidades une
+lunette mobile. C'est ce qui est réalisé dans le théodolite (2), instru-</p>
+<p  id="blk-286-15">(1) En réalité, le limbe n'est gradué qu'en degrés et demi-degrés. Un dispositif spécial
+appelé vernier, et sur lequel nous n'insisterons pas, permet de lire les minutes.</p>
+<p  id="blk-286-16">(2) TISSERAND et ANDOYER, Leçons de Cosmographie, nº 5, page 6.</p><div class="scan-inline"><img src="img/scan/srcpage-286.png"/></div></data><data data-scanhref="img/scan/srcpage-287.png"><p class="newpage"></p>
+<p  id="blk-287-01">PLANIMÉTRIE.<!-- skp data-txt='267' --><!-- spr -->ment qui remplace le graphomètre dans les mesures de précision.</p>
+<p  id="blk-287-04">On sait (¹) qu'on appelle azimuth d'une direction, l'angle que fait
+l'alignement vertical qui contient cette direction avec un plan
+vertical fixe pris comme origine. L'angle de deux alignements peut
+évidemment être considéré comme la différence de leurs azimuths.</p>
+<p  id="blk-287-05">On prend souvent, comme direction origine, la direction sud-
+nord (plan méridien du lieu). Pour permettre d'évaluer les
+azimuths ainsi définis, le graphomètre est, en général, muni d'une
+boussole.</p>
+<p class="article" id="blk-287-06"><strong class="article-num" id="article-561">561.</strong> La planchette est un instrument qui permet, en même temps,
+de lever un plan et de le rapporter sur le papier.</p>
+<p  id="blk-287-07">Elle se compose, comme son nom l'indique, d'une planche bien
+plane, montée sur genou, pou-
+vant également pivoter et glis-<!-- spr -->sur elle-même dans son<!-- spr -->ser<!-- skp data-txt='I' --><!-- spr -->plan et sur laquelle on tend
+une feuille de papier à dessin
+(fig. 477).</p>
+<p  id="blk-287-12">Une alidade mobile peut être
+posée à volonté sur la plan-
+chette. Le bord de cette alidade
+porte une petite échancrure qui permet de la faire pivoter autour
+d'une aiguille o (fig. 477) piquée à volonté dans le papier.<img class="fig" src="img/FIG. 477.OCR.png" alt="FIG. 477." /></p>
+<p  id="blk-287-14">_</p>
+<p  id="blk-287-15">Planchette.</p>
+<p  id="blk-287-16">Soit à lever un angle à la planchette.</p>
+<p  id="blk-287-17">En général, le sommet o de l'angle et un côté oa sont marqués
+d'avance sur le papier. Il faut alors:</p>
+<p  id="blk-287-18">1º A l'aide du genou, rendre l'instrument horizontal;</p>
+<p  id="blk-287-19">2° Par les mouvements de l'appareil dans son plan, s'arranger
+pour que le sommet o marqué sur le papier soit dans la verticale
+du sommet donné sur le terrain (2) et pour que, plaçant l'alidade
+suivant oa, cette alidade soit dans le premier alignement donné.</p>
+<p  id="blk-287-20">Toute cette première partie du travail se nomme la mise en station
+de l'instrument.</p>
+<p  id="blk-287-21">On fait alors pivoter l'alidade autour de l'aiguille piquée en o</p>
+<p  id="blk-287-22">(1) TISSERAND et ANDOYER, Leçons de Cosmographie, 1º 4, page 5.</p>
+<p  id="blk-287-23">(2) Le point o peut être à 3 ou 4 centimètres de la verticale du sommet donné sans qu'il en
+résulte d'erreur dépassant les limites admises.</p><div class="scan-inline"><img src="img/scan/srcpage-287.png"/></div></data><data data-scanhref="img/scan/srcpage-288.png"><p class="newpage"><!-- skp data-txt='268' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->jusqu'à ce qu'elle vise le second alignement donné, et on trace un
+trait de crayon ob le long du bord, dans cette nouvelle position.
+L'angle boa représente évidemment l'angle cherché.</p>
+<p  id="blk-288-04">Cette manière de procéder peut sembler, au premier abord, plus
+exacte que celle dans laquelle on fait usage du graphomètre,
+puisque, théoriquement, l'angle boa obtenu est rigoureusement égal
+à l'angle qu'il s'agit d'évaluer, tandis que la lecture au graphomètre
+ne donne cet angle qu'à une ou deux minutes près.</p>
+<p  id="blk-288-05">En réalité, c'est le contraire qui a lieu en raison des petites
+dimensions du dessin tracé sur la planchette, les erreurs dues à
+l'épaisseur du trait de crayon, aux petites déviations de l'ali-
+dade, etc., sont notablement supérieures à celles qu'introduit
+l'emploi du graphomètre. Mais la planchette, instrument inférieur
+au point de vue de l'exactitude, a souvent pour elle l'avantage de la
+rapidité.</p>
+<p class="article" id="blk-288-06"><strong class="article-num" id="article-562">562.</strong> Levé d'un triangle.</p>
+<p  id="blk-288-07">Un levé de plan quelconque peut se ramener (voir ci-après) à une
+série de levés de triangles. Or, cette dernière opération peut
+toujours être effectuée à l'aide de celles que nous avons décrites
+aux trois numéros précédents. Pour lever un triangle, il suffit
+d'avoir mesuré :</p>
+<p  id="blk-288-08">1° Un côté et deux angles;
+2º Ou deux côtés et l'angle compris ;
+3º Ou les trois côtés.</p>
+<p  id="blk-288-09">En particulier, on peut alors rapporter le triangle sur le papier, à
+une échelle donnée quelconque. Si, par exemple, on a mesuré un<!-- spr -->côté AB et les deux angles adjacents A, B, on tracera sur la
+feuille un segment de droite ab qui soit avec la longueur mesurée
+dans un rapport égal à l'échelle donnée (¹). Puis, si l'on a opéré
+avec le graphomètre, il restera à construire, à l'aide du rappor-
+teur (2), deux droites ac, be faisant avec ab des angles respective-
+ment égaux à ceux qui ont été levés sur place.</p>
+<p  id="blk-288-11">(1) Comme précédemment pour les lectures angulaires, des artifices spéciaux permettent de
+déterminer le segment ab au 1/10 de millimètre près, quoique les règles servant aux mesures
+ne soient divisées qu'en millimètres.</p>
+<p  id="blk-288-12">(2) Le rapporteur, en raison de ses petites dimensions, ne permet d'obtenir que des approxi-
+mations assez grossières dans la mesure des angles. Aussi, lorsqu'on veut une certaine exac-
+titude, doit-on construire le triangle à l'aide de ses trois côtés, calculés s'ils ne sont pas
+connus directement (voir numéro suivant).</p><div class="scan-inline"><img src="img/scan/srcpage-288.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

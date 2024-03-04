@@ -1,0 +1,530 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-478.png"><p class="newpage"><!-- skp data-txt='458' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-478-03">CHAPITRE VIII</p>
+<p  id="blk-478-04">QUADRATURE DES CONIQUES</p>
+<p class="article" id="blk-478-05"><strong class="article-num" id="article-750">750.</strong> Aire de l'ellipse.<!-- skp data-txt='-' --></p>
+<p  id="blk-478-07">Théorème. L'ellipse d'axes 2a et 2b a pour aire ñab.</p>
+<p  id="blk-478-08">En effet, cette ellipse est la projection d'un cercle de rayon a et
+d'aire par conséquent égale à лa². Le cosinus de l'angle des deux<!-- spr -->b
+plans est d'ailleurs égal (733, Rem.) à ; l'aire projetée est donc (')<!-- spr -->a<!-- spr -->b</p>
+<p  id="blk-478-12">(606. Coroll. II) ña²</p>
+<p  id="blk-478-13">παν.<!-- spr -->a<!-- skp data-txt='-' --></p>
+<p  id="blk-478-16">REMARQUE. Le même raisonnement s'applique au secteur
+d'ellipse, c'est-à-dire à la portion d'ellipse comprise entre deux
+demi-diamètres, car cette aire est manifestement la projection d'un
+secteur circulaire. On peut, dès lors (comparer Pl., 263), évaluer
+toute aire limitée par des droites, des arcs de cercles et des arcs
+d'ellipses.</p>
+<p class="article" id="blk-478-17"><strong class="article-num" id="article-751">751.</strong> Aire du secteur d'hyperbole.</p>
+<p  id="blk-478-18">Nous nommons secteur d'hyperbole (fig. 618) l'aire comprise entre
+un arc d'hyperbole MN et les rayons qui joignent ses extrémités au<!-- spr -->centre.</p>
+<p  id="blk-478-20">On démontre (2) que la définition de l'aire (Pl., 260) s'applique à
+la portion de plan ainsi définie, c'est-à-dire qu'en substituant à
+l'arc d'hyperbole une ligne brisée inscrite (fig. 619), on obtient une
+aire polygonale qui tend vers une limite déterminée lorsque le
+nombre des côtés de la ligne brisée va en augmentant indéfiniment</p>
+<p  id="blk-478-21">(1) Le raisonnement du n° 606 démontre l'existence de l'aire de la portion projetée, en
+même temps qu'il en établit l'expression.</p>
+<p  id="blk-478-22">(2) Il suffit (Pl. 260, note 1, page 252) de montrer que la distance d'une corde au point de
+rencontre des tangentes en ses extrémités tend vers zéro avec la longueur de la corde: ce
+qu'on déduira aisément de l'exercice 1080.</p><div class="scan-inline"><img src="img/scan/srcpage-478.png"/></div></data><data data-scanhref="img/scan/srcpage-479.png"><p class="newpage"></p>
+<p  id="blk-479-01">QUADRATURE DES CONIQUES.<!-- skp data-txt='459' --><!-- spr -->et chacun d'eux en tendant vers zéro suivant une loi quelconque.</p>
+<p  id="blk-479-04">Nous allons apprendre à évaluer l'aire ainsi définie. Nous pouvons
+d'ailleurs remarquer que cette aire est équivalente à celle qui est
+délimitée par l'arc MN, une des asymptotes, et les parallèles Mm, Nn<!-- skp data-txt='M' --></p>
+<p  id="blk-479-06">M₁<!-- skp data-txt='M' --><!-- skp data-txt='M' --><!-- skp data-txt='N' --><!-- skp data-txt='N' --><!-- spr -->m<!-- spr -->n<img class="fig" src="img/FIG. 618.OCR.png" alt="FIG. 618." /><img class="fig" src="img/FIG. 619.OCR.png" alt="FIG. 619." /></p>
+<p  id="blk-479-15">(fig. 618) menés par les points MN à l'autre asymptote. En effet, ces
+deux aires s'obtiennent respectivement en retranchant de l'aire
+mixtiligne OMNn les deux triangles rectilignes OMm, ONn, lesquels
+sont équivalents entre eux comme moitiés de parallélogrammes
+équivalents.</p>
+<p  id="blk-479-16">Les droites Mm, Nn sont les ordonnées des points M et N, lorsque
+l'hyperbole est rapportée à ses asymptotes.</p>
+<p  id="blk-479-17">Théorème. Dans une même hyperbole supposée rapportée à ses
+asymptotes, l'aire d'un secteur est proportionnelle au logarithme du
+rapport des abscisses des
+extrémités de l'arc cor-
+respondant. Comme dans.
+d'autres démonstrations<!-- skp data-txt='-' --><!-- skp data-txt='M' --></p>
+<p  id="blk-479-20">M,</p>
+<p  id="blk-479-21">M.<!-- skp data-txt='M' --></p>
+<p  id="blk-479-23">Mi<!-- skp data-txt='M' --><!-- spr -->m
+m
+2<!-- spr -->im'<!-- spr -->im₁</p>
+<p  id="blk-479-28">/m²/2<!-- spr -->analogues, nous prou-
+verons tout d'abord les
+deux points suivants :</p>
+<p  id="blk-479-30">1º A deux valeurs égales
+du rapport des abscisses
+correspondent des secteurs.
+équivalents. Soient les
+deux arcs MN, M'N' tels
+que le rapport des abs-
+cisses Om, On (fig. 620)
+des points M,N soit égal
+au rapport des abscisses Om', On' des points M',N'. Entre M et N, pre-</p>
+<p  id="blk-479-31">Η<!-- skp data-txt='-' --><!-- skp data-txt='H' --><img class="fig" src="img/FIG. 620.OCR.png" alt="FIG. 620." /></p><div class="scan-inline"><img src="img/scan/srcpage-479.png"/></div></data><data data-scanhref="img/scan/srcpage-480.png"><p class="newpage"><!-- skp data-txt='460' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p  id="blk-480-03">...<!-- skp data-txt='1' --><!-- skp data-txt='2' --><!-- skp data-txt='1' --></p>
+<p  id="blk-480-07">1'</p>
+<p  id="blk-480-08">ܙ2</p>
+<p  id="blk-480-09">...</p>
+<p  id="blk-480-10">...<!-- spr -->nons sur la courbe les points M₁, M₂, .; entre Met N' les points
+M'₁, M'2 tels que les abscisses Om/₁, Om′2, de M, M', ... soient
+respectivement aux abscisses Om₁, Om₂,<!-- spr -->de M,,M,<!-- spr -->comme Om'
+est à Om. Si nous démontrons que le secteur polygonal OMM,M₂...N
+est équivalent à OM'M'M'2... N', il sera établi que le secteur hyper-
+bolique OMN est équivalent au secteur hyperbolique OM/N', car le
+secteur hyperbolique OMN est, par définition, la limite du secteur
+polygonal OMM,M... N lorsque les points M,M,M,, ... vont en se</p>
+<p  id="blk-480-14">M,M₁M₂,
+rapprochant indéfiniment les uns des autres.</p>
+<p  id="blk-480-15">Comme tout à l'heure, le triangle OMM, est équivalent au trapèze
+MMmm, (parce que le triangle OMm est équivalent à OM₁m₁), et, de
+même, le triangle OM'M', au trapèze M'M' m'm'. Le trapèze MM,mm₁
+a pour mesure le demi-produit de la somme Mm + M₁m₁ par la
+hauteur, que nous compterons en HH, (fig. 620) sur la perpendicu-
+laire aux deux bases menées par le point O, et le trapèze M'M'm'm'₁
+a pour mesure le demi-produit de la somme M'm' + M'm' par la
+hauteur H'H', comptée sur la même perpendiculaire.</p>
+<p  id="blk-480-16">M₁m, M'm'
+Or les rapports<!-- spr -->sont respectivement inverses des
+Mm M'm'
+он, он',
+rapports</p>
+<p  id="blk-480-18">(puisque le triangle OMm est équivalent à OM,m
+OH' OH'<!-- skp data-txt='1' --><!-- spr -->et le triangle OM'm' à OM₁m/₁); ces rapports sont égaux entre eux,</p>
+<p  id="blk-480-21">Om₁</p>
+<p  id="blk-480-22">Om's
+puisque l'on a</p>
+<p  id="blk-480-23">On peut écrire :
+От</p>
+<p  id="blk-480-24">Om'</p>
+<p  id="blk-480-25">M'm' M',m's</p>
+<p  id="blk-480-26">M'm'</p>
+<p  id="blk-480-27">=</p>
+<p  id="blk-480-28">MmMm₁</p>
+<p  id="blk-480-29">Mm</p>
+<p  id="blk-480-30">OH'</p>
+<p  id="blk-480-31">=</p>
+<p  id="blk-480-32">Quant aux hauteurs H'H'₁, HH₁, elles sont entre elles comme OH'</p>
+<p  id="blk-480-33">OH₁
+est à OH, à cause de l'égalité</p>
+<p  id="blk-480-34">OH' OH
+Donc les trapèzes en question sont entre eux comme les produits
+MmOH et M'm' ×OH', c'est-à-dire comme les triangles OMm,
+OM'm'; ces trapèzes, et aussi les triangles OMM₁, OM'M₁, sont, par
+conséquent, équivalents entre eux.</p>
+<p  id="blk-480-35">De même, le triangle OMM½ sera équivalent à OMM₂, et ainsi de
+suite. La conclusion est donc démontrée.</p>
+<p  id="blk-480-36">2° Si l'on donne au rapport des abscisses trois valeurs telles que la
+troisième soit le produit des deux premières, on obtient trois secteurs<!-- skp data-txt='2' --></p><div class="scan-inline"><img src="img/scan/srcpage-480.png"/></div></data><data data-scanhref="img/scan/srcpage-481.png"><p class="newpage"></p>
+<p  id="blk-481-01">QUADRATURE DES CONIQUES.<!-- skp data-txt='461' --><!-- spr -->tels que le troisième soit équivalent à la somme des deux premiers.
+C'est ce qui est évident si les deux premiers
+secteurs ont pour base deux arcs consé-
+cutifs MN, NP (fig. 621), le troisième secteur
+ayant pour base l'arc total MP. Mais,
+d'autre part,<!-- spr -->il est clair qu'on peut
+ramener tout autre cas à celui-là,<!-- skp data-txt='M' --><!-- spr -->en<!-- skp data-txt='N' --><!-- skp data-txt='P' --><!-- spr -->vertu de 1º.<img class="fig" src="img/FIG. 621.OCR.png" alt="FIG. 621." /></p>
+<p  id="blk-481-11">Par conséquent, si le logarithme du
+rapport des abscisses prend trois valeurs
+telles
+que<!-- spr -->la troisième soit la somme des deux
+premières, le troisième secteur obtenu est équivalent à la somme des
+deux premiers cet énoncé revient au précédent, puisque la somme
+des logarithmes de deux nombres est égale au logarithme de leur
+produit (').</p>
+<p  id="blk-481-13">Des deux propositions qui viennent d'être démontrées résulte,
+ainsi qu'il a été expliqué à plusieurs reprises, le théorème énoncé.</p>
+<p class="article" id="blk-481-14"><strong class="article-num" id="article-752">752.</strong> Nous venons d'apprendre à comparer deux secteurs corres-
+pondant à une même hyperbole. Comparons maintenant deux
+secteurs empruntés à deux hyperboles différentes.</p>
+<p  id="blk-481-15">Nous rapporterons chacune des hyperboles à ses asymptotes.
+L'aire du parallélogramme ayant un sommet en un point quelconque
+d'une de ces hyperboles et deux côtés suivant les asymptotes de
+cette courbe, est une constante que nous appellerons, pour abréger,
+la constante relative à l'hyperbole considérée.</p>
+<p  id="blk-481-16">Cela posé, on aura le théorème suivant :<!-- skp data-txt='-' --></p>
+<p  id="blk-481-18">Théorème. Dans deux hyperboles dont chacune est rapportée à
+ses asymptotes, deux secteurs correspondant à la même valeur du rap-
+port des abscisses sont entre eux comme les constantes relatives aux
+deux courbes.</p>
+<p  id="blk-481-19">En effet, si O, O' sont les centres des deux courbes, M, M₁ deux
+points de la première; M', M', deux points de la seconde, tels que
+leurs abscisses O'm', O'm', soient entre elles comme les abscisses
+Om, Om, des points M, M₁ (fig. 622), on démontrera, comme au nu-
+méro précédent (1º), que les triangles OMM,, O'M'M', sont entre eux<!-- skp data-txt='1' --></p>
+<p  id="blk-481-21">(1) Voir Fourlet, Leçons d'Algèbre, livre V, ch. III, nº 137, page 426.</p><div class="scan-inline"><img src="img/scan/srcpage-481.png"/></div></data><data data-scanhref="img/scan/srcpage-482.png"><p class="newpage"><!-- skp data-txt='462' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->comme OMm, O'M'm', c'est-à-dire comme les constantes relatives aux
+deux courbes. Dès lors, la même conclusion s'étendra (toujours comme<!-- skp data-txt="M'" --><!-- spr -->b k<!-- skp data-txt='M' --></p>
+<p  id="blk-482-07">M.<!-- skp data-txt="M'" --><!-- skp data-txt='1' --><!-- skp data-txt='N' --><!-- skp data-txt="N'" --><!-- skp data-txt="'m" --><!-- skp data-txt="'m," --><!-- spr -->n<!-- skp data-txt="'m'" --><!-- spr -->m;<!-- spr -->n</p>
+<p  id="blk-482-18">H₁<!-- skp data-txt='H' --></p>
+<p  id="blk-482-20">H₁₁<img class="fig" src="img/FIG. 622.OCR.png" alt="FIG. 622." /><!-- spr -->au numéro précédent, 1º) au rapport de deux secteurs OMN, O'M'N' tels
+que les abscisses des points M',N' soient entre elles comme celles des
+points M, N.</p>
+<p  id="blk-482-23">Des deux théorèmes précédents résulte :</p>
+<p  id="blk-482-24">Théorème. L'aire du secteur correspondant à l'arc compris entre
+deux points d'une hyperbole quelconque est proportionnelle au produit
+de la constante relative à la courbe par le logarithme du rapport des
+abscisses de ces deux points.</p>
+<p  id="blk-482-25">En effet, nous venons de voir que cette aire est proportionnelle :
+1º au logarithme du rapport des abscisses; 2° à la constante relative
+à la courbe, lorsque ces deux quantités varient séparément : elle est
+donc proportionnelle à leur produit.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-482-27"><strong class="article-num" id="article-752 bis">752 bis.</strong> Corollaire. Tout ce que nous venons de dire subsiste
+quel que soit le système de logarithmes employés.</p>
+<p  id="blk-482-28">Prenons maintenant pour base du système de logarithmes le rap-
+port des abscisses de deux points M, N, pris sur une même branche
+d'hyperbole et tels que l'aire du secteur compris entre ces deux
+points soit égale à la constante relative à la courbe. Alors l'aire
+d'un secteur d'hyperbole quelconque sera égale au produit de la
+constante relative à la courbe par le logarithme de rapport des
+abscisses correspondantes, car cette propriété a lieu pour le secteur
+particulier que nous venons de définir et s'étend, par suite, à tous
+les autres secteurs d'hyperboles, en vertu des théorèmes précé-
+dents.</p><div class="scan-inline"><img src="img/scan/srcpage-482.png"/></div></data><data data-scanhref="img/scan/srcpage-483.png"><p class="newpage"></p>
+<p  id="blk-483-01">QUADRATURE DES CONIQUES.<!-- skp data-txt='463' --></p>
+<p  id="blk-483-03">Le système de logarithmes ainsi obtenu n'est autre que le système
+des logarithmes népériens, le premier qui ait été inventé (¹). Sa base
+est désignée ordinairement par la lettre e : les premières décimales
+de ce nombre sont e = 2,7182818...</p>
+<p  id="blk-483-04">Le nombre e n'est pas constructible à l'aide de la règle et du compas :
+c'est-à-dire qu'on ne peut construire à l'aide de la règle et du compas
+deux lignes dont le rapport soit égal à e. Plus généralement, il
+n'existe aucun secteur d'hyperbole tel qu'on puisse construire géo-
+métriquement le carré qui lui est équivalent, en même temps que
+les asymptotes de la courbe et les extrémités de l'arc qui sert de
+base au secteur (2).<!-- skp data-txt='-' --></p>
+<p  id="blk-483-06">REMARQUE. L'aire d'un secteur d'hyperbole augmente indéfiniment
+lorsqu'une des extrémités de l'are correspondant s'éloigne à l'infini,
+l'autre restant fixe, puisque le logarithme de l'abscisse variable
+augmente indéfiniment.</p>
+<p class="article" id="blk-483-07"><strong class="article-num" id="article-753">753.</strong> Aire du segment de parabole.</p>
+<p  id="blk-483-08">Le segment de parabole est l'aire comprise entre un arc de para-
+bole et sa corde. Contrairement à ce qui a lieu pour l'ellipse et
+l'hyperbole, on peut construire avec la règle et le compas un carré
+équivalent à un segment de parabole donné quelconque.<!-- skp data-txt='-' --></p>
+<p  id="blk-483-10">Théorème. Un segment de parabole équivaut aux deux tiers du
+triangle formé par la corde du segment et les tangentes à ses extré-
+mités (³).</p>
+<p  id="blk-483-11">:</p>
+<p  id="blk-483-12">(1) Bourlet, Leçons d'Algèbre, page 428.</p>
+<p  id="blk-483-13">(2) Les Mathématiques supérieures permettent d'établir, entre les nombres e et x, une
+relation qui fait intervenir les qualités imaginaires et dont nous ne pouvons par conséquent
+donner une idée ici, mais dont l'existence ne doit pas surprendre, puisque l'un de ces nombres
+est lié à l'aire de l'ellipse (750) et l'autre à l'aire de l'hyperbole.</p>
+<p  id="blk-483-14">Le théorème relatif à l'impossibilité de construire le nombre e (ou plutôt une proposition
+plus étendue dont ce théorème découle (voir note E à la fin du volume)), est dù à M. Hermite
+(1874) c'est le résultat auquel nous avons fait allusion au liv. III (Pl., page 181, note 2).
+Le théorème plus général que nous énonçons ensuite est celui qui a été déduit des travaux
+de M. Hermite par M. Lindemann. En vertu de la relation, mentionnée tout à l'heure, qui
+existe entre les nombres e et *, ce théorème entraîne l'impossibilité de la quadrature
+du cercle.</p>
+<p  id="blk-483-15">(3) Ce théorème et le mode de démonstration que nous en donnons sont dus à Archimède.</p>
+<p  id="blk-483-16">La démonstration suppose que les polygones inscrits se succèdent suivant une loi déter-
+minée (chaque polygone ayant pour sommets les sommets du précédent et les points de la
+courbe situés sur les diamètres conjugués des côtés de ce précédent). Pour démontrer que
+la limite obtenue est la même, quelle que soit la loi d'inscription (pourvu que chaque côté
+tende vers zéro), il suffit (Pl., page 252, note 1) de faire voir que la distance d'une corde au
+point d'intersection des tangentes en ses extrémités tend vers zéro avec la longueur de
+la corde. Or, c'est ce qui résulte aisément du nº 536.</p><div class="scan-inline"><img src="img/scan/srcpage-483.png"/></div></data><data data-scanhref="img/scan/srcpage-484.png"><p class="newpage"><!-- skp data-txt='461' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->a</p>
+<p  id="blk-484-04">Soit le segment de parabole déterminé par la corde aa' (fig. 623),<!-- spr -->les tangentes menées à la courbe en
+a, a' se coupant en A. Soit S l'aire du
+triangle Aaa'.</p>
+<p  id="blk-484-06">Le diamètre qui passe en A coupe la
+courbe en un point 6 où la tangente est
+parallèle à aa'; soient B, B' les points où
+cette tangente coupe respectivement Aa
+et Aa'. Le diamètre Ab est divisé Ab,
+en deux parties égales par les points
+et le point i où il coupe aa' (526).</p>
+<p  id="blk-484-07">Si donc nous joignons ab et a'b, les
+triangles iab et ia'b sont respectivement les moitiés de iaA et de</p>
+<p  id="blk-484-08">S
+ia A, donc, le triangle aa'b a pour aire § 44 Le triangle ABB', qui est<!-- skp data-txt="B'" --><img class="fig" src="img/FIG. 623.OCR.png" alt="FIG. 623." /></p>
+<p  id="blk-484-11">.</p>
+<p  id="blk-484-12">,<!-- skp data-txt='1' --></p>
+<p  id="blk-484-14">S
+semblable à Aaa', avec le rapport de similitude<!-- spr -->a pour mesure
+2</p>
+<p  id="blk-484-16">Ā'
+de sorte que la somme des deux triangles Ba et bB'a est égale</p>
+<p  id="blk-484-17">S
+ment</p>
+<p  id="blk-484-18">4
+Menons maintenant les diamètres des points B et B' lesquels cou-
+pent respectivement la courbe en c, c' : les tangentes en ces points
+sont respectivement parallèles à ab et a'b; la première coupe aB
+en C et B6 en C'; la seconde coupe 6B' en C" et B'a' en C"". Si nous
+joignons ac, cb, be', c'a', nous constaterons, comme tout à l'heure:
+1° que le triangle acb est la moitié du aBb et le triangle be'a', la
+moitié du triangle bB'a'; 2° que les deux triangles BCC' et B'C"C""
+sont respectivement les quarts de Bab et B'ba'. Dès lors, il est clair</p>
+<p  id="blk-484-19">S
+que la somme des deux triangles inscrits acb et be'a' est égale à<!-- skp data-txt='S' --></p>
+<p  id="blk-484-21">S
+de sorte que le polygone inscrit acbc'a' a pour aire +</p>
+<p  id="blk-484-22">2 2 × 4
+En même temps on voit que la somme des deux triangles circon-</p>
+<p  id="blk-484-23">S
+scrits BCC' et B'C"C"" est De plus, les deux polygones acbc'a' et<!-- skp data-txt='16' --></p>
+<p  id="blk-484-25">•</p>
+<p  id="blk-484-26">ACC'C"C" sont séparés par quatre triangles intermédiaires aCc,</p>
+<p  id="blk-484-27">S
+cC'b, bC'c', c'C''a', ayant pour somme<!-- skp data-txt='42' --></p><div class="scan-inline"><img src="img/scan/srcpage-484.png"/></div></data><data data-scanhref="img/scan/srcpage-485.png"><p class="newpage"></p>
+<p  id="blk-485-01">QUADRATURE DES CONIQUES.<!-- skp data-txt='465' --></p>
+<p  id="blk-485-03">Nous continuerons de même en menant les diamètres des points
+C, C, C, C. Les points où ces diamètres couperont la courbe for-
+meront, avec les points précédemment obtenus, a, c, b, c', a', les som-</p>
+<p  id="blk-485-04">S S</p>
+<p  id="blk-485-05">S
+mets d'un nouveau polygone inscrit dont l'aire sera +. +.</p>
+<p  id="blk-485-06">2×4</p>
+<p  id="blk-485-07">2× 429</p>
+<p  id="blk-485-08">...<!-- spr -->l'espace compris entre ce polygone inscrit et le polygone circonscrit</p>
+<p  id="blk-485-10">S
+correspondant sera</p>
+<p  id="blk-485-11">43
+Si l'on continue ainsi indéfiniment, on voit que l'aire d'un quel-
+conque des polygones inscrits successifs est mesurée par une</p>
+<p  id="blk-485-12">S
+S
+S</p>
+<p  id="blk-485-13">S
+expression de la forme +</p>
+<p  id="blk-485-14">+</p>
+<p  id="blk-485-15">+ +
+2
+2 × 4
+2 × 4²</p>
+<p  id="blk-485-16">24m'
+c'est-à-dire par la somme d'un certain nombre de termes de la pro-<!-- skp data-txt='S' --></p>
+<p  id="blk-485-18">1
+gression géométrique qui a pour premier terme<!-- spr -->et pour raison
+2</p>
+<p  id="blk-485-20">4
+Lorsque m augmente indéfiniment, cette expression tend (1) vers une<!-- skp data-txt='S' --></p>
+<p  id="blk-485-22">S
+limite égale à</p>
+<p  id="blk-485-23">2 Le théorème est donc démontré.<!-- skp data-txt='3' --></p>
+<p  id="blk-485-25">2(1-1)</p>
+<p  id="blk-485-26">L'aire compris entre un polygone inscrit et le polygone circonscrit</p>
+<p  id="blk-485-27">S
+correspondant est d'ailleurs égale à et tend bien vers zéro lorsque</p>
+<p  id="blk-485-28">4m<!-- spr -->m augmente indéfiniment.</p>
+<p  id="blk-485-30">EXERCICES</p>
+<p  id="blk-485-31">1093. L'aire d'un triangle inscrit à une parabole est double de celle du triangle
+circonscrit formé par les tangentes en ses sommets.</p>
+<p  id="blk-485-32">Proposition analogue pour un polygone inscrit d'un nombre quelconque de côtés.
+En déduire l'aire du segment de parabole.</p>
+<p  id="blk-485-33">1091. Deux diamètres conjugués divisent une ellipse en quatre parties équiva-
+lentes.</p>
+<p  id="blk-485-34">1095. On mène, dans une ellipse, deux demi-diamètres tels que le secteur compris
+entre eux et la courbe ait une aire constante. Montrer 1° que la corde qui joint les</p>
+<p  id="blk-485-35">(1) Bourlet, Leçons d'Algèbre, livre V, ch. II, nº 133, p. 414.<!-- skp data-txt='30' --><!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='30' --></p><div class="scan-inline"><img src="img/scan/srcpage-485.png"/></div></data><data data-scanhref="img/scan/srcpage-486.png"><p class="newpage"><!-- skp data-txt='466' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->extrémités de ces deux demi-diamètres est tangente à une ellipse fixe, qui la touche
+en son milieu;</p>
+<p  id="blk-486-04">2° Que le segment compris entre la courbe et cette corde a également une aire
+constante;</p>
+<p  id="blk-486-05">3° Qu'il en est de même du triangle qui a pour côtés cette corde et les tangentes
+menées à ses extrémités. Lieu du point de concours de ces tangentes.</p>
+<p  id="blk-486-06">1095 bis. Étant donnée une ellipse, quel est le lieu d'un point pour lequel le rayon
+du cercle considéré à l'exercice 757 est constant?</p>
+<p  id="blk-486-07">1096. Deux sécantes parallèles interceptent sur l'hyperbole des arcs qui servent
+de bases à des secteurs équivalents. Démontrer cette proposition sans se servir des
+théorèmes sur l'aire du secteur (nos 751-752 bis) et en utilisant seulement le théo-
+rème sur les diamètres de l'hyperbole (745). En déduire à nouveau l'aire du secteur
+d'hyperbole (ex. 1085).</p>
+<p  id="blk-486-08">1097. Résoudre, pour l'hyperbole, l'exercice 1095.</p>
+<p  id="blk-486-09">1098. En adoptant les définitions des exercices 876 et 1083:</p>
+<p  id="blk-486-10">1° Si deux lignes brisées L et L', terminées aux mêmes extrémités, ont tous leurs
+côtés de même espèce, et que L enveloppe L', laquelle est convexe, la somme des
+longueurs hyperboliques des côtés de L est plus petite que la somme correspon-
+dante relative à L';</p>
+<p  id="blk-486-11">2º Dans une hyperbole H ayant ses asymptotes parallèles aux côtés de l'angle
+donné, le rapport de la longueur hyperbolique d'une corde AB à la somme des
+longueurs hyperboliques des tangentes AB, BC menées en ses extrémités et termi-
+nées à leur point de rencontre C tend vers l'unité lorsque la corde tend vers zéro
+(mener le diamètre du point C et appliquer exercices 1080, 1083);</p>
+<p  id="blk-486-12">3° Si on inscrit à un arc AB de l'hyperbole H une ligne brisée dont le nombre
+des côtés augmente indéfiniment de manière que chacun d'eux tende vers zéro, la
+somme des longueurs hyperboliques de ces côtés tend vers une limite 7, qu'on peut
+appeler la longueur hyperbolique de l'arc AB;</p>
+<p  id="blk-486-13">4° Deux arcs de l'hyperbole H, qui ont même longueur hyperbolique, sont vus du
+centre sous des angles hyperboliques égaux et correspondent à des secteurs d'hyper-
+bole équivalents.</p>
+<p  id="blk-486-14">Plus généralement, l'aire d'un secteur de l'hyperbole H est proportionnelle à la
+longueur hyperbolique de l'arc qui lui sert de base, ou à l'angle hyperbolique des
+deux rayons qui le limitent.</p>
+<p  id="blk-486-15">1099. Si on joint un point variable d'une ellipse deux points fixes de la courbe
+et qu'on mène, par le centre, des parallèles aux droites ainsi tracées, on détermine,
+dans l'ellipse, un secteur d'aire constante et égale à la moitié de l'aire du secteur
+formé par les demi-diamètres qui aboutissent aux deux points fixes.</p>
+<p  id="blk-486-16">Même problème dans l'hyperbole.</p>
+<p  id="blk-486-17">1100. Trouver le lieu d'un point tel que le segment de parabole compris entre la
+courbe et la corde de contact des tangentes issues de ce point ait une aire constante.
+Montrer que ce lieu est une parabole qui se déduit de la parabole donnée par trans-
+lation. La projection de la corde de contact sur la directrice est constante (employer
+une remarque analogue à celle de l'exercice 1096).</p>
+<p  id="blk-486-18">1101. Mener, par un point intérieur à une conique, une corde qui détache le plus
+petit segment possible.</p><div class="scan-inline"><img src="img/scan/srcpage-486.png"/></div></data><data data-scanhref="img/scan/srcpage-487.png"><p class="newpage"></p>
+<p  id="blk-487-01">QUADRATURE DES CONIQUES.<!-- skp data-txt='467' --></p>
+<p  id="blk-487-03">1102. Diviser un secteur d'ellipse en deux parties équivalentes par un diamètre.
+Même problème pour un secteur d'hyperbole (1).</p>
+<p  id="blk-487-04">1103. Circonscrire à un triangle la plus petite ellipse possible.</p>
+<p  id="blk-487-05">(On étudiera (ex. 1049) le rapport de l'aire d'un triangle à celle d'une ellipse cir-
+conscrite et l'on en cherchera le maximum).</p>
+<p  id="blk-487-06">1103 bis. Inscrire, à un triangle donné, la plus grande ellipse possible (parmi
+celles qui sont comprises à l'intérieur du triangle).</p>
+<p  id="blk-487-07">(Même méthode).</p>
+<p  id="blk-487-08">1104. Lieu du centre d'une hyperbole qui passe par deux points fixes A, B, de
+manière que le secteur compris entre la courbe et les demi-diamètres aboutissant
+en ces points ait une aire donnée, la constante relative à la courbe étant égale-
+ment donnée. Montrer que les asymptotes passent chacune par un point fixe. Trou-
+ver le lieu de l'intersection des tangentes à l'hyperbole en A et B.</p>
+<p  id="blk-487-09">1105. Une ellipse varie de manière que ses axes restent dirigés suivant deux
+droites fixes et que son aire reste constante. Montrer que cette ellipse est tangente à
+une hyperbole équilatère fixe. Généraliser au cas où l'ellipse, gardant toujours une
+aire constante, a deux diamètres conjugués suivant deux droites données.</p>
+<p  id="blk-487-10">1106. Calculer l'aire du triangle qui a pour sommets le centre d'une hyperbole
+et deux points de la courbe, connaissant la constante relative à l'hyperbole et le
+rapport des abscisses des deux points (lorsqu'on rapporte la courbe à ses asymptotes).</p>
+<p  id="blk-487-11">1107. Montrer que le logarithme de (1+ a), dans le système dont la base est le
+nombre e,<!-- skp data-txt="'est la limite, pour n infini, de l'expression" --><!-- skp data-txt='1' --><!-- spr -->a</p>
+<p  id="blk-487-15">( } } +<!-- skp data-txt='1' --></p>
+<p  id="blk-487-17">1
++</p>
+<p  id="blk-487-18">+
+η + α n+2a</p>
+<p  id="blk-487-19">1
++<!-- spr -->n+na,<!-- spr -->n</p>
+<p  id="blk-487-22">(On remarquera que cette expression représente une aire polygonale formée à
+l'aide d'un contour inscrit à l'hyperbole).</p>
+<p  id="blk-487-23">(1) Le problème de diviser un secteur d'ellipse ou d'hyperbole en un nombre de parties
+équivalentes qui n'est pas une puissance de 2 n'est pas résoluble par la règle et le compas.</p>
+<p  id="blk-487-24">L'introduction des imaginaires permet de réunir en un seul et même problème la question
+précédente relative à l'ellipse et la question relative à l'hyperbole, quoique ces deux questions
+soient d'apparence très différentes. (L'une conduit à la division d'un angle en un nombre<!-- spr -->quelconque de parties égales; l'autre, à trouver deux lignes dont le rapport soit<!-- skp data-txt='V' --><!-- spr -->où a</p>
+<p  id="blk-487-28">"<!-- spr -->et b sont deux lignes données.)</p><div class="scan-inline"><img src="img/scan/srcpage-487.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+

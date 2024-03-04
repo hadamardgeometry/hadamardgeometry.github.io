@@ -1,0 +1,482 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hadamard's Solid Geometry</title><!-- TODO Update title dynamically -->
+    <!-- TODO Move to dedicated JS and CSS files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .maintext {
+        font-family: "Libre Baskerville", Palatino, serif;
+        font-weight: 400;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 70ch;
+        text-align: justify;
+        /*border: 1px solid red;*/
+      }
+      
+      p.article {
+        margin-top: 4ch;
+      }
+      
+      img.fig {
+        display: none;
+      }
+      
+      .scan-inline {
+        display: none; /* Shown only for @media print */
+      }
+      
+      
+      .scanpanel-off div.maintext{
+        margin: auto;
+      }
+      .scanpanel-off div.scanpanel {
+        display: none;
+      }
+      
+      @media screen {
+        .scanpanel-on .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          justify-content: center;
+          margin-left: 5%;
+        }
+        .scanpanel-on div.scanpanel {
+          position: sticky;
+          top: 3vh;
+          /*border: 4px dotted rgb(162, 0, 255);*/
+          height: 94vh;
+        }
+        .scanpanel-on img#scanpanel-page-img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+      @media print {
+        .container {
+          margin: 1in;
+        }
+        div.maintext{
+          margin: auto;
+        }
+        div.scanpanel {
+          display: none;
+        }
+        .scan-inline {
+          display: block;
+          /*border: 2px solid black;*/
+          break-before: left;
+          break-after: left; /* For some reason, Chrome seems to ignore this.  Prince seems to work fine. */
+          width: 99vw;
+          height: 99vh;
+        }
+        .scan-inline img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          /*border: 5px dashed rgb(53, 208, 48);*/
+        }
+      }
+      
+          </style>
+          <title>SRCPAGE Hadamard Solid Geometry</title>
+          <script type="module">
+            function isScrolledIn(el, idx, ar) {
+              const rect = el.getBoundingClientRect();
+              const margin = 50;
+              // Although many elements will have rect.bottm > margin, 
+              // we're okay, because this predicate will be called on **all** elements **in order**
+              // and hence find the first.
+              return rect.top >= 0 || rect.bottom > margin;
+            }
+      
+            function updateScanpanel() {
+              try {
+                // TODO Consider modifying to "sticky"
+                // such the img only updates when the existing image is no longer visible at all
+                // (We'd need two tests: isMostRecentPageVisible and findMostVisiblePage).
+                const srcpageImg = document.querySelector('#scanpanel-page-img');
+                srcpageImg.src = [...document.querySelectorAll("[data-scanhref]")].find(isScrolledIn).dataset.scanhref;
+              } catch(e) {
+                console.debug(e);
+              }
+            }
+      
+            window.onscroll = updateScanpanel;
+            
+          </script>
+        </head>
+        <body class="scanpanel-on">
+      <div class="container">
+        <div class="maintext">
+
+<data data-scanhref="img/scan/srcpage-080.png"><p class="newpage"></p>
+<p  id="blk-080-01">LIVRE VI</p>
+<p  id="blk-080-02">LES</p>
+<p  id="blk-080-03">POLYÈDRES</p>
+<p  id="blk-080-04">CHAPITRE PREMIER</p>
+<p  id="blk-080-05">NOTIONS GÉNÉRALES<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-080-07"><strong class="article-num" id="article-386">386.</strong> Définitions. On nomme polyèdre (fig. 289) un volume
+limité par des surfaces toutes planes (1). Les portions de plans qui<!-- spr -->comprennent ainsi entre elles le polyèdre
+en sont dites les faces. Chaque face, étant
+limitée par ses intersections avec les faces
+voisines, est un polygone: les côtés de ce
+polygone (par exemple AB, fig. 289) sont les
+arêtes du polyèdre, et l'on voit que chaque<!-- spr -->arête est commune à deux faces (2). Les
+sommets des mêmes polygones (par exemple A, fig. 289) sont les
+sommets du polyèdre chacun d'eux est commun à plusieurs faces
+(trois au moins) et est le sommet d'un angle polyèdre formé par
+ces faces (2).</p>
+<p  id="blk-080-10">On nomme diagonale du polyèdre, toute droite qui joint deux<img class="fig" src="img/FIG. 289.OCR.png" alt="FIG. 289." /></p>
+<p  id="blk-080-12">(1) Toutefois, par une restriction analogue à celle qui a été faite en géométrie plane (Pl., 21),
+ne sont considérés comme polyèdres que des solides dont la surface-limite est d'un seul tenant,
+autrement dit ne se compose pas de plusieurs parties entièrement séparées les unes des autres.</p>
+<p  id="blk-080-13">(2) Dans certains cas singuliers, une arête est commune à plus de deux faces, ou un
+sommet est sommet commun de plusieurs angles polyèdres formés par les faces du solide; ces
+cas exceptionnels, dus en réalité à ce que plusieurs arêtes ou plusieurs sommets viennent se
+confondre, ne se présentent pas dans les polyèdres convexes. Nous ne les rencontrerons
+jamais dans ce qui va suivre.</p><div class="scan-inline"><img src="img/scan/srcpage-080.png"/></div></data><data data-scanhref="img/scan/srcpage-081.png"><p class="newpage"></p>
+<p  id="blk-081-01">POLYÈDRES.<!-- skp data-txt='61' --><!-- spr -->sommets non situés dans la même face; plan diagonal, tout plan
+qui passe par trois sommets sans être une face.</p>
+<p  id="blk-081-04">Un polyèdre est dit convexe (fig. 292), s'il est situé tout entier d'un
+seul et même côté par rapport au plan d'une quelconque des faces,
+prolongé indéfiniment; il est dit concave, dans le cas contraire.</p>
+<p  id="blk-081-05">Un polyèdre convexe a pour faces des polygones convexes; car si
+une arête F (fig. 290) n'était pas tout entière du même côté d'une<!-- skp data-txt="F'" --><!-- skp data-txt='A' --><!-- skp data-txt='B' --><!-- skp data-txt='M' --></p>
+<p  id="blk-081-10">*☑<!-- skp data-txt="M'" --></p>
+<p  id="blk-081-12">M"<!-- skp data-txt='F' --><img class="fig" src="img/FIG. 290.OCR.png" alt="FIG. 290." /><img class="fig" src="img/FIG. 291.OCR.png" alt="FIG. 291." /><!-- spr -->arête AB appartenant à cette face, elle ne serait pas tout entière du
+même côté de la face F' contiguë à F suivant AB.</p>
+<p  id="blk-081-17">De même, l'angle polyèdre formé par les faces attenant à un même
+sommet d'un polyèdre convexe est toujours convexe.</p>
+<p  id="blk-081-18">Une droite ne peut couper la surface d'un polyèdre convexe en plus<!-- skp data-txt='A' --><!-- skp data-txt='B' --><!-- skp data-txt="A'" --><!-- skp data-txt="'B'" --><!-- skp data-txt='A' --><!-- skp data-txt='D' --></p>
+<p  id="blk-081-25">ΗΧ<!-- skp data-txt='B' --><img class="fig" src="img/FIG. 292.OCR.png" alt="FIG. 292." /><img class="fig" src="img/FIG. 293.OCR.png" alt="FIG. 293." /><!-- spr -->de deux points sans quoi (fig. 291) les deux points de rencontre
+extrêmes ne seraient pas du même côté par rapport à la face qui
+passe par l'un des points de rencontre intermédiaire.</p>
+<p  id="blk-081-30">Nous avons classé les polygones plans d'après le nombre de leurs
+côtés : une pareille classification ne convient pas aux polyèdres,
+parce que, dans deux polyèdres qui ont le même nombre de faces,
+celles-ci peuvent être assemblées de façon très différentes : c'est le
+cas des polyèdres représentés par les fig. 289, 292, 293, lesquels ont
+chacun six faces.</p><div class="scan-inline"><img src="img/scan/srcpage-081.png"/></div></data><data data-scanhref="img/scan/srcpage-082.png"><p class="newpage"><!-- skp data-txt='62' --><!-- skp data-txt='GÉOMÉTRIE.' --></p>
+<p class="article" id="blk-082-03"><strong class="article-num" id="article-387">387.</strong> On nomme surface prismatique la figure déterminée par des
+portions de plans parallèles à une même droite (ces plans étant
+limités à leurs intersections successives (1), toutes parallèles entre
+elles (Chap. II) et appelées arêtes de la surface) (fig. 294).</p>
+<p  id="blk-082-04">аих<!-- spr -->in<!-- skp data-txt="A'" --><!-- skp data-txt="'D'" --><!-- skp data-txt='62' --><!-- skp data-txt="C'" --><!-- skp data-txt='E' --></p>
+<p  id="blk-082-11">W.<!-- skp data-txt='A' --></p>
+<p  id="blk-082-13">Théorème. Les sections d'une surface prismatique par des plans<!-- spr -->parallèles entre eux (mais non
+arêtes) sont des polygones égaux.</p>
+<p  id="blk-082-15">Soient ABCDE, A'B'C'D'E' (fig. 294)
+les sections d'une surface prisma-
+tique par deux plans parallèles. Pour
+démontrer que ces deux polygones.
+sont égaux, il nous suffit (Pl., 50) de
+démontrer que les triangles ABC,
+A'B'C' sont égaux et de même sens,
+ainsi que les triangles ABD, A'B'D';
+ABE, A'B'E'. Or, les côtés homologues
+de ces triangles sont parallèles (par
+exemple, AC, parallèle à A'C'), comme
+sections de plans parallèles par un<!-- spr -->troisième, d'où résulte : d'abord, que
+ces côtés sont égaux (par exemple, AC A'C'), comme côtés.
+opposés de parallélogrammes, et ensuite que les angles formés entre
+eux sont égaux et de même sens (333).<!-- skp data-txt='20' --><!-- skp data-txt='0' --><img class="fig" src="img/FIG. 294.OCR.png" alt="FIG. 294." /></p>
+<p  id="blk-082-20">==<!-- skp data-txt="E'" --></p>
+<p  id="blk-082-22">On nomme section droite d'une surface<!-- skp data-txt="A'" --><!-- skp data-txt="'H'" --><!-- skp data-txt="D'" --><!-- skp data-txt='B' --><!-- spr -->prismatique, une section par un plan
+perpendiculaire à la direction commune
+des arêtes. D'après le théorème précé-
+dent, toutes les sections droites d'une
+même surface prismatique sont des poly-<!-- skp data-txt='A' --><!-- spr -->gones égaux.<!-- skp data-txt='H' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 295.OCR.png" alt="FIG. 295." /></p>
+<p  id="blk-082-33">On nomme prisme un polyèdre compris
+entre une surface prismatique et deux
+plans parallèles entre eux (mais non aux
+arêtes de la surface prismatique) (fig. 295). Les faces comprises</p>
+<p  id="blk-082-34">(1) Il est sous-entendu que deux plans consécutifs se coupent, et que le dernier coupe le
+premier.</p><div class="scan-inline"><img src="img/scan/srcpage-082.png"/></div></data><data data-scanhref="img/scan/srcpage-083.png"><p class="newpage"></p>
+<p  id="blk-083-01">POLYÈDRES.<!-- skp data-txt='63' --><!-- spr -->dans ces deux derniers plans sont les bases du prisme, tandis que
+celles qui appartiennent à la surface prismatique sont les faces
+latérales et que les arêtes de la surface prismatique donnent les
+arêtes latérales. D'après le théorème précédent, les bases d'un
+prisme sont des polygones égaux. Les faces latérales sont toutes
+des parallélogrammes, les arêtes latérales sont toutes égales entre
+elles.</p>
+<p  id="blk-083-04">On voit encore que, si l'on se donne la base ABCDE (fig. 295)
+d'un prisme et une arête AA' en grandeur et direction, il suffira,
+pour construire le polyèdre, de mener les arêtes BB', CC', etc.,
+égales et parallèles à AA'.</p>
+<p  id="blk-083-05">On nomme hauteur d'un prisme, la distance
+(345) des plans des bases (HH', fig. 295).</p>
+<p  id="blk-083-06">Lorsque les bases sont des sections droites
+de la surface prismatique, le prisme est dit
+droit (fig. 296).</p>
+<p  id="blk-083-07">Dans ce cas, bien entendu, la hauteur n'est
+autre que l'arête latérale; les faces latérales
+sont des rectangles.</p>
+<p  id="blk-083-08">On peut classer les prismes d'après le nom-
+bre des faces latérales, égal au nombre de côtés du polygone
+de base. Ainsi un prisme pourra être triangulaire, quadran-
+gulaire, pentagonal (fig. 295), etc.<img class="fig" src="img/FIG. 296.OCR.png" alt="FIG. 296." /><!-- skp data-txt="E'" --><!-- skp data-txt="A'" --><!-- skp data-txt="D'" --><!-- skp data-txt="B'" --><!-- spr -->a<!-- spr -->b</p>
+<p class="article" id="blk-083-16"><strong class="article-num" id="article-388">388.</strong> Théorème. L'aire latérale d'un prisme est égale au produit<!-- spr -->de l'arête latérale par le périmètre de
+la section droite.</p>
+<p  id="blk-083-18">Soit le prisme ABCDE A'B'C'D'E'
+(fig. 297) dont la section droite est
+abcde, de sorte que ab, bc,... sont
+tous perpendiculaires à la direction
+des arêtes latérales. La face ABA'B',
+qui est un parallélogramme, est égale
+au produit de sa base AA' par sa
+hauteur, laquelle n'est autre que ab;
+la face BCB'C', au produit de sa base</p>
+<p  id="blk-083-19">BB' par sa hauteur bc; etc. Donc l'aire
+latérale (c'est-à-dire la somme des aires des faces latérales) est<!-- skp data-txt='10' --><!-- skp data-txt='A' --><!-- skp data-txt='D' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 297.OCR.png" alt="FIG. 297." /></p><div class="scan-inline"><img src="img/scan/srcpage-083.png"/></div></data><data data-scanhref="img/scan/srcpage-084.png"><p class="newpage"><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='64' --><!-- spr -->bien égale au produit de l'arête latérale, valeur commune de
+AA', BB',……. par la somme ab+bc+cd+de+ ea.</p>
+<p  id="blk-084-04">C. Q. F. D.</p>
+<p class="article" id="blk-084-05"><strong class="article-num" id="article-389">389.</strong> On appelle parallélépipède un prisme qui a pour bases des
+parallélogrammes (fig. 292). Toutes les faces sont alors des parallé-
+logrammes.</p>
+<p  id="blk-084-06">Un parallélépipède peut être considéré comme prisme de trois façons
+différentes, deux faces opposées quelconques (dans la fig. 292,
+ABCD et A'B'C'D', ou ABA'B' et CDC'D', ou BCB'C' et ADA'D') pouvant
+être choisies comme bases.</p>
+<p  id="blk-084-07">Un parallélépipède a douze arêtes, égales et parallèles quatre à
+quatre.<!-- skp data-txt='-' --><!-- skp data-txt='B' --></p>
+<p  id="blk-084-10">с</p>
+<p  id="blk-084-11">Théorème. Dans un parallélépipède, les diagonales se coupent<!-- spr -->en un même point, situé au milieu de
+chacune d'elles.</p>
+<p  id="blk-084-13">Un parallélépipède ABCDA'B'C'D'
+(fig. 298) a quatre diagonales AC', BD',
+CA', DB'. Nous avons à prouver que les
+milieux de deux quelconques d'entre
+elles, AC' et BD', par exemple, coïnci-
+dent. Or c'est ce qui résulte de ce que<!-- spr -->la figure ABC'D' ayant les côtés AB,
+D'C' égaux et parallèles, est un parallélogramme, dont les diago-
+nales se divisent mutuellement en parties égales.<img class="fig" src="img/FIG. 298.OCR.png" alt="FIG. 298." /></p>
+<p class="article" id="blk-084-16"><strong class="article-num" id="article-390">390.</strong> Un parallélépipède droit est un parallélépipède qui est en
+même temps un prisme droit, c'est-à-dire dont les arêtes latérales
+sont perpendiculaires au plan de la base.</p>
+<p  id="blk-084-17">On nomme parallélépipède rectangle, un parallélépipède droit qui
+a pour base un rectangle. Toutes les faces sont alors des rectangles.</p>
+<p  id="blk-084-18">Un parallélépipède rectangle est un prisme droit, quelle que soit la
+face considérée comme base, puisque chaque arête est perpendicu-
+laire à ses voisines et, par conséquent, aux plans des faces qu'elles
+déterminent.</p>
+<p  id="blk-084-19">Au contraire, un parallélépipède droit qui n'est pas rectangle,
+n'est un prisme droit que d'une seule façon.</p><div class="scan-inline"><img src="img/scan/srcpage-084.png"/></div></data><data data-scanhref="img/scan/srcpage-085.png"><p class="newpage"></p>
+<p  id="blk-085-01">POLYÈDRES.<!-- skp data-txt='65' --></p>
+<p class="article" id="blk-085-03"><strong class="article-num" id="article-390 bis">390 bis.</strong> Les longueurs de trois arêtes, non parallèles entre
+elles (par exemple des trois arêtes issues d'un même sommet) d'un
+parallélépipède rectangle, en sont dites les trois dimensions.</p>
+<p  id="blk-085-04">Deux parallélépipèdes rectangles dont les dimensions sont égales
+chacune à chacune sont évidemment égaux.</p>
+<p  id="blk-085-05">On nomme cube un parallélépipède rectangle qui a ses trois dimen-
+sions égales entre elles, de sorte que toutes les faces sont des carrés.</p>
+<p  id="blk-085-06">Deux cubes de même arête sont égaux.</p>
+<p  id="blk-085-07">с</p>
+<p class="article" id="blk-085-08"><strong class="article-num" id="article-391">391.</strong> Théorème. Dans un parallélépipède rectangle :
+1º Les diagonales sont égales;
+2º Le carré d'une diagonale est égal à la somme des carrés des trois<!-- spr -->dimensions.</p>
+<p  id="blk-085-10">Dans le parallélépipède rectangle ABCD
+A'B'C'D' (fig. 299), les diagonales AC', BD'
+sont égales, car le quadrilatère ABC'D' est.
+un rectangle (la droite AB étant perpendicu-
+laire au plan BCB'C', lequel contient BC').
+De plus on a AC2 BD/2</p>
+<p  id="blk-085-11">AB² + AD²,
+d'après le théorème du carré de l'hypoténuse.
+Mais AD est, d'après le même théorème, égal a AA2 + A'D 2.
+Donc on a bien AC/2 AB² + AA² + A'D/² AB² + AA2 + AD².<!-- skp data-txt="A'" --><!-- skp data-txt="C'" --><!-- skp data-txt='2' --></p>
+<p  id="blk-085-15">_</p>
+<p  id="blk-085-16">_<img class="fig" src="img/FIG. 299.OCR.png" alt="FIG. 299." /><!-- skp data-txt='2' --><!-- skp data-txt='2' --><!-- skp data-txt='72' --></p>
+<p  id="blk-085-21">===<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-085-23"><strong class="article-num" id="article-392">392.</strong> On nomme pyramide (fig. 293, 300) un polyèdre dont toutes
+les faces moins une ont un sommet commun (dit sommet de la pyra-
+mide). Il est clair que cette définition revient
+à la suivante : une pyramide est le solide obtenu
+en coupant un angle polyèdre par un plan qui
+rencontre toutes les arêtes. La face située dans
+ce plan sécant est dite la base de la pyramide :
+les autres sont les faces latérales et les arêtes
+issues du sommet sont les arêtes latérales.</p>
+<p  id="blk-085-24">Il est clair qu'une pyramide est déterminée
+par sa base et son sommet: les faces latérales
+sont les triangles qui ont pour sommet commun le sommet de la
+pyramide et, pour bases respectives les côtés de sa base.</p>
+<p  id="blk-085-25">On nomme hauteur d'une pyramide, la perpendiculaire abaissée
+du sommet sur le plan de la base (fig. 300, SH).<img class="fig" src="img/FIG. 300.OCR.png" alt="FIG. 300." /><!-- skp data-txt='GÉOMÉTRIE. II.' --><!-- skp data-txt='5' --></p><div class="scan-inline"><img src="img/scan/srcpage-085.png"/></div></data><data data-scanhref="img/scan/srcpage-086.png"><p class="newpage"><!-- skp data-txt='66' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- skp data-txt='-' --></p>
+<p  id="blk-086-04">à<!-- skp data-txt='D' --><!-- skp data-txt='H' --></p>
+<p class="article" id="blk-086-07"><strong class="article-num" id="article-393">393.</strong> Théorème. - La section d'une pyramide par un plan paral-
+lèle à sa base est semblable à cette base.</p>
+<p  id="blk-086-08">(Autrement dit, les sections d'un angle polyèdre par des plans
+parallèles sont semblables entre elles).</p>
+<p  id="blk-086-09">Le rapport de similitude des deux polygones est égal au rapport des
+distances de leurs plans respectifs au sommet (ou au rapport des<!-- spr -->segments que ces plans interceptent, sur
+une arête quelconque, à partir du som-
+met).</p>
+<p  id="blk-086-11">Soit la pyramide SABCDE (fig. 301)
+coupée par le plan A'B'C'D'E' parallèle à
+la base et que nous supposerons, pour
+fixer les idées, situé du même côté du
+sommet que cette base. Considérons trois
+sommets quelconques, A,B et D, par
+exemple, et les sommets correspondants
+A', B', D' de la section. Les côtés AB,
+BD, DA sont respectivement parallèles<!-- spr -->aux côtés correspondants du triangle
+A'B'D' et de même sens (¹) : ces deux triangles ont donc les angles
+égaux chacun à chacun; ils sont semblables et de même sens. Leur
+rapport de similitude est égal (dans les triangles semblables, SAB,</p>
+<p  id="blk-086-13">SA
+SA'B'), au rapport SA, rapport qui est d'ailleurs égal (336, coroll.)
+SB SC</p>
+<p  id="blk-086-14">SH
+aux rapports analogues<!-- spr -->etc., ainsi qu'au rapport des
+SB SC'</p>
+<p  id="blk-086-16">SH'
+distances du point S aux deux plans parallèles ABCDE, A'B'C'D'E'.
+Si alors nous prenons l'homothétique du polygone A'B'C'D'E' (par</p>
+<p  id="blk-086-17">SH
+rapport à un pôle quelconque situé dans son plan), avec<!-- spr -->pour</p>
+<p  id="blk-086-19">SH'
+rapport d'homothétie, le polygone A,B,C,D,E, sera tel que les
+triangles A,B,С₁, ABD, etc., seront respectivement égaux à
+ABC, ABD, etc., et de même sens : il sera donc égal à ABCDE (Pl., 50).<!-- skp data-txt='A' --><!-- skp data-txt='B' --><img class="fig" src="img/FIG. 301.OCR.png" alt="FIG. 301." /><!-- skp data-txt='-' --></p>
+<p  id="blk-086-24">REMARQUE. D'une façon générale, le raisonnement précédent
+montre qu'en joignant à un point fixe tous les points d'une figure</p>
+<p  id="blk-086-25">(1) Si le plan sécant A/B/C/D/E/ et le plan de base étaient de part et d'autre de S, les côtés
+des deux triangles ABD, A/B/D' seraient parallèles et de sens contraires : les deux triangles
+eux-mêmes seraient semblables et de même sens, et les conclusions ultérieures subsisteraient
+sans changement.</p><div class="scan-inline"><img src="img/scan/srcpage-086.png"/></div></data><data data-scanhref="img/scan/srcpage-087.png"><p class="newpage"></p>
+<p  id="blk-087-01">POLYÈDRES.<!-- skp data-txt='67' --><!-- spr -->plane et coupant les droites de jonction par un plan parallèle à celui
+de cette figure, on obtient une figure semblable à la première.</p>
+<p  id="blk-087-04">C. Q. F. D.<!-- skp data-txt='-' --></p>
+<p  id="blk-087-06">Corollaire. Les aires de la base et de la section considérée dans
+le théorème précédent sont entre elles comme les carrés des distances du
+sommet à leurs plans respectifs.</p>
+<p  id="blk-087-07">Ceci n'est que l'application, aux polygones en question, du
+théorème du nº 257 (Pl., liv. IV).</p>
+<p class="article" id="blk-087-08"><strong class="article-num" id="article-394">394.</strong> Une pyramide régulière (SABCDE, fig. 293) est celle qui a
+pour base un polygone régulier et dont la hauteur tombe au centre
+de la base (SO, fig. 293).</p>
+<p  id="blk-087-09">Toutes les arêtes latérales d'une pyramide régulière sont égales
+(comme obliques également écartées du pied de la perpendiculaire
+SO); toutes les faces latérales sont les triangles isoscèles égaux
+(comme ayant les trois côtés égaux chacun à chacun). La hauteur
+issue du sommet, dans l'un quelconque de ces triangles (SH, fig. 293)
+a reçu le nom d'apothème de la pyramide régulière.<!-- skp data-txt='-' --></p>
+<p  id="blk-087-11">Théorème. L'aire latérale d'une pyramide régulière est égale
+au demi-produit du périmètre de la base par l'apothème.</p>
+<p  id="blk-087-12">Dans la pyramide régulière SABCDE (fig. 293), le triangle SAB a
+pour mesure le demi-produit de l'apothème SH par le côté AB; le
+triangle SBC, le demi-produit de l'apothème par le côté BC; et ainsi
+de suite. Donc l'aire latérale, c'est-à-dire la somme des triangles
+SAB, SBC, SCD, SDE, SEA, a pour mesure le demi-produit de l'apo-
+thème par la somme AB + BC + CD + DE + EA.</p>
+<p class="article" id="blk-087-13"><strong class="article-num" id="article-394 bis">394 bis.</strong> On classe les pyramides d'après le nombre de leurs faces
+latérales (égal au nombre des côtés de la base) en triangulaires,
+quadrangulaires, pentagonales, etc.</p>
+<p  id="blk-087-14">La pyramide triangulaire a reçu le nom de tétraèdre (fig. 300).
+Elle a en tout quatre faces (le moindre nombre qu'un polyèdre puisse
+posséder) toutes triangulaires. Un tétraèdre peut être regardé comme
+pyramide de quatre façons différentes, une face quelconque pouvant
+être prise comme base.</p>
+<p class="article" id="blk-087-15"><strong class="article-num" id="article-395">395.</strong> Tout polyèdre peut être décomposé en pyramides.
+En effet
+1° Si le polyèdre est convexe, il peut être décomposé en pyra-</p><div class="scan-inline"><img src="img/scan/srcpage-087.png"/></div></data><data data-scanhref="img/scan/srcpage-088.png"><p class="newpage"><!-- skp data-txt='68' --><!-- skp data-txt='88' --><!-- skp data-txt='GÉOMÉTRIE.' --><!-- spr -->mides ayant, pour sommet commun, un sommet du polyèdre et
+pour bases respectives, les faces qui ne contiennent pas ce sommet;
+ou encore, ayant pour bases, successivement, toutes les faces du
+polyèdre et pour sommet commun un point intérieur;</p>
+<p  id="blk-088-05">2° Un polyèdre concave peut être décomposé en polyèdres
+convexes (lesquels se décomposent eux-mêmes en pyramides, ainsi
+qu'il vient d'être dit) : il suffira, pour cela (¹), de prolonger indéfini-
+ment les plans de toutes les faces: on décomposera ainsi l'espace
+en plusieurs régions, dont un certain nombre, lesquelles seront
+évidemment des polyèdres convexes, constitueront par leur ensemble
+le polyèdre donné.</p>
+<p  id="blk-088-06">Comme toute pyramide peut être manifestement décomposée en
+pyramides triangulaires (il suffit de diviser le polygone de base en
+triangles), tout polyèdre est décomposable en tétraèdres.</p>
+<p  id="blk-088-07">EXERCICES</p>
+<p class="article" id="blk-088-08"><strong class="article-num" id="article-520">520.</strong> Toute droite menée par le point d'intersection des diagonales d'un parallélé-
+pipède est divisée par ce point et la surface du polyèdre en deux parties égales.</p>
+<p class="article" id="blk-088-09"><strong class="article-num" id="article-521">521.</strong> Étant données trois droites, dont deux quelconques ne sont pas dans un
+même plan, construire un parallélépipède qui ait une arête sur chacune d'elles (2).</p>
+<p class="article" id="blk-088-10"><strong class="article-num" id="article-521 bis">521 bis.</strong> Lieu du centre du parallélépipède précédent, lorsque, deux des droites
+restant fixes, la troisième se meut parallèlement à elle-même dans un plan donné.</p>
+<p class="article" id="blk-088-11"><strong class="article-num" id="article-522">522.</strong> Si les diagonales d'un parallélépipède sont toutes égales, le parallélépipède
+est rectangle.</p>
+<p class="article" id="blk-088-12"><strong class="article-num" id="article-523">523.</strong> Construire un cube, connaissant la longueur d'une de ses diagonales.</p>
+<p class="article" id="blk-088-13"><strong class="article-num" id="article-524">524.</strong> Soient A, C' deux sommets opposés d'un parallélépipède ABCDA'B'C'D'; B, D,
+A', les sommets voisins du point A; D',B,C, les sommets voisins du point C'.
+Prouver :</p>
+<p  id="blk-088-14">1° Que la diagonale AC' passe par les centres de gravité des triangles BDA', D'B'C;
+2° Qu'elle est divisée par ces deux points en trois parties égales;</p>
+<p  id="blk-088-15">3° Si le parallélépipède considéré est un cube, les triangles BDA', D'B'C sont
+équilatéraux et la droite AC' est perpendiculaire à leurs plans.</p>
+<p class="article" id="blk-088-16"><strong class="article-num" id="article-525">525.</strong> On coupe un cube par un plan perpendiculaire à une de ses diagonales.
+Étudier la forme de la section, en supposant que le plan prenne toutes les positions
+possibles sans cesser d'être perpendiculaire à la diagonale.</p>
+<p  id="blk-088-17">Cas où le plan de section est perpendiculaire au milieu de la diagonale.</p>
+<p  id="blk-088-18">(1) Comparer Pl., 148.</p>
+<p  id="blk-088-19">(2) Bien entendu, dans les problèmes de construction, il est tenu compte de la note placée
+à la fin des problèmes du livre précédent on se servira donc de la convention formulée
+en cet endroit, sauf lorsqu'il sera question de constructions effectives.</p><div class="scan-inline"><img src="img/scan/srcpage-088.png"/></div></data><data data-scanhref="img/scan/srcpage-089.png"><p class="newpage"></p>
+<p  id="blk-089-01">POLYÈDRES.<!-- skp data-txt='69' --></p>
+<p class="article" id="blk-089-03"><strong class="article-num" id="article-526">526.</strong> On appelle tétraèdre régulier celui dont toutes les arêtes sont égales et, par
+conséquent, toutes les faces équilatérales.</p>
+<p  id="blk-089-04">Montrer que les sommets d'un cube peuvent être divisés en deux groupes, de
+manière<!-- spr -->que les sommets de chaque groupe soient ceux d'un tétraèdre régulier.
+527. Si un point se déplace dans le plan de la base d'une pyramide régulière et
+à l'intérieur de cette base, la somme de ses distances aux faces latérales reste
+constante.</p>
+<p  id="blk-089-06">La somme des segments interceptés par les faces latérales sur la perpendiculaire
+au plan de base menée par ce point reste également constante.</p>
+<p  id="blk-089-07">Que deviennent ces propriétés lorsque le point considéré devient extérieur au poly-
+gone de base, tout en restant dans son plan ?</p>
+<p class="article" id="blk-089-08"><strong class="article-num" id="article-528">528.</strong> Les droites qui joignent les sommets d'un tétraèdre aux centres de gravité
+des faces opposées concourent en un même point, qui divise chacune d'elles dans le
+rapport de 1 à 3.</p>
+<p  id="blk-089-09">Les droites joignant les milieux des arêtes opposées passent par le même point,
+lequel divise chacune d'elles en deux parties égales.</p>
+<p class="article" id="blk-089-10"><strong class="article-num" id="article-529">529.</strong> Si trois segments de droites, non situés dans un même plan, passent par un
+même point et y sont divisés chacun en deux parties égales, on peut trouver, et
+de plusieurs manières, un tétraèdre tel que les milieux de ses arêtes soient les
+extrémités des segments considérés.</p>
+<p class="article" id="blk-089-11"><strong class="article-num" id="article-530">530.</strong> Si, par la droite qui joint les milieux des deux arêtes opposées d'un tétraèdre,
+on mène un plan qui coupe deux autres arêtes opposées, la droite qui joint les points
+d'intersection est divisée par la première en deux parties égales.</p>
+<p class="article" id="blk-089-12"><strong class="article-num" id="article-531">531.</strong> Les plans menés perpendiculairement aux arêtes d'un tétraèdre en leurs
+milieux sont concourants.</p>
+<p class="article" id="blk-089-13"><strong class="article-num" id="article-532">532.</strong> Les plans bissecteurs des dièdres d'un tétraèdre sont concourants.</p>
+<p class="article" id="blk-089-14"><strong class="article-num" id="article-533">533.</strong> Si, par chaque arête d'un tétraèdre, on mène un plan tel que le dièdre formé
+par ce plan avec le plan qui passe par l'arête en question et un point déterminé O de
+l'espace ait même plan bissecteur que le dièdre du tétraèdre donné qui a la même
+arête, les six plans ainsi menés passent par un même point O'.</p>
+<p class="article" id="blk-089-15"><strong class="article-num" id="article-534">534.</strong> Les plans menés, par le milieu de chaque arête d'un tétraèdre, perpendiculai-
+rement à l'arête opposée, se coupent en un même point, lequel est en ligne droite
+avec celui qui fait l'objet de l'exercice 528 et celui qui fait l'objet de l'exercice 531.<!-- skp data-txt='-' --></p>
+<p class="article" id="blk-089-17"><strong class="article-num" id="article-535">535.</strong> On mène, dans chacun des angles trièdres d'un tétraèdre, la droite dont
+l'existence fait l'objet de l'exercice 494. Dans quelles conditions ces quatre droites
+sont-elles concourantes? Montrer qu'alors les quatre hauteurs du tétraèdre se
+coupent également en un même point.</p>
+<p  id="blk-089-18">(Les sommets du tétraèdre ont alors la disposition considérée à l'exercice 516 : un
+tel tétraèdre est dit à arétes orthogonales).</p>
+<p class="article" id="blk-089-19"><strong class="article-num" id="article-536">536.</strong> Résoudre une question analogue pour la droite dont l'existence fait l'objet
+de l'exercice 490 (Réponse : les sommes des arêtes opposées doivent être égales
+entre elles).</p>
+<p class="article" id="blk-089-20"><strong class="article-num" id="article-537">537.</strong> Même question pour la droite dont l'existence fait l'objet de l'exercice 492.</p>
+<p class="article" id="blk-089-21"><strong class="article-num" id="article-538">538.</strong> Étant données les longueurs des arêtes d'un tétraèdre, trouver effectivement (1)
+les quatre hauteurs.</p>
+<p  id="blk-089-22">(1) Voir la note placée à la fin des problèmes du Ve livre.</p><div class="scan-inline"><img src="img/scan/srcpage-089.png"/></div></data>  </div><!-- maintext -->
+  <div class="scanpanel"><img id="scanpanel-page-img" src="img/scan/srcpage-001.png"/></div>
+</div><!-- container -->
+</body>
+</html>
+
